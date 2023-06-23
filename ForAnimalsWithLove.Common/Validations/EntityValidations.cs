@@ -48,5 +48,30 @@ namespace ForAnimalsWithLove.Common.Validations
             public const int AddressMaxLength = 50;
 
         }
+
+        public static class Operation
+        { 
+            public const int NameMinLength = 5;
+            public const int NameMaxLength = 50;
+        }
+
+        public static class HealthRecord
+        {
+            public const int ChipMinLength = 9;
+            public const int ChipMaxLength = 15;
+            public const int GeneralConditionMinLength = 10;
+            public const int GeneralConditionMaxLength = 500;
+            public const int PrescriptionMinLength = 5;
+            public const int PrescriptionMaxLength = 500;
+        }
+
+        public static class HospitalRecord 
+        { 
+            public const int DiagnosisMinLength = 6;
+            public const int DiagnosisMaxLength = 500;
+            public const int TreatmentMinLength = 5;
+            public const int TreatmentMaxLength = 500;
+            
+        }
     }
 }

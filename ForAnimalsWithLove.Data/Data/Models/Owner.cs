@@ -6,10 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.Owner;
 
-namespace ForAnimalsWithLove.Data.Models
+namespace ForAnimalsWithLove.Data.Data.Models
 {
     public class Owner
     {
+        public Owner()
+        {
+            MyAnimals = new HashSet<Animal>();
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -30,5 +35,7 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
+
+        public virtual ICollection<Animal> MyAnimals { get; set; }
     }
 }

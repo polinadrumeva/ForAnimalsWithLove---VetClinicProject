@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.Animal;
 
-namespace ForAnimalsWithLove.Data.Models
+namespace ForAnimalsWithLove.Data.Data.Models
 {
     public class Animal
     {
@@ -57,19 +57,19 @@ namespace ForAnimalsWithLove.Data.Models
         public Doctor Doctor { get; set; } = null!;
     }
 
-//    Id
-//Name
-//Age
-//Photo
-//Kind of animal
-//Breed
-//Sex
-//Birthdate
-//color
-//DoesHasOwner
-//OwnerId
-//Owner
-//DoctorId
-//Doctor
+    //    Id
+    //Name
+    //Age
+    //Photo
+    //Kind of animal
+    //Breed
+    //Sex
+    //Birthdate
+    //color
+    //DoesHasOwner
+    //OwnerId
+    //Owner
+    //DoctorId
+    //Doctor
 
 }
