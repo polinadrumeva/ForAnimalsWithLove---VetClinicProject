@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.HealthRecord;
 
-namespace ForAnimalsWithLove.Data.Data.Models
+namespace ForAnimalsWithLove.Data.Models
 {
     public class HealthRecord
     {
@@ -47,23 +47,14 @@ namespace ForAnimalsWithLove.Data.Data.Models
 
         public DateTime LastReview { get; set; }
 
-        public int? LastReviewDoctorId { get; set; }
-
-        [ForeignKey(nameof(LastReviewDoctorId))]
-        public Doctor LastReviewDoctor { get; set; } = null!;
 
         public DateTime UpcomingReview { get; set; }
 
-        public int UpcomingReviewDoctorId { get; set; }
-
-        [ForeignKey(nameof(UpcomingReviewDoctorId))]
-        public Doctor UpcomingReviewDoctor { get; set; } = null!;
-
-        [Required]
-        public int HospitalRecordId { get; set; }
+       
+        public int? HospitalRecordId { get; set; }
 
         [ForeignKey(nameof(HospitalRecordId))]
-        public HospitalRecord HospitalRecord { get; set; } = null!;
+        public HospitalRecord? HospitalRecord { get; set; }
 
 
     }

@@ -4,16 +4,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static ForAnimalsWithLove.Common.Validations.EntityValidations.Doctor;
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.Owner;
 
-namespace ForAnimalsWithLove.Data.Data.Models
+namespace ForAnimalsWithLove.Data.Models
 {
-    public class Doctor
+    public class Owner
     {
-        public Doctor()
+        public Owner()
         {
-            Animals = new HashSet<Animal>();
-            Operations = new HashSet<Operation>();
+            this.MyAnimals = new HashSet<Animal>();
         }
 
         [Key]
@@ -23,15 +22,11 @@ namespace ForAnimalsWithLove.Data.Data.Models
         [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
         public string FirstName { get; set; } = null!;
 
+        public string? MiddleName { get; set; }
+
         [Required]
         [StringLength(LastNameMaxLength, MinimumLength = LastNameMinLength)]
         public string LastName { get; set; } = null!;
-
-        [Required]
-        [StringLength(DirectionMaxLength, MinimumLength = DirectionMinLength)]
-        public string Direction { get; set; } = null!;
-
-        public string? Specialization { get; set; }
 
         [Required]
         [StringLength(PhoneNumberLength)]
@@ -41,8 +36,6 @@ namespace ForAnimalsWithLove.Data.Data.Models
         [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
 
-        public virtual ICollection<Animal> Animals { get; set; }
-
-        public virtual ICollection<Operation> Operations { get; set; }
+        public virtual ICollection<Animal> MyAnimals { get; set; }
     }
 }

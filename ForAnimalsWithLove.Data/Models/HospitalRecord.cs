@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.HospitalRecord;
 
-namespace ForAnimalsWithLove.Data.Data.Models
+namespace ForAnimalsWithLove.Data.Models
 {
     public class HospitalRecord
     {

@@ -7,13 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.Operation;
 
-namespace ForAnimalsWithLove.Data.Data.Models
+namespace ForAnimalsWithLove.Data.Models
 {
     public class Operation
     {
         public Operation()
         {
-            Tests = new HashSet<Test>();
+            this.Tests = new HashSet<Test>();
         }
 
         [Key]

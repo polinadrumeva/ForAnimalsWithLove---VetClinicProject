@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ForAnimalsWithLove.Data.Data.Models
+namespace ForAnimalsWithLove.Data.Models
 {
-    public class AnimalsDoctors
+    public class AnimalDoctor
     {
         public int AnimalId { get; set; }
 

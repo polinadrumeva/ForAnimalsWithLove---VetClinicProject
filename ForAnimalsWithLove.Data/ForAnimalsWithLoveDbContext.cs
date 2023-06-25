@@ -5,8 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ForAnimalsWithLove.Data.Data.Models;
 using Microsoft.AspNetCore.Identity;
+using ForAnimalsWithLove.Data.Models;
 
 namespace ForAnimalsWithLove.Data
 {
@@ -31,17 +31,22 @@ namespace ForAnimalsWithLove.Data
 
         public DbSet<Test> Tests { get; set; } = null!;
 
-        public DbSet<AnimalsDoctors> AnimalsDoctors { get; set; } = null!;
-
-        public DbSet<HealthsHospitals> HealthsHospitals { get; set; } = null!;
+        public DbSet<AnimalDoctor> AnimalsDoctors { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           modelBuilder.Entity<AnimalsDoctors>()
+            base.OnModelCreating(modelBuilder);
+
+           modelBuilder.Entity<AnimalDoctor>()
                 .HasKey(ad => new { ad.AnimalId, ad.DoctorId });
 
-            modelBuilder.Entity<HealthsHospitals>()
-                .HasKey(hh => new { hh.HealthRecordId, hh.HospitalRecordId });
+            modelBuilder.Entity<AnimalDoctor>()
+                .HasOne(ad => ad.Doctor)
+				.WithMany(a => a.AnimalsDoctors)
+				.OnDelete(DeleteBehavior.NoAction);
+
+         
+
         }
 
 
