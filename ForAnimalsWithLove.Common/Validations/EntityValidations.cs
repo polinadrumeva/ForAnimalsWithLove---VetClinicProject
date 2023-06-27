@@ -73,5 +73,19 @@ namespace ForAnimalsWithLove.Common.Validations
             public const int TreatmentMaxLength = 500;
             
         }
+
+        public static class Hotel
+        {
+            public const int NameMinLength = 5;
+            public const int NameMaxLength = 20;
+            public const int LocationMinLength = 10;
+            public const int LocationMaxLength = 50;
+        }
+
+        public static class Grooming
+        { 
+            public const int ServiceMinLength = 5;
+            public const int ServiceMaxLength = 50;
+        }
     }
 }

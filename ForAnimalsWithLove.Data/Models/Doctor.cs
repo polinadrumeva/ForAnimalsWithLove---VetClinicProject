@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.Doctor;
 
 namespace ForAnimalsWithLove.Data.Models
@@ -12,7 +10,7 @@ namespace ForAnimalsWithLove.Data.Models
     {
         public Doctor()
         {
-           this.Operations = new HashSet<Operation>();
+            this.Operations = new HashSet<Operation>();
             this.AnimalsDoctors = new HashSet<AnimalDoctor>();
         }
 

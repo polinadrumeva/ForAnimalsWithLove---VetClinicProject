@@ -2,14 +2,14 @@
 
 namespace ForAnimalsWithLove.Data.Models
 {
-    public class AnimalDoctor
+    public class AnimalBooking
     {
         public int AnimalId { get; set; }
 
         public Animal Animal { get; set; } = null!;
 
-        public int DoctorId { get; set; }
+        public int BookingId { get; set; }
 
-        public Doctor Doctor { get; set; } = null!;
+        public Booking Booking { get; set; } = null!;
     }
 }

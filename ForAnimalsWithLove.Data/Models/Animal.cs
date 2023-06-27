@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.Animal;
 
 namespace ForAnimalsWithLove.Data.Models
@@ -50,26 +47,7 @@ namespace ForAnimalsWithLove.Data.Models
         [ForeignKey(nameof(OwnerId))]
         public Owner? Owner { get; set; }
 
-        [Required]
-        public int DoctorId { get; set; }
-
-        [ForeignKey(nameof(DoctorId))]
-        public Doctor Doctor { get; set; } = null!;
+     
     }
-
-    //    Id
-    //Name
-    //Age
-    //Photo
-    //Kind of animal
-    //Breed
-    //Sex
-    //Birthdate
-    //color
-    //DoesHasOwner
-    //OwnerId
-    //Owner
-    //DoctorId
-    //Doctor
 
 }

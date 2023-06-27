@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+
 using ForAnimalsWithLove.Data.Models;
 
 namespace ForAnimalsWithLove.Data
@@ -33,6 +29,22 @@ namespace ForAnimalsWithLove.Data
 
         public DbSet<AnimalDoctor> AnimalsDoctors { get; set; } = null!;
 
+        public DbSet<Hotel> Hotels { get; set; } = null!;
+
+        public DbSet<Booking> Bookings { get; set; } = null!;
+
+        public DbSet<AnimalBooking> AnimalsBookings { get; set; } = null!;
+
+        public DbSet<Education> Educations { get; set; } = null!;
+
+        public DbSet<AnimalEducation> AnimalsEducations { get; set; } = null!;
+
+        public DbSet<Trainer> Trainers { get; set; } = null!;
+
+        public DbSet<Grooming> Groomings { get; set; } = null!;
+
+        public DbSet<SearchHome> SearchHomes { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -46,9 +58,17 @@ namespace ForAnimalsWithLove.Data
 				.OnDelete(DeleteBehavior.NoAction);
 
          
+            modelBuilder.Entity<Operation>()
+                .HasOne(o => o.HospitalRecord)
+                .WithMany(hr => hr.Operations)
+                .OnDelete(DeleteBehavior.NoAction);
 
+            modelBuilder.Entity<AnimalBooking>()
+                .HasKey(ab => new { ab.AnimalId, ab.BookingId });
+               
+            modelBuilder.Entity<AnimalEducation>()
+                .HasKey(ae => new { ae.AnimalId, ae.EducationId });
         }
-
 
     }
 }
