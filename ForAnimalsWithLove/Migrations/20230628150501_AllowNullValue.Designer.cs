@@ -4,6 +4,7 @@ using ForAnimalsWithLove.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForAnimalsWithLove.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    partial class ForAnimalsWithLoveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230628150501_AllowNullValue")]
+    partial class AllowNullValue
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,24 +85,6 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasIndex("OwnerId");
 
                     b.ToTable("Animals");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Age = 2,
-                            Birthdate = new DateTime(2022, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Breed = "Сиамска",
-                            Color = "Сив",
-                            DoesHasOwner = true,
-                            GroomingId = 0,
-                            HealthRecordId = 1,
-                            KindOfAnimal = "Котка",
-                            Name = "Пешо",
-                            OwnerId = 1,
-                            Photo = "~/images/peshocat.jpg",
-                            Sex = "M"
-                        });
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalBooking", b =>
@@ -323,8 +307,7 @@ namespace ForAnimalsWithLove.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int?>("HospitalRecordId")
-                        .IsRequired()
+                    b.Property<int>("HospitalRecordId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastReview")
@@ -1033,8 +1016,7 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
                 {
-                    b.Navigation("HealthRecord")
-                        .IsRequired();
+                    b.Navigation("HealthRecord");
 
                     b.Navigation("Operations");
                 });

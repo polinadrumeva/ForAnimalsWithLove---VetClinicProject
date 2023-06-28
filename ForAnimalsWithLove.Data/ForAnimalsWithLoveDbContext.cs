@@ -51,6 +51,295 @@ namespace ForAnimalsWithLove.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Animal>()
+                .HasData(new Animal()
+                {
+                    Id = 1,
+                    Name = "Пешо",
+                    Age = 2,
+                    Photo = "~/images/peshocat.jpg",
+                    KindOfAnimal = "Котка",
+                    Breed = "Сиамска",
+                    Sex = 'M',
+                    Birthdate = new DateTime(2022, 12, 12),
+                    Color = "Сив",
+                    DoesHasOwner = true,
+                    OwnerId = 1,
+                    HealthRecordId = 1
+                });
+            //    new Animal()
+            //    {
+            //        Id = 2,
+            //        Name = "Хати",
+            //        Age = 4,
+            //        Photo = "~/images/haticat.jpg",
+            //        KindOfAnimal = "Котка",
+            //        Breed = "Хималайска",
+            //        Sex = 'F',
+            //        Birthdate = new DateTime(2019, 12, 12),
+            //        Color = "Бял с кафеви петна",
+            //        DoesHasOwner = true,
+            //        OwnerId = 2,
+            //        HealthRecordId = 2
+            //    },
+            //     new Animal()
+            //     {
+            //         Id = 3,
+            //         Name = "Марио",
+            //         Age = 1,
+            //         Photo = "~/images/mariocat.jpg",
+            //         KindOfAnimal = "Котка",
+            //         Breed = "Регдол",
+            //         Sex = 'M',
+            //         Birthdate = new DateTime(2022, 08, 01),
+            //         Color = "Бял",
+            //         DoesHasOwner = true,
+            //         OwnerId = 3,
+            //         HealthRecordId = 3
+            //     },
+            //      new Animal()
+            //      {
+            //          Id = 4,
+            //          Name = "Маша",
+            //          Age = 5,
+            //          Photo = "~/images/mashacat.jpg",
+            //          KindOfAnimal = "Котка",
+            //          Breed = "Руска синя",
+            //          Sex = 'F',
+            //          Birthdate = new DateTime(2018, 07, 21),
+            //          Color = "Сив",
+            //          DoesHasOwner = true,
+            //          OwnerId = 4,
+            //          HealthRecordId = 4
+            //      },
+            //       new Animal()
+            //       {
+            //           Id = 5,
+            //           Name = "Монти",
+            //           Age = 3,
+            //           Photo = "~/images/monticat.jpg",
+            //           KindOfAnimal = "Котка",
+            //           Breed = "Улична",
+            //           Sex = 'M',
+            //           Birthdate = new DateTime(2021, 05, 30),
+            //           Color = "Оранжев",
+            //           DoesHasOwner = true,
+            //           OwnerId = 5,
+            //           HealthRecordId = 5
+            //       },
+            //        new Animal()
+            //        {
+            //            Id = 6,
+            //            Name = "Рама",
+            //            Age = 4,
+            //            Photo = "~/images/ramacat.jpg",
+            //            KindOfAnimal = "Котка",
+            //            Breed = "Сфинкс",
+            //            Sex = 'F',
+            //            Birthdate = new DateTime(2019, 10, 05),
+            //            Color = "Бял",
+            //            DoesHasOwner = true,
+            //            OwnerId = 6,
+            //            HealthRecordId = 6
+            //        },
+            //        new Animal()
+            //        {
+            //             Id = 7,
+            //             Name = "Тито",
+            //             Age = 0,
+            //             Photo = "~/images/titocat.jpg",
+            //             KindOfAnimal = "Котка",
+            //             Breed = "Улична",
+            //             Sex = 'M',
+            //             Birthdate = new DateTime(2023, 06, 09),
+            //             Color = "Оранжев",
+            //             DoesHasOwner = false,
+            //             SearchHomeId = 1,
+            //             HealthRecordId = 7
+            //        },
+            //         new Animal()
+            //         {
+            //             Id = 8,
+            //             Name = "Бели",
+            //             Age = 7,
+            //             Photo = "~/images/belidog.jpg",
+            //             KindOfAnimal = "Куче",
+            //             Breed = "Годън ретривър",
+            //             Sex = 'M',
+            //             Birthdate = new DateTime(2016, 11, 13),
+            //             Color = "Оранжев",
+            //             OwnerId = 7,
+            //             HealthRecordId = 8
+            //         },
+            //         new Animal()
+            //         {
+            //             Id = 9,
+            //             Name = "Белла",
+            //             Age = 0,
+            //             Photo = "~/images/belladog.jpg",
+            //             KindOfAnimal = "Куче",
+            //             Breed = "Йоркширски териер",
+            //             Sex = 'F',
+            //             Birthdate = new DateTime(2023, 01, 02),
+            //             Color = "Светло кафяв",
+            //             OwnerId = 8,
+            //             HealthRecordId = 9
+            //         },
+            //         new Animal()
+            //         {
+            //             Id = 10,
+            //             Name = "Боби",
+            //             Age = 4,
+            //             Photo = "~/images/bobidog.jpg",
+            //             KindOfAnimal = "Куче",
+            //             Breed = "Мопс",
+            //             Sex = 'M',
+            //             Birthdate = new DateTime(2019, 09, 13),
+            //             Color = "Бял с черни петна",
+            //             OwnerId = 9,
+            //             HealthRecordId = 10
+            //         },
+            //         new Animal()
+            //         {
+            //             Id = 11,
+            //             Name = "Кари",
+            //             Age = 0,
+            //             Photo = "~/images/carydog.jpg",
+            //             KindOfAnimal = "Куче",
+            //             Breed = "Джак ръсел",
+            //             Sex = 'F',
+            //             Birthdate = new DateTime(2023, 04, 03),
+            //             Color = "Бял с черни петна",
+            //             OwnerId = 10,
+            //             HealthRecordId = 11
+            //         },
+            //          new Animal()
+            //          {
+            //              Id = 12,
+            //              Name = "Чоки",
+            //              Age = 7,
+            //              Photo = "~/images/chokidog.jpg",
+            //              KindOfAnimal = "Куче",
+            //              Breed = "Джак ръсел",
+            //              Sex = 'M',
+            //              Birthdate = new DateTime(2016, 10, 11),
+            //              Color = "Бял с кафеви петна",
+            //              OwnerId = 10,
+            //              HealthRecordId = 12
+
+            //          },
+            //          new Animal()
+            //          {
+            //              Id = 13,
+            //              Name = "Джонсън",
+            //              Age = 9,
+            //              Photo = "~/images/jonsundog.jpg",
+            //              KindOfAnimal = "Куче",
+            //              Breed = "Немска овчарка",
+            //              Sex = 'M',
+            //              Birthdate = new DateTime(2014, 09, 05),
+            //              Color = "Кафяво-черно",
+            //              OwnerId = 11,
+            //              HealthRecordId = 13
+            //          },
+            //          new Animal()
+            //          {
+            //              Id = 14,
+            //              Name = "Майла",
+            //              Age = 4,
+            //              Photo = "~/images/mailadog.jpg",
+            //              KindOfAnimal = "Куче",
+            //              Breed = "Улична",
+            //              Sex = 'F',
+            //              Color = "Кафяво-черно",
+            //              DoesHasOwner = false,
+            //              HealthRecordId = 14
+            //          },
+            //           new Animal()
+            //           {
+            //               Id = 15,
+            //               Name = "Макси",
+            //               Age = 0,
+            //               Photo = "~/images/maksidog.jpg",
+            //               KindOfAnimal = "Куче",
+            //               Breed = "Лабрадор",
+            //               Sex = 'M',
+            //               Color = "Кафяво",
+            //               OwnerId = 12,
+            //               HealthRecordId = 15
+            //           },
+            //           new Animal()
+            //           {
+            //               Id = 16,
+            //               Name = "Сара",
+            //               Age = 3,
+            //               Photo = "~/images/saradog.jpg",
+            //               KindOfAnimal = "Куче",
+            //               Breed = "Акита ину",
+            //               Sex = 'F',
+            //               Color = "Оранжево",
+            //               OwnerId = 13,
+            //               HealthRecordId = 16
+            //           },
+            //           new Animal()
+            //           {
+            //               Id = 17,
+            //               Name = "Бенду",
+            //               Age = 2,
+            //               Photo = "~/images/benduhamster.jpg",
+            //               KindOfAnimal = "Морско свинче",
+            //               Breed = "Морско свинче",
+            //               Sex = 'M',
+            //               Color = "Бял с оранжеви и черни петна",
+            //               OwnerId = 14,
+            //               HealthRecordId = 17
+            //           },
+            //            new Animal()
+            //            {
+            //                Id = 18,
+            //                Name = "Какару",
+            //                Age = 5,
+            //                Photo = "~/images/kakarupapagal.jpg",
+            //                KindOfAnimal = "Папагал",
+            //                Breed = "Африкански сив",
+            //                Birthdate = new DateTime(2018, 12, 01),
+            //                Sex = 'M',
+            //                Color = "Сив",
+            //                OwnerId = 15,
+            //                HealthRecordId = 18
+            //            },
+            //             new Animal()
+            //             {
+            //                 Id = 19,
+            //                 Name = "Малину",
+            //                 Age = 1,
+            //                 Photo = "~/images/malinupor.jpg",
+            //                 KindOfAnimal = "Пор",
+            //                 Breed = "Пор",
+            //                 Birthdate = new DateTime(2022, 04, 20),
+            //                 Sex = 'M',
+            //                 Color = "Сив с бели петна",
+            //                 OwnerId = 16,
+            //                 HealthRecordId = 19
+            //             },
+            //              new Animal()
+            //              {
+            //                  Id = 20,
+            //                  Name = "Сарина",
+            //                  Age = 10,
+            //                  Photo = "~/images/sarinahorse.jpg",
+            //                  KindOfAnimal = "Кон",
+            //                  Breed = "Фризийски",
+            //                  Birthdate = new DateTime(2013, 03, 08),
+            //                  Sex = 'F',
+            //                  Color = "Черен",
+            //                  OwnerId = 17,
+            //                  HealthRecordId = 20
+            //              }
+
+            // );
+
+
             base.OnModelCreating(modelBuilder);
 
            modelBuilder.Entity<Animal>()
@@ -84,7 +373,6 @@ namespace ForAnimalsWithLove.Data
                 .WithOne(o => o.Doctor)
                 .OnDelete(DeleteBehavior.NoAction);
 
-
             modelBuilder.Entity<DirectionDoctor>()
                 .HasKey(dd => new { dd.DirectionId, dd.DoctorId });
 
@@ -105,11 +393,11 @@ namespace ForAnimalsWithLove.Data
                 .HasForeignKey<HealthRecord>(hr => hr.AnimalId)
                 .IsRequired();
 
-            modelBuilder.Entity<HealthRecord>()
-                .HasOne(hr => hr.HospitalRecord)
-                .WithOne(a => a.HealthRecord)
-                .HasForeignKey<HospitalRecord>(hr => hr.HealthRecordId)
-                .OnDelete(DeleteBehavior.NoAction);
+            //modelBuilder.Entity<HealthRecord>()
+            //    .HasOne(hr => hr.HospitalRecord)
+            //    .WithOne(a => a.HealthRecord)
+            //    .HasForeignKey<HospitalRecord>(hr => hr.HealthRecordId)
+            //    .IsRequired(false);
 
            modelBuilder.Entity<HospitalRecord>()
                 .HasOne(hr => hr.HealthRecord)
@@ -122,7 +410,6 @@ namespace ForAnimalsWithLove.Data
                 .WithMany(hr => hr.Operations)
                 .HasForeignKey(o => o.HospitalRecordId)
                 .OnDelete(DeleteBehavior.NoAction);
-
 
         }
 

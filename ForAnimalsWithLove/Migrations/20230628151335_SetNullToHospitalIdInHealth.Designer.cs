@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForAnimalsWithLove.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    [Migration("20230628101436_InitualDatabase")]
-    partial class InitualDatabase
+    [Migration("20230628151335_SetNullToHospitalIdInHealth")]
+    partial class SetNullToHospitalIdInHealth
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -895,7 +895,7 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.HospitalRecord", "HospitalRecord")
                         .WithOne("HealthRecord")
                         .HasForeignKey("ForAnimalsWithLove.Data.Models.HealthRecord", "HospitalRecordId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Animal");
