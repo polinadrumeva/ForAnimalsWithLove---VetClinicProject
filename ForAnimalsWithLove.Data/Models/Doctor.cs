@@ -12,6 +12,7 @@ namespace ForAnimalsWithLove.Data.Models
         {
             this.Operations = new HashSet<Operation>();
             this.AnimalsDoctors = new HashSet<AnimalDoctor>();
+            this.DirectionsDoctors = new HashSet<DirectionDoctor>();
         }
 
         [Key]
@@ -25,10 +26,6 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(LastNameMaxLength, MinimumLength = LastNameMinLength)]
         public string LastName { get; set; } = null!;
 
-        [Required]
-        [StringLength(DirectionMaxLength, MinimumLength = DirectionMinLength)]
-        public string Direction { get; set; } = null!;
-
         public string? Specialization { get; set; }
 
         [Required]
@@ -39,6 +36,7 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
 
+        public virtual ICollection<DirectionDoctor> DirectionsDoctors { get; set; }
         public virtual ICollection<AnimalDoctor> AnimalsDoctors { get; set; }
 
         public virtual ICollection<Operation> Operations { get; set; }

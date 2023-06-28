@@ -49,6 +49,19 @@ namespace ForAnimalsWithLove.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Directions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Directions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Doctors",
                 columns: table => new
                 {
@@ -56,7 +69,6 @@ namespace ForAnimalsWithLove.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Direction = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Specialization = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
@@ -234,6 +246,30 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DirectionsDoctors",
+                columns: table => new
+                {
+                    DirectionId = table.Column<int>(type: "int", nullable: false),
+                    DoctorId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DirectionsDoctors", x => new { x.DirectionId, x.DoctorId });
+                    table.ForeignKey(
+                        name: "FK_DirectionsDoctors_Directions_DirectionId",
+                        column: x => x.DirectionId,
+                        principalTable: "Directions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DirectionsDoctors_Doctors_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "Doctors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -571,6 +607,11 @@ namespace ForAnimalsWithLove.Migrations
                 column: "HotelId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_DirectionsDoctors_DoctorId",
+                table: "DirectionsDoctors",
+                column: "DoctorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Educations_TrainerId",
                 table: "Educations",
                 column: "TrainerId");
@@ -642,6 +683,9 @@ namespace ForAnimalsWithLove.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "DirectionsDoctors");
+
+            migrationBuilder.DropTable(
                 name: "Groomings");
 
             migrationBuilder.DropTable(
@@ -664,6 +708,9 @@ namespace ForAnimalsWithLove.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Directions");
 
             migrationBuilder.DropTable(
                 name: "Animals");

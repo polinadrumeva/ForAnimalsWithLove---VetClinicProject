@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForAnimalsWithLove.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    [Migration("20230628090700_InitualDatabase")]
+    [Migration("20230628101436_InitualDatabase")]
     partial class InitualDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -162,6 +162,39 @@ namespace ForAnimalsWithLove.Migrations
                     b.ToTable("Bookings");
                 });
 
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Direction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Directions");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.DirectionDoctor", b =>
+                {
+                    b.Property<int>("DirectionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DoctorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DirectionId", "DoctorId");
+
+                    b.HasIndex("DoctorId");
+
+                    b.ToTable("DirectionsDoctors");
+                });
+
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
                 {
                     b.Property<int>("Id")
@@ -174,11 +207,6 @@ namespace ForAnimalsWithLove.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Direction")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -815,6 +843,25 @@ namespace ForAnimalsWithLove.Migrations
                     b.Navigation("Hotel");
                 });
 
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.DirectionDoctor", b =>
+                {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.Direction", "Direction")
+                        .WithMany("DirectionsDoctors")
+                        .HasForeignKey("DirectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ForAnimalsWithLove.Data.Models.Doctor", "Doctor")
+                        .WithMany("DirectionsDoctors")
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Direction");
+
+                    b.Navigation("Doctor");
+                });
+
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Trainer", "Trainer")
@@ -954,9 +1001,16 @@ namespace ForAnimalsWithLove.Migrations
                     b.Navigation("SearchHome");
                 });
 
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Direction", b =>
+                {
+                    b.Navigation("DirectionsDoctors");
+                });
+
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
                 {
                     b.Navigation("AnimalsDoctors");
+
+                    b.Navigation("DirectionsDoctors");
 
                     b.Navigation("Operations");
                 });

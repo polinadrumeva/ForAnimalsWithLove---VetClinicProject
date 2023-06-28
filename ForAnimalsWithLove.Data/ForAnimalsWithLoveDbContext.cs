@@ -45,6 +45,10 @@ namespace ForAnimalsWithLove.Data
 
         public DbSet<SearchHome> SearchHomes { get; set; } = null!;
 
+        public DbSet<Direction> Directions { get; set; } = null!;
+
+        public DbSet<DirectionDoctor> DirectionsDoctors { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -79,6 +83,10 @@ namespace ForAnimalsWithLove.Data
                 .HasMany(ad => ad.Operations)
                 .WithOne(o => o.Doctor)
                 .OnDelete(DeleteBehavior.NoAction);
+
+
+            modelBuilder.Entity<DirectionDoctor>()
+                .HasKey(dd => new { dd.DirectionId, dd.DoctorId });
 
             modelBuilder.Entity<Education>()
                 .HasOne(e => e.Trainer)
