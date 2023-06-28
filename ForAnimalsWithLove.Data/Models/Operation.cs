@@ -20,7 +20,7 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         public int HospitalRecordId { get; set; }
 
-        [ForeignKey(nameof(HospitalRecordId))]
+        
         public HospitalRecord HospitalRecord { get; set; } = null!;
 
         [Required]

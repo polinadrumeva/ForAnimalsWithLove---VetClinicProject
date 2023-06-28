@@ -11,7 +11,12 @@ namespace ForAnimalsWithLove.Data.Models
 {
     public class Trainer
     {
-      
+        public Trainer()
+        {
+            this.Educations = new HashSet<Education>();
+        }
+
+
         [Key]
         public int Id { get; set; }
 
@@ -27,7 +32,9 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(PhoneNumberLength)]
         public string PhoneNumber { get; set; } = null!;
 
-       
+        
+        public virtual ICollection<Education> Educations { get; set; }
+
     }
 
 

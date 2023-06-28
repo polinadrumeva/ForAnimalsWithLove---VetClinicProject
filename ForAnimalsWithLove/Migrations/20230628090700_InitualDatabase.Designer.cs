@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForAnimalsWithLove.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    [Migration("20230627141801_InitualDatabse")]
-    partial class InitualDatabse
+    [Migration("20230628090700_InitualDatabase")]
+    partial class InitualDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,6 +51,12 @@ namespace ForAnimalsWithLove.Migrations
                     b.Property<bool>("DoesHasOwner")
                         .HasColumnType("bit");
 
+                    b.Property<int>("GroomingId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HealthRecordId")
+                        .HasColumnType("int");
+
                     b.Property<string>("KindOfAnimal")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -66,6 +72,9 @@ namespace ForAnimalsWithLove.Migrations
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SearchHomeId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sex")
                         .IsRequired()
@@ -242,7 +251,8 @@ namespace ForAnimalsWithLove.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnimalId");
+                    b.HasIndex("AnimalId")
+                        .IsUnique();
 
                     b.ToTable("Groomings");
                 });
@@ -270,6 +280,7 @@ namespace ForAnimalsWithLove.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<int?>("HospitalRecordId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastReview")
@@ -297,9 +308,11 @@ namespace ForAnimalsWithLove.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnimalId");
+                    b.HasIndex("AnimalId")
+                        .IsUnique();
 
-                    b.HasIndex("HospitalRecordId");
+                    b.HasIndex("HospitalRecordId")
+                        .IsUnique();
 
                     b.ToTable("HealthRecords");
                 });
@@ -325,6 +338,9 @@ namespace ForAnimalsWithLove.Migrations
                         .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
+
+                    b.Property<int>("HealthRecordId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PrescribedTreatment")
                         .HasMaxLength(500)
@@ -455,7 +471,8 @@ namespace ForAnimalsWithLove.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AnimalId");
+                    b.HasIndex("AnimalId")
+                        .IsUnique();
 
                     b.ToTable("SearchHomes");
                 });
@@ -801,9 +818,9 @@ namespace ForAnimalsWithLove.Migrations
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Trainer", "Trainer")
-                        .WithMany()
+                        .WithMany("Educations")
                         .HasForeignKey("TrainerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Trainer");
@@ -812,9 +829,9 @@ namespace ForAnimalsWithLove.Migrations
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Grooming", b =>
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
-                        .WithMany()
-                        .HasForeignKey("AnimalId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithOne("Grooming")
+                        .HasForeignKey("ForAnimalsWithLove.Data.Models.Grooming", "AnimalId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Animal");
@@ -823,14 +840,16 @@ namespace ForAnimalsWithLove.Migrations
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
-                        .WithMany()
-                        .HasForeignKey("AnimalId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithOne("HealthRecord")
+                        .HasForeignKey("ForAnimalsWithLove.Data.Models.HealthRecord", "AnimalId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("ForAnimalsWithLove.Data.Models.HospitalRecord", "HospitalRecord")
-                        .WithMany()
-                        .HasForeignKey("HospitalRecordId");
+                        .WithOne("HealthRecord")
+                        .HasForeignKey("ForAnimalsWithLove.Data.Models.HealthRecord", "HospitalRecordId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.Navigation("Animal");
 
@@ -842,7 +861,7 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.Doctor", "Doctor")
                         .WithMany("Operations")
                         .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("ForAnimalsWithLove.Data.Models.HospitalRecord", "HospitalRecord")
@@ -859,9 +878,9 @@ namespace ForAnimalsWithLove.Migrations
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.SearchHome", b =>
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
-                        .WithMany()
-                        .HasForeignKey("AnimalId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithOne("SearchHome")
+                        .HasForeignKey("ForAnimalsWithLove.Data.Models.SearchHome", "AnimalId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Animal");
@@ -925,6 +944,16 @@ namespace ForAnimalsWithLove.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Animal", b =>
+                {
+                    b.Navigation("Grooming");
+
+                    b.Navigation("HealthRecord")
+                        .IsRequired();
+
+                    b.Navigation("SearchHome");
+                });
+
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
                 {
                     b.Navigation("AnimalsDoctors");
@@ -934,6 +963,9 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
                 {
+                    b.Navigation("HealthRecord")
+                        .IsRequired();
+
                     b.Navigation("Operations");
                 });
 
@@ -945,6 +977,11 @@ namespace ForAnimalsWithLove.Migrations
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Owner", b =>
                 {
                     b.Navigation("MyAnimals");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Trainer", b =>
+                {
+                    b.Navigation("Educations");
                 });
 #pragma warning restore 612, 618
         }

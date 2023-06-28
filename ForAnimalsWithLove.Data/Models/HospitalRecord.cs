@@ -37,6 +37,10 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         public decimal Amount { get; set; }
 
+        public int HealthRecordId { get; set; }
+
+        public HealthRecord HealthRecord { get; set; } = null!;
+
         public ICollection<Operation> Operations { get; set; } 
     }
 

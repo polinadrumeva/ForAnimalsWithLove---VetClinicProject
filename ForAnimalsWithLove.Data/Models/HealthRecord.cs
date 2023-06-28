@@ -11,11 +11,9 @@ namespace ForAnimalsWithLove.Data.Models
     {
         [Key]
         public int Id { get; set; }
-
-        [Required]
+       
         public int AnimalId { get; set; }
 
-        [ForeignKey(nameof(AnimalId))]
         public Animal Animal { get; set; } = null!;
 
         [Required]
@@ -50,7 +48,6 @@ namespace ForAnimalsWithLove.Data.Models
        
         public int? HospitalRecordId { get; set; }
 
-        [ForeignKey(nameof(HospitalRecordId))]
         public HospitalRecord? HospitalRecord { get; set; }
 
 

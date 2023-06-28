@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ForAnimalsWithLove.Migrations
 {
-    public partial class InitualDatabse : Migration
+    public partial class InitualDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -77,7 +77,8 @@ namespace ForAnimalsWithLove.Migrations
                     Diagnosis = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Treatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     PrescribedTreatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    HealthRecordId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -256,8 +257,7 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_Operations_Doctors_DoctorId",
                         column: x => x.DoctorId,
                         principalTable: "Doctors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Operations_HospitalRecords_HospitalRecordId",
                         column: x => x.HospitalRecordId,
@@ -303,7 +303,10 @@ namespace ForAnimalsWithLove.Migrations
                     Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Color = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     DoesHasOwner = table.Column<bool>(type: "bit", nullable: false),
-                    OwnerId = table.Column<int>(type: "int", nullable: false)
+                    OwnerId = table.Column<int>(type: "int", nullable: false),
+                    GroomingId = table.Column<int>(type: "int", nullable: false),
+                    HealthRecordId = table.Column<int>(type: "int", nullable: false),
+                    SearchHomeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -334,8 +337,7 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_Educations_Trainers_TrainerId",
                         column: x => x.TrainerId,
                         principalTable: "Trainers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -423,8 +425,7 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_Groomings_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -444,7 +445,7 @@ namespace ForAnimalsWithLove.Migrations
                     PrescribedTreatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     LastReview = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpcomingReview = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HospitalRecordId = table.Column<int>(type: "int", nullable: true)
+                    HospitalRecordId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -453,8 +454,7 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_HealthRecords_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_HealthRecords_HospitalRecords_HospitalRecordId",
                         column: x => x.HospitalRecordId,
@@ -479,8 +479,7 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_SearchHomes_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -579,17 +578,20 @@ namespace ForAnimalsWithLove.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Groomings_AnimalId",
                 table: "Groomings",
-                column: "AnimalId");
+                column: "AnimalId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_HealthRecords_AnimalId",
                 table: "HealthRecords",
-                column: "AnimalId");
+                column: "AnimalId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_HealthRecords_HospitalRecordId",
                 table: "HealthRecords",
-                column: "HospitalRecordId");
+                column: "HospitalRecordId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Operations_DoctorId",
@@ -604,7 +606,8 @@ namespace ForAnimalsWithLove.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_SearchHomes_AnimalId",
                 table: "SearchHomes",
-                column: "AnimalId");
+                column: "AnimalId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tests_OperationId",

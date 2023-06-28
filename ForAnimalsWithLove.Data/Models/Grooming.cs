@@ -16,7 +16,7 @@ namespace ForAnimalsWithLove.Data.Models
 
         [Required]
         public int AnimalId { get; set; }
-        
+
         [ForeignKey(nameof(AnimalId))]
         public Animal Animal { get; set; } = null!;
 

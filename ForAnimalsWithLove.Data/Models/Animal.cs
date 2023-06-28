@@ -9,6 +9,7 @@ namespace ForAnimalsWithLove.Data.Models
 {
     public class Animal
     {
+        
         [Key]
         public int Id { get; set; }
 
@@ -47,7 +48,19 @@ namespace ForAnimalsWithLove.Data.Models
         [ForeignKey(nameof(OwnerId))]
         public Owner? Owner { get; set; }
 
-     
+        public int GroomingId { get; set; }
+
+        public Grooming? Grooming { get; set; }
+
+        [Required]
+        public int HealthRecordId { get; set; }
+
+        [Required]
+        public HealthRecord HealthRecord { get; set; } = null!;
+
+        public int? SearchHomeId { get; set; }
+        public SearchHome? SearchHome { get; set; }
+
     }
 
 }

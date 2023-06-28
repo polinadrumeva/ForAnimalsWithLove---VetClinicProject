@@ -49,7 +49,25 @@ namespace ForAnimalsWithLove.Data
         {
             base.OnModelCreating(modelBuilder);
 
-           modelBuilder.Entity<AnimalDoctor>()
+           modelBuilder.Entity<Animal>()
+                .HasOne(a => a.HealthRecord)
+                .WithOne(hr => hr.Animal)
+                .HasForeignKey<HealthRecord>(hr => hr.AnimalId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Animal>()
+                .HasOne(a => a.Grooming)
+                .WithOne(hr => hr.Animal)
+                .HasForeignKey<Grooming>(hr => hr.AnimalId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Animal>()
+                .HasOne(a => a.SearchHome)
+                .WithOne(hr => hr.Animal)
+                .HasForeignKey<SearchHome>(hr => hr.AnimalId)
+                .OnDelete(DeleteBehavior.NoAction);
+            
+            modelBuilder.Entity<AnimalDoctor>()
                 .HasKey(ad => new { ad.AnimalId, ad.DoctorId });
 
             modelBuilder.Entity<AnimalDoctor>()
@@ -57,17 +75,47 @@ namespace ForAnimalsWithLove.Data
 				.WithMany(a => a.AnimalsDoctors)
 				.OnDelete(DeleteBehavior.NoAction);
 
-         
-            modelBuilder.Entity<Operation>()
-                .HasOne(o => o.HospitalRecord)
-                .WithMany(hr => hr.Operations)
+            modelBuilder.Entity<Doctor>()
+                .HasMany(ad => ad.Operations)
+                .WithOne(o => o.Doctor)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Education>()
+                .HasOne(e => e.Trainer)
+                .WithMany(t => t.Educations)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<AnimalBooking>()
-                .HasKey(ab => new { ab.AnimalId, ab.BookingId });
-               
+              .HasKey(ab => new { ab.AnimalId, ab.BookingId });
+
             modelBuilder.Entity<AnimalEducation>()
                 .HasKey(ae => new { ae.AnimalId, ae.EducationId });
+
+            modelBuilder.Entity<HealthRecord>()
+                .HasOne(hr => hr.Animal)
+                .WithOne(a => a.HealthRecord)
+                .HasForeignKey<HealthRecord>(hr => hr.AnimalId)
+                .IsRequired();
+
+            modelBuilder.Entity<HealthRecord>()
+                .HasOne(hr => hr.HospitalRecord)
+                .WithOne(a => a.HealthRecord)
+                .HasForeignKey<HospitalRecord>(hr => hr.HealthRecordId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+           modelBuilder.Entity<HospitalRecord>()
+                .HasOne(hr => hr.HealthRecord)
+                .WithOne(a => a.HospitalRecord)
+                .HasForeignKey<HealthRecord>(hr => hr.HospitalRecordId)
+                .IsRequired();
+
+            modelBuilder.Entity<Operation>()
+                .HasOne(o => o.HospitalRecord)
+                .WithMany(hr => hr.Operations)
+                .HasForeignKey(o => o.HospitalRecordId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
         }
 
     }
