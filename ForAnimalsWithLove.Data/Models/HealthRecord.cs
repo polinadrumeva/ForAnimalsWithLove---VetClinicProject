@@ -46,7 +46,7 @@ namespace ForAnimalsWithLove.Data.Models
         public DateTime UpcomingReview { get; set; }
 
 
-        public int? HospitalRecordId { get; set; }
+        public int HospitalRecordId { get; set; }
 
         public HospitalRecord? HospitalRecord { get; set; }
 

@@ -21,7 +21,7 @@ namespace ForAnimalsWithLove.Data.Models
         public Animal Animal { get; set; } = null!;
 
         [Required]
-        [StringLength(ServiceMinLength, MinimumLength = ServiceMinLength)]
+        [StringLength(ServiceMaxLength, MinimumLength = ServiceMinLength)]
         public string Service { get; set; } = null!;
 
         [Required]

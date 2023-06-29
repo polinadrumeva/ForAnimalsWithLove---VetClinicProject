@@ -43,12 +43,12 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         public bool DoesHasOwner { get; set; }
 
-        public int OwnerId { get; set; }
+        public int? OwnerId { get; set; }
 
         [ForeignKey(nameof(OwnerId))]
         public Owner? Owner { get; set; }
 
-        public int GroomingId { get; set; }
+        public int? GroomingId { get; set; }
 
         public Grooming? Grooming { get; set; }
 

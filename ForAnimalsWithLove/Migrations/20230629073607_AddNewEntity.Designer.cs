@@ -4,6 +4,7 @@ using ForAnimalsWithLove.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForAnimalsWithLove.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    partial class ForAnimalsWithLoveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230629073607_AddNewEntity")]
+    partial class AddNewEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +51,7 @@ namespace ForAnimalsWithLove.Migrations
                     b.Property<bool>("DoesHasOwner")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("GroomingId")
+                    b.Property<int>("GroomingId")
                         .HasColumnType("int");
 
                     b.Property<int>("HealthRecordId")
@@ -65,7 +67,7 @@ namespace ForAnimalsWithLove.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int?>("OwnerId")
+                    b.Property<int>("OwnerId")
                         .HasColumnType("int");
 
                     b.Property<string>("Photo")
@@ -93,6 +95,7 @@ namespace ForAnimalsWithLove.Migrations
                             Breed = "Сиамска",
                             Color = "Сив",
                             DoesHasOwner = true,
+                            GroomingId = 0,
                             HealthRecordId = 1,
                             KindOfAnimal = "Котка",
                             Name = "Пешо",
@@ -289,8 +292,8 @@ namespace ForAnimalsWithLove.Migrations
 
                     b.Property<string>("Service")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.HasKey("Id");
 
@@ -782,7 +785,9 @@ namespace ForAnimalsWithLove.Migrations
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Owner", "Owner")
                         .WithMany("MyAnimals")
-                        .HasForeignKey("OwnerId");
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Owner");
                 });
