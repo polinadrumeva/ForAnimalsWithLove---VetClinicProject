@@ -1,18 +1,60 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+    background-color: bisque;
 }
+
+header {
+    background-color: coral;
+    height: 70px;
+    text-align: center;
+    font-size: 30px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-weight: bold;
+    color: black;
+    border: 2px solid coral;
+    border-radius: 2px;
+}
+
+nav {
+    
+    background-color: coral;
+    height: 70px;
+
+
+}
+
+nav div {
+    background-color: coral;
+    font-size: 10px;
+    text-align: left;
+
+
+}
+
+   
+
+    nav div div img {
+        height: 70px;
+        width: 110px;
+        border-radius: 2px;
+        border: 2px solid coral;
+
+    }
+
+
+    nav div div ul {
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-size: 20px;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        color: #000000;
+        font-weight: 500;
+        text-decoration: none;
+        font-style: normal;
+        font-variant: normal;
+        text-transform: none;
+    }
+
+
+ li a:hover {
+       background-color: antiquewhite;
+  }
