@@ -1,11 +1,13 @@
 ﻿@page
 @model LoginModel
 
+<head>
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
 
-
-<h1>Вход</h1>
+<body>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6 row-cols-2">
         <section>
             <form id="account" method="post">
                 <h2>Влезте във вашия профил в ForAnimalsWithLove.</h2>
@@ -32,12 +34,8 @@
             </form>
         </section>
     </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-           <img src="~/images/animals-login.jpg" alt="animals"/>
-        </section>
-    </div>
 </div>
+</body>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

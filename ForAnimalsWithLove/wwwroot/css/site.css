@@ -30,7 +30,6 @@ nav div {
 
 }
 
-   
 
     nav div div img {
         height: 70px;
@@ -45,7 +44,7 @@ nav div {
         font-family: "Comic Sans MS", cursive, sans-serif;
         font-size: 20px;
         letter-spacing: 1px;
-        word-spacing: 2px;
+        word-spacing: 3px;
         color: #000000;
         font-weight: 500;
         text-decoration: none;
@@ -58,3 +57,17 @@ nav div {
  li a:hover {
        background-color: antiquewhite;
   }
+
+footer {
+    background-color: coral;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    border: 2px solid coral;
+    border-radius: 2px;
+}
+
+footer div {
+    background-color: coral;
+    font-size: 20px;
+    color: black;
+    text-align: left;
+}
