@@ -15,20 +15,15 @@ header {
 }
 
 nav {
-    
     background-color: coral;
     height: 70px;
-
-
 }
 
-nav div {
-    background-color: coral;
-    font-size: 10px;
-    text-align: left;
-
-
-}
+    nav div {
+        background-color: coral;
+        font-size: 10px;
+        text-align: left;
+    }
 
 
     nav div div img {
