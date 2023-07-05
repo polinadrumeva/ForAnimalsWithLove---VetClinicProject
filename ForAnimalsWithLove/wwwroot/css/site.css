@@ -3,36 +3,35 @@ body {
 }
 
 header {
-    background-color: coral;
+    background-color: darksalmon;
     height: 70px;
     text-align: center;
     font-size: 30px;
     font-family: "Comic Sans MS", cursive, sans-serif;
     font-weight: bold;
     color: black;
-    border: 2px solid coral;
+    border: 2px solid darksalmon;
     border-radius: 2px;
 }
 
 nav {
-    background-color: coral;
+    background-color: darksalmon;
     height: 70px;
 }
 
     nav div {
-        background-color: coral;
+        background-color: darksalmon;
         font-size: 10px;
         text-align: left;
     }
 
 
-    nav div div img {
-        height: 70px;
-        width: 110px;
-        border-radius: 2px;
-        border: 2px solid coral;
-
-    }
+        nav div div img {
+            height: 70px;
+            width: 110px;
+            border-radius: 2px;
+            border: 2px solid darksalmon;
+        }
 
 
     nav div div ul {
@@ -54,15 +53,15 @@ nav {
   }
 
 footer {
-    background-color: coral;
+    background-color: darksalmon;
     font-family: "Comic Sans MS", cursive, sans-serif;
-    border: 2px solid coral;
+    border: 2px solid darksalmon;
     border-radius: 2px;
 }
 
-footer div {
-    background-color: coral;
-    font-size: 20px;
-    color: black;
-    text-align: left;
-}
+    footer div {
+        background-color: darksalmon;
+        font-size: 20px;
+        color: black;
+        text-align: left;
+    }
