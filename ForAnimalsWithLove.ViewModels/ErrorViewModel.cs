@@ -1,4 +1,4 @@
-namespace ForAnimalsWithLove.Models
+namespace ForAnimalsWithLove.ViewModels
 {
 	public class ErrorViewModel
 	{

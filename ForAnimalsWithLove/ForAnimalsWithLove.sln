@@ -3,11 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33723.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForAnimalsWithLove", "ForAnimalsWithLove.csproj", "{8DA20D49-3463-4C0A-81CD-78B601A82349}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForAnimalsWithLove", "ForAnimalsWithLove.csproj", "{8DA20D49-3463-4C0A-81CD-78B601A82349}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForAnimalsWithLove.Data", "..\ForAnimalsWithLove.Data\ForAnimalsWithLove.Data.csproj", "{67584452-8081-4D8B-9ACB-15698CC52AA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForAnimalsWithLove.Data", "..\ForAnimalsWithLove.Data\ForAnimalsWithLove.Data.csproj", "{67584452-8081-4D8B-9ACB-15698CC52AA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForAnimalsWithLove.Common", "..\ForAnimalsWithLove.Common\ForAnimalsWithLove.Common.csproj", "{44C9F2DA-787A-4612-A08D-7DD2B06C879F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForAnimalsWithLove.Common", "..\ForAnimalsWithLove.Common\ForAnimalsWithLove.Common.csproj", "{44C9F2DA-787A-4612-A08D-7DD2B06C879F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{491B59E4-52AA-45EC-963C-3F7443785E36}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C5E3701D-7423-4C68-92D7-FD821E0171C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForAnimalsWithLove.Data.Models", "..\ForAnimalsWithLove.Data.Models\ForAnimalsWithLove.Data.Models.csproj", "{E4EED198-5AC9-4CF2-89CE-D34E36A4C835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForAnimalsWithLove.ViewModels", "..\ForAnimalsWithLove.ViewModels\ForAnimalsWithLove.ViewModels.csproj", "{C82A8E3D-47CE-401A-8F5D-6EA67405FBF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +35,23 @@ Global
 		{44C9F2DA-787A-4612-A08D-7DD2B06C879F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44C9F2DA-787A-4612-A08D-7DD2B06C879F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44C9F2DA-787A-4612-A08D-7DD2B06C879F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4EED198-5AC9-4CF2-89CE-D34E36A4C835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4EED198-5AC9-4CF2-89CE-D34E36A4C835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4EED198-5AC9-4CF2-89CE-D34E36A4C835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4EED198-5AC9-4CF2-89CE-D34E36A4C835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C82A8E3D-47CE-401A-8F5D-6EA67405FBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C82A8E3D-47CE-401A-8F5D-6EA67405FBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C82A8E3D-47CE-401A-8F5D-6EA67405FBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C82A8E3D-47CE-401A-8F5D-6EA67405FBF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8DA20D49-3463-4C0A-81CD-78B601A82349} = {491B59E4-52AA-45EC-963C-3F7443785E36}
+		{67584452-8081-4D8B-9ACB-15698CC52AA0} = {C5E3701D-7423-4C68-92D7-FD821E0171C8}
+		{E4EED198-5AC9-4CF2-89CE-D34E36A4C835} = {C5E3701D-7423-4C68-92D7-FD821E0171C8}
+		{C82A8E3D-47CE-401A-8F5D-6EA67405FBF9} = {491B59E4-52AA-45EC-963C-3F7443785E36}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B59D367-3BD3-4EF1-831C-42642B03D69A}

@@ -1,6 +1,7 @@
-﻿using ForAnimalsWithLove.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+
+using ForAnimalsWithLove.ViewModels;
 
 namespace ForAnimalsWithLove.Controllers
 {

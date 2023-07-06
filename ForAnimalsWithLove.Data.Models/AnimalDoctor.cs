@@ -1,6 +1,4 @@
-﻿
-
-namespace ForAnimalsWithLove.Data.Models
+﻿namespace ForAnimalsWithLove.Data.Models
 {
     public class AnimalDoctor
     {
