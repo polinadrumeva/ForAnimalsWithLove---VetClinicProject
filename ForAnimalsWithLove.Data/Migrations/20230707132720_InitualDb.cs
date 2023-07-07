@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ForAnimalsWithLove.Migrations
+namespace ForAnimalsWithLove.Data.Migrations
 {
-    public partial class InitualDatabase : Migration
+    public partial class InitualDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,8 +65,7 @@ namespace ForAnimalsWithLove.Migrations
                 name: "Doctors",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Specialization = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -76,25 +75,6 @@ namespace ForAnimalsWithLove.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Doctors", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HospitalRecords",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DateOfAcceptance = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateOfDischarge = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Diagnosis = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    Treatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    PrescribedTreatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    HealthRecordId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HospitalRecords", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -116,8 +96,7 @@ namespace ForAnimalsWithLove.Migrations
                 name: "Owners",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
@@ -133,8 +112,7 @@ namespace ForAnimalsWithLove.Migrations
                 name: "Trainers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
@@ -255,7 +233,7 @@ namespace ForAnimalsWithLove.Migrations
                 columns: table => new
                 {
                     DirectionId = table.Column<int>(type: "int", nullable: false),
-                    DoctorId = table.Column<int>(type: "int", nullable: false)
+                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -275,38 +253,10 @@ namespace ForAnimalsWithLove.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Operations",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    HospitalRecordId = table.Column<int>(type: "int", nullable: false),
-                    OperationReason = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DoctorId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Operations", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Operations_Doctors_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctors",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Operations_HospitalRecords_HospitalRecordId",
-                        column: x => x.HospitalRecordId,
-                        principalTable: "HospitalRecords",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Bookings",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     HotelId = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -328,8 +278,7 @@ namespace ForAnimalsWithLove.Migrations
                 name: "Animals",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Age = table.Column<int>(type: "int", nullable: false),
                     Photo = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -339,9 +288,9 @@ namespace ForAnimalsWithLove.Migrations
                     Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Color = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     DoesHasOwner = table.Column<bool>(type: "bit", nullable: false),
-                    OwnerId = table.Column<int>(type: "int", nullable: false),
-                    GroomingId = table.Column<int>(type: "int", nullable: false),
-                    HealthRecordId = table.Column<int>(type: "int", nullable: false),
+                    OwnerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    GroomingId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    HealthRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SearchHomeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -351,17 +300,15 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_Animals_Owners_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "Owners",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Educations",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    TrainerId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TrainerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Days = table.Column<int>(type: "int", nullable: false),
                     AmountPerDay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
@@ -373,36 +320,16 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_Educations_Trainers_TrainerId",
                         column: x => x.TrainerId,
                         principalTable: "Trainers",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Tests",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PKK = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Urine = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImagingDiagnosis = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OperationId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Tests", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Tests_Operations_OperationId",
-                        column: x => x.OperationId,
-                        principalTable: "Operations",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AnimalsBookings",
                 columns: table => new
                 {
-                    AnimalId = table.Column<int>(type: "int", nullable: false),
-                    BookingId = table.Column<int>(type: "int", nullable: false)
+                    AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BookingId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -425,8 +352,8 @@ namespace ForAnimalsWithLove.Migrations
                 name: "AnimalsDoctors",
                 columns: table => new
                 {
-                    AnimalId = table.Column<int>(type: "int", nullable: false),
-                    DoctorId = table.Column<int>(type: "int", nullable: false)
+                    AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -441,17 +368,17 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_AnimalsDoctors_Doctors_DoctorId",
                         column: x => x.DoctorId,
                         principalTable: "Doctors",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Groomings",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AnimalId = table.Column<int>(type: "int", nullable: false),
-                    Service = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Service = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
@@ -461,16 +388,16 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_Groomings_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "HealthRecords",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AnimalId = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Microchip = table.Column<bool>(type: "bit", nullable: false),
                     MicrochipNumber = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
                     FirstVaccine = table.Column<bool>(type: "bit", nullable: false),
@@ -481,7 +408,7 @@ namespace ForAnimalsWithLove.Migrations
                     PrescribedTreatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
                     LastReview = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpcomingReview = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HospitalRecordId = table.Column<int>(type: "int", nullable: false)
+                    HospitalRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -490,12 +417,8 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_HealthRecords_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_HealthRecords_HospitalRecords_HospitalRecordId",
-                        column: x => x.HospitalRecordId,
-                        principalTable: "HospitalRecords",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -504,7 +427,7 @@ namespace ForAnimalsWithLove.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AnimalId = table.Column<int>(type: "int", nullable: false),
+                    AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Habits = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -515,15 +438,16 @@ namespace ForAnimalsWithLove.Migrations
                         name: "FK_SearchHomes_Animals_AnimalId",
                         column: x => x.AnimalId,
                         principalTable: "Animals",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AnimalsEducations",
                 columns: table => new
                 {
-                    AnimalId = table.Column<int>(type: "int", nullable: false),
-                    EducationId = table.Column<int>(type: "int", nullable: false)
+                    AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    EducationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -540,6 +464,78 @@ namespace ForAnimalsWithLove.Migrations
                         principalTable: "Educations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HospitalRecords",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DateOfAcceptance = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOfDischarge = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Diagnosis = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Treatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    PrescribedTreatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    HealthRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HospitalRecords", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HospitalRecords_HealthRecords_HealthRecordId",
+                        column: x => x.HealthRecordId,
+                        principalTable: "HealthRecords",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Operations",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HospitalRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    OperationReason = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Operations", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Operations_Doctors_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "Doctors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Operations_HospitalRecords_HospitalRecordId",
+                        column: x => x.HospitalRecordId,
+                        principalTable: "HospitalRecords",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tests",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PKK = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Urine = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImagingDiagnosis = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OperationId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tests", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tests_Operations_OperationId",
+                        column: x => x.OperationId,
+                        principalTable: "Operations",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -629,9 +625,9 @@ namespace ForAnimalsWithLove.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_HealthRecords_HospitalRecordId",
-                table: "HealthRecords",
-                column: "HospitalRecordId",
+                name: "IX_HospitalRecords_HealthRecordId",
+                table: "HospitalRecords",
+                column: "HealthRecordId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -689,9 +685,6 @@ namespace ForAnimalsWithLove.Migrations
                 name: "Groomings");
 
             migrationBuilder.DropTable(
-                name: "HealthRecords");
-
-            migrationBuilder.DropTable(
                 name: "SearchHomes");
 
             migrationBuilder.DropTable(
@@ -713,9 +706,6 @@ namespace ForAnimalsWithLove.Migrations
                 name: "Directions");
 
             migrationBuilder.DropTable(
-                name: "Animals");
-
-            migrationBuilder.DropTable(
                 name: "Operations");
 
             migrationBuilder.DropTable(
@@ -725,13 +715,19 @@ namespace ForAnimalsWithLove.Migrations
                 name: "Trainers");
 
             migrationBuilder.DropTable(
-                name: "Owners");
-
-            migrationBuilder.DropTable(
                 name: "Doctors");
 
             migrationBuilder.DropTable(
                 name: "HospitalRecords");
+
+            migrationBuilder.DropTable(
+                name: "HealthRecords");
+
+            migrationBuilder.DropTable(
+                name: "Animals");
+
+            migrationBuilder.DropTable(
+                name: "Owners");
         }
     }
 }

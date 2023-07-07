@@ -8,12 +8,13 @@ namespace ForAnimalsWithLove.Data.Models
     {
         public Trainer()
         {
+            this.Id = Guid.NewGuid();
             this.Educations = new HashSet<Education>();
         }
 
 
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]

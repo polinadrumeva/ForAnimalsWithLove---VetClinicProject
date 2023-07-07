@@ -1,13 +1,15 @@
-using ForAnimalsWithLove.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
+using ForAnimalsWithLove.Data;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ForAnimalsWithLoveDbContext>(options =>
-	options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ForAnimalsWithLove")));
+	options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)

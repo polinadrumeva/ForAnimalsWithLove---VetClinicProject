@@ -5,8 +5,13 @@ namespace ForAnimalsWithLove.Data.Models
 {
     public class Test
     {
+        public Test()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public string PKK { get; set; } = null!;

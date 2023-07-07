@@ -8,11 +8,12 @@ namespace ForAnimalsWithLove.Data.Models
     {
         public HospitalRecord()
         {
+            this.Id = Guid.NewGuid();
             this.Operations = new HashSet<Operation>();
         }
 
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public DateTime DateOfAcceptance { get; set; }
@@ -34,7 +35,7 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         public decimal Amount { get; set; }
 
-        public int HealthRecordId { get; set; }
+        public Guid HealthRecordId { get; set; }
 
         public HealthRecord HealthRecord { get; set; } = null!;
 

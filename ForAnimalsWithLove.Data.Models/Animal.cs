@@ -7,9 +7,13 @@ namespace ForAnimalsWithLove.Data.Models
 {
     public class Animal
     {
-        
+        public Animal()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [StringLength(NameMaxLength, MinimumLength = NameMinLength)]
@@ -41,17 +45,17 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         public bool DoesHasOwner { get; set; }
 
-        public int? OwnerId { get; set; }
+        public Guid? OwnerId { get; set; }
 
         [ForeignKey(nameof(OwnerId))]
         public Owner? Owner { get; set; }
 
-        public int? GroomingId { get; set; }
+        public Guid? GroomingId { get; set; }
 
         public Grooming? Grooming { get; set; }
 
         [Required]
-        public int HealthRecordId { get; set; }
+        public Guid HealthRecordId { get; set; }
 
         [Required]
         public HealthRecord HealthRecord { get; set; } = null!;

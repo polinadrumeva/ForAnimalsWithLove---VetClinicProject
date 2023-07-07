@@ -6,7 +6,7 @@
 
         public Direction Direction { get; set; } = null!;
 
-        public int DoctorId { get; set; }
+        public Guid DoctorId { get; set; }
 
         public Doctor Doctor { get; set; } = null!;
     }

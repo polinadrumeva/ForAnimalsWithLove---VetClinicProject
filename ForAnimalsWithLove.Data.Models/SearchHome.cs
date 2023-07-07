@@ -9,7 +9,7 @@ namespace ForAnimalsWithLove.Data.Models
         public int Id { get; set; }
 
         [Required]
-        public int AnimalId { get; set; }
+        public Guid AnimalId { get; set; }
 
         [ForeignKey(nameof(AnimalId))]
         public Animal Animal { get; set; } = null!;

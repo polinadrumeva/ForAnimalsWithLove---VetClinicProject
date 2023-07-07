@@ -6,10 +6,15 @@ namespace ForAnimalsWithLove.Data.Models
 {
     public class HealthRecord
     {
+        public HealthRecord()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
        
-        public int AnimalId { get; set; }
+        public Guid AnimalId { get; set; }
 
         public Animal Animal { get; set; } = null!;
 
@@ -43,7 +48,7 @@ namespace ForAnimalsWithLove.Data.Models
         public DateTime UpcomingReview { get; set; }
 
 
-        public int HospitalRecordId { get; set; }
+        public Guid HospitalRecordId { get; set; }
 
         public HospitalRecord? HospitalRecord { get; set; }
 

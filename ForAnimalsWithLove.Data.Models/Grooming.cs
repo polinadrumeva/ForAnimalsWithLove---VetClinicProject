@@ -7,11 +7,16 @@ namespace ForAnimalsWithLove.Data.Models
 {
     public class Grooming
     {
+        public Grooming()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public int AnimalId { get; set; }
+        public Guid AnimalId { get; set; }
 
         [ForeignKey(nameof(AnimalId))]
         public Animal Animal { get; set; } = null!;

@@ -51,22 +51,22 @@ namespace ForAnimalsWithLove.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Animal>()
-                .HasData(new Animal()
-                {
-                    Id = 1,
-                    Name = "Пешо",
-                    Age = 2,
-                    Photo = "~/images/peshocat.jpg",
-                    KindOfAnimal = "Котка",
-                    Breed = "Сиамска",
-                    Sex = 'M',
-                    Birthdate = new DateTime(2022, 12, 12),
-                    Color = "Сив",
-                    DoesHasOwner = true,
-                    OwnerId = 1,
-                    HealthRecordId = 1
-                });
+            //modelBuilder.Entity<Animal>()
+            //    .HasData(new Animal()
+            //    {
+            //        Id = 1,
+            //        Name = "Пешо",
+            //        Age = 2,
+            //        Photo = "~/images/peshocat.jpg",
+            //        KindOfAnimal = "Котка",
+            //        Breed = "Сиамска",
+            //        Sex = 'M',
+            //        Birthdate = new DateTime(2022, 12, 12),
+            //        Color = "Сив",
+            //        DoesHasOwner = true,
+            //        OwnerId = 1,
+            //        HealthRecordId = 1
+            //    });
             //    new Animal()
             //    {
             //        Id = 2,
@@ -346,19 +346,19 @@ namespace ForAnimalsWithLove.Data
                 .HasOne(a => a.HealthRecord)
                 .WithOne(hr => hr.Animal)
                 .HasForeignKey<HealthRecord>(hr => hr.AnimalId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Animal>()
                 .HasOne(a => a.Grooming)
                 .WithOne(hr => hr.Animal)
                 .HasForeignKey<Grooming>(hr => hr.AnimalId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Animal>()
                 .HasOne(a => a.SearchHome)
                 .WithOne(hr => hr.Animal)
                 .HasForeignKey<SearchHome>(hr => hr.AnimalId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
             
             modelBuilder.Entity<AnimalDoctor>()
                 .HasKey(ad => new { ad.AnimalId, ad.DoctorId });
@@ -366,12 +366,12 @@ namespace ForAnimalsWithLove.Data
             modelBuilder.Entity<AnimalDoctor>()
                 .HasOne(ad => ad.Doctor)
 				.WithMany(a => a.AnimalsDoctors)
-				.OnDelete(DeleteBehavior.NoAction);
+				.OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Doctor>()
                 .HasMany(ad => ad.Operations)
                 .WithOne(o => o.Doctor)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<DirectionDoctor>()
                 .HasKey(dd => new { dd.DirectionId, dd.DoctorId });
@@ -379,7 +379,7 @@ namespace ForAnimalsWithLove.Data
             modelBuilder.Entity<Education>()
                 .HasOne(e => e.Trainer)
                 .WithMany(t => t.Educations)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<AnimalBooking>()
               .HasKey(ab => new { ab.AnimalId, ab.BookingId });
@@ -409,7 +409,7 @@ namespace ForAnimalsWithLove.Data
                 .HasOne(o => o.HospitalRecord)
                 .WithMany(hr => hr.Operations)
                 .HasForeignKey(o => o.HospitalRecordId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
 

@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ForAnimalsWithLove.Migrations
+namespace ForAnimalsWithLove.Data.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    [Migration("20230628151335_SetNullToHospitalIdInHealth")]
-    partial class SetNullToHospitalIdInHealth
+    [Migration("20230707132720_InitualDb")]
+    partial class InitualDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,11 +26,9 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Animal", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -51,11 +49,11 @@ namespace ForAnimalsWithLove.Migrations
                     b.Property<bool>("DoesHasOwner")
                         .HasColumnType("bit");
 
-                    b.Property<int>("GroomingId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("GroomingId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("HealthRecordId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("HealthRecordId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("KindOfAnimal")
                         .IsRequired()
@@ -67,8 +65,8 @@ namespace ForAnimalsWithLove.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int>("OwnerId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("OwnerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Photo")
                         .HasColumnType("nvarchar(max)");
@@ -89,11 +87,11 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalBooking", b =>
                 {
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("BookingId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("BookingId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("AnimalId", "BookingId");
 
@@ -104,11 +102,11 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalDoctor", b =>
                 {
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("AnimalId", "DoctorId");
 
@@ -119,11 +117,11 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalEducation", b =>
                 {
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("EducationId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("EducationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("AnimalId", "EducationId");
 
@@ -134,11 +132,9 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Booking", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
@@ -185,8 +181,8 @@ namespace ForAnimalsWithLove.Migrations
                     b.Property<int>("DirectionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("DirectionId", "DoctorId");
 
@@ -197,11 +193,9 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -233,11 +227,9 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
@@ -248,8 +240,8 @@ namespace ForAnimalsWithLove.Migrations
                     b.Property<int>("Days")
                         .HasColumnType("int");
 
-                    b.Property<int>("TrainerId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TrainerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -260,22 +252,20 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Grooming", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Service")
                         .IsRequired()
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -287,14 +277,12 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("AnnualVaccine")
                         .HasColumnType("bit");
@@ -307,9 +295,8 @@ namespace ForAnimalsWithLove.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int?>("HospitalRecordId")
-                        .IsRequired()
-                        .HasColumnType("int");
+                    b.Property<Guid>("HospitalRecordId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("LastReview")
                         .HasColumnType("datetime2");
@@ -339,19 +326,14 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.HasIndex("HospitalRecordId")
-                        .IsUnique();
-
                     b.ToTable("HealthRecords");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
@@ -367,8 +349,8 @@ namespace ForAnimalsWithLove.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
-                    b.Property<int>("HealthRecordId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("HealthRecordId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PrescribedTreatment")
                         .HasMaxLength(500)
@@ -380,6 +362,9 @@ namespace ForAnimalsWithLove.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HealthRecordId")
+                        .IsUnique();
 
                     b.ToTable("HospitalRecords");
                 });
@@ -412,11 +397,9 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
@@ -424,11 +407,11 @@ namespace ForAnimalsWithLove.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("HospitalRecordId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("HospitalRecordId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("OperationReason")
                         .IsRequired()
@@ -446,11 +429,9 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Owner", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -488,8 +469,8 @@ namespace ForAnimalsWithLove.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AnimalId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Habits")
                         .HasColumnType("nvarchar(max)");
@@ -507,17 +488,15 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Test", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ImagingDiagnosis")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OperationId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("OperationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("PKK")
                         .IsRequired()
@@ -536,11 +515,9 @@ namespace ForAnimalsWithLove.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Trainer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -768,9 +745,7 @@ namespace ForAnimalsWithLove.Migrations
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Owner", "Owner")
                         .WithMany("MyAnimals")
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OwnerId");
 
                     b.Navigation("Owner");
                 });
@@ -805,7 +780,7 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.Doctor", "Doctor")
                         .WithMany("AnimalsDoctors")
                         .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Animal");
@@ -867,7 +842,7 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.Trainer", "Trainer")
                         .WithMany("Educations")
                         .HasForeignKey("TrainerId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Trainer");
@@ -878,7 +853,7 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
                         .WithOne("Grooming")
                         .HasForeignKey("ForAnimalsWithLove.Data.Models.Grooming", "AnimalId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Animal");
@@ -889,18 +864,21 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
                         .WithOne("HealthRecord")
                         .HasForeignKey("ForAnimalsWithLove.Data.Models.HealthRecord", "AnimalId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("ForAnimalsWithLove.Data.Models.HospitalRecord", "HospitalRecord")
-                        .WithOne("HealthRecord")
-                        .HasForeignKey("ForAnimalsWithLove.Data.Models.HealthRecord", "HospitalRecordId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Animal");
+                });
 
-                    b.Navigation("HospitalRecord");
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
+                {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.HealthRecord", "HealthRecord")
+                        .WithOne("HospitalRecord")
+                        .HasForeignKey("ForAnimalsWithLove.Data.Models.HospitalRecord", "HealthRecordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("HealthRecord");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>
@@ -908,13 +886,13 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.Doctor", "Doctor")
                         .WithMany("Operations")
                         .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ForAnimalsWithLove.Data.Models.HospitalRecord", "HospitalRecord")
                         .WithMany("Operations")
                         .HasForeignKey("HospitalRecordId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Doctor");
@@ -927,7 +905,7 @@ namespace ForAnimalsWithLove.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
                         .WithOne("SearchHome")
                         .HasForeignKey("ForAnimalsWithLove.Data.Models.SearchHome", "AnimalId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Animal");
@@ -1015,11 +993,13 @@ namespace ForAnimalsWithLove.Migrations
                     b.Navigation("Operations");
                 });
 
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
+                {
+                    b.Navigation("HospitalRecord");
+                });
+
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
                 {
-                    b.Navigation("HealthRecord")
-                        .IsRequired();
-
                     b.Navigation("Operations");
                 });
 

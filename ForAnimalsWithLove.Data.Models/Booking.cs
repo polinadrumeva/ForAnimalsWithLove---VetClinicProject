@@ -6,8 +6,13 @@ namespace ForAnimalsWithLove.Data.Models
 {
     public class Booking
     {
+        public Booking()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         public int HotelId { get; set; }

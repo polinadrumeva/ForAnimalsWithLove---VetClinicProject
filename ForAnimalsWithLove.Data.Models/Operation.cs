@@ -9,14 +9,15 @@ namespace ForAnimalsWithLove.Data.Models
     {
         public Operation()
         {
+            this.Id = Guid.NewGuid();
             this.Tests = new HashSet<Test>();
         }
 
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public int HospitalRecordId { get; set; }
+        public Guid HospitalRecordId { get; set; }
 
         
         public HospitalRecord HospitalRecord { get; set; } = null!;
@@ -32,7 +33,7 @@ namespace ForAnimalsWithLove.Data.Models
         public decimal Amount { get; set; }
 
         [Required]
-        public int DoctorId { get; set; }
+        public Guid DoctorId { get; set; }
 
         [ForeignKey(nameof(DoctorId))]
         public Doctor Doctor { get; set; } = null!;

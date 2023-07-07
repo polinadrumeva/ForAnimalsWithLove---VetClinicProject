@@ -4,11 +4,16 @@ namespace ForAnimalsWithLove.Data.Models
 {
     public class Education
     {
+        public Education()
+        {
+            this.Id = Guid.NewGuid();
+        }
+
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public int TrainerId { get; set; }
+        public Guid TrainerId { get; set; }
 
         public Trainer Trainer { get; set; } = null!;
 
