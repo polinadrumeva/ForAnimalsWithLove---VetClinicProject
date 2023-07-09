@@ -411,6 +411,10 @@ namespace ForAnimalsWithLove.Data
                 .HasForeignKey(o => o.HospitalRecordId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Operation>()
+                .Property(o => o.Date)
+                .HasDefaultValue(DateTime.UtcNow);
+
         }
 
     }
