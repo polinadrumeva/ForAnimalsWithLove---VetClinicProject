@@ -13,9 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{491B59E4-52A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C5E3701D-7423-4C68-92D7-FD821E0171C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForAnimalsWithLove.Data.Models", "..\ForAnimalsWithLove.Data.Models\ForAnimalsWithLove.Data.Models.csproj", "{E4EED198-5AC9-4CF2-89CE-D34E36A4C835}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForAnimalsWithLove.Data.Models", "..\ForAnimalsWithLove.Data.Models\ForAnimalsWithLove.Data.Models.csproj", "{E4EED198-5AC9-4CF2-89CE-D34E36A4C835}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForAnimalsWithLove.ViewModels", "..\ForAnimalsWithLove.ViewModels\ForAnimalsWithLove.ViewModels.csproj", "{C82A8E3D-47CE-401A-8F5D-6EA67405FBF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ForAnimalsWithLove.ViewModels", "..\ForAnimalsWithLove.ViewModels\ForAnimalsWithLove.ViewModels.csproj", "{C82A8E3D-47CE-401A-8F5D-6EA67405FBF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{BA5035B2-1B3F-449F-B690-18C258967461}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
