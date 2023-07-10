@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 
 using ForAnimalsWithLove.Data.Models;
+using System.Reflection;
 
 namespace ForAnimalsWithLove.Data
 {
@@ -414,6 +415,8 @@ namespace ForAnimalsWithLove.Data
             modelBuilder.Entity<Operation>()
                 .Property(o => o.Date)
                 .HasDefaultValue(DateTime.UtcNow);
+
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetAssembly(typeof(ForAnimalsWithLoveDbContext)) ?? Assembly.GetExecutingAssembly());
 
         }
 

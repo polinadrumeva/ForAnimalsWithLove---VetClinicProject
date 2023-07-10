@@ -20,6 +20,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 		options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
 	})
 	.AddEntityFrameworkStores<ForAnimalsWithLoveDbContext>();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
