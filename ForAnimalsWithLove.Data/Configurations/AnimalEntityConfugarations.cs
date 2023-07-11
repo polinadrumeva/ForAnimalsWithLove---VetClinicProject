@@ -1,6 +1,7 @@
-﻿using ForAnimalsWithLove.Data.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+using ForAnimalsWithLove.Data.Models;
 
 namespace ForAnimalsWithLove.Data.Configurations
 {
@@ -190,7 +191,152 @@ namespace ForAnimalsWithLove.Data.Configurations
                 Birthdate = new DateTime(2023, 01, 02),
                 Color = "Светло кафяв",
                 DoesHasOwner = true,
-                OwnerId = Guid.Parse("251CFF84-1067-447F-88E1-071FD802ED16"),
+                OwnerId = Guid.Parse("82853A05-7F15-4636-86A2-8C08CD400BAF"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
+
+            animal = new Animal()
+            {
+                Name = "Боби",
+                Age = 4,
+                Photo = "~/images/bobidog.jpg",
+                KindOfAnimal = "Куче",
+                Breed = "Мопс",
+                Sex = 'M',
+                Birthdate = new DateTime(2019, 09, 13),
+                Color = "Бял с черни петна",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("D0381673-62B4-4298-B47D-A489E1CD12C0"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
+
+            animal = new Animal()
+            {
+                Name = "Кари",
+                Age = 0,
+                Photo = "~/images/carydog.jpg",
+                KindOfAnimal = "Куче",
+                Breed = "Джак ръсел",
+                Sex = 'F',
+                Birthdate = new DateTime(2023, 04, 03),
+                Color = "Бял с черни петна",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("C3356B8F-8570-428B-8E79-0A09975D947D"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
+
+            animal = new Animal()
+            {
+                Name = "Чоки",
+                Age = 7,
+                Photo = "~/images/chokidog.jpg",
+                KindOfAnimal = "Куче",
+                Breed = "Джак ръсел",
+                Sex = 'M',
+                Birthdate = new DateTime(2016, 10, 11),
+                Color = "Бял с кафеви петна",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("C3356B8F-8570-428B-8E79-0A09975D947D"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
+
+            animal = new Animal()
+            {
+                Name = "Джонсън",
+                Age = 9,
+                Photo = "~/images/jonsundog.jpg",
+                KindOfAnimal = "Куче",
+                Breed = "Немска овчарка",
+                Sex = 'M',
+                Birthdate = new DateTime(2014, 09, 05),
+                Color = "Кафяво-черно",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("A69E4EE8-70BE-487C-BC89-A539265AA4C0"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
+
+            animal = new Animal()
+            {
+                Name = "Макси",
+                Age = 0,
+                Photo = "~/images/maksidog.jpg",
+                KindOfAnimal = "Куче",
+                Breed = "Лабрадор",
+                Sex = 'M',
+                Birthdate = new DateTime(2021, 07, 01),
+                Color = "Кафяво",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("FA4970AB-2221-404A-9AFB-A976D210DCBB"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
+
+            animal = new Animal()
+            {
+                Name = "Сара",
+                Age = 3,
+                Photo = "~/images/saradog.jpg",
+                KindOfAnimal = "Куче",
+                Breed = "Акита ину",
+                Sex = 'F',
+                Birthdate = new DateTime(2020, 05, 10),
+                Color = "Оранжево",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("ABE0F2E6-17F3-428D-B7EA-CC3EF2B855CD"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
+
+            animal = new Animal()
+            {
+                Name = "Бенду",
+                Age = 2,
+                Photo = "~/images/benduhamster.jpg",
+                KindOfAnimal = "Морско свинче",
+                Breed = "Морско свинче",
+                Sex = 'M',
+                Birthdate = new DateTime(2021, 09, 01),
+                Color = "Бял с оранжеви и черни петна",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("96CF5FA4-B230-4C7A-802F-DEA17A7A229C"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+
+            };
+            animals.Add(animal);
+
+            animal = new Animal()
+            {
+                Name = "Какару",
+                Age = 5,
+                Photo = "~/images/kakarupapagal.jpg",
+                KindOfAnimal = "Папагал",
+                Breed = "Африкански сив",
+                Sex = 'M',
+                Birthdate = new DateTime(2018, 12, 01),
+                Color = "Сив",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("F4C4A26E-3DAB-4BD7-9AB7-F5AAFC78B0FB"),
                 GroomingId = null,
                 HealthRecordId = Guid.NewGuid(),
                 SearchHomeId = null
@@ -198,20 +344,44 @@ namespace ForAnimalsWithLove.Data.Configurations
             animals.Add(animal);
 
 
+            animal = new Animal()
+            {
+                Name = "Малину",
+                Age = 1,
+                Photo = "~/images/malinupor.jpg",
+                KindOfAnimal = "Пор",
+                Breed = "Пор",
+                Sex = 'M',
+                Birthdate = new DateTime(2022, 04, 20),
+                Color = "Сив с бели петна",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("F4C4A26E-3DAB-4BD7-9AB7-F5AAFC78B0FB"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
 
-65  Белла   0   ~/ images / belladog.jpg   Куче Йоркширски териер F   2023 - 01 - 02 00:00:00.0000000 Светло кафяв    1   8   2   9   NULL
-66  Боби    4   ~/ images / bobidog.jpg    Куче Мопс    M   2019 - 09 - 13 00:00:00.0000000 Бял с черни петна   1   9   NULL    10  NULL
-67  Кари    0   ~/ images / carydog.jpg    Куче Джак ръсел F   2023 - 04 - 03 00:00:00.0000000 Бял с черни петна   1   10  NULL    11  NULL
-68  Чоки    7   ~/ images / chokidog.jpg   Куче Джак ръсел M   2016 - 10 - 11 00:00:00.0000000 Бял с кафеви петна  1   10  NULL    12  NULL
-69  Джонсън 9   ~/ images / jonsundog.jpg  Куче Немска овчарка M   2014 - 09 - 05 00:00:00.0000000 Кафяво - черно    1   11  NULL    13  NULL
+            animal = new Animal()
+            {
+                Name = "Сарина",
+                Age = 10,
+                Photo = "~/images/sarinahorse.jpg",
+                KindOfAnimal = "Кон",
+                Breed = "Фризийски",
+                Sex = 'F',
+                Birthdate = new DateTime(2013, 03, 08),
+                Color = "Черен",
+                DoesHasOwner = true,
+                OwnerId = Guid.Parse("5A59A1C0-DC04-4AF1-84D5-F9FE623C6068"),
+                GroomingId = null,
+                HealthRecordId = Guid.NewGuid(),
+                SearchHomeId = null
+            };
+            animals.Add(animal);
 
-71  Макси   0   ~/ images / maksidog.jpg   Куче Лабрадор    M   2014 - 07 - 01 00:00:00.0000000 Кафяво  1   12  NULL    15  NULL
-72  Сара    3   ~/ images / saradog.jpg    Куче Акита ину F   2020 - 05 - 10 00:00:00.0000000 Оранжево    1   13  NULL    16  NULL
-73  Бенду   2   ~/ images / benduhamster.jpg   Морско свинче   Морско свинче   M   2021 - 09 - 01 00:00:00.0000000 Бял с оранжеви и черни петна    1   14  NULL    17  NULL
-74  Какару  5   ~/ images / kakarupapagal.jpg  Папагал Африкански сив M   2018 - 12 - 01 00:00:00.0000000 Сив 1   15  NULL    18  NULL
-75  Малину  1   ~/ images / malinupor.jpg  Пор Пор M   2022 - 04 - 20 00:00:00.0000000 Сив с бели петна    1   16  NULL    19  NULL
-76  Сарина  10  ~/ images / sarinahorse.jpg    Кон Фризийски   F   2013 - 03 - 08 00:00:00.0000000 Черен   1   17  NULL    20  NULL
 
+            return animals.ToArray();
         }
     }
 }

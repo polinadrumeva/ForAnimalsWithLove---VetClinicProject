@@ -80,7 +80,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Animals");
+                    b.ToTable("Animals", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalBooking", b =>
@@ -95,7 +95,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("BookingId");
 
-                    b.ToTable("AnimalsBookings");
+                    b.ToTable("AnimalsBookings", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalDoctor", b =>
@@ -110,7 +110,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("AnimalsDoctors");
+                    b.ToTable("AnimalsDoctors", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalEducation", b =>
@@ -125,7 +125,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("EducationId");
 
-                    b.ToTable("AnimalsEducations");
+                    b.ToTable("AnimalsEducations", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Booking", b =>
@@ -153,7 +153,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("Bookings");
+                    b.ToTable("Bookings", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Direction", b =>
@@ -171,7 +171,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Directions");
+                    b.ToTable("Directions", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.DirectionDoctor", b =>
@@ -186,7 +186,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("DirectionsDoctors");
+                    b.ToTable("DirectionsDoctors", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
@@ -220,7 +220,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
@@ -245,7 +245,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Educations");
+                    b.ToTable("Educations", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Grooming", b =>
@@ -270,7 +270,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("Groomings");
+                    b.ToTable("Groomings", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
@@ -324,7 +324,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("HealthRecords");
+                    b.ToTable("HealthRecords", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
@@ -364,7 +364,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("HealthRecordId")
                         .IsUnique();
 
-                    b.ToTable("HospitalRecords");
+                    b.ToTable("HospitalRecords", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Hotel", b =>
@@ -390,7 +390,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hotels");
+                    b.ToTable("Hotels", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>
@@ -405,7 +405,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<DateTime>("Date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 10, 13, 54, 53, 791, DateTimeKind.Utc).AddTicks(119));
+                        .HasDefaultValue(new DateTime(2023, 7, 10, 12, 41, 18, 47, DateTimeKind.Utc).AddTicks(2998));
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
@@ -424,7 +424,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("HospitalRecordId");
 
-                    b.ToTable("Operations");
+                    b.ToTable("Operations", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Owner", b =>
@@ -458,150 +458,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Owners");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("96cf5fa4-b230-4c7a-802f-dea17a7a229c"),
-                            Address = "София",
-                            FirstName = "Марин",
-                            LastName = "Велев",
-                            PhoneNumber = "098977283"
-                        },
-                        new
-                        {
-                            Id = new Guid("d0381673-62b4-4298-b47d-a489e1cd12c0"),
-                            Address = "Ихтиман",
-                            FirstName = "Марияна",
-                            LastName = "Иванова",
-                            MiddleName = "Георгиева",
-                            PhoneNumber = "0834772389"
-                        },
-                        new
-                        {
-                            Id = new Guid("abe0f2e6-17f3-428d-b7ea-cc3ef2b855cd"),
-                            Address = "Елин Пелин",
-                            FirstName = "Стефан",
-                            LastName = "Петров",
-                            MiddleName = "Петров",
-                            PhoneNumber = "0989775680"
-                        },
-                        new
-                        {
-                            Id = new Guid("82853a05-7f15-4636-86a2-8c08cd400baf"),
-                            Address = "София",
-                            FirstName = "Мария",
-                            LastName = "Петрова",
-                            PhoneNumber = "0884788900"
-                        },
-                        new
-                        {
-                            Id = new Guid("840ea3f5-6147-4535-a2e9-5a2d696a56d5"),
-                            Address = "София",
-                            FirstName = "Валентина",
-                            LastName = "Дюрова",
-                            PhoneNumber = "0885666218"
-                        },
-                        new
-                        {
-                            Id = new Guid("f4c4a26e-3dab-4bd7-9ab7-f5aafc78b0fb"),
-                            Address = "София",
-                            FirstName = "Станимир",
-                            LastName = "Хаджиев",
-                            PhoneNumber = "0898322211"
-                        },
-                        new
-                        {
-                            Id = new Guid("647f35a8-87e5-455b-a233-30e835e70aa2"),
-                            Address = "София",
-                            FirstName = "Иван",
-                            LastName = "Валентинов",
-                            PhoneNumber = "0886755349"
-                        },
-                        new
-                        {
-                            Id = new Guid("61d265a4-4a0a-4d49-b6df-2a68f9a6dde7"),
-                            Address = "Дупница",
-                            FirstName = "Мария",
-                            LastName = "Кръстева",
-                            PhoneNumber = "0887334785"
-                        },
-                        new
-                        {
-                            Id = new Guid("d4e17efd-c288-4535-99f7-3dce589e7602"),
-                            Address = "Дупница",
-                            FirstName = "Галина",
-                            LastName = "Кръстева",
-                            MiddleName = "Недева",
-                            PhoneNumber = "0878611282"
-                        },
-                        new
-                        {
-                            Id = new Guid("c3356b8f-8570-428b-8e79-0a09975d947d"),
-                            Address = "Велико Търново",
-                            FirstName = "Полина",
-                            LastName = "Друмева",
-                            PhoneNumber = "0878644619"
-                        },
-                        new
-                        {
-                            Id = new Guid("5a59a1c0-dc04-4af1-84d5-f9fe623c6068"),
-                            Address = "София",
-                            FirstName = "Симона",
-                            LastName = "Иванова",
-                            PhoneNumber = "0885565213"
-                        },
-                        new
-                        {
-                            Id = new Guid("7867b0c8-a1c7-41bc-b783-764336b04ed6"),
-                            Address = "София",
-                            FirstName = "Йоанна",
-                            LastName = "Здравкова",
-                            PhoneNumber = "0888672662"
-                        },
-                        new
-                        {
-                            Id = new Guid("a69e4ee8-70be-487c-bc89-a539265aa4c0"),
-                            Address = "София",
-                            FirstName = "Магдалена",
-                            LastName = "Иванова",
-                            PhoneNumber = "0887721356"
-                        },
-                        new
-                        {
-                            Id = new Guid("75378afe-3b3a-4a31-ab4e-5bc9671cdc28"),
-                            Address = "Тетевен",
-                            FirstName = "Ивета",
-                            LastName = "Манолова",
-                            PhoneNumber = "072826786"
-                        },
-                        new
-                        {
-                            Id = new Guid("fa4970ab-2221-404a-9afb-a976d210dcbb"),
-                            Address = "София",
-                            FirstName = "Красимир",
-                            LastName = "Иванов",
-                            MiddleName = "Недялков",
-                            PhoneNumber = "0898268776"
-                        },
-                        new
-                        {
-                            Id = new Guid("3cfb5f9a-d5aa-4949-8037-a1956061430f"),
-                            Address = "София",
-                            FirstName = "Росица",
-                            LastName = "Маринова",
-                            PhoneNumber = "0878221112"
-                        },
-                        new
-                        {
-                            Id = new Guid("251cff84-1067-447f-88e1-071fd802ed16"),
-                            Address = "Самоков",
-                            FirstName = "Деница",
-                            LastName = "Иванова",
-                            MiddleName = "Иванова",
-                            PhoneNumber = "0898217888"
-                        });
+                    b.ToTable("Owners", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.SearchHome", b =>
@@ -626,7 +483,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("SearchHomes");
+                    b.ToTable("SearchHomes", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Test", b =>
@@ -653,7 +510,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("OperationId");
 
-                    b.ToTable("Tests");
+                    b.ToTable("Tests", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Trainer", b =>
@@ -679,7 +536,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trainers");
+                    b.ToTable("Trainers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

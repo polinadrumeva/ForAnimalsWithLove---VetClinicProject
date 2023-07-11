@@ -47,7 +47,6 @@ namespace ForAnimalsWithLove.Data.Models
 
         public Guid? OwnerId { get; set; }
 
-        [ForeignKey(nameof(OwnerId))]
         public Owner? Owner { get; set; }
 
         public Guid? GroomingId { get; set; }
