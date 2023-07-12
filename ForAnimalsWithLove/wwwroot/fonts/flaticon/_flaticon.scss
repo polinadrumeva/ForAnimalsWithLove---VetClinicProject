@@ -1,0 +1,349 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 05/02/2018 22:23
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-game:before { content: "\f100"; }
+.flaticon-animals-15:before { content: "\f101"; }
+.flaticon-cross:before { content: "\f102"; }
+.flaticon-animal-13:before { content: "\f103"; }
+.flaticon-shape:before { content: "\f104"; }
+.flaticon-cat-toy:before { content: "\f105"; }
+.flaticon-pet-lotion:before { content: "\f106"; }
+.flaticon-cat-in-black-silhouette:before { content: "\f107"; }
+.flaticon-cat-2:before { content: "\f108"; }
+.flaticon-ashera-cat:before { content: "\f109"; }
+.flaticon-animals-14:before { content: "\f10a"; }
+.flaticon-animals-13:before { content: "\f10b"; }
+.flaticon-animals-12:before { content: "\f10c"; }
+.flaticon-silhouette:before { content: "\f10d"; }
+.flaticon-animal-12:before { content: "\f10e"; }
+.flaticon-black-cat:before { content: "\f10f"; }
+.flaticon-animal-prints:before { content: "\f110"; }
+.flaticon-garden:before { content: "\f111"; }
+.flaticon-dog-20:before { content: "\f112"; }
+.flaticon-dog-19:before { content: "\f113"; }
+.flaticon-people-2:before { content: "\f114"; }
+.flaticon-animals-11:before { content: "\f115"; }
+.flaticon-people-1:before { content: "\f116"; }
+.flaticon-dog-18:before { content: "\f117"; }
+.flaticon-people:before { content: "\f118"; }
+.flaticon-animals-10:before { content: "\f119"; }
+.flaticon-dog-17:before { content: "\f11a"; }
+.flaticon-man:before { content: "\f11b"; }
+.flaticon-animal-11:before { content: "\f11c"; }
+.flaticon-animal-10:before { content: "\f11d"; }
+.flaticon-dog-16:before { content: "\f11e"; }
+.flaticon-animals-9:before { content: "\f11f"; }
+.flaticon-animal-9:before { content: "\f120"; }
+.flaticon-dog-15:before { content: "\f121"; }
+.flaticon-animals-8:before { content: "\f122"; }
+.flaticon-dog-14:before { content: "\f123"; }
+.flaticon-easter-bunny:before { content: "\f124"; }
+.flaticon-grooming-1:before { content: "\f125"; }
+.flaticon-pawprint-4:before { content: "\f126"; }
+.flaticon-pawprint-3:before { content: "\f127"; }
+.flaticon-cat-1:before { content: "\f128"; }
+.flaticon-dog-with-belt-walking-with-a-man:before { content: "\f129"; }
+.flaticon-dog-13:before { content: "\f12a"; }
+.flaticon-grooming:before { content: "\f12b"; }
+.flaticon-prize-badge-with-paw-print:before { content: "\f12c"; }
+.flaticon-dog-12:before { content: "\f12d"; }
+.flaticon-dog-11:before { content: "\f12e"; }
+.flaticon-pawprint-2:before { content: "\f12f"; }
+.flaticon-dog-seating:before { content: "\f130"; }
+.flaticon-dog-10:before { content: "\f131"; }
+.flaticon-plain-dog:before { content: "\f132"; }
+.flaticon-jack-russell-terrier:before { content: "\f133"; }
+.flaticon-dog-9:before { content: "\f134"; }
+.flaticon-walking-with-dog:before { content: "\f135"; }
+.flaticon-pet:before { content: "\f136"; }
+.flaticon-face-of-staring-dog:before { content: "\f137"; }
+.flaticon-dog-with-floppy-ears-1:before { content: "\f138"; }
+.flaticon-face-of-a-dog-with-sleepy-eyes:before { content: "\f139"; }
+.flaticon-dog-bone-1:before { content: "\f13a"; }
+.flaticon-dog-with-big-and-pointy-ears:before { content: "\f13b"; }
+.flaticon-dog-head:before { content: "\f13c"; }
+.flaticon-border-collie-head:before { content: "\f13d"; }
+.flaticon-bulldog-head:before { content: "\f13e"; }
+.flaticon-basset-hound-dog-head:before { content: "\f13f"; }
+.flaticon-dog-face:before { content: "\f140"; }
+.flaticon-veterinarian-hospital:before { content: "\f141"; }
+.flaticon-rat:before { content: "\f142"; }
+.flaticon-cat:before { content: "\f143"; }
+.flaticon-dog-8:before { content: "\f144"; }
+.flaticon-animal-8:before { content: "\f145"; }
+.flaticon-hamster-1:before { content: "\f146"; }
+.flaticon-animals-7:before { content: "\f147"; }
+.flaticon-dog-training-3:before { content: "\f148"; }
+.flaticon-dog-training-2:before { content: "\f149"; }
+.flaticon-walking-the-dog:before { content: "\f14a"; }
+.flaticon-dog-training-1:before { content: "\f14b"; }
+.flaticon-dog-training:before { content: "\f14c"; }
+.flaticon-dog-7:before { content: "\f14d"; }
+.flaticon-dog-6:before { content: "\f14e"; }
+.flaticon-dog-5:before { content: "\f14f"; }
+.flaticon-animals-6:before { content: "\f150"; }
+.flaticon-animal-7:before { content: "\f151"; }
+.flaticon-siamese-cat:before { content: "\f152"; }
+.flaticon-toyger-cat:before { content: "\f153"; }
+.flaticon-pets:before { content: "\f154"; }
+.flaticon-bulldog:before { content: "\f155"; }
+.flaticon-poodle:before { content: "\f156"; }
+.flaticon-border-collie:before { content: "\f157"; }
+.flaticon-basset-houd:before { content: "\f158"; }
+.flaticon-dachshund:before { content: "\f159"; }
+.flaticon-kurzhaar:before { content: "\f15a"; }
+.flaticon-bernese-mountain:before { content: "\f15b"; }
+.flaticon-dog-puppy:before { content: "\f15c"; }
+.flaticon-dog-kennel:before { content: "\f15d"; }
+.flaticon-mouse:before { content: "\f15e"; }
+.flaticon-turtle:before { content: "\f15f"; }
+.flaticon-pet-carrier:before { content: "\f160"; }
+.flaticon-pet-food:before { content: "\f161"; }
+.flaticon-dog-bone:before { content: "\f162"; }
+.flaticon-aquarium:before { content: "\f163"; }
+.flaticon-bird:before { content: "\f164"; }
+.flaticon-laying-cat:before { content: "\f165"; }
+.flaticon-pet-friendly:before { content: "\f166"; }
+.flaticon-animals-5:before { content: "\f167"; }
+.flaticon-animals-4:before { content: "\f168"; }
+.flaticon-pawprint-1:before { content: "\f169"; }
+.flaticon-food:before { content: "\f16a"; }
+.flaticon-animals-3:before { content: "\f16b"; }
+.flaticon-dog-4:before { content: "\f16c"; }
+.flaticon-animals-2:before { content: "\f16d"; }
+.flaticon-animal-6:before { content: "\f16e"; }
+.flaticon-veterinary:before { content: "\f16f"; }
+.flaticon-syringe:before { content: "\f170"; }
+.flaticon-medical:before { content: "\f171"; }
+.flaticon-pet-shelter:before { content: "\f172"; }
+.flaticon-brush:before { content: "\f173"; }
+.flaticon-animal-5:before { content: "\f174"; }
+.flaticon-animal-4:before { content: "\f175"; }
+.flaticon-animals-1:before { content: "\f176"; }
+.flaticon-vet-with-cat:before { content: "\f177"; }
+.flaticon-guinea-pig-heag:before { content: "\f178"; }
+.flaticon-animals:before { content: "\f179"; }
+.flaticon-angry-bulldog-face:before { content: "\f17a"; }
+.flaticon-dog-with-chubby-cheeks:before { content: "\f17b"; }
+.flaticon-chewing-bone-for-dog:before { content: "\f17c"; }
+.flaticon-dog-food-bowl:before { content: "\f17d"; }
+.flaticon-doberman-dog-head:before { content: "\f17e"; }
+.flaticon-dog-with-floppy-ears:before { content: "\f17f"; }
+.flaticon-long-haired-dog-head:before { content: "\f180"; }
+.flaticon-animal-paw-print:before { content: "\f181"; }
+.flaticon-dog-with-first-aid-kit-bag:before { content: "\f182"; }
+.flaticon-play:before { content: "\f183"; }
+.flaticon-dog-and-pets-house:before { content: "\f184"; }
+.flaticon-man-combing-a-dog:before { content: "\f185"; }
+.flaticon-dog-in-front-of-a-man:before { content: "\f186"; }
+.flaticon-scissors:before { content: "\f187"; }
+.flaticon-dog-3:before { content: "\f188"; }
+.flaticon-dog-2:before { content: "\f189"; }
+.flaticon-pet-hotel-sign-with-a-dog-and-a-cat-under-a-roof-line:before { content: "\f18a"; }
+.flaticon-circle:before { content: "\f18b"; }
+.flaticon-dog-1:before { content: "\f18c"; }
+.flaticon-pet-hotel-symbols-of-three-stars-a-semicircle-and-a-bone-black-shape:before { content: "\f18d"; }
+.flaticon-pets-hotel-symbol-with-a-dog-and-a-cat-in-a-circle-with-one-star:before { content: "\f18e"; }
+.flaticon-animal-3:before { content: "\f18f"; }
+.flaticon-animal-2:before { content: "\f190"; }
+.flaticon-sign:before { content: "\f191"; }
+.flaticon-dog-pet-allowed-hotel-signal:before { content: "\f192"; }
+.flaticon-zynga-logotype:before { content: "\f193"; }
+.flaticon-dog:before { content: "\f194"; }
+.flaticon-animal-1:before { content: "\f195"; }
+.flaticon-pawprint:before { content: "\f196"; }
+.flaticon-sitting-rabbit:before { content: "\f197"; }
+.flaticon-track:before { content: "\f198"; }
+.flaticon-hamster:before { content: "\f199"; }
+.flaticon-animal:before { content: "\f19a"; }
+    
+    $font-Flaticon-game: "\f100";
+    $font-Flaticon-animals-15: "\f101";
+    $font-Flaticon-cross: "\f102";
+    $font-Flaticon-animal-13: "\f103";
+    $font-Flaticon-shape: "\f104";
+    $font-Flaticon-cat-toy: "\f105";
+    $font-Flaticon-pet-lotion: "\f106";
+    $font-Flaticon-cat-in-black-silhouette: "\f107";
+    $font-Flaticon-cat-2: "\f108";
+    $font-Flaticon-ashera-cat: "\f109";
+    $font-Flaticon-animals-14: "\f10a";
+    $font-Flaticon-animals-13: "\f10b";
+    $font-Flaticon-animals-12: "\f10c";
+    $font-Flaticon-silhouette: "\f10d";
+    $font-Flaticon-animal-12: "\f10e";
+    $font-Flaticon-black-cat: "\f10f";
+    $font-Flaticon-animal-prints: "\f110";
+    $font-Flaticon-garden: "\f111";
+    $font-Flaticon-dog-20: "\f112";
+    $font-Flaticon-dog-19: "\f113";
+    $font-Flaticon-people-2: "\f114";
+    $font-Flaticon-animals-11: "\f115";
+    $font-Flaticon-people-1: "\f116";
+    $font-Flaticon-dog-18: "\f117";
+    $font-Flaticon-people: "\f118";
+    $font-Flaticon-animals-10: "\f119";
+    $font-Flaticon-dog-17: "\f11a";
+    $font-Flaticon-man: "\f11b";
+    $font-Flaticon-animal-11: "\f11c";
+    $font-Flaticon-animal-10: "\f11d";
+    $font-Flaticon-dog-16: "\f11e";
+    $font-Flaticon-animals-9: "\f11f";
+    $font-Flaticon-animal-9: "\f120";
+    $font-Flaticon-dog-15: "\f121";
+    $font-Flaticon-animals-8: "\f122";
+    $font-Flaticon-dog-14: "\f123";
+    $font-Flaticon-easter-bunny: "\f124";
+    $font-Flaticon-grooming-1: "\f125";
+    $font-Flaticon-pawprint-4: "\f126";
+    $font-Flaticon-pawprint-3: "\f127";
+    $font-Flaticon-cat-1: "\f128";
+    $font-Flaticon-dog-with-belt-walking-with-a-man: "\f129";
+    $font-Flaticon-dog-13: "\f12a";
+    $font-Flaticon-grooming: "\f12b";
+    $font-Flaticon-prize-badge-with-paw-print: "\f12c";
+    $font-Flaticon-dog-12: "\f12d";
+    $font-Flaticon-dog-11: "\f12e";
+    $font-Flaticon-pawprint-2: "\f12f";
+    $font-Flaticon-dog-seating: "\f130";
+    $font-Flaticon-dog-10: "\f131";
+    $font-Flaticon-plain-dog: "\f132";
+    $font-Flaticon-jack-russell-terrier: "\f133";
+    $font-Flaticon-dog-9: "\f134";
+    $font-Flaticon-walking-with-dog: "\f135";
+    $font-Flaticon-pet: "\f136";
+    $font-Flaticon-face-of-staring-dog: "\f137";
+    $font-Flaticon-dog-with-floppy-ears-1: "\f138";
+    $font-Flaticon-face-of-a-dog-with-sleepy-eyes: "\f139";
+    $font-Flaticon-dog-bone-1: "\f13a";
+    $font-Flaticon-dog-with-big-and-pointy-ears: "\f13b";
+    $font-Flaticon-dog-head: "\f13c";
+    $font-Flaticon-border-collie-head: "\f13d";
+    $font-Flaticon-bulldog-head: "\f13e";
+    $font-Flaticon-basset-hound-dog-head: "\f13f";
+    $font-Flaticon-dog-face: "\f140";
+    $font-Flaticon-veterinarian-hospital: "\f141";
+    $font-Flaticon-rat: "\f142";
+    $font-Flaticon-cat: "\f143";
+    $font-Flaticon-dog-8: "\f144";
+    $font-Flaticon-animal-8: "\f145";
+    $font-Flaticon-hamster-1: "\f146";
+    $font-Flaticon-animals-7: "\f147";
+    $font-Flaticon-dog-training-3: "\f148";
+    $font-Flaticon-dog-training-2: "\f149";
+    $font-Flaticon-walking-the-dog: "\f14a";
+    $font-Flaticon-dog-training-1: "\f14b";
+    $font-Flaticon-dog-training: "\f14c";
+    $font-Flaticon-dog-7: "\f14d";
+    $font-Flaticon-dog-6: "\f14e";
+    $font-Flaticon-dog-5: "\f14f";
+    $font-Flaticon-animals-6: "\f150";
+    $font-Flaticon-animal-7: "\f151";
+    $font-Flaticon-siamese-cat: "\f152";
+    $font-Flaticon-toyger-cat: "\f153";
+    $font-Flaticon-pets: "\f154";
+    $font-Flaticon-bulldog: "\f155";
+    $font-Flaticon-poodle: "\f156";
+    $font-Flaticon-border-collie: "\f157";
+    $font-Flaticon-basset-houd: "\f158";
+    $font-Flaticon-dachshund: "\f159";
+    $font-Flaticon-kurzhaar: "\f15a";
+    $font-Flaticon-bernese-mountain: "\f15b";
+    $font-Flaticon-dog-puppy: "\f15c";
+    $font-Flaticon-dog-kennel: "\f15d";
+    $font-Flaticon-mouse: "\f15e";
+    $font-Flaticon-turtle: "\f15f";
+    $font-Flaticon-pet-carrier: "\f160";
+    $font-Flaticon-pet-food: "\f161";
+    $font-Flaticon-dog-bone: "\f162";
+    $font-Flaticon-aquarium: "\f163";
+    $font-Flaticon-bird: "\f164";
+    $font-Flaticon-laying-cat: "\f165";
+    $font-Flaticon-pet-friendly: "\f166";
+    $font-Flaticon-animals-5: "\f167";
+    $font-Flaticon-animals-4: "\f168";
+    $font-Flaticon-pawprint-1: "\f169";
+    $font-Flaticon-food: "\f16a";
+    $font-Flaticon-animals-3: "\f16b";
+    $font-Flaticon-dog-4: "\f16c";
+    $font-Flaticon-animals-2: "\f16d";
+    $font-Flaticon-animal-6: "\f16e";
+    $font-Flaticon-veterinary: "\f16f";
+    $font-Flaticon-syringe: "\f170";
+    $font-Flaticon-medical: "\f171";
+    $font-Flaticon-pet-shelter: "\f172";
+    $font-Flaticon-brush: "\f173";
+    $font-Flaticon-animal-5: "\f174";
+    $font-Flaticon-animal-4: "\f175";
+    $font-Flaticon-animals-1: "\f176";
+    $font-Flaticon-vet-with-cat: "\f177";
+    $font-Flaticon-guinea-pig-heag: "\f178";
+    $font-Flaticon-animals: "\f179";
+    $font-Flaticon-angry-bulldog-face: "\f17a";
+    $font-Flaticon-dog-with-chubby-cheeks: "\f17b";
+    $font-Flaticon-chewing-bone-for-dog: "\f17c";
+    $font-Flaticon-dog-food-bowl: "\f17d";
+    $font-Flaticon-doberman-dog-head: "\f17e";
+    $font-Flaticon-dog-with-floppy-ears: "\f17f";
+    $font-Flaticon-long-haired-dog-head: "\f180";
+    $font-Flaticon-animal-paw-print: "\f181";
+    $font-Flaticon-dog-with-first-aid-kit-bag: "\f182";
+    $font-Flaticon-play: "\f183";
+    $font-Flaticon-dog-and-pets-house: "\f184";
+    $font-Flaticon-man-combing-a-dog: "\f185";
+    $font-Flaticon-dog-in-front-of-a-man: "\f186";
+    $font-Flaticon-scissors: "\f187";
+    $font-Flaticon-dog-3: "\f188";
+    $font-Flaticon-dog-2: "\f189";
+    $font-Flaticon-pet-hotel-sign-with-a-dog-and-a-cat-under-a-roof-line: "\f18a";
+    $font-Flaticon-circle: "\f18b";
+    $font-Flaticon-dog-1: "\f18c";
+    $font-Flaticon-pet-hotel-symbols-of-three-stars-a-semicircle-and-a-bone-black-shape: "\f18d";
+    $font-Flaticon-pets-hotel-symbol-with-a-dog-and-a-cat-in-a-circle-with-one-star: "\f18e";
+    $font-Flaticon-animal-3: "\f18f";
+    $font-Flaticon-animal-2: "\f190";
+    $font-Flaticon-sign: "\f191";
+    $font-Flaticon-dog-pet-allowed-hotel-signal: "\f192";
+    $font-Flaticon-zynga-logotype: "\f193";
+    $font-Flaticon-dog: "\f194";
+    $font-Flaticon-animal-1: "\f195";
+    $font-Flaticon-pawprint: "\f196";
+    $font-Flaticon-sitting-rabbit: "\f197";
+    $font-Flaticon-track: "\f198";
+    $font-Flaticon-hamster: "\f199";
+    $font-Flaticon-animal: "\f19a";

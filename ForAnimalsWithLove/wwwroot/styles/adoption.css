@@ -1,0 +1,54 @@
+/*
+Template Name: Woof!
+Adoption scheme
+/*
+ 
+/* Red */
+.badge-default,.bg-secondary, .btn-primary, .back-to-top i:hover, .alert-secondary, .badge-secondary, .nav-pills .nav-link.active,.nav-pills .nav-link:hover,.nav-pills .nav-link:focus, .nav-pills .show>.nav-link,.list-group-item.active,.team-style2 .team-caption .icons i, .page-link:hover, .page-link.active, .team-style1 .social, .nav-item:focus, .navbar .nav-item:hover, .navbar .nav-item .active,.nav-link:focus,.owl-prev i:hover, .owl-next i:hover,.navbar .nav-item.active {
+    background:#861657!important;
+}
+ .navbar-brand i,.serviceBox:hover .service-icon i,a,figure.team-style3 h6, .team-style2 .name h6, ul.custom li:before,.contact-icon .top-icon, .testimonial .content:before,.owl-theme .owl-nav [class*='owl-']:hover,.spinner .bounce1:after {
+    color:#861657;
+}
+ .btn-primary,.list-group-item.active,.alert-secondary,.jumbotron{
+    border-color:#861657;
+}
+
+/* Green */
+footer,.btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active, .dropdown-menu, .back-to-top i, .accordion-cards .card-header, .page-item.active .page-link,.progress-bar,.btn-secondary,.service-hover-box .service-hover-caption, .team-style2 .name , .team-style1:hover .social li a, .team-style1:hover .team-image,.page-link, .nav-pills .nav-link,.navbar{
+    background-color:#06b178!important ;
+}
+.blog-card .post-info:before,.color1,a:hover,a:focus, .dog-elements:after, .cat-elements:after, .bg-secondary a,.header-text:before,.section-heading:before,ul.social-media li:hover i, .counter .counter-icon{
+    color:#06b178 ;
+}
+ .dropdown-menu:before {
+    border-bottom-color: #06b178;
+}
+ .btn-primary:hover, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active, .page-item.active .page-link,.btn-secondary,.form-control:focus,.blog-card .card-img-top:hover{
+    border-color:#06b178;
+}
+/* Dark Green */
+ .dropdown-item:focus, .dropdown-item:hover,.dropdown-item.active,.accordion-cards .card-header:hover,.accordion-cards .card-header:focus, .bg-primary,.badge-primary, .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span, .alert-primary,.btn-secondary:hover,.list-group-item-action:focus, .list-group-item-action:hover, .counter,.team-style1:hover .social li a:hover,.owl-prev,.owl-next{
+    background-color:#074a35!important ;
+}
+ footer a:hover,blockquote:before,.team-style1:hover .social li a, figure.team-style3 i,.top-bar .contact-details i, .top-bar .social-list li a, ul.social-media i,.top-bar , .serviceBox .service-icon i {
+    color:#074a35 ;
+}
+ .form-control,.alert-primary,.list-group-item-action:focus, .list-group-item-action:hover {
+    border-color:#074a35 ;
+}
+#bigTriangleColor path {fill:#074a35;}
+
+/* Light green */
+.blog-card .post-info:before,.nav-tabs .nav-link.active, .tab-content, .bg-light-custom, .team-style1,.accordion-cards .card-body,.testimonial .content,.navbar-toggler:hover{
+    background:#ebfef8;
+}
+ .page-object1 i,.page-object2 i {
+    color:#ebfef8;
+}
+ .contact-icon,.border-double {
+    border-color:#ebfef8;
+}
+ .testimonial .content:after{
+     border-top-color: #ebfef8;
+}
