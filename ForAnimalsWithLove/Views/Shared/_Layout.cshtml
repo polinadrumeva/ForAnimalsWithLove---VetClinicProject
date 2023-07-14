@@ -48,84 +48,130 @@
 </head>
 <body>
     <header>
-        <!-- Navbartoggler -->
-       
-        <nav class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto">
-                <!-- menu item -->
-                <li class="nav-item">
-                    <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">
-                       Home
-                    </a>
-                </li>
-                <!-- menu item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="services-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Home" asp-action="Privacy">
-                        Отделения
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="services-dropdown">
-                        <a class="dropdown-item" href="services.html">Services Style 1</a>
-                        <a class="dropdown-item" href="services2.html">Services Style 2</a>
-                        <a class="dropdown-item" href="services-single.html">Services Single</a>
+        <!-- /Preloader ends -->
+        <nav id="main-nav" class="navbar-expand-xl">
+            <!-- Start Top Bar -->
+            <div class="container-fluid top-bar">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <!-- Start Contact Info -->
+                            <ul class="contact-details float-left">
+                                <li><i class="fa fa-map-marker"></i>Pet Street 123 - New York</li>
+                                <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">email@yoursite.com</a></li>
+                                <li><i class="fa fa-phone"></i>(123) 456-789</li>
+                            </ul>
+                            <!-- End Contact Info -->
+                        </div>
+                        <!-- /col -->
+                        <div class="col-md-3">
+                            <!-- Start Social Links -->
+                            <ul class="social-list float-right list-inline">
+                                <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li class="list-inline-item"><a title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                            <!-- /End Social Links -->
+                        </div>
+                        <!-- /col -->
                     </div>
-                </li>
-                <!-- menu item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="about-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Home" asp-action="Privacy">
-                        За нас
+                    <!-- /row -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- End Top bar -->
+            <!-- Navbar Starts -->
+            <div class="navbar container-fluid">
+                <div class="container">
+                    <!-- logo -->
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/logo.png" style="block-size: 100px" alt="ForAnimalsWithLove">
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="about-dropdown">
-                        <a class="dropdown-item" href="about.html">About Style 1</a>
-                        <a class="dropdown-item" href="about2.html">About Style 2</a>
+                    <!-- Navbartoggler -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggle-icon">
+                            <i class="fas fa-bars"></i>
+                        </span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ms-auto">
+                            <!-- menu item -->
+                            <li class="nav-item">
+                                <a class="nav-link" @*asp-controller="Home" asp-action="Index"*@>
+                                    За нас
+                                </a>
+                            </li>
+                            <!-- menu item -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Privacy" id="services-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Отделения
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="services-dropdown">
+                                    <a class="dropdown-item" href="services.html">Services Style 1</a>
+                                    <a class="dropdown-item" href="services2.html">Services Style 2</a>
+                                    <a class="dropdown-item" href="services-single.html">Services Single</a>
+                                </div>
+                            </li>
+                            <!-- menu item -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="about-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Осинови
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="about-dropdown">
+                                    <a class="dropdown-item" href="about.html">About Style 1</a>
+                                    <a class="dropdown-item" href="about2.html">About Style 2</a>
+                                </div>
+                            </li>
+                            <!-- menu item -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adopt-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Полезна информация
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="adopt-dropdown">
+                                    <a class="dropdown-item" href="adoption.html">Adoption Gallery</a>
+                                    <a class="dropdown-item" href="adoption-single.html">Adoption Single Page</a>
+                                </div>
+                            </li>
+                            <!-- menu item -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="gallery-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Gallery
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="gallery-dropdown">
+                                    <a class="dropdown-item" href="gallery.html">Gallery Style 1</a>
+                                    <a class="dropdown-item" href="gallery2.html">Gallery Style 2</a>
+                                </div>
+                            </li>
+                            <!-- menu item -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="contact-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Контакти
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="contact-dropdown">
+                                    <a class="dropdown-item" href="contact.html">Contact Style 1</a>
+                                    <a class="dropdown-item" href="contact2.html">Contact Style 2</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-action="Register">
+                                    Регистрация
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active"  asp-action="Login">
+                                    Вход
+                                </a>
+                            </li>
+                        </ul>
+                        <!--/ul -->
                     </div>
-                </li>
-                <!-- menu item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="adopt-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Осинови
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="adopt-dropdown">
-                        <a class="dropdown-item" href="adoption.html">Adoption Gallery</a>
-                        <a class="dropdown-item" href="adoption-single.html">Adoption Single Page</a>
-                    </div>
-                </li>
-                <!-- menu item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="gallery-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Home" asp-action="Privacy">
-                        Полезна информация
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="gallery-dropdown">
-                        <a class="dropdown-item" href="gallery.html">Gallery Style 1</a>
-                        <a class="dropdown-item" href="gallery2.html">Gallery Style 2</a>
-                    </div>
-                </li>
-                <!-- menu item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="contact-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Home" asp-action="Privacy">
-                        Контакти
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="contact-dropdown">
-                        <a class="dropdown-item" href="contact.html">Contact Style 1</a>
-                        <a class="dropdown-item" href="contact2.html">Contact Style 2</a>
-                    </div>
-                </li>
-                <!-- menu item -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"  id="others-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Other pages
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="others-dropdown">
-                        <a class="dropdown-item" href="team.html">Our Team</a>
-                        <a class="dropdown-item" href="blog.html">Blog Home</a>
-                        <a class="dropdown-item" href="blog-single.html">Blog Single</a>
-                        <a class="dropdown-item" href="elements.html">Elements Page</a>
-                        <a class="dropdown-item" href="404.html">404 Page</a>
-                    </div>
-                </li>
-            </ul>
-            <partial name="_LoginPartial" />
-            <!--/ul -->
+                    <!--collapse -->
+                </div>
+                <!-- /container -->
+            </div>
+            <!-- /navbar -->
         </nav>
+        <!-- /nav -->
         <!--collapse -->
         <!-- /navbar -->
        @* <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -165,11 +211,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    @*<footer class="border-top footer text-muted">
         <div class="container">
             &copy; ForAnimalsWithLove - 2023
         </div>
-    </footer>
+    </footer>*@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

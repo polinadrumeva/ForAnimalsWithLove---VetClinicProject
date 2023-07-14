@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 using ForAnimalsWithLove.Data;
+using ForAnimalsWithLove.Infrastructure.Extensions;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 	})
 	.AddEntityFrameworkStores<ForAnimalsWithLoveDbContext>();
 
+builder.Services.AddAppServices();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

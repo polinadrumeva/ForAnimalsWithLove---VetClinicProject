@@ -3,6 +3,7 @@ using System.Diagnostics;
 
 using ForAnimalsWithLove.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using ForAnimalsWithLove.Data.Service.Interfaces;
 
 namespace ForAnimalsWithLove.Controllers
 {
@@ -11,16 +12,17 @@ namespace ForAnimalsWithLove.Controllers
 	[AllowAnonymous]
 	public class HomeController : BaseController
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly IHomeService homeService;
 
-		public HomeController(ILogger<HomeController> logger)
+		public HomeController(IHomeService homeService)
 		{
-			_logger = logger;
+			this.homeService = homeService;
 		}
 
-		public IActionResult Index()
+		public async Task<IActionResult> Index()
 		{
-			return View();
+			var animals = await homeService.GetAnimals();
+			return View(animals);
 		}
 
 		public IActionResult Privacy()

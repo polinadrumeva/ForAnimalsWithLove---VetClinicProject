@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ForAnimalsWithLove.ViewModels;
 
 namespace ForAnimalsWithLove.Data.Service.Interfaces
 {
     public interface IHomeService
     {
-
+        Task<IEnumerable<IndexViewModel>> GetAnimals();
     }
 }

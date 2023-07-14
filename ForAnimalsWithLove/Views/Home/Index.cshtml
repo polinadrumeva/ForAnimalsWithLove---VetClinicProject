@@ -1,5 +1,6 @@
-﻿@{
-    Layout = null;
+﻿@model IEnumerable<IndexViewModel>
+@{
+    var animals = Model.ToList();   
 }
 
 <!DOCTYPE html>
@@ -45,135 +46,12 @@
             <div class="bounce1"></div>
         </div>
     </div>
-    <!-- /Preloader ends -->
-    <nav id="main-nav" class="navbar-expand-xl">
-        <!-- Start Top Bar -->
-        <div class="container-fluid top-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9">
-                        <!-- Start Contact Info -->
-                        <ul class="contact-details float-left">
-                            <li><i class="fa fa-map-marker"></i>Pet Street 123 - New York</li>
-                            <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">email@yoursite.com</a></li>
-                            <li><i class="fa fa-phone"></i>(123) 456-789</li>
-                        </ul>
-                        <!-- End Contact Info -->
-                    </div>
-                    <!-- /col -->
-                    <div class="col-md-3">
-                        <!-- Start Social Links -->
-                        <ul class="social-list float-right list-inline">
-                            <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
-                            <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li class="list-inline-item"><a title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
-                        <!-- /End Social Links -->
-                    </div>
-                    <!-- /col -->
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- End Top bar -->
-        <!-- Navbar Starts -->
-        <div class="navbar container-fluid">
-            <div class="container">
-                <!-- logo -->
-                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                    <img src="~/images/logo.png" style="block-size: 100px; margin: 0; padding:0" alt="ForAnimalsWithLove">
-                </a>
-                <!-- Navbartoggler -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggle-icon">
-                        <i class="fas fa-bars"></i>
-                    </span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <!-- menu item -->
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">
-                                За нас
-                            </a>
-                        </li>
-                        <!-- menu item -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" asp-controller="Home" asp-action="Privacy" id="services-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Отделения
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="services-dropdown">
-                                <a class="dropdown-item" href="services.html">Services Style 1</a>
-                                <a class="dropdown-item" href="services2.html">Services Style 2</a>
-                                <a class="dropdown-item" href="services-single.html">Services Single</a>
-                            </div>
-                        </li>
-                        <!-- menu item -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="about-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Осинови
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="about-dropdown">
-                                <a class="dropdown-item" href="about.html">About Style 1</a>
-                                <a class="dropdown-item" href="about2.html">About Style 2</a>
-                            </div>
-                        </li>
-                        <!-- menu item -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="adopt-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Полезна информация
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="adopt-dropdown">
-                                <a class="dropdown-item" href="adoption.html">Adoption Gallery</a>
-                                <a class="dropdown-item" href="adoption-single.html">Adoption Single Page</a>
-                            </div>
-                        </li>
-                        <!-- menu item -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="gallery-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Gallery
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="gallery-dropdown">
-                                <a class="dropdown-item" href="gallery.html">Gallery Style 1</a>
-                                <a class="dropdown-item" href="gallery2.html">Gallery Style 2</a>
-                            </div>
-                        </li>
-                        <!-- menu item -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="contact-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Контакти
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="contact-dropdown">
-                                <a class="dropdown-item" href="contact.html">Contact Style 1</a>
-                                <a class="dropdown-item" href="contact2.html">Contact Style 2</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" asp-action="Register">
-                                Регистрация
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" asp-action="Login">
-                                Вход
-                            </a>
-                        </li>
-                    </ul>
-                    <!--/ul -->
-                </div>
-                <!--collapse -->
-            </div>
-            <!-- /container -->
-        </div>
-        <!-- /navbar -->
-    </nav>
-    <!-- /nav -->
+  
     <div id="slider" style="width:1200px;height:800px;margin:0 auto;margin-bottom: 0px;">
-        <!-- Slide 2 -->
+        <!-- Slide 1 -->
         <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
             <!-- bg image  -->
-            <img src="img/slide1.jpg" class="ls-bg" alt="">
+            <img src="~/images/animals-login.jpg" class="ls-bg" alt="animals">
             <!-- text  -->
             <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                 <div class="header-text dog-elements">
@@ -193,7 +71,7 @@
         <!-- Slide 2 -->
         <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
             <!-- bg image  -->
-            <img src="img/slide2.jpg" class="ls-bg" alt="">
+            <img src="~/images/belidog.jpg" class="ls-bg" alt="">
             <!-- text  -->
             <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                 <div class="header-text cat-elements">
@@ -213,7 +91,7 @@
         <!-- Slide 3 -->
         <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
             <!-- bg image  -->
-            <img src="img/slide3.jpg" class="ls-bg" alt="">
+            <img src="~/images/animals-login.jpg" class="ls-bg" alt="">
             <!-- text  -->
             <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                 <div class="header-text dog-elements">
@@ -233,7 +111,7 @@
         <!-- Slide 4 -->
         <div class="ls-slide" data-ls="duration:4000; transition2d:7; kenburnszoom:out; kenburnsrotate:-5; kenburnsscale:1.2;">
             <!-- bg image  -->
-            <img src="img/slide4.jpg" class="ls-bg" alt="">
+            <img src="~/images/animals-login.jpg" class="ls-bg" alt="">
             <!-- text  -->
             <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallaxlevel:0;">
                 <div class="header-text cat-elements">
@@ -579,13 +457,13 @@
     <section id="gallery" class="dog-bg1 bg-light pb-0">
         <div class="container">
             <div class="section-heading text-center">
-                <h2>Our Gallery</h2>
+                <h2>Част от нашите клиенти</h2>
             </div>
             <!-- /Section-heading -->
         </div>
         <!-- /container -->
         <!-- centered Gallery navigation -->
-        <ul class="nav nav-pills cat center-nav">
+       @* <ul class="nav nav-pills cat center-nav">
             <li class="nav-item">
                 <a class="nav-link active" href="#" data-bs-toggle="tab" data-filter="*">All</a>
             </li>
@@ -595,11 +473,26 @@
             <li class="nav-item">
                 <a class="nav-link" href="#" data-bs-toggle="tab" data-filter=".other">Other Pets</a>
             </li>
-        </ul>
+        </ul>*@
         <!-- /ul -->
         <!-- Gallery -->
         <div id="gallery-isotope" class="mt-5">
             <!-- Image 1 -->
+            @foreach(var a in animals)
+            {
+                <div class="dogscats col-lg-3 col-sm-6 col-md-6">
+                    <div class="isotope-item">
+                        <div class="gallery-thumb">
+                            <img class="img-fluid" src="@a.ImageUrl" alt="">
+                            <a href="@a.ImageUrl" title="You can add caption to pictures.">
+                                <span class="overlay-mask"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            
+            }
+@*
             <div class="dogscats col-lg-3 col-sm-6 col-md-6">
                 <div class="isotope-item">
                     <div class="gallery-thumb">
@@ -730,7 +623,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
         <!-- /gallery-isotope-->
     </section>
