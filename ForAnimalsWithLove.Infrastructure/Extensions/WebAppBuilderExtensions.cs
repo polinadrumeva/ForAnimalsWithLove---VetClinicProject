@@ -10,6 +10,8 @@ namespace ForAnimalsWithLove.Infrastructure.Extensions
         public static void AddAppServices(this IServiceCollection services)
         {
             services.AddScoped<IHomeService, HomeService>();
+            services.AddScoped<IOwnerService, OwnerService>();
+
         }
     }
 }
