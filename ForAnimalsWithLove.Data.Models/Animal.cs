@@ -47,20 +47,20 @@ namespace ForAnimalsWithLove.Data.Models
 
         public Guid? OwnerId { get; set; }
 
-        public Owner? Owner { get; set; }
+        public virtual Owner? Owner { get; set; }
 
         public Guid? GroomingId { get; set; }
 
-        public Grooming? Grooming { get; set; }
+        public virtual Grooming? Grooming { get; set; }
 
         [Required]
         public Guid HealthRecordId { get; set; }
 
         [Required]
-        public HealthRecord HealthRecord { get; set; } = null!;
+        public virtual HealthRecord HealthRecord { get; set; } = null!;
 
         public int? SearchHomeId { get; set; }
-        public SearchHome? SearchHome { get; set; }
+        public virtual SearchHome? SearchHome { get; set; }
 
     }
 

@@ -57,9 +57,9 @@
                         <div class="col-md-9">
                             <!-- Start Contact Info -->
                             <ul class="contact-details float-left">
-                                <li><i class="fa fa-map-marker"></i>Pet Street 123 - New York</li>
-                                <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">email@yoursite.com</a></li>
-                                <li><i class="fa fa-phone"></i>(123) 456-789</li>
+                                <li><i class="fa fa-map-marker"></i>Pet Street 123 - Sofia</li>
+                                <li><i class="fa fa-envelope"></i><a href="mailto:email@site.com">office@foranimalswithlove.bg</a></li>
+                                <li><i class="fa fa-phone"></i>0700 12 323</li>
                             </ul>
                             <!-- End Contact Info -->
                         </div>
@@ -67,7 +67,7 @@
                         <div class="col-md-3">
                             <!-- Start Social Links -->
                             <ul class="social-list float-right list-inline">
-                                <li class="list-inline-item"><a title="Facebook" href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li class="list-inline-item"><a title="Facebook" href="https://bg-bg.facebook.com/people/%D0%9F%D0%BE%D0%BB%D0%B8%D0%BD%D0%B0-%D0%94%D1%80%D1%83%D0%BC%D0%B5%D0%B2%D0%B0/pfbid0oYs8YMDBxFBtEAScouom7oAYZhzKtq1jEddjyuUnp7P1WZ3P9GKz9JjqVg3XMxH7l/"><i class="fab fa-facebook-f"></i></a></li>
                                 <li class="list-inline-item"><a title="Twitter" href="#"><i class="fab fa-twitter"></i></a></li>
                                 <li class="list-inline-item"><a title="Instagram" href="#"><i class="fab fa-instagram"></i></a></li>
                             </ul>
@@ -85,7 +85,7 @@
                 <div class="container">
                     <!-- logo -->
                     <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                        <img src="~/images/logo.png" style="block-size: 100px" alt="ForAnimalsWithLove">
+                        <img src="~/images/logo.png" style="block-size: 80px" alt="ForAnimalsWithLove">
                     </a>
                     <!-- Navbartoggler -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -152,18 +152,9 @@
                                     <a class="dropdown-item" href="contact2.html">Contact Style 2</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" asp-action="Register">
-                                    Регистрация
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active"  asp-action="Login">
-                                    Вход
-                                </a>
-                            </li>
                         </ul>
                         <!--/ul -->
+                        <partial name="_LoginPartial" />
                     </div>
                     <!--collapse -->
                 </div>

@@ -10,7 +10,6 @@ namespace ForAnimalsWithLove.Data.Models
         {
             this.Id = Guid.NewGuid();
             this.Operations = new HashSet<Operation>();
-            this.AnimalsDoctors = new HashSet<AnimalDoctor>();
             this.DirectionsDoctors = new HashSet<DirectionDoctor>();
         }
 
@@ -35,8 +34,8 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
 
+       
         public virtual ICollection<DirectionDoctor> DirectionsDoctors { get; set; }
-        public virtual ICollection<AnimalDoctor> AnimalsDoctors { get; set; }
 
         public virtual ICollection<Operation> Operations { get; set; }
 

@@ -9,6 +9,7 @@ namespace ForAnimalsWithLove.Data.Models
         public HealthRecord()
         {
             this.Id = Guid.NewGuid();
+            this.Medicals = new HashSet<Medical>();
         }
 
         [Key]
@@ -42,15 +43,11 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(PrescriptionMaxLength, MinimumLength = PrescriptionMinLength)]
         public string? PrescribedTreatment { get; set; }
 
-        public DateTime LastReview { get; set; }
-
-
-        public DateTime UpcomingReview { get; set; }
-
-
-        public Guid HospitalRecordId { get; set; }
+        public Guid? HospitalRecordId { get; set; }
 
         public HospitalRecord? HospitalRecord { get; set; }
+
+        public virtual ICollection<Medical> Medicals { get; set; }
 
 
     }

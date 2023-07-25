@@ -14,6 +14,11 @@ namespace ForAnimalsWithLove.Data.Service.Services
             this.dbContext = dbContext;
         }
 
+        public Task Create(string userId, RegistrationOwnerViewModel model)
+        {
+            throw new NotImplementedException();
+        }
+
         //public Task Create(string userId, RegistrationOwnerViewModel model)
         //{
         //    throw new NotImplementedException();

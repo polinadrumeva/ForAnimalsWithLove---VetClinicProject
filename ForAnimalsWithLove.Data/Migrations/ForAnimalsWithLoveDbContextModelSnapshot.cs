@@ -22,6 +22,37 @@ namespace ForAnimalsWithLove.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Administrator", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Administrators");
+                });
+
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Animal", b =>
                 {
                     b.Property<Guid>("Id")
@@ -80,7 +111,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Animals", (string)null);
+                    b.ToTable("Animals");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalBooking", b =>
@@ -95,22 +126,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("BookingId");
 
-                    b.ToTable("AnimalsBookings", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalDoctor", b =>
-                {
-                    b.Property<Guid>("AnimalId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("AnimalId", "DoctorId");
-
-                    b.HasIndex("DoctorId");
-
-                    b.ToTable("AnimalsDoctors", (string)null);
+                    b.ToTable("AnimalsBookings");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalEducation", b =>
@@ -125,619 +141,14 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("EducationId");
 
-                    b.ToTable("AnimalsEducations", (string)null);
+                    b.ToTable("AnimalsEducations");
                 });
 
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Booking", b =>
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.ApplicationUser", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Days")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("HotelId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HotelId");
-
-                    b.ToTable("Bookings", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Direction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Directions", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.DirectionDoctor", b =>
-                {
-                    b.Property<int>("DirectionId")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("DirectionId", "DoctorId");
-
-                    b.HasIndex("DoctorId");
-
-                    b.ToTable("DirectionsDoctors", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("Specialization")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Doctors", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("AmountPerDay")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("Days")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("TrainerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TrainerId");
-
-                    b.ToTable("Educations", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Grooming", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<Guid>("AnimalId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Service")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimalId")
-                        .IsUnique();
-
-                    b.ToTable("Groomings", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AnimalId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("AnnualVaccine")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("FirstVaccine")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("GeneralCondition")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<Guid>("HospitalRecordId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("LastReview")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Microchip")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MicrochipNumber")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<string>("PrescribedTreatment")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<bool>("SecondVaccine")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ThirdVaccine")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("UpcomingReview")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimalId")
-                        .IsUnique();
-
-                    b.ToTable("HealthRecords", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("DateOfAcceptance")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateOfDischarge")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Diagnosis")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<Guid>("HealthRecordId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PrescribedTreatment")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("Treatment")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("HealthRecordId")
-                        .IsUnique();
-
-                    b.ToTable("HospitalRecords", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Hotel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<decimal>("AmountPerDay")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Hotels", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("Date")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 13, 13, 24, 28, 385, DateTimeKind.Utc).AddTicks(2621));
-
-                    b.Property<Guid>("DoctorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("HospitalRecordId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("OperationReason")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.HasIndex("HospitalRecordId");
-
-                    b.ToTable("Operations", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Owner", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("MiddleName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Owners", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("48e29fba-6797-483c-b38b-a718ff17f0d8"),
-                            Address = "София",
-                            FirstName = "Марин",
-                            LastName = "Велев",
-                            PhoneNumber = "098977283"
-                        },
-                        new
-                        {
-                            Id = new Guid("296f4d7a-8cf3-4975-b06d-fb79310fd04b"),
-                            Address = "Ихтиман",
-                            FirstName = "Марияна",
-                            LastName = "Иванова",
-                            MiddleName = "Георгиева",
-                            PhoneNumber = "0834772389"
-                        },
-                        new
-                        {
-                            Id = new Guid("0f11b794-81b6-43e6-9df1-effe0c0f2242"),
-                            Address = "Елин Пелин",
-                            FirstName = "Стефан",
-                            LastName = "Петров",
-                            MiddleName = "Петров",
-                            PhoneNumber = "0989775680"
-                        },
-                        new
-                        {
-                            Id = new Guid("e2239b43-afda-48c3-b90c-a54a8ee99ec8"),
-                            Address = "София",
-                            FirstName = "Мария",
-                            LastName = "Петрова",
-                            PhoneNumber = "0884788900"
-                        },
-                        new
-                        {
-                            Id = new Guid("4c0ae8fc-8a1f-41b6-a039-d132bb3d8fa7"),
-                            Address = "София",
-                            FirstName = "Валентина",
-                            LastName = "Дюрова",
-                            PhoneNumber = "0885666218"
-                        },
-                        new
-                        {
-                            Id = new Guid("48e9c90c-dd32-4c5d-9406-df940ec29a5f"),
-                            Address = "София",
-                            FirstName = "Станимир",
-                            LastName = "Хаджиев",
-                            PhoneNumber = "0898322211"
-                        },
-                        new
-                        {
-                            Id = new Guid("e4fb4934-7762-4318-a73f-cddb10f1176f"),
-                            Address = "София",
-                            FirstName = "Иван",
-                            LastName = "Валентинов",
-                            PhoneNumber = "0886755349"
-                        },
-                        new
-                        {
-                            Id = new Guid("4aa4a55b-7d71-4620-aa58-e019689518b9"),
-                            Address = "Дупница",
-                            FirstName = "Мария",
-                            LastName = "Кръстева",
-                            PhoneNumber = "0887334785"
-                        },
-                        new
-                        {
-                            Id = new Guid("4e34be8d-1762-4a0a-99d3-891310acdb0e"),
-                            Address = "Дупница",
-                            FirstName = "Галина",
-                            LastName = "Кръстева",
-                            MiddleName = "Недева",
-                            PhoneNumber = "0878611282"
-                        },
-                        new
-                        {
-                            Id = new Guid("625c39b4-d085-4b06-bb0b-b5ac413ef2fd"),
-                            Address = "Велико Търново",
-                            FirstName = "Полина",
-                            LastName = "Друмева",
-                            PhoneNumber = "0878644619"
-                        },
-                        new
-                        {
-                            Id = new Guid("823510a7-981e-4618-b75f-3ac3010aa54d"),
-                            Address = "София",
-                            FirstName = "Симона",
-                            LastName = "Иванова",
-                            PhoneNumber = "0885565213"
-                        },
-                        new
-                        {
-                            Id = new Guid("e803708f-6fdc-4993-bfd5-c8b5e2404504"),
-                            Address = "София",
-                            FirstName = "Йоанна",
-                            LastName = "Здравкова",
-                            PhoneNumber = "0888672662"
-                        },
-                        new
-                        {
-                            Id = new Guid("cd4f36ca-ded5-48e2-9d24-37dadbb87661"),
-                            Address = "София",
-                            FirstName = "Магдалена",
-                            LastName = "Иванова",
-                            PhoneNumber = "0887721356"
-                        },
-                        new
-                        {
-                            Id = new Guid("52c95f15-b276-4fed-86ac-75f8a8d89c96"),
-                            Address = "Тетевен",
-                            FirstName = "Ивета",
-                            LastName = "Манолова",
-                            PhoneNumber = "072826786"
-                        },
-                        new
-                        {
-                            Id = new Guid("1c664a30-3005-4a57-ac26-cded33ca9bd2"),
-                            Address = "София",
-                            FirstName = "Красимир",
-                            LastName = "Иванов",
-                            MiddleName = "Недялков",
-                            PhoneNumber = "0898268776"
-                        },
-                        new
-                        {
-                            Id = new Guid("94b4f8e2-1725-47a9-9dea-f1c592c8318a"),
-                            Address = "София",
-                            FirstName = "Росица",
-                            LastName = "Маринова",
-                            PhoneNumber = "0878221112"
-                        },
-                        new
-                        {
-                            Id = new Guid("eb0827fa-2479-4b76-b272-d7ebdca7670c"),
-                            Address = "Самоков",
-                            FirstName = "Деница",
-                            LastName = "Иванова",
-                            MiddleName = "Иванова",
-                            PhoneNumber = "0898217888"
-                        });
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.SearchHome", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<Guid>("AnimalId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Habits")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AnimalId")
-                        .IsUnique();
-
-                    b.ToTable("SearchHomes", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Test", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ImagingDiagnosis")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("OperationId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PKK")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Urine")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OperationId");
-
-                    b.ToTable("Tests", (string)null);
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Trainer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Trainers", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims", (string)null);
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -799,7 +210,484 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Booking", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HotelId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("Bookings");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Direction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Directions");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.DirectionDoctor", b =>
+                {
+                    b.Property<int>("DirectionId")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("DirectionId", "DoctorId");
+
+                    b.HasIndex("DoctorId");
+
+                    b.ToTable("DirectionsDoctors");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Specialization")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Doctors");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("AmountPerDay")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Days")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TrainerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TrainerId");
+
+                    b.ToTable("Educations");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Grooming", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Service")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnimalId")
+                        .IsUnique();
+
+                    b.ToTable("Groomings");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AdministratorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("AnnualVaccine")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("FirstVaccine")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("GeneralCondition")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid?>("HospitalRecordId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Microchip")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MicrochipNumber")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("PrescribedTreatment")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<bool>("SecondVaccine")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ThirdVaccine")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdministratorId");
+
+                    b.HasIndex("AnimalId")
+                        .IsUnique();
+
+                    b.ToTable("HealthRecords");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("AdministratorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("DateOfAcceptance")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateOfDischarge")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Diagnosis")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<Guid>("HealthRecordId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PrescribedTreatment")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("Treatment")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AdministratorId");
+
+                    b.HasIndex("HealthRecordId")
+                        .IsUnique();
+
+                    b.ToTable("HospitalRecords");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Hotel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<decimal>("AmountPerDay")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Hotels");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Medical", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Constatation")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("HealthRecordId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Reason")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("HealthRecordId");
+
+                    b.ToTable("Medicals");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("Date")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValue(new DateTime(2023, 7, 25, 14, 36, 37, 337, DateTimeKind.Utc).AddTicks(6406));
+
+                    b.Property<Guid>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("HospitalRecordId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("OperationReason")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("HospitalRecordId");
+
+                    b.ToTable("Operations");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Owner", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Owners");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.SearchHome", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<Guid>("AnimalId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Habits")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnimalId")
+                        .IsUnique();
+
+                    b.ToTable("SearchHomes");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Test", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImagingDiagnosis")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("OperationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("PKK")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Urine")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OperationId");
+
+                    b.ToTable("Tests");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Trainer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Trainers");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -813,9 +701,32 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -824,7 +735,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.ToTable("AspNetUserClaims", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
@@ -837,9 +748,8 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -848,13 +758,13 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.ToTable("AspNetUserLogins", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -863,10 +773,10 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
@@ -882,6 +792,17 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Administrator", b =>
+                {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Animal", b =>
@@ -910,25 +831,6 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Navigation("Animal");
 
                     b.Navigation("Booking");
-                });
-
-            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalDoctor", b =>
-                {
-                    b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
-                        .WithMany()
-                        .HasForeignKey("AnimalId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ForAnimalsWithLove.Data.Models.Doctor", "Doctor")
-                        .WithMany("AnimalsDoctors")
-                        .HasForeignKey("DoctorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Animal");
-
-                    b.Navigation("Doctor");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalEducation", b =>
@@ -1004,6 +906,10 @@ namespace ForAnimalsWithLove.Data.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
                 {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.Administrator", null)
+                        .WithMany("HealthRecords")
+                        .HasForeignKey("AdministratorId");
+
                     b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
                         .WithOne("HealthRecord")
                         .HasForeignKey("ForAnimalsWithLove.Data.Models.HealthRecord", "AnimalId")
@@ -1015,11 +921,34 @@ namespace ForAnimalsWithLove.Data.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
                 {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.Administrator", null)
+                        .WithMany("HospitalRecords")
+                        .HasForeignKey("AdministratorId");
+
                     b.HasOne("ForAnimalsWithLove.Data.Models.HealthRecord", "HealthRecord")
                         .WithOne("HospitalRecord")
                         .HasForeignKey("ForAnimalsWithLove.Data.Models.HospitalRecord", "HealthRecordId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("HealthRecord");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Medical", b =>
+                {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.Doctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ForAnimalsWithLove.Data.Models.HealthRecord", "HealthRecord")
+                        .WithMany("Medicals")
+                        .HasForeignKey("HealthRecordId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
 
                     b.Navigation("HealthRecord");
                 });
@@ -1061,55 +990,62 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasForeignKey("OperationId");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("ForAnimalsWithLove.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("ForAnimalsWithLove.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("ForAnimalsWithLove.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
+                    b.HasOne("ForAnimalsWithLove.Data.Models.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Administrator", b =>
+                {
+                    b.Navigation("HealthRecords");
+
+                    b.Navigation("HospitalRecords");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Animal", b =>
@@ -1129,8 +1065,6 @@ namespace ForAnimalsWithLove.Data.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
                 {
-                    b.Navigation("AnimalsDoctors");
-
                     b.Navigation("DirectionsDoctors");
 
                     b.Navigation("Operations");
@@ -1139,6 +1073,8 @@ namespace ForAnimalsWithLove.Data.Migrations
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
                 {
                     b.Navigation("HospitalRecord");
+
+                    b.Navigation("Medicals");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>

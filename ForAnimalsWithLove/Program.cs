@@ -1,9 +1,8 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 using ForAnimalsWithLove.Data;
 using ForAnimalsWithLove.Infrastructure.Extensions;
-
+using ForAnimalsWithLove.Data.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +11,7 @@ builder.Services.AddDbContext<ForAnimalsWithLoveDbContext>(options =>
 	options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options =>
+builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 	{
 		options.SignIn.RequireConfirmedAccount = builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
 		options.Password.RequireLowercase = builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase");

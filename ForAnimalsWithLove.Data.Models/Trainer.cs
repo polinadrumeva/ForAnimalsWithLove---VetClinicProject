@@ -28,7 +28,6 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(PhoneNumberLength)]
         public string PhoneNumber { get; set; } = null!;
 
-        
         public virtual ICollection<Education> Educations { get; set; }
 
     }

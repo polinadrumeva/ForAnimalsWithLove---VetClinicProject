@@ -32,7 +32,7 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
-
+        
         public virtual ICollection<Animal> MyAnimals { get; set; }
     }
 }
