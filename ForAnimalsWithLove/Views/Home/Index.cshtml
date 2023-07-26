@@ -1,7 +1,7 @@
-﻿@model IEnumerable<IndexViewModel>
+﻿@*@model IEnumerable<IndexViewModel>
 @{
     var animals = Model.ToList();   
-}
+}*@
 
 <!DOCTYPE html>
 <html lang="en">
@@ -478,7 +478,7 @@
         <!-- Gallery -->
         <div id="gallery-isotope" class="mt-5">
             <!-- Image 1 -->
-            @foreach(var a in animals)
+          @*  @foreach(var a in animals)
             {
                 <div class="dogscats col-lg-3 col-sm-6 col-md-6">
                     <div class="isotope-item">
@@ -491,7 +491,7 @@
                     </div>
                 </div>
             
-            }
+            }*@
 @*
             <div class="dogscats col-lg-3 col-sm-6 col-md-6">
                 <div class="isotope-item">
@@ -785,12 +785,12 @@
     <section id="adopt" class="paws-house-bg1 bg-light">
         <div class="container ">
             <div class="section-heading text-center">
-                <h2>Adopt a Pet</h2>
+                <h2>Осинови любимец</h2>
             </div>
             <!-- /Section-heading -->
             <div class="col-lg-10 offset-lg-1 text-center">
-                <h3>Find a new furry Friend</h3>
-                <p>Maecenas at arcu risus. Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall.</p>
+                <h3>Намери своя нов приятел</h3>
+                <p> При нас може да намериш и твоя нов приятел, който търси единствено твоята любов, в замяна на което ще ти даде много нови щастливи моменти!</p>
             </div>
             <!-- First row: Adopt a pet -->
             <div class="row mt-5">
@@ -912,53 +912,8 @@
     </section>
     <!-- Section Contact -->
     <section id="contact" class="dog-bg3">
-        <div class="container">
-            <div class="section-heading text-center">
-                <h2>Contact Us</h2>
-            </div>
-            <!-- /Section-heading -->
-        </div>
         <!-- /container -->
         <div class="container">
-            <div class="row">
-                <!-- contact info -->
-                <div class="contact-info col-lg-5 card bg-light-custom">
-                    <h4>Send us a message!</h4>
-                    <!-- Form Starts -->
-                    <div id="contact_form">
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label>Name<span class="required">*</span></label>
-                                    <input type="text" name="name" class="form-control input-field" required="">
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Email Address <span class="required">*</span></label>
-                                    <input type="email" name="email" class="form-control input-field" required="">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Subject</label>
-                                    <input type="text" name="subject" class="form-control input-field">
-                                </div>
-                                <div class="col-md-12">
-                                    <label>Message<span class="required">*</span></label>
-                                    <textarea name="message" id="message" class="textarea-field form-control" rows="3" required=""></textarea>
-                                </div>
-                            </div>
-                            <button type="submit" id="submit_btn" value="Submit" class="btn btn-primary">Send message</button>
-                        </div>
-                        <!-- Contact results -->
-                        <div id="contact_results"></div>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <!-- map-->
-                    <div id="map-canvas" class="mt-3 border-irregular1"></div>
-                </div>
-                <!-- /col-lg-->
-            </div>
             <!-- /row-->
             <div class="row res-margin mt-5">
                 <div class="col-lg-6 mt-5">
@@ -967,8 +922,8 @@
                         <i class="fa fa-envelope top-icon"></i>
                         <!-- contact-icon info-->
                         <div class="contact-icon-info">
-                            <h5>Send us a Message</h5>
-                            <p class="h7"><a href="mailto:email@yoursite.com">email@yoursite.com</a></p>
+                            <h5>Пиши ни</h5>
+                            <p class="h7"><a href="mailto:email@yoursite.com">office@foranimalswithlove.bg</a></p>
                         </div>
                     </div>
                 </div>
@@ -979,8 +934,8 @@
                         <i class="fa fa-map-marker top-icon"></i>
                         <!-- contact-icon info-->
                         <div class="contact-icon-info">
-                            <h5>Visit our Location</h5>
-                            <p class="h7">Pet Street 123 - New York</p>
+                            <h5>Посети ни на място</h5>
+                            <p class="h7">Pet Street 123 - Sofia</p>
                         </div>
                     </div>
                 </div>
@@ -991,8 +946,8 @@
                         <i class="fa fa-phone top-icon"></i>
                         <!-- contact-icon info-->
                         <div class="contact-icon-info">
-                            <h5>Call us today</h5>
-                            <p class="h7">(123) 456-789</p>
+                            <h5>Обади ни се още сега</h5>
+                            <p class="h7">0700 12 323</p>
                         </div>
                     </div>
                 </div>
@@ -1003,7 +958,7 @@
                         <i class="fa fa-heart top-icon"></i>
                         <!-- contact-icon info-->
                         <div class="contact-icon-info">
-                            <h5>Follow us on Social Media</h5>
+                            <h5>Последвай ни в социалните мрежи</h5>
                             <ul class="social-media">
                                 <li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
                                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
@@ -1020,45 +975,7 @@
         <!-- /container -->
     </section>
     <!-- /Section ends -->
-    <!-- ==== footer ==== -->
-    <footer class="text-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <a class="navbar-brand" href="index.html"><i class="flaticon-dog-20"></i><span>Woof!</span></a>
-                    <p class="mt-3">Cras enim wisi elit aenean, amet eros curabitur. Wisi ad eget ipsum<br>  metus sociisc ras enim wisi elit aenean.</p>
-                </div>
-                <!--/ col-lg -->
-                <div class="col-lg-3">
-                    <h6><i class="fas fa-envelope margin-icon"></i>Contact Us</h6>
-                    <ul class="list-unstyled">
-                        <li>0700 12 323</li>
-                        <li><a href="mailto:email@yoursite.com">office@foranimalswithlove.bg</a></li>
-                        <li>Pet Street 123 - Sofia </li>
-                    </ul>
-                    <!--/ul -->
-                </div>
-                <!--/ col-lg -->
-                <div class="col-lg-3">
-                    <h6><i class="far fa-clock margin-icon"></i>Working Hours</h6>
-                    <ul class="list-unstyled">
-                        <li>Open 0am - 24pm</li>
-                    </ul>
-                    <!--/ul -->
-                </div>
-                <!--/ col-lg -->
-            </div>
-            
-            <!--/ row -->
-        </div>
-        <!--/ container -->
-        <!-- Go To Top Link -->
-        <div class="d-none d-md-block">
-            <a href="#top" class="back-to-top"><i class="fa fa-angle-up"></i></a>
-        </div>
-        <!--/page-scroll-->
-    </footer>
-    <!--/ footer-->
+  
     <!-- Bootstrap core & Jquery -->
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>

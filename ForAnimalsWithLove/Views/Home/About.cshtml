@@ -1,0 +1,161 @@
+﻿@using ForAnimalsWithLove.ViewModels.IndexModels;
+@model IndexCountsModel
+
+@{
+    var models = Model;
+    var animalsCount = models.AnimalsCount * 3;
+    var doctorsCount = models.DoctorCount;
+    var adoptCount = models.ForAdoptionCount * 2;
+
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- page title -->
+    <title>Woof!</title>
+    <!--[if lt IE 9]>
+    <script src="~/js/respond.js"></script>
+    <![endif]-->
+    <!-- Font files -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700&display=swap" rel="stylesheet">
+    <link href="~/fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
+    <link href="~/fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+    <!-- Fav icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- style CSS -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <!-- plugins CSS -->
+    <link href="~/css/plugins.css" rel="stylesheet">
+    <!-- Colors CSS -->
+    <link href="~/styles/maincolors.css" rel="stylesheet">
+    <!-- LayerSlider CSS -->
+    <link rel="stylesheet" href="~/vendor/layerslider/css/layerslider.css">
+</head>
+<!-- ==== body starts ==== -->
+<body id="top">
+    <!-- ==== Page Content ==== -->
+    <div class="page">
+        <div class="container block-padding pt-0">
+            <div class="row">
+                <div class="col-lg-6 my-auto">
+                    <h3>С грижа за вашите любимци</h3>
+                    <p>
+                        Нашата мисия е да заздравим връзката човек-животно чрез по-добри грижи за домашни любимци. 
+                        Затова при нас Ви предлагаме всичко необходимо за вашите приятели.
+                    </p>
+                    <p>
+                        Откакто отворихме през май 2018 г. в София лекувахме десетки хиляди котки и кучета.
+                        И тъй като се разраснахме, разширихме услугите си до тези на ветеринарна клиника с пълен набор от услуги, предлагаща спешни грижи,
+                        както и рутинни грижи, като прегледи за здраве, ваксини и стерилизация/кастрация, както и операции,
+                        почистване на зъбите и международни здравни сертификати.
+                    </p>
+                        
+                    <p>
+                        Тази гама е от полза не само за нашите клиенти — които почти винаги могат да получат час за същия ден, 
+                        когато е необходимо — но също така и за нашия медицински екип, за когото широката комбинация от случаи предоставя възможности
+                        за учене, израстване и практика на върха на техния лиценз. Разнообразните случаи ангажират екипа и задълбочават 
+                        страстта му към ветеринарната медицина.
+                    </p>
+                    <p>При нас може да намерите:</p>
+                    <ul class="custom ps-0">
+                        <li>Спешна помощ</li>
+                        <li>Запазване на удобен за вас час за преглед при професионалист </li>
+                        <li>Модерна апаратура </li>
+                        <li>Малки сладури, който ще са щастливи ако ги осиновите</li>
+                        <li>Хотели и хотелско настаняване, за да сте спокойни докато отсъствате </li>
+                        <li>Треньори и обучение за вашите любимци </li>
+                        <li>Grooming услуги  </li>
+                    </ul>
+                    <!-- /ul -->
+                </div>
+                <!-- image -->
+                <div class="col-lg-6">
+                    <img src="~/images/animals-about.jpg" alt="animals" class="img-fluid border-irregular1" data-aos="zoom-in">
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+        <div class="bg-light-custom block-padding">
+            <div class="container">
+                <div id="counter" class="row">
+                    <!-- Counter -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter">
+                            <i class="counter-icon fa fa-users"></i>
+                            <!-- insert your final value on data-count= -->
+                            <div class="counter-value" data-count="1500">@animalsCount</div>
+                            <h3 class="title">Щастливи клиенти</h3>
+                        </div>
+                        <!-- /counter -->
+                    </div>
+                    <!-- /col-lg -->
+                    <!-- Counter -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter">
+                            <i class="counter-icon flaticon-dog-in-front-of-a-man"></i>
+                            <!-- insert your final value on data-count= -->
+                            <div class="counter-value" data-count="14">@doctorsCount</div>
+                            <h3 class="title">Професионалисти</h3>
+                        </div>
+                        <!-- /counter -->
+                    </div>
+                    <!-- /col-lg -->
+                    <!-- Counter -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter">
+                            <i class="counter-icon flaticon-dog-2"></i>
+                            <!-- insert your final value on data-count= -->
+                            <div class="counter-value" data-count="900">@adoptCount</div>
+                            <h3 class="title">Осиновени животни</h3>
+                        </div>
+                        <!-- /counter -->
+                    </div>
+                    <!-- Counter -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="counter">
+                            <i class="counter-icon flaticon-prize-badge-with-paw-print"></i>
+                            <!-- insert your final value on data-count= -->
+                            <div class="counter-value" data-count="12">3</div>
+                            <h3 class="title">Prizes</h3>
+                        </div>
+                        <!-- /counter -->
+                    </div>
+                    <!-- /col-lg -->
+                    <!-- Counter -->
+                    
+                    <!-- /col-lg -->
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+    </div>
+    <!-- /page -->
+ 
+    <!-- Bootstrap core & Jquery -->
+    <script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Custom Js -->
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/plugins.js"></script>
+    <!-- Prefix free -->
+    <script src="~/js/prefixfree.min.js"></script>
+    <!-- number counter script -->
+    <script src="~/js/counter.js"></script>
+</body>
+</html>

@@ -1,9 +1,17 @@
-﻿using ForAnimalsWithLove.ViewModels;
+﻿using ForAnimalsWithLove.ViewModels.IndexModels;
 
 namespace ForAnimalsWithLove.Data.Service.Interfaces
 {
     public interface IHomeService
     {
-        Task<IEnumerable<IndexViewModel>> GetAnimals();
+        //Task<IEnumerable<IndexModel>> GetAnimals();
+
+        Task<IEnumerable<IndexModel>> GetAllAnimalsAsync();
+
+        Task<IEnumerable<IndexForAdoptionModel>> GetAllForAdoption();
+
+        Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();
+
+        Task<IndexCountsModel> GetAllCount();
     }
 }
