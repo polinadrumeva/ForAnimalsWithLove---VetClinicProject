@@ -27,6 +27,9 @@ namespace ForAnimalsWithLove.Data.Models
         public string? Specialization { get; set; }
 
         [Required]
+        public string Photo { get; set; }
+
+        [Required]
         [StringLength(PhoneNumberLength)]
         public string PhoneNumber { get; set; } = null!;
 

@@ -1,15 +1,4 @@
-﻿@using ForAnimalsWithLove.ViewModels.IndexModels;
-@model IndexCountsModel
-
-@{
-    var models = Model;
-    var animalsCount = models.AnimalsCount * 3;
-    var doctorsCount = models.DoctorCount;
-    var adoptCount = models.ForAdoptionCount * 2;
-
-
-}
-
+﻿
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,61 +78,7 @@
             </div>
             <!-- /row -->
         </div>
-        <!-- /container -->
-        <div class="bg-light-custom block-padding">
-            <div class="container">
-                <div id="counter" class="row">
-                    <!-- Counter -->
-                    <div class="col-xl-3 col-md-6">
-                        <div class="counter">
-                            <i class="counter-icon fa fa-users"></i>
-                            <!-- insert your final value on data-count= -->
-                            <div class="counter-value" data-count="1500">@animalsCount</div>
-                            <h3 class="title">Щастливи клиенти</h3>
-                        </div>
-                        <!-- /counter -->
-                    </div>
-                    <!-- /col-lg -->
-                    <!-- Counter -->
-                    <div class="col-xl-3 col-md-6">
-                        <div class="counter">
-                            <i class="counter-icon flaticon-dog-in-front-of-a-man"></i>
-                            <!-- insert your final value on data-count= -->
-                            <div class="counter-value" data-count="14">@doctorsCount</div>
-                            <h3 class="title">Професионалисти</h3>
-                        </div>
-                        <!-- /counter -->
-                    </div>
-                    <!-- /col-lg -->
-                    <!-- Counter -->
-                    <div class="col-xl-3 col-md-6">
-                        <div class="counter">
-                            <i class="counter-icon flaticon-dog-2"></i>
-                            <!-- insert your final value on data-count= -->
-                            <div class="counter-value" data-count="900">@adoptCount</div>
-                            <h3 class="title">Осиновени животни</h3>
-                        </div>
-                        <!-- /counter -->
-                    </div>
-                    <!-- Counter -->
-                    <div class="col-xl-3 col-md-6">
-                        <div class="counter">
-                            <i class="counter-icon flaticon-prize-badge-with-paw-print"></i>
-                            <!-- insert your final value on data-count= -->
-                            <div class="counter-value" data-count="12">3</div>
-                            <h3 class="title">Prizes</h3>
-                        </div>
-                        <!-- /counter -->
-                    </div>
-                    <!-- /col-lg -->
-                    <!-- Counter -->
-                    
-                    <!-- /col-lg -->
-                </div>
-                <!-- /row -->
-            </div>
-            <!-- /container -->
-        </div>
+       
     </div>
     <!-- /page -->
  

@@ -44,7 +44,10 @@ namespace ForAnimalsWithLove.Data.Service.Services
             var doctors = await dbContext.Doctors
                                 .Select(d => new IndexDoctorModel()
                                 {
-                                    FirstName = d.FirstName
+                                    FirstName = d.FirstName,
+                                    LastName = d.LastName,
+                                    Photo = d.Photo,
+                                    Specialization = d.Specialization
                                 })
                                 .ToListAsync();
 

@@ -21,22 +21,20 @@ namespace ForAnimalsWithLove.Controllers
 
 		public async Task<IActionResult> Index()
 		{
-			//var animals = await homeService.GetAnimals();
-			return View();
+            var counts = await homeService.GetAllCount();
+            return View(counts);
 		}
 
 		public async Task<IActionResult> About()
 		{
-			var counts = await homeService.GetAllCount();	
-
-			return View(counts);
+			return View();
 		}
 
-		//public async Task<IActionResult> Index()
-		//{
-		//    var animals = await homeService.GetAnimals();
-		//    return View(animals);
-		//}
+		public async Task<IActionResult> Team()
+		{
+			var doctors = await homeService.GetAllDoctors();
+			return View(doctors);
+		}
 
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

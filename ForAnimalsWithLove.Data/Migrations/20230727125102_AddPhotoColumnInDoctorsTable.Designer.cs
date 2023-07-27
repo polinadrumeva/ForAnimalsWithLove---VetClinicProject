@@ -4,6 +4,7 @@ using ForAnimalsWithLove.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForAnimalsWithLove.Data.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    partial class ForAnimalsWithLoveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230727125102_AddPhotoColumnInDoctorsTable")]
+    partial class AddPhotoColumnInDoctorsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -297,9 +299,8 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("Photo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Photo")
+                        .HasColumnType("int");
 
                     b.Property<string>("Specialization")
                         .HasColumnType("nvarchar(max)");
@@ -529,7 +530,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<DateTime>("Date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 27, 12, 58, 56, 647, DateTimeKind.Utc).AddTicks(5120));
+                        .HasDefaultValue(new DateTime(2023, 7, 27, 12, 51, 2, 414, DateTimeKind.Utc).AddTicks(1038));
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
