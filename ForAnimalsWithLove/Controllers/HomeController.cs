@@ -30,6 +30,11 @@ namespace ForAnimalsWithLove.Controllers
 			return View();
 		}
 
+		public async Task<IActionResult> Contact()
+		{
+            return View();
+        }
+
 		public async Task<IActionResult> Team()
 		{
 			var doctors = await homeService.GetAllDoctors();
