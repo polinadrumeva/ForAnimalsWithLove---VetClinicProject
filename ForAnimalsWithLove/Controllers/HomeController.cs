@@ -30,17 +30,35 @@ namespace ForAnimalsWithLove.Controllers
 			return View();
 		}
 
-		public async Task<IActionResult> Contact()
-		{
-            return View();
-        }
 
-		public async Task<IActionResult> Team()
+		[HttpGet]
+		public async Task<IActionResult> TeamVet()
 		{
 			var doctors = await homeService.GetAllDoctors();
 			return View(doctors);
 		}
 
+		[HttpGet]
+		public async Task<IActionResult> TeamTrainer()
+		{
+			var trainers = await homeService.GetAllTrainers();
+			return View(trainers);
+		}
+
+		public async Task<IActionResult> Halls()
+		{
+			return View();
+		}
+
+		public async Task<IActionResult> Education()
+		{
+			return View();
+		}
+
+		public async Task<IActionResult> Contact()
+		{
+			return View();
+		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

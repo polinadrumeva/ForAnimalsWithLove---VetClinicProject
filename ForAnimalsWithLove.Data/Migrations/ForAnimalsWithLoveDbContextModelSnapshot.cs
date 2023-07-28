@@ -529,7 +529,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<DateTime>("Date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 27, 12, 58, 56, 647, DateTimeKind.Utc).AddTicks(5120));
+                        .HasDefaultValue(new DateTime(2023, 7, 28, 11, 37, 29, 69, DateTimeKind.Utc).AddTicks(5923));
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
@@ -657,6 +657,10 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

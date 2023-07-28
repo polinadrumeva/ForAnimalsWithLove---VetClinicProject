@@ -11,7 +11,8 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
         Task<IEnumerable<IndexForAdoptionModel>> GetAllForAdoption();
 
         Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();
+		Task<IEnumerable<IndexTrainerModel>> GetAllTrainers();
 
-        Task<IndexCountsModel> GetAllCount();
+		Task<IndexCountsModel> GetAllCount();
     }
 }

@@ -46,7 +46,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
                                 {
                                     FirstName = d.FirstName,
                                     LastName = d.LastName,
-                                    Photo = d.Photo,
+                                    ImageUrl = d.Photo,
                                     Specialization = d.Specialization
                                 })
                                 .ToListAsync();
@@ -66,19 +66,33 @@ namespace ForAnimalsWithLove.Data.Service.Services
             return forAdoption;
         }
 
-      
+		public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
+		{
+			var trainers = await dbContext.Trainers
+									.Select(t => new IndexTrainerModel()
+                                    {
+										FirstName = t.FirstName,
+										LastName = t.LastName,
+										ImageUrl = t.Photo
+									})
+									.ToListAsync();
 
-        //public async Task<IEnumerable<IndexModel>> GetAnimals()
-        //{
-        //    //var animals = await dbContext.Animals
-        //    //                              .Select(a => new IndexViewModel()
-        //    //                              {
-        //    //                                  ImageUrl = a.Photo
-        //    //                              })
-        //    //                              .Take(10)
-        //    //                              .ToArrayAsync();
+            return trainers;
+		}
 
-        //    //return animals;
-        //}
-    }
+
+
+		//public async Task<IEnumerable<IndexModel>> GetAnimals()
+		//{
+		//    //var animals = await dbContext.Animals
+		//    //                              .Select(a => new IndexViewModel()
+		//    //                              {
+		//    //                                  ImageUrl = a.Photo
+		//    //                              })
+		//    //                              .Take(10)
+		//    //                              .ToArrayAsync();
+
+		//    //return animals;
+		//}
+	}
 }

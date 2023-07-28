@@ -25,6 +25,9 @@ namespace ForAnimalsWithLove.Data.Models
         public string LastName { get; set; } = null!;
 
         [Required]
+        public string Photo { get; set; } = null!;
+
+        [Required]
         [StringLength(PhoneNumberLength)]
         public string PhoneNumber { get; set; } = null!;
 
