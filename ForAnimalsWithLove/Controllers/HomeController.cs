@@ -55,7 +55,17 @@ namespace ForAnimalsWithLove.Controllers
 			return View();
 		}
 
-		public async Task<IActionResult> Contact()
+        public async Task<IActionResult> Hotels()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Grooming()
+        {
+            return View();
+        }
+
+        public async Task<IActionResult> Contact()
 		{
 			return View();
 		}
