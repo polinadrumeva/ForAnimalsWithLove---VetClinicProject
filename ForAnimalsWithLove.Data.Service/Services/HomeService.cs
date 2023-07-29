@@ -54,45 +54,50 @@ namespace ForAnimalsWithLove.Data.Service.Services
             return doctors;
         }
 
-        public async Task<IEnumerable<IndexForAdoptionModel>> GetAllForAdoption()
+
+        public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
         {
-            var forAdoption = await dbContext.Animals
-                                .Select(a => new IndexForAdoptionModel()
-                                {
-                                    Name = a.Name
-                                })
-                                .ToListAsync(); 
-
-            return forAdoption;
-        }
-
-		public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
-		{
-			var trainers = await dbContext.Trainers
-									.Select(t => new IndexTrainerModel()
+            var trainers = await dbContext.Trainers
+                                    .Select(t => new IndexTrainerModel()
                                     {
-										FirstName = t.FirstName,
-										LastName = t.LastName,
-										ImageUrl = t.Photo
-									})
-									.ToListAsync();
+                                        FirstName = t.FirstName,
+                                        LastName = t.LastName,
+                                        ImageUrl = t.Photo
+                                    })
+                                    .ToListAsync();
 
             return trainers;
-		}
+        }
+
+        public async Task<IEnumerable<IndexSearchHomeModel>> GetAllForAdoption()
+        {
+            var animals = await dbContext.Animals
+                                          .Where(a => a.SearchHome != null)
+                                          .Select(a => new IndexSearchHomeModel()
+                                          {
+                                              Name = a.Name,
+                                              Age = a.Age,
+                                              Photo = a.Photo,
+                                              Habits = a.SearchHome.Habits
+                                          })
+                                          .ToListAsync();
+
+            return animals;
+        }
 
 
 
-		//public async Task<IEnumerable<IndexModel>> GetAnimals()
-		//{
-		//    //var animals = await dbContext.Animals
-		//    //                              .Select(a => new IndexViewModel()
-		//    //                              {
-		//    //                                  ImageUrl = a.Photo
-		//    //                              })
-		//    //                              .Take(10)
-		//    //                              .ToArrayAsync();
+        //public async Task<IEnumerable<IndexModel>> GetAnimals()
+        //{
+        //    //var animals = await dbContext.Animals
+        //    //                              .Select(a => new IndexViewModel()
+        //    //                              {
+        //    //                                  ImageUrl = a.Photo
+        //    //                              })
+        //    //                              .Take(10)
+        //    //                              .ToArrayAsync();
 
-		//    //return animals;
-		//}
-	}
+        //    //return animals;
+        //}
+    }
 }

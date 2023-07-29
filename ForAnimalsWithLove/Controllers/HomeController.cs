@@ -65,6 +65,12 @@ namespace ForAnimalsWithLove.Controllers
             return View();
         }
 
+		public async Task<IActionResult> Aboption()
+		{
+			var animalsForAdoption = await homeService.GetAllForAdoption();
+            return View(animalsForAdoption);
+        }
+
         public async Task<IActionResult> Contact()
 		{
 			return View();
