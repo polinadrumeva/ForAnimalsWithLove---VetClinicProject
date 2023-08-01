@@ -25,7 +25,7 @@ namespace ForAnimalsWithLove.Controllers
             return View(counts);
 		}
 
-		public async Task<IActionResult> About()
+		public IActionResult About()
 		{
 			return View();
 		}
@@ -45,22 +45,22 @@ namespace ForAnimalsWithLove.Controllers
 			return View(trainers);
 		}
 
-		public async Task<IActionResult> Halls()
+		public IActionResult Halls()
 		{
 			return View();
 		}
 
-		public async Task<IActionResult> Education()
+		public IActionResult Education()
 		{
 			return View();
 		}
 
-        public async Task<IActionResult> Hotels()
+        public IActionResult Hotels()
         {
             return View();
         }
 
-        public async Task<IActionResult> Grooming()
+        public IActionResult Grooming()
         {
             return View();
         }
@@ -71,7 +71,7 @@ namespace ForAnimalsWithLove.Controllers
             return View(animalsForAdoption);
         }
 
-        public async Task<IActionResult> Contact()
+        public IActionResult Contact()
 		{
 			return View();
 		}
