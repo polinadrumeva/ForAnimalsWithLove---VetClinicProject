@@ -40,7 +40,10 @@
     <!-- Colors CSS -->
     <link href="~/styles/maincolors.css" rel="stylesheet">
     <!-- LayerSlider CSS -->
-    <link rel="stylesheet" href="~/vendor/layerslider/css/layerslider.css">
+    <link rel="stylesheet" href="~/vendor/layerslider/css/layerslider.css" data-inprogress>
+    <link rel="stylesheet" href="~/vendor/layerslider/skins/outline/skin.css" type="te">
+
+
 </head>
 <!-- ==== body starts ==== -->
 <body id="top">
@@ -172,8 +175,9 @@
             <!-- services carousel -->
             <div class="bg-light-custom block-padding border-irregular1">
                 <div id="owl-services" class="container owl-carousel owl-theme">
+                    <div class="carousel-inner">
                     <!-- service 1  -->
-                    <div class="col-md-12 p-3">
+                    <div class="carousel-item col-md-12 p-3">
                         <div class="serviceBox">
                             <!-- service icon -->
                             <div class="service-icon">
@@ -191,7 +195,7 @@
                         </div>
                     </div>
                     <!-- service 2  -->
-                    <div class="col-md-12 p-3">
+                    <div class="carousel-item col-md-12 p-3">
                         <div class="serviceBox">
                             <!-- service icon -->
                             <div class="service-icon">
@@ -208,7 +212,7 @@
                         </div>
                     </div>
                     <!-- service 3  -->
-                    <div class="col-md-12 p-3">
+                    <div class="carousel-item  col-md-12 p-3">
                         <div class="serviceBox">
                             <!-- service icon -->
                             <div class="service-icon">
@@ -225,7 +229,7 @@
                         </div>
                     </div>
                     <!-- service 4 -->
-                    <div class="col-md-12 p-3">
+                        <div class="carousel-item col-md-12 p-3">
                         <div class="serviceBox">
                             <!-- service icon -->
                             <div class="service-icon">
@@ -242,7 +246,7 @@
                         </div>
                     </div>
                     <!-- service 5 -->
-                    <div class="col-md-12 p-3">
+                        <div class="carousel-item col-md-12 p-3">
                         <div class="serviceBox">
                             <!-- service icon -->
                             <div class="service-icon">
@@ -259,7 +263,7 @@
                         </div>
                     </div>
                     <!-- service 6 -->
-                    <div class="col-md-12 p-3">
+                        <div class="carousel-item col-md-12 p-3">
                         <div class="serviceBox">
                             <!-- service icon -->
                             <div class="service-icon">
@@ -276,7 +280,7 @@
                         </div>
                     </div>
                     <!--col-md-12  -->
-                   
+                    </div>
                 <!-- /carousel-item -->
                 </div>
                 <!-- /owl-services -->
@@ -379,7 +383,7 @@
                             <i class="counter-icon flaticon-dog-2"></i>
                             <!-- insert your final value on data-count= -->
                             <div class="counter-value" data-count="900">@adoptCount</div>
-                            <h3 class="title">Осиновени животни</h3>
+                            <h3 class="title">Осиновени</h3>
                         </div>
                         <!-- /counter -->
                     </div>
@@ -389,7 +393,7 @@
                             <i class="counter-icon flaticon-prize-badge-with-paw-print"></i>
                             <!-- insert your final value on data-count= -->
                             <div class="counter-value" data-count="12">3</div>
-                            <h3 class="title">Prizes</h3>
+                            <h3 class="title">Награди</h3>
                         </div>
                         <!-- /counter -->
                     </div>
@@ -481,6 +485,7 @@
     <script src="~/js/prefixfree.min.js"></script>
     <!-- GreenSock -->
     <script src="~/vendor/layerslider/js/greensock.js"></script>
+    
     <!-- LayerSlider script files -->
     <script src="~/vendor/layerslider/js/layerslider.transitions.js"></script>
     <script src="~/vendor/layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
