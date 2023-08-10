@@ -283,7 +283,7 @@ Last change:27 June 2023
      width:100% !important;
 }
  .header-wrapper {
-     width: 100%!important;
+     width: 100% !important;
 }
  .header-wrapper .header-text {
      margin-top:15%;
@@ -291,7 +291,7 @@ Last change:27 June 2023
 }
  .ls-outline .ls-nav-prev, .ls-outline .ls-nav-next{
      z-index:99!important;
-     margin-top:40px!important;
+     margin-top:40px !important;
 }
 /* Slider text boxes */
  .header-text.dog-elements:before {
