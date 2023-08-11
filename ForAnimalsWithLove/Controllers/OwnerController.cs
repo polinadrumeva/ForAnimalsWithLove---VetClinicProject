@@ -14,16 +14,18 @@ namespace ForAnimalsWithLove.Controllers
              this.ownerService = ownerService;
         }
 
-        public async Task<IActionResult> Register()
+        public async Task<IActionResult> Register(string phoneNumber)
         {
-   //         var result = await ownerService.OwnerExistByPhone();
-   //         if (!result)
-   //         {
-			//	return RedirectToAction("Index", "Home");
-			//}
-   //         else
-   //         {
+            var result = await ownerService.OwnerExistByPhone(phoneNumber);
+
+            if (!result)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
                 return RedirectToAction("Login", "Home");
+            }
 
         }
     }
