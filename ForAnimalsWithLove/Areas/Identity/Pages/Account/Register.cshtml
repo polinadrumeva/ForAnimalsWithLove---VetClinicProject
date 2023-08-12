@@ -1,6 +1,7 @@
 ﻿@page
-@using ForAnimalsWithLove.ViewModels.Owners;
+@using ForAnimalsWithLove.ViewModels.IndexModels;
 @model RegistrationOwnerViewModel
+
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -51,7 +52,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-phone"></i></span>
 							</div>
-							<input type="password" class="form-control" placeholder="тел.номер, който сте ни предоставили" asp-for="@Model.PhoneNumber" class="form-control" aria-required="true" />
+							<input type="text" runat="server" class="form-control" placeholder="тел.номер, който сте ни предоставили" asp-for="@Model.PhoneNumber" class="form-control" aria-required="true" />
 							<span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
 						</div>
 						<div class="form-group">

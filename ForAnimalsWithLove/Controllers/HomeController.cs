@@ -4,6 +4,7 @@ using System.Diagnostics;
 using ForAnimalsWithLove.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using ForAnimalsWithLove.Data.Service.Interfaces;
+using ForAnimalsWithLove.Data.Service.Services;
 
 namespace ForAnimalsWithLove.Controllers
 {
@@ -74,6 +75,19 @@ namespace ForAnimalsWithLove.Controllers
         public IActionResult Contact()
 		{
 			return View();
+		}
+
+		public async Task<IActionResult> Register(string phoneNumber)
+		{
+			var result = await homeService.OwnerExistByPhone(phoneNumber);
+
+			if (result != null)
+			{ 
+				return RedirectToPage("/Account/Login", new { area = "Identity"});
+			}
+
+			return RedirectToAction("Index", "Home");
+
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

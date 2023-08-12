@@ -4,8 +4,6 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 {
     public interface IHomeService
     {
-        //Task<IEnumerable<IndexModel>> GetAnimals();
-
         Task<IEnumerable<IndexModel>> GetAllAnimalsAsync();
 
         Task<IEnumerable<IndexSearchHomeModel>> GetAllForAdoption();
@@ -14,5 +12,7 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task<IEnumerable<IndexTrainerModel>> GetAllTrainers();
 
 		Task<IndexCountsModel> GetAllCount();
-    }
+
+		Task<RegistrationOwnerViewModel> OwnerExistByPhone(string phone);
+	}
 }

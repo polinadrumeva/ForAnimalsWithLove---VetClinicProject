@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 using ForAnimalsWithLove.Data.Service.Interfaces;
-using ForAnimalsWithLove.ViewModels.Owners;
+using ForAnimalsWithLove.ViewModels.IndexModels;
 
 namespace ForAnimalsWithLove.Data.Service.Services
 {
@@ -30,11 +30,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
             return result;
         }
 
-        //This should be in a different service for administrators
-        public async Task<bool> OwnerExistByPhone(string phone)
-        {
-            var result = await dbContext.Owners.AnyAsync(o => o.PhoneNumber == phone);
-            return result;
-        }
+
+        
     }
 }

@@ -87,17 +87,17 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 
 
-        //public async Task<IEnumerable<IndexModel>> GetAnimals()
-        //{
-        //    //var animals = await dbContext.Animals
-        //    //                              .Select(a => new IndexViewModel()
-        //    //                              {
-        //    //                                  ImageUrl = a.Photo
-        //    //                              })
-        //    //                              .Take(10)
-        //    //                              .ToArrayAsync();
-
-        //    //return animals;
-        //}
-    }
+		public async Task<RegistrationOwnerViewModel> OwnerExistByPhone(string phone)
+		{
+			var result = await dbContext.Owners
+                                        .Where(o => o.PhoneNumber == phone)
+                                        .Select(o => new RegistrationOwnerViewModel()
+                                        { 
+                                            PhoneNumber = o.PhoneNumber,
+                                            FirstName = o.FirstName
+                                        }).FirstOrDefaultAsync();
+                                        
+			return result;
+		}
+	}
 }
