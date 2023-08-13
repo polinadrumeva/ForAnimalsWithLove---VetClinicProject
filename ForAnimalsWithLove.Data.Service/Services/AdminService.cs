@@ -98,5 +98,10 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			return trainers;
 		}
-	}
+
+        public async Task<AdminAnimalModel> GetAnimalById(string animalId)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

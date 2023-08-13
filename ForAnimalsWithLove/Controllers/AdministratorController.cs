@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 using ForAnimalsWithLove.Data.Service.Interfaces;
+using ForAnimalsWithLove.ViewModels.Admins;
 
 namespace ForAnimalsWithLove.Controllers
 {
@@ -26,11 +27,9 @@ namespace ForAnimalsWithLove.Controllers
             return View(allAnimals);
         }
 
-        public async Task<IActionResult> Details()
+        public IActionResult AnimalDetails(string id)
         {
-            var allAnimals = await adminService.GetAllAnimals();
-
-            return View(allAnimals);
+            return View(new AdminAnimalModel());
         }
 
         public async Task<IActionResult> AllDoctors()
@@ -39,7 +38,10 @@ namespace ForAnimalsWithLove.Controllers
 
 			return View(allDoctors);
 		}
-		
+        public IActionResult DoctorDetails()
+        {
+            return View();
+        }
         public async Task<IActionResult> AllTrainers()
         {
 			var allTrainers = await adminService.GetAllTrainers();
