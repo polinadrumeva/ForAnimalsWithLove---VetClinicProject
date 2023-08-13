@@ -19,7 +19,7 @@ namespace ForAnimalsWithLove.Controllers
             return View();
         }
 
-        public async Task<IActionResult> All()
+        public async Task<IActionResult> AllAnimals()
         {
             var allAnimals = await adminService.GetAllAnimals();
 
@@ -31,6 +31,20 @@ namespace ForAnimalsWithLove.Controllers
             var allAnimals = await adminService.GetAllAnimals();
 
             return View(allAnimals);
+        }
+
+        public async Task<IActionResult> AllDoctors()
+        {
+            var allDoctors = await adminService.GetAllDoctors();
+
+			return View(allDoctors);
+		}
+		
+        public async Task<IActionResult> AllTrainers()
+        {
+			var allTrainers = await adminService.GetAllTrainers();
+
+            return View(allTrainers);
         }
     }
 }

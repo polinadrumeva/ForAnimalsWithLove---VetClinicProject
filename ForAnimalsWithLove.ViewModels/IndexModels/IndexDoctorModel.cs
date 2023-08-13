@@ -9,5 +9,7 @@
         public string ImageUrl { get; set; } = null!;
 
         public string Specialization { get; set; } = null!;
+
+        public string PhoneNumber { get; set; } = null!;
     }
 }

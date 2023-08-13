@@ -1,5 +1,6 @@
 ﻿using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.ViewModels.Admins;
+using ForAnimalsWithLove.ViewModels.IndexModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace ForAnimalsWithLove.Data.Service.Services
@@ -67,5 +68,35 @@ namespace ForAnimalsWithLove.Data.Service.Services
             return result;
         }
 
-    }
+		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
+		{
+			var doctors = await dbContext.Doctors
+								.Select(d => new IndexDoctorModel()
+								{
+									FirstName = d.FirstName,
+									LastName = d.LastName,
+									ImageUrl = d.Photo,
+									Specialization = d.Specialization,
+                                    PhoneNumber = d.PhoneNumber
+								})
+								.ToListAsync();
+
+			return doctors;
+		}
+
+		public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
+		{
+			var trainers = await dbContext.Trainers
+									.Select(t => new IndexTrainerModel()
+									{
+										FirstName = t.FirstName,
+										LastName = t.LastName,
+										ImageUrl = t.Photo,
+                                        PhoneNumber = t.PhoneNumber
+									})
+									.ToListAsync();
+
+			return trainers;
+		}
+	}
 }
