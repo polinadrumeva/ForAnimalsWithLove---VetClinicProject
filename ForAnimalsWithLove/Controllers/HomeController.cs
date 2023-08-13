@@ -82,11 +82,14 @@ namespace ForAnimalsWithLove.Controllers
 			var result = await homeService.OwnerExistByPhone(phoneNumber);
 
 			if (result != null)
-			{ 
-				return RedirectToPage("/Account/Login", new { area = "Identity"});
+			{
+				return RedirectToPage("/Account/Login");
+			}
+			else 
+			{
+				return RedirectToAction("Index", "Home");
 			}
 
-			return RedirectToAction("Index", "Home");
 
 		}
 

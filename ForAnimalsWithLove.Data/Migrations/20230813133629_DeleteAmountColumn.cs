@@ -5,43 +5,43 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ForAnimalsWithLove.Data.Migrations
 {
-    public partial class AddPhotoColumnInDoctorsTable : Migration
+    public partial class DeleteAmountColumn : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "Amount",
+                table: "HospitalRecords");
+
             migrationBuilder.AlterColumn<DateTime>(
                 name: "Date",
                 table: "Operations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 7, 27, 12, 51, 2, 414, DateTimeKind.Utc).AddTicks(1038),
+                defaultValue: new DateTime(2023, 8, 13, 13, 36, 28, 917, DateTimeKind.Utc).AddTicks(6838),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 7, 25, 14, 36, 37, 337, DateTimeKind.Utc).AddTicks(6406));
-
-            migrationBuilder.AddColumn<int>(
-                name: "Photo",
-                table: "Doctors",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+                oldDefaultValue: new DateTime(2023, 8, 13, 9, 50, 38, 375, DateTimeKind.Utc).AddTicks(6632));
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Photo",
-                table: "Doctors");
-
             migrationBuilder.AlterColumn<DateTime>(
                 name: "Date",
                 table: "Operations",
                 type: "datetime2",
                 nullable: false,
-                defaultValue: new DateTime(2023, 7, 25, 14, 36, 37, 337, DateTimeKind.Utc).AddTicks(6406),
+                defaultValue: new DateTime(2023, 8, 13, 9, 50, 38, 375, DateTimeKind.Utc).AddTicks(6632),
                 oldClrType: typeof(DateTime),
                 oldType: "datetime2",
-                oldDefaultValue: new DateTime(2023, 7, 27, 12, 51, 2, 414, DateTimeKind.Utc).AddTicks(1038));
+                oldDefaultValue: new DateTime(2023, 8, 13, 13, 36, 28, 917, DateTimeKind.Utc).AddTicks(6838));
+
+            migrationBuilder.AddColumn<decimal>(
+                name: "Amount",
+                table: "HospitalRecords",
+                type: "decimal(18,2)",
+                nullable: false,
+                defaultValue: 0m);
         }
     }
 }

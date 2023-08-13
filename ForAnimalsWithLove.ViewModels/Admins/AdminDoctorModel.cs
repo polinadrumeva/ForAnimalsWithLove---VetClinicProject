@@ -2,20 +2,10 @@
 
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.Doctor;
 
-namespace ForAnimalsWithLove.Data.Models
+namespace ForAnimalsWithLove.ViewModels.Admins
 {
-    public class Trainer
+    public class AdminDoctorModel
     {
-        public Trainer()
-        {
-            this.Id = Guid.NewGuid();
-            this.Educations = new HashSet<Education>();
-        }
-
-
-        [Key]
-        public Guid Id { get; set; }
-
         [Required]
         [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
         public string FirstName { get; set; } = null!;
@@ -25,18 +15,9 @@ namespace ForAnimalsWithLove.Data.Models
         public string LastName { get; set; } = null!;
 
         [Required]
-        public string Photo { get; set; } = null!;
-
-        [Required]
         [StringLength(PhoneNumberLength)]
         public string PhoneNumber { get; set; } = null!;
 
-		public Guid? UserId { get; set; }
-
-		public virtual ApplicationUser User { get; set; } = null!;
-		public virtual ICollection<Education> Educations { get; set; }
-
+        
     }
-
-
 }

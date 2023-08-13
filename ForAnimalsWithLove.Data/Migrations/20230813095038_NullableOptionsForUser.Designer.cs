@@ -12,14 +12,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForAnimalsWithLove.Data.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    [Migration("20230725143637_AddDateColumn")]
-    partial class AddDateColumn
+    [Migration("20230813095038_NullableOptionsForUser")]
+    partial class NullableOptionsForUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.18")
+                .HasAnnotation("ProductVersion", "6.0.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -218,9 +218,6 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<int>("Days")
                         .HasColumnType("int");
 
@@ -299,10 +296,19 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Specialization")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Doctors");
                 });
@@ -312,12 +318,6 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("AmountPerDay")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Days")
                         .HasColumnType("int");
@@ -337,9 +337,6 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("AnimalId")
                         .HasColumnType("uniqueidentifier");
@@ -463,9 +460,6 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<decimal>("AmountPerDay")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -521,13 +515,10 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<DateTime>("Date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 7, 25, 14, 36, 37, 337, DateTimeKind.Utc).AddTicks(6406));
+                        .HasDefaultValue(new DateTime(2023, 8, 13, 9, 50, 38, 375, DateTimeKind.Utc).AddTicks(6632));
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
@@ -578,7 +569,12 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Owners");
                 });
@@ -656,7 +652,16 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Trainers");
                 });
@@ -884,6 +889,15 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Navigation("Doctor");
                 });
 
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
+                {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Trainer", "Trainer")
@@ -974,6 +988,15 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Navigation("HospitalRecord");
                 });
 
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Owner", b =>
+                {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.SearchHome", b =>
                 {
                     b.HasOne("ForAnimalsWithLove.Data.Models.Animal", "Animal")
@@ -990,6 +1013,15 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasOne("ForAnimalsWithLove.Data.Models.Operation", null)
                         .WithMany("Tests")
                         .HasForeignKey("OperationId");
+                });
+
+            modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Trainer", b =>
+                {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>

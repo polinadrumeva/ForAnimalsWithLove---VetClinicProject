@@ -25,7 +25,5 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(ServiceMaxLength, MinimumLength = ServiceMinLength)]
         public string Service { get; set; } = null!;
 
-        [Required]
-        public decimal Amount { get; set; }
     }
 }

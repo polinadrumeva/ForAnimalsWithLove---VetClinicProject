@@ -2,19 +2,10 @@
 
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.HospitalRecord;
 
-namespace ForAnimalsWithLove.Data.Models
+namespace ForAnimalsWithLove.ViewModels.Admins
 {
-    public class HospitalRecord
+    public class AdminHospitalModel
     {
-        public HospitalRecord()
-        {
-            this.Id = Guid.NewGuid();
-            this.Operations = new HashSet<Operation>();
-        }
-
-        [Key]
-        public Guid Id { get; set; }
-
         [Required]
         public DateTime DateOfAcceptance { get; set; }
 
@@ -34,9 +25,8 @@ namespace ForAnimalsWithLove.Data.Models
 
         public Guid HealthRecordId { get; set; }
 
-        public HealthRecord HealthRecord { get; set; } = null!;
+        public AdminHealthModel HealthRecord { get; set; } = null!;
 
-        public ICollection<Operation> Operations { get; set; } 
+        public ICollection<AdminOperationModel> Operations { get; set; }
     }
-
 }

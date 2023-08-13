@@ -2,19 +2,10 @@
 
 using static ForAnimalsWithLove.Common.Validations.EntityValidations.Owner;
 
-namespace ForAnimalsWithLove.Data.Models
+namespace ForAnimalsWithLove.ViewModels.Admins
 {
-    public class Owner
+    public class AdminOwnerModel
     {
-        public Owner()
-        {
-            this.Id = Guid.NewGuid();
-            this.MyAnimals = new HashSet<Animal>();
-        }
-
-        [Key]
-        public Guid Id { get; set; }
-
         [Required]
         [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
         public string FirstName { get; set; } = null!;
@@ -32,11 +23,5 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         public string Address { get; set; } = null!;
-
-		public Guid? UserId { get; set; }
-
-		public virtual ApplicationUser User { get; set; } = null!;
-
-		public virtual ICollection<Animal> MyAnimals { get; set; }
     }
 }

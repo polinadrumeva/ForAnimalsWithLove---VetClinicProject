@@ -20,11 +20,7 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         public int Days { get; set; }
 
-        [Required]
-        public decimal AmountPerDay { get; set; }
-
-        [Required]
-        public decimal Amount { get; set; }
+        
     }
 
 }

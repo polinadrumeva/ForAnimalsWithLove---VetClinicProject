@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ForAnimalsWithLove.Data.Migrations
 {
-    public partial class InitualDb : Migration
+    public partial class Initual : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,64 +62,17 @@ namespace ForAnimalsWithLove.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Doctors",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Specialization = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Doctors", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Hotels",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    AmountPerDay = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Location = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Hotels", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Owners",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Owners", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Trainers",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Trainers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -250,6 +203,96 @@ namespace ForAnimalsWithLove.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Doctors",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Specialization = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Doctors", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Doctors_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Owners",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Owners", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Owners_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Trainers",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trainers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Trainers_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HotelId = table.Column<int>(type: "int", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Days = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bookings_Hotels_HotelId",
+                        column: x => x.HotelId,
+                        principalTable: "Hotels",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "DirectionsDoctors",
                 columns: table => new
                 {
@@ -269,28 +312,6 @@ namespace ForAnimalsWithLove.Data.Migrations
                         name: "FK_DirectionsDoctors_Doctors_DoctorId",
                         column: x => x.DoctorId,
                         principalTable: "Doctors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Bookings",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    HotelId = table.Column<int>(type: "int", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Days = table.Column<int>(type: "int", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bookings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Bookings_Hotels_HotelId",
-                        column: x => x.HotelId,
-                        principalTable: "Hotels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -330,9 +351,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TrainerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Days = table.Column<int>(type: "int", nullable: false),
-                    AmountPerDay = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Days = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -370,37 +389,12 @@ namespace ForAnimalsWithLove.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AnimalsDoctors",
-                columns: table => new
-                {
-                    AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AnimalsDoctors", x => new { x.AnimalId, x.DoctorId });
-                    table.ForeignKey(
-                        name: "FK_AnimalsDoctors_Animals_AnimalId",
-                        column: x => x.AnimalId,
-                        principalTable: "Animals",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AnimalsDoctors_Doctors_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Groomings",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AnimalId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Service = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Service = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -427,9 +421,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     AnnualVaccine = table.Column<bool>(type: "bit", nullable: false),
                     GeneralCondition = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     PrescribedTreatment = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    LastReview = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UpcomingReview = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HospitalRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HospitalRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     AdministratorId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -524,14 +516,41 @@ namespace ForAnimalsWithLove.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Medicals",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HealthRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Reason = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    Constatation = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Medicals", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Medicals_Doctors_DoctorId",
+                        column: x => x.DoctorId,
+                        principalTable: "Doctors",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Medicals_HealthRecords_HealthRecordId",
+                        column: x => x.HealthRecordId,
+                        principalTable: "HealthRecords",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Operations",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     HospitalRecordId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OperationReason = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 7, 24, 15, 12, 51, 315, DateTimeKind.Utc).AddTicks(3447)),
-                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2023, 8, 13, 8, 14, 7, 983, DateTimeKind.Utc).AddTicks(8379)),
                     DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
@@ -585,11 +604,6 @@ namespace ForAnimalsWithLove.Data.Migrations
                 name: "IX_AnimalsBookings_BookingId",
                 table: "AnimalsBookings",
                 column: "BookingId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AnimalsDoctors_DoctorId",
-                table: "AnimalsDoctors",
-                column: "DoctorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AnimalsEducations_EducationId",
@@ -646,6 +660,11 @@ namespace ForAnimalsWithLove.Data.Migrations
                 column: "DoctorId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Doctors_UserId",
+                table: "Doctors",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Educations_TrainerId",
                 table: "Educations",
                 column: "TrainerId");
@@ -679,6 +698,16 @@ namespace ForAnimalsWithLove.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Medicals_DoctorId",
+                table: "Medicals",
+                column: "DoctorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Medicals_HealthRecordId",
+                table: "Medicals",
+                column: "HealthRecordId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Operations_DoctorId",
                 table: "Operations",
                 column: "DoctorId");
@@ -687,6 +716,11 @@ namespace ForAnimalsWithLove.Data.Migrations
                 name: "IX_Operations_HospitalRecordId",
                 table: "Operations",
                 column: "HospitalRecordId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Owners_UserId",
+                table: "Owners",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_SearchHomes_AnimalId",
@@ -698,15 +732,17 @@ namespace ForAnimalsWithLove.Data.Migrations
                 name: "IX_Tests_OperationId",
                 table: "Tests",
                 column: "OperationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Trainers_UserId",
+                table: "Trainers",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "AnimalsBookings");
-
-            migrationBuilder.DropTable(
-                name: "AnimalsDoctors");
 
             migrationBuilder.DropTable(
                 name: "AnimalsEducations");
@@ -731,6 +767,9 @@ namespace ForAnimalsWithLove.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Groomings");
+
+            migrationBuilder.DropTable(
+                name: "Medicals");
 
             migrationBuilder.DropTable(
                 name: "SearchHomes");
@@ -775,10 +814,10 @@ namespace ForAnimalsWithLove.Data.Migrations
                 name: "Animals");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Owners");
 
             migrationBuilder.DropTable(
-                name: "Owners");
+                name: "AspNetUsers");
         }
     }
 }
