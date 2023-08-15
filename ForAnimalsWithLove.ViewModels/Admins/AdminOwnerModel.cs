@@ -8,20 +8,25 @@ namespace ForAnimalsWithLove.ViewModels.Admins
     {
         [Required]
         [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
+        [Display(Name = "Име")]
         public string FirstName { get; set; } = null!;
 
-        public string? MiddleName { get; set; }
+		[Display(Name = "Презиме")]
+		public string? MiddleName { get; set; }
 
         [Required]
         [StringLength(LastNameMaxLength, MinimumLength = LastNameMinLength)]
-        public string LastName { get; set; } = null!;
+		[Display(Name = "Фамилия")]
+		public string LastName { get; set; } = null!;
 
         [Required]
         [StringLength(PhoneNumberLength)]
-        public string PhoneNumber { get; set; } = null!;
+		[Display(Name = "Телефонен номер")]
+		public string PhoneNumber { get; set; } = null!;
 
         [Required]
         [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
-        public string Address { get; set; } = null!;
+		[Display(Name = "Адрес")]
+		public string Address { get; set; } = null!;
     }
 }
