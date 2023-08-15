@@ -44,7 +44,14 @@ namespace ForAnimalsWithLove.Controllers
 
 			return View(allDoctors);
 		}
-        public IActionResult DoctorDetails()
+
+		[HttpGet]
+		public async Task<IActionResult> AddDoctor()
+		{
+			return View();
+		}
+
+		public IActionResult DoctorDetails()
         {
             return View();
         }
