@@ -48,9 +48,30 @@
 				<span asp-validation-for="Birthdate" class="small textdanger"></span>
 			</div>
 			
-			@*<div class="text-center">
-				<input class="btn btn-primary mt-3" type="submit" value="Запази" />
-			</div>*@
+			<div class="form-group">
+				<label asp-for="DoesHasOwner"></label>
+				<br>
+				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" value="T" onclick="checkedOnClick(this)" />
+				<label> Да</label>
+				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" value="F" onclick="checkedOnClick(this)" />
+				<label> Не</label><br>
+				<span asp-validation-for="DoesHasOwner" class="small textdanger"></span>
+				<!-- Script -->
+				<script type="text/javascript">
+					function checkedOnClick(el) {
+
+						// Select all checkboxes by class
+						var checkboxesList = document.getElementsByName("doesHasOwner");
+						for (var i = 0; i < checkboxesList.length; i++) {
+							checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+						}
+
+						el.checked = true; // Checked clicked checkbox
+					}
+				</script>
+				
+			</div>
+
 		</form>
 	</div>
 </div>
