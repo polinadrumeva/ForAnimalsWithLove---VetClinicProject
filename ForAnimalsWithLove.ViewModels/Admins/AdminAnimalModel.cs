@@ -8,32 +8,42 @@ namespace ForAnimalsWithLove.ViewModels.Admins
     {
         [Required]
         [StringLength(NameMaxLength, MinimumLength = NameMinLength)]
+        [Display(Name = "Име")]
         public string Name { get; set; } = null!;
 
         [Required]
         [Range(AgeMinValue, AgeMaxValue)]
+        [Display(Name = "Възраст")]
         public int Age { get; set; }
 
+        [Display(Name = "Снимка")]
         public string? Photo { get; set; }
 
         [Required]
         [StringLength(KindOfAnimalMaxLength, MinimumLength = KindOfAnimalMinLength)]
+        [Display(Name = "Вид животно")]
         public string KindOfAnimal { get; set; } = null!;
 
         [Required]
         [StringLength(BreedMaxLength, MinimumLength = BreedMinLength)]
+        [Display(Name = "Порода")]
         public string Breed { get; set; } = null!;
 
         [Required]
+        [StringLength(SexMaxLength, MinimumLength = SexMinLength)]
+        [Display(Name = "Пол")]
         public char Sex { get; set; }
 
+        [Display(Name = "Родено")]
         public DateTime Birthdate { get; set; }
 
         [Required]
         [StringLength(ColorMaxLength, MinimumLength = ColorMinLength)]
+        [Display(Name = "Цвят")]
         public string Color { get; set; } = null!;
 
         [Required]
+        [Display(Name = "Има ли собственик")]
         public bool DoesHasOwner { get; set; }
 
         public Guid? OwnerId { get; set; }

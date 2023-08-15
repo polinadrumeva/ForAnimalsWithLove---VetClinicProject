@@ -14,6 +14,8 @@
             public const int BreedMaxLength = 30;
             public const int ColorMinLength = 2;
             public const int ColorMaxLength = 30;
+            public const int SexMinLength = 1;
+            public const int SexMaxLength = 1;
 
         }
 

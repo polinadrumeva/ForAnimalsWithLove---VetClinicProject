@@ -27,6 +27,12 @@ namespace ForAnimalsWithLove.Controllers
             return View(allAnimals);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> AddAnimals()
+        {
+			return View();
+		}
+
         public IActionResult AnimalDetails(string id)
         {
             return View(new AdminAnimalModel());

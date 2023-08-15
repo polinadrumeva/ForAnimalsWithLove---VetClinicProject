@@ -1,0 +1,56 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminAnimalModel
+
+<h5 class="text-secondary-emphasis">Данни на животното:</h5>
+<div class="row">
+	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+		<form method="post">
+			<div class="form-group">
+				<label asp-for="Name"></label>
+				<input asp-for="Name" class="form-control" placeholder="Име...">
+				<span asp-validation-for="Name" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Age"></label>
+				<input asp-for="Age" class="form-control"
+					   placeholder="Възраст...">
+				<span asp-validation-for="Age" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="KindOfAnimal"></label>
+				<input asp-for="KindOfAnimal" class="form-control"
+						  placeholder="Вид...">
+				<span asp-validation-for="KindOfAnimal" class="small textdanger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Breed"></label>
+				<input asp-for="Breed" class="form-control" placeholder="Порода...">
+				<span asp-validation-for="Breed" class="small textdanger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Color"></label>
+				<input asp-for="Color" class="form-control" placeholder="Цвят...">
+				<span asp-validation-for="Color" class="small textdanger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Photo"></label>
+				<input asp-for="Photo" class="form-control" placeholder="Снимка..." />
+				<span asp-validation-for="Photo" class="small textdanger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Sex"></label>
+				<input asp-for="Sex" class="form-control" placeholder="F/M..." />
+				<span asp-validation-for="Sex" class="small textdanger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Birthdate"></label>
+				<input asp-for="Birthdate" class="form-control" placeholder="Дата на раждане..." />
+				<span asp-validation-for="Birthdate" class="small textdanger"></span>
+			</div>
+			
+			@*<div class="text-center">
+				<input class="btn btn-primary mt-3" type="submit" value="Запази" />
+			</div>*@
+		</form>
+	</div>
+</div>
