@@ -7,7 +7,7 @@
             public const int NameMinLength = 2;
             public const int NameMaxLength = 20;
             public const int AgeMinValue = 0;
-            public const int AgeMaxValue = 50;
+            public const int AgeMaxValue = 100;
             public const int KindOfAnimalMinLength = 2;
             public const int KindOfAnimalMaxLength = 30;
             public const int BreedMinLength = 2;

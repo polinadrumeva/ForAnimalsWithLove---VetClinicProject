@@ -61,5 +61,11 @@ namespace ForAnimalsWithLove.Controllers
 
             return View(allTrainers);
         }
-    }
+
+		[HttpGet]
+		public async Task<IActionResult> AddTrainer()
+		{
+			return View();
+		}
+	}
 }

@@ -1,0 +1,72 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminTrainerModel
+
+@{
+	ViewBag.Title = "Добави треньор";
+}
+<head>
+	<!-- Bootstrap core CSS -->
+	<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- style CSS -->
+	<link href="~/css/style.css" rel="stylesheet">
+	<!-- plugins CSS -->
+	<link href="~/css/plugins.css" rel="stylesheet">
+	<!-- Colors CSS -->
+	<link href="~/styles/maincolors.css" rel="stylesheet">
+</head>
+
+<div class="page pb-0">
+	<div class="section-heading" data-aos="zoom-in">
+		<h3>@ViewBag.Title</h3>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+		<form method="post">
+
+			<div class="form-group">
+				<label asp-for="FirstName"></label>
+				<input asp-for="FirstName" class="form-control" placeholder="Име...">
+				<span asp-validation-for="FirstName" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="LastName"></label>
+				<input asp-for="LastName" class="form-control" placeholder="Фамилия...">
+				<span asp-validation-for="LastName" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="PhoneNumber"></label>
+				<input asp-for="PhoneNumber" class="form-control"
+					   placeholder="Телефонен номер...">
+				<span asp-validation-for="PhoneNumber" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Photo"></label>
+				<input asp-for="Photo" class="form-control" />
+				<span asp-validation-for="Photo" class="small textdanger"></span>
+			</div>
+
+		</form>
+	</div>
+</div>
+
+<div class="text-center">
+	<input class="btn btn-primary mt-3" type="submit" value="Запази" />
+</div>
+
+<!-- Bootstrap core & Jquery -->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Custom Js -->
+<script src="~/js/custom.js"></script>
+<script src="~/js/plugins.js"></script>
+<!-- Prefix free -->
+<script src="~/js/prefixfree.min.js"></script>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+
+
