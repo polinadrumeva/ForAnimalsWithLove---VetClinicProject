@@ -2,6 +2,7 @@
 
 using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.ViewModels.Admins;
+using System.Web.Helpers;
 
 namespace ForAnimalsWithLove.Controllers
 {
@@ -99,7 +100,22 @@ namespace ForAnimalsWithLove.Controllers
             return View(allTrainers);
         }
 
-		[HttpGet]
+        public async Task<IActionResult> RemoveDoctor(string id)
+        {
+            var doctor = await adminService.GetDoctorByIdAsync(id);
+
+            if (doctor == null)
+            {
+                return RedirectToAction(nameof(AllDoctors));
+            }
+
+
+            await adminService.RemoveDoctorAsync(doctor, id);
+
+            return RedirectToAction(nameof(AllDoctors));
+        }
+
+        [HttpGet]
 		public async Task<IActionResult> AddTrainer()
 		{
 			return View();

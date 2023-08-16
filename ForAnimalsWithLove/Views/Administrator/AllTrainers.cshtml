@@ -80,10 +80,10 @@
                                         </ul>
                                         <!-- Buttons -->
                                         <div class="text-center">
-                                            <a asp-controller="Administrator" asp-action="Details" class="btn btn-primary">Премахни</a>
+                                            <a asp-controller="Administrator" asp-action="RemoveTrainer" asp-route-id="@trainer.Id" class="btn btn-primary">Премахни</a>
                                         </div>
                                         <div class="text-center">
-                                            <a asp-controller="Administrator" asp-action="Details" class="btn btn-primary">Промени</a>
+                                            <a asp-controller="Administrator" asp-action="EditTrainer" asp-route-id="@trainer.Id" class="btn btn-primary">Промени</a>
                                         </div>
                                     </div>
                                 </div>

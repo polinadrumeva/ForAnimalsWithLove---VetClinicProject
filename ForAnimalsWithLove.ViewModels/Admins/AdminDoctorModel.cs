@@ -8,6 +8,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
     {
         public AdminDoctorModel()
         {
+            this.Id = Guid.NewGuid().ToString();
             this.Directories = new HashSet<AdminDirectoryModel>();
         }
 

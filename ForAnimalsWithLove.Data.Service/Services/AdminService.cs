@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ForAnimalsWithLove.Data.Service.Services
 {
-	public class AdminService : IAdminService
+    public class AdminService : IAdminService
     {
 
         private readonly ForAnimalsWithLoveDbContext dbContext;
@@ -108,7 +108,8 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		public async Task AddDoctorAsync(AdminDoctorModel model)
         {
             var doc = new Doctor
-            {
+            {  
+                Id = Guid.Parse(model.Id),
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Specialization = model.Specialization,
@@ -173,8 +174,18 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Photo = doctor.Photo
 			};
 		}
+        public async Task RemoveDoctorAsync(AdminDoctorModel model, string id)
+        {
+            var doctor = await dbContext.Doctors.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 
-		public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
+            if (doctor != null)
+            {
+                dbContext.Doctors.Remove(doctor);
+                await dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
 		{
 			var trainers = await dbContext.Trainers
 									.Select(t => new IndexTrainerModel()
@@ -194,6 +205,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
             throw new NotImplementedException();
         }
 
-		
-	}
+        
+    }
 }
