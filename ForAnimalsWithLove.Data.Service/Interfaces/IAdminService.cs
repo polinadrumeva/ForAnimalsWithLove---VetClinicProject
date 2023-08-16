@@ -9,7 +9,10 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();
 		Task<AdminDoctorModel> GetDoctorModelAsync();
 		Task AddDoctorAsync(AdminDoctorModel model);
-        Task<IEnumerable<IndexTrainerModel>> GetAllTrainers();
+		Task<AdminDoctorModel?> GetDoctorByIdAsync(string id);
+		Task EditDoctorAsync(AdminDoctorModel model);
+		Task<AdminDoctorModel> GetDoctorDetailsAsync(string doctorId);
+		Task<IEnumerable<IndexTrainerModel>> GetAllTrainers();
 
         Task<AdminAnimalModel> GetAnimalById(string animalId);
     }

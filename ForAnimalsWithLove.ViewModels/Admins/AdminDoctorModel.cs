@@ -11,8 +11,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
             this.Directories = new HashSet<AdminDirectoryModel>();
         }
 
-        [Required]
-        public Guid Id { get; set; } 
+        public string Id { get; set; } 
 
         [Required]
         [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ForAnimalsWithLove.Data.Service.Services
 {
-    public class AdminService : IAdminService
+	public class AdminService : IAdminService
     {
 
         private readonly ForAnimalsWithLoveDbContext dbContext;
@@ -75,6 +75,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			var doctors = await dbContext.Doctors
 								.Select(d => new IndexDoctorModel()
 								{
+                                    Id = d.Id.ToString(),
 									FirstName = d.FirstName,
 									LastName = d.LastName,
 									ImageUrl = d.Photo,
@@ -119,8 +120,61 @@ namespace ForAnimalsWithLove.Data.Service.Services
             await dbContext.AddAsync(doc);
             await dbContext.SaveChangesAsync();
         }
+		public async Task<AdminDoctorModel?> GetDoctorByIdAsync(string id)
+		{
+			return await dbContext.Doctors.Where(x => x.Id.ToString() == id)
+				.Select(x => new AdminDoctorModel
+				{
+					FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Specialization = x.Specialization,
+                    Address = x.Address,
+                    PhoneNumber = x.PhoneNumber,
+                    Photo = x.Photo,
+					Directories = dbContext.Directions.Select(c => new AdminDirectoryModel
+					{
+						Id = c.Id,
+						Name = c.Name
+					}).ToList()
 
-        public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
+				}).FirstOrDefaultAsync();
+		}
+
+		public async Task EditDoctorAsync(AdminDoctorModel model)
+		{
+			var existDoctor = await dbContext.Doctors.FirstOrDefaultAsync(x => x.Id.ToString() == model.Id);
+
+			if (existDoctor != null)
+			{
+
+				existDoctor.FirstName = model.FirstName;
+				existDoctor.LastName = model.LastName;
+				existDoctor.PhoneNumber = model.PhoneNumber;
+				existDoctor.Address = model.Address;
+				existDoctor.Photo = model.Photo;
+				existDoctor.Specialization = model.Specialization;
+			
+				await dbContext.SaveChangesAsync();
+			}
+		}
+		public async Task<AdminDoctorModel> GetDoctorDetailsAsync(string doctorId)
+		{
+			var doctor = await dbContext.Doctors
+                                    .FirstAsync(d => d.Id.ToString() == doctorId);
+
+            return new AdminDoctorModel()
+            {
+				Id = doctor.Id.ToString(),
+                FirstName = doctor.FirstName,
+				LastName = doctor.LastName,
+				Specialization = doctor.Specialization,
+				Address = doctor.Address,
+				PhoneNumber = doctor.PhoneNumber,
+				Photo = doctor.Photo
+			};
+		}
+
+		public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
 		{
 			var trainers = await dbContext.Trainers
 									.Select(t => new IndexTrainerModel()
@@ -140,6 +194,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
             throw new NotImplementedException();
         }
 
-	
+		
 	}
 }
