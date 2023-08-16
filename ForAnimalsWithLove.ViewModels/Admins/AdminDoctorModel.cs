@@ -6,6 +6,11 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminDoctorModel
     {
+        public AdminDoctorModel()
+        {
+            this.Directories = new HashSet<AdminDirectoryModel>();
+        }
+
         [Required]
         public Guid Id { get; set; } 
 
@@ -36,6 +41,8 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         [Display(Name = "Адрес")]
 		public string Address { get; set; } = null!;
 
+        public int DirectoryId { get; set; }
+        public virtual ICollection<AdminDirectoryModel> Directories { get; set; }
 
-	}
+    }
 }

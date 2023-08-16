@@ -1,4 +1,5 @@
-﻿using ForAnimalsWithLove.Data.Service.Interfaces;
+﻿using ForAnimalsWithLove.Data.Models;
+using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.ViewModels.Admins;
 using ForAnimalsWithLove.ViewModels.IndexModels;
 using Microsoft.EntityFrameworkCore;
@@ -84,21 +85,41 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			return doctors;
 		}
-        public async Task AddDoctorAsync(string userId, AdminDoctorModel model)
+
+		public async Task<AdminDoctorModel> GetDoctorModelAsync()
+		{
+			var directories = await dbContext.Directions
+				.Select(x => new AdminDirectoryModel
+				{
+					Id = x.Id,
+					Name = x.Name
+				})
+				.ToListAsync();
+
+			var model = new AdminDoctorModel
+			{
+				Directories = directories
+			};
+
+			return model;
+		}
+
+		public async Task AddDoctorAsync(AdminDoctorModel model)
         {
-            var doc = new AdminDoctorModel
+            var doc = new Doctor
             {
-               Id = new Guid(),
-               FirstName = model.FirstName,
-               LastName = model.LastName,
-               Specialization = model.Specialization,
-               PhoneNumber = model.PhoneNumber,
-               Photo = model.Photo
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Specialization = model.Specialization,
+                Address = model.Address,
+                PhoneNumber = model.PhoneNumber,
+                Photo = model.Photo
             };
 
-            await dbContext.Doctors.AddAsync(doc);
+            await dbContext.AddAsync(doc);
             await dbContext.SaveChangesAsync();
         }
+
         public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
 		{
 			var trainers = await dbContext.Trainers
@@ -118,5 +139,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
         {
             throw new NotImplementedException();
         }
-    }
+
+	
+	}
 }

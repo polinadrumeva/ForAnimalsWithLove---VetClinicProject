@@ -513,7 +513,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<DateTime>("Date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 13, 13, 36, 28, 917, DateTimeKind.Utc).AddTicks(6838));
+                        .HasDefaultValue(new DateTime(2023, 8, 16, 19, 52, 44, 556, DateTimeKind.Utc).AddTicks(9903));
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");

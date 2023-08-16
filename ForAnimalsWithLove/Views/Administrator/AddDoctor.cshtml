@@ -28,24 +28,27 @@
 
 			<div class="form-group">
 				<label asp-for="FirstName"></label>
-				<input asp-for="FirstName" class="form-control" placeholder="Име...">
+				<input asp-for="FirstName" class="form-control" placeholder="Име..." />
 				<span asp-validation-for="FirstName" class="small text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="LastName"></label>
-				<input asp-for="LastName" class="form-control" placeholder="Фамилия...">
+				<input asp-for="LastName" class="form-control" placeholder="Фамилия..." />
 				<span asp-validation-for="LastName" class="small text-danger"></span>
 			</div>
 			<div class="form-group">
+				<label asp-for="Photo"></label>
+				<input asp-for="Photo" class="form-control" placeholder="Снимка..." />
+				<span asp-validation-for="Photo" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
 				<label asp-for="PhoneNumber"></label>
-				<input asp-for="PhoneNumber" class="form-control"
-					   placeholder="Телефонен номер...">
+				<input asp-for="PhoneNumber" class="form-control" placeholder="Телефонен номер..." />
 				<span asp-validation-for="PhoneNumber" class="small text-danger"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Address"></label>
-				<input asp-for="Address" class="form-control"
-					   placeholder="гр.,ж.к., ул./бл.,ет.,ап....">
+				<input asp-for="Address" class="form-control" placeholder="гр.,ж.к., ул./бл.,ет.,ап...." />
 				<span asp-validation-for="Address" class="small textdanger"></span>
 			</div>
 			<div class="form-group">
@@ -53,14 +56,24 @@
 				<textarea asp-for="Specialization" class="form-control" rows="4"></textarea>
 				<span asp-validation-for="Specialization" class="small textdanger"></span>
 			</div>
+			<div class="mb-3">
+				<label asp-for="@Model.DirectoryId" class="form-label-add-edit">Направление</label>
+				<select asp-for="@Model.DirectoryId" class="form-control" aria-required="true">
+					@foreach (var type in Model.Directories)
+					{
+						<option value="@type.Id">@type.Name</option>
+					}
+				</select>
+				<span asp-validation-for="@Model.DirectoryId" class="text-danger"></span>
+			</div>
+			<div class="text-center">
+				<button class="btn btn-primary mt-3" type="submit" value="AddDoctor">Запази</button>
+			</div>
 
 		</form>
 	</div>
 </div>
 
-<div class="text-center">
-	<input class="btn btn-primary mt-3" type="submit" value="Запази" />
-</div>
 
 <!-- Bootstrap core & Jquery -->
 <script src="~/vendor/jquery/jquery.min.js"></script>
