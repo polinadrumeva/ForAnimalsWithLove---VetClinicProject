@@ -51,7 +51,22 @@ namespace ForAnimalsWithLove.Controllers
 			return View();
 		}
 
-		public IActionResult DoctorDetails()
+        [HttpPost]
+        public async Task<IActionResult> AddAddDoctor(AdminDoctorModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var userId = GetUserId();
+
+            await adminService.AddDoctorAsync(userId, model);
+
+            return RedirectToAction(nameof(AllDoctors));
+        }
+
+        public IActionResult DoctorDetails()
         {
             return View();
         }

@@ -15,6 +15,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
             this.dbContext = dbContext;
         }
 
+      
         public async Task<IEnumerable<AdminAnimalModel>> GetAllAnimals()
         {
             var result = await dbContext.Animals
@@ -83,8 +84,22 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			return doctors;
 		}
+        public async Task AddDoctorAsync(string userId, AdminDoctorModel model)
+        {
+            var doc = new AdminDoctorModel
+            {
+               Id = new Guid(),
+               FirstName = model.FirstName,
+               LastName = model.LastName,
+               Specialization = model.Specialization,
+               PhoneNumber = model.PhoneNumber,
+               Photo = model.Photo
+            };
 
-		public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
+            await dbContext.Doctors.AddAsync(doc);
+            await dbContext.SaveChangesAsync();
+        }
+        public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
 		{
 			var trainers = await dbContext.Trainers
 									.Select(t => new IndexTrainerModel()

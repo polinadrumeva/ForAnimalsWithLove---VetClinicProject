@@ -7,6 +7,9 @@ namespace ForAnimalsWithLove.ViewModels.Admins
     public class AdminDoctorModel
     {
         [Required]
+        public Guid Id { get; set; } 
+
+        [Required]
         [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
         [Display(Name = "Име")]
         public string FirstName { get; set; } = null!;
@@ -23,9 +26,12 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
 		[Display(Name = "Специалности/Специализации")]
 		public string? Specialization { get; set; }
+        
+        [Required]
+        [Display(Name = "Снимка")]
+        public string Photo { get; set; } = null!;
 
-
-		[Required]
+        [Required]
 		[StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
         [Display(Name = "Адрес")]
 		public string Address { get; set; } = null!;
