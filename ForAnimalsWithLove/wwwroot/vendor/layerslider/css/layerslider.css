@@ -27,19 +27,19 @@
 
 /* Slider */
 
-	.ls-container {
-		visibility: hidden;
-		position: relative;
-		max-width: 100%;
-	}
+.ls-container {
+	visibility: hidden;
+	position: relative;
+	max-width: 100%;
+}
 
-	.ls-inner {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		background-position: center center;
-		z-index: 30;
-	}
+.ls-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-position: center center;
+	z-index: 30;
+}
 
 	.ls-wp-fullwidth-container {
 		width: 100%;
@@ -64,7 +64,7 @@
 		position: absolute;
 		left: 0;
 		top: 0;
-		overflow: hidden;
+		/*overflow: hidden;*/
 		-o-transform: translateZ(0);
 		-ms-transform: translateZ(0);
 		-moz-transform: translateZ(0);
@@ -238,16 +238,18 @@
 		.ls-bottom-nav-wrapper a,
 		.ls-nav-prev,
 		.ls-nav-next {
-			outline: none;
+			outline: auto;
 		}
 
+		.ls-nav-next {
+            left: 1750px;
+        }
+
 		.ls-bottom-slidebuttons {
-			position: relative;
+				position: relative;
 		}
 
 		.ls-bottom-slidebuttons,
-		.ls-nav-start,
-		.ls-nav-stop,
 		.ls-nav-sides {
 			position: relative;
 		}
@@ -391,7 +393,7 @@
 		}
 
 		.ls-slidebar-container {
-			margin: 10px auto;
+			margin: 0px auto;
 		}
 
 		.ls-slidebar-container,
@@ -424,13 +426,13 @@
 		/* slidebar default dark skin */
 
 		.ls-slidebar {
-			height: 10px;
+			height: 0px;
 			background-color: #ddd;
 		}
 
 		.ls-slidebar,
 		.ls-progressbar {
-			border-radius: 10px;
+			border-radius: 0px;
 		}
 
 		.ls-progressbar {
