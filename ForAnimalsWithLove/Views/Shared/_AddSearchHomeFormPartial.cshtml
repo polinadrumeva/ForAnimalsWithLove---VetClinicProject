@@ -1,0 +1,20 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminSearchHomeModel
+
+<h5 class="text-secondary-emphasis">Търсещи дом:</h5>
+<div class="row">
+	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+
+		<div class="form-group">
+			<label asp-for="Location"></label>
+			<input asp-for="Location" class="form-control" placeholder="Локация...">
+			<span asp-validation-for="Location" class="small text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="Habits"></label>
+			<input asp-for="Habits" class="form-control" placeholder="Навици...">
+			<span asp-validation-for="Habits" class="small text-danger"></span>
+		</div>
+
+	</div>
+</div>

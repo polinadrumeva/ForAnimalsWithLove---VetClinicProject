@@ -4,7 +4,6 @@
 <h5 class="text-secondary-emphasis">Данни на животното:</h5>
 <div class="row">
 	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-		<form method="post">
 			<div class="form-group">
 				<label asp-for="Name"></label>
 				<input asp-for="Name" class="form-control" placeholder="Име...">
@@ -51,9 +50,9 @@
 			<div class="form-group">
 				<label asp-for="DoesHasOwner"></label>
 				<br>
-				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" value="T" onclick="checkedOnClick(this)" />
+				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" id="hasOwner" value="T" onclick="checkedOnClick(this)"/>
 				<label> Да</label>
-				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" value="F" onclick="checkedOnClick(this)" />
+				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" value="F" onclick="checkedOnClick(this)"/>
 				<label> Не</label><br>
 				<span asp-validation-for="DoesHasOwner" class="small textdanger"></span>
 				<!-- Script -->
@@ -68,10 +67,10 @@
 
 						el.checked = true; // Checked clicked checkbox
 					}
+
 				</script>
 				
 			</div>
 
-		</form>
 	</div>
 </div>

@@ -1,0 +1,146 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminHealthModel
+
+<h5 class="text-secondary-emphasis">Здравно досие:</h5>
+<div class="row">
+	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+		<div class="form-group">
+			<label asp-for="Microchip"></label>
+			<br>
+			<input type="checkbox" asp-for="Microchip" name="microchip" value="T" onclick="checkedOnClick(this)" />
+			<label> Да</label>
+			<input type="checkbox" asp-for="Microchip" name="microchip" value="F" onclick="checkedOnClick(this)" />
+			<label> Не</label><br>
+			<span asp-validation-for="Microchip" class="small textdanger"></span>
+			<!-- Script -->
+			<script type="text/javascript">
+				function checkedOnClick(el) {
+
+					// Select all checkboxes by class
+					var checkboxesList = document.getElementsByName("microchip");
+					for (var i = 0; i < checkboxesList.length; i++) {
+						checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+					}
+
+					el.checked = true; // Checked clicked checkbox
+				}
+
+			</script>
+
+		</div>
+		<div class="form-group">
+			<label asp-for="MicrochipNumber"></label>
+			<input asp-for="MicrochipNumber" class="form-control"
+	   placeholder="Номер на микрочип...">
+			<span asp-validation-for="MicrochipNumber" class="small text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="FirstVaccine"></label>
+			<br>
+			<input type="checkbox" asp-for="FirstVaccine" name="FirstVaccine" value="T" onclick="checkedOnClick(this)" />
+			<label> Да</label>
+			<input type="checkbox" asp-for="FirstVaccine" name="FirstVaccine" value="F" onclick="checkedOnClick(this)" />
+			<label> Не</label><br>
+			<span asp-validation-for="FirstVaccine" class="small textdanger"></span>
+			<!-- Script -->
+			<script type="text/javascript">
+				function checkedOnClick(el) {
+
+					// Select all checkboxes by class
+					var checkboxesList = document.getElementsByName("FirstVaccine");
+					for (var i = 0; i < checkboxesList.length; i++) {
+						checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+					}
+
+					el.checked = true; // Checked clicked checkbox
+				}
+
+			</script>
+
+		</div>
+		<div class="form-group">
+			<label asp-for="SecondVaccine"></label>
+			<br>
+			<input type="checkbox" asp-for="SecondVaccine" name="SecondVaccine" value="T" onclick="checkedOnClick(this)" />
+			<label> Да</label>
+			<input type="checkbox" asp-for="SecondVaccine" name="SecondVaccine" value="F" onclick="checkedOnClick(this)" />
+			<label> Не</label><br>
+			<span asp-validation-for="SecondVaccine" class="small textdanger"></span>
+			<!-- Script -->
+			<script type="text/javascript">
+				function checkedOnClick(el) {
+
+					// Select all checkboxes by class
+					var checkboxesList = document.getElementsByName("SecondVaccine");
+					for (var i = 0; i < checkboxesList.length; i++) {
+						checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+					}
+
+					el.checked = true; // Checked clicked checkbox
+				}
+
+			</script>
+
+		</div>
+		<div class="form-group">
+			<label asp-for="ThirdVaccine"></label>
+			<br>
+			<input type="checkbox" asp-for="ThirdVaccine" name="ThirdVaccine" value="T" onclick="checkedOnClick(this)" />
+			<label> Да</label>
+			<input type="checkbox" asp-for="ThirdVaccine" name="ThirdVaccine" value="F" onclick="checkedOnClick(this)" />
+			<label> Не</label><br>
+			<span asp-validation-for="ThirdVaccine" class="small textdanger"></span>
+			<!-- Script -->
+			<script type="text/javascript">
+				function checkedOnClick(el) {
+
+					// Select all checkboxes by class
+					var checkboxesList = document.getElementsByName("ThirdVaccine");
+					for (var i = 0; i < checkboxesList.length; i++) {
+						checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+					}
+
+					el.checked = true; // Checked clicked checkbox
+				}
+
+			</script>
+
+		</div>
+		<div class="form-group">
+			<label asp-for="AnnualVaccine"></label>
+			<br>
+			<input type="checkbox" asp-for="AnnualVaccine" name="AnnualVaccine" value="T" onclick="checkedOnClick(this)" />
+			<label> Да</label>
+			<input type="checkbox" asp-for="AnnualVaccine" name="AnnualVaccine" value="F" onclick="checkedOnClick(this)" />
+			<label> Не</label><br>
+			<span asp-validation-for="AnnualVaccine" class="small textdanger"></span>
+			<!-- Script -->
+			<script type="text/javascript">
+				function checkedOnClick(el) {
+
+					// Select all checkboxes by class
+					var checkboxesList = document.getElementsByName("AnnualVaccine");
+					for (var i = 0; i < checkboxesList.length; i++) {
+						checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+					}
+
+					el.checked = true; // Checked clicked checkbox
+				}
+
+			</script>
+
+		</div>
+		<div class="form-group">
+			<label asp-for="GeneralCondition"></label>
+			<input asp-for="GeneralCondition" class="form-control" placeholder="Състояние...">
+			<span asp-validation-for="GeneralCondition" class="small textdanger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="PrescribedTreatment"></label>
+			<input asp-for="PrescribedTreatment" class="form-control" placeholder="Лечение...">
+			<span asp-validation-for="PrescribedTreatment" class="small textdanger"></span>
+		</div>
+		
+	
+	</div>
+</div>

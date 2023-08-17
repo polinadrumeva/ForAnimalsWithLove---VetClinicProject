@@ -7,14 +7,15 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminGroomingModel
     {
-        [Required]
+       
         public Guid AnimalId { get; set; }
 
         [ForeignKey(nameof(AnimalId))]
         public AdminOwnerModel Animal { get; set; } = null!;
 
-        [Required]
+        
         [StringLength(ServiceMaxLength, MinimumLength = ServiceMinLength)]
+        [Display(Name = "Услуга")]
         public string Service { get; set; } = null!;
     }
 }

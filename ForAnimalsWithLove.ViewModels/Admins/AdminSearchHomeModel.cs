@@ -5,14 +5,16 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminSearchHomeModel
     {
-        [Required]
-        public Guid AnimalId { get; set; }
+       
+        public string AnimalId { get; set; }
 
         [ForeignKey(nameof(AnimalId))]
         public AdminAnimalModel Animal { get; set; } = null!;
 
+        [Display(Name = "Локация")]
         public string? Location { get; set; }
 
-        public string? Habits { get; set; }
+		[Display(Name = "Навици")]
+		public string? Habits { get; set; }
     }
 }

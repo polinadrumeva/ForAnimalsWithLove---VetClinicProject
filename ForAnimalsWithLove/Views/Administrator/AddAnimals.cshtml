@@ -17,14 +17,23 @@
         <h3>@ViewBag.Title</h3>
     </div>
 </div>
+<form method="post">
+	<partial name="_AddAnimalFormPartial" />
+	<hr />
+	<partial name="_AddOwnerFormPartial" />
+	<hr />
+	<partial name="_AddSearchHomeFormPartial" />
+	<hr />
+	<partial name="_AddHealthFormPartial" />
+	<hr />
+	<partial name="_AddGroomingFormPartial" />
 
-<partial name="_AddAnimalFormPartial"/>
-<hr/>
-<partial name="_AddOwnerFormPartial" />
+	<div class="text-center">
+		<input class="btn btn-primary mt-3" type="submit" value="Запази" />
+	</div>
+</form>
 
-<div class="text-center">
-	<input class="btn btn-primary mt-3" type="submit" value="Запази" />
-</div>
+
 
 <!-- Bootstrap core & Jquery -->
 <script src="~/vendor/jquery/jquery.min.js"></script>
