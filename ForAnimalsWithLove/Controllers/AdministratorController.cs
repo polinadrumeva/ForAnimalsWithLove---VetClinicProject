@@ -30,11 +30,33 @@ namespace ForAnimalsWithLove.Controllers
 
         [HttpGet]
         public async Task<IActionResult> AddAnimals()
-        {
+		{
+			var model = await adminService.GetAnimalModelAsync();
 			return View();
 		}
+		[HttpPost]
+		public async Task<IActionResult> AddAnimals(AdminAnimalModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
 
-        public IActionResult AnimalDetails(string id)
+			try
+			{
+				await adminService.AddAnimalAsync(model);
+			}
+			catch (Exception)
+			{
+
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+				return View(model);
+			}
+
+
+			return RedirectToAction(nameof(AllAnimals));
+		}
+		public IActionResult AnimalDetails(string id)
         {
             return View(new AdminAnimalModel());
         }

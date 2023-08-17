@@ -48,16 +48,16 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         [Display(Name = "Има ли собственик")]
         public bool DoesHasOwner { get; set; }
 
-        public Guid? OwnerId { get; set; }
+        public string? OwnerId { get; set; }
 
         public virtual AdminOwnerModel? Owner { get; set; }
 
-        public Guid? GroomingId { get; set; }
+        public string? GroomingId { get; set; }
 
         public virtual AdminGroomingModel? Grooming { get; set; }
 
         [Required]
-        public Guid HealthRecordId { get; set; }
+        public string HealthRecordId { get; set; } = null!;
 
         [Required]
         public virtual AdminHealthModel HealthRecord { get; set; } = null!;

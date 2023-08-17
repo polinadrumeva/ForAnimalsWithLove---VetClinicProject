@@ -31,7 +31,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
                                       Birthdate = a.Birthdate,
                                       Sex = a.Sex,
                                       DoesHasOwner = a.DoesHasOwner,
-                                      OwnerId = a.OwnerId,
+                                      OwnerId = a.OwnerId.ToString(),
                                       Owner = new AdminOwnerModel()
                                       { 
                                         FirstName = a.Owner.FirstName,
@@ -40,7 +40,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
                                         Address = a.Owner.Address,
                                         PhoneNumber = a.Owner.PhoneNumber
                                       },
-                                      HealthRecordId = a.HealthRecordId,
+                                      HealthRecordId = a.HealthRecordId.ToString(),
                                       HealthRecord = new AdminHealthModel()
                                       { 
                                         MicrochipNumber = a.HealthRecord.MicrochipNumber,
@@ -53,7 +53,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
                                         PrescribedTreatment = a.HealthRecord.PrescribedTreatment,
                                         HospitalRecordId = a.HealthRecord.HospitalRecordId
                                       },
-                                      GroomingId = a.GroomingId,
+                                      GroomingId = a.GroomingId.ToString(),
                                       Grooming = new AdminGroomingModel()
                                       {
                                         Service = a.Grooming.Service
@@ -74,9 +74,66 @@ namespace ForAnimalsWithLove.Data.Service.Services
         {
             throw new NotImplementedException();
         }
+		public async Task<AdminAnimalModel> GetAnimalModelAsync()
+		{
+			var model = new AdminAnimalModel();
 
-        // Doctors services
-        public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
+			return model;
+		}
+
+		public async Task AddAnimalAsync(AdminAnimalModel model)
+		{
+			var animal = new Animal
+			{
+				Id = Guid.Parse(model.Id),
+				Name = model.Name,
+				Age = model.Age,
+				Photo = model.Photo,
+				KindOfAnimal = model.KindOfAnimal,
+				Breed = model.Breed,
+				Color = model.Color,
+				Sex = model.Sex,
+				Birthdate = model.Birthdate,
+				DoesHasOwner = model.DoesHasOwner,
+				Owner = new Owner
+				{
+					Id = Guid.Parse(model.OwnerId),
+					FirstName = model.Owner.FirstName,
+					MiddleName = model.Owner.MiddleName,
+					LastName = model.Owner.LastName,
+					Address = model.Owner.Address,
+					PhoneNumber = model.Owner.PhoneNumber
+				},
+				HealthRecord = new HealthRecord
+				{
+					Id = Guid.Parse(model.HealthRecordId),
+					MicrochipNumber = model.HealthRecord.MicrochipNumber,
+					Microchip = model.HealthRecord.Microchip,
+					FirstVaccine = model.HealthRecord.FirstVaccine,
+					SecondVaccine = model.HealthRecord.SecondVaccine,
+					ThirdVaccine = model.HealthRecord.ThirdVaccine,
+					AnnualVaccine = model.HealthRecord.AnnualVaccine,
+					GeneralCondition = model.HealthRecord.GeneralCondition,
+					PrescribedTreatment = model.HealthRecord.PrescribedTreatment
+				},
+				Grooming = new Grooming
+				{
+					Id = Guid.Parse(model.GroomingId),
+					Service = model.Grooming.Service
+				},
+				SearchHome = new SearchHome
+				{
+					Location = model.SearchHome.Location,
+					Habits = model.SearchHome.Habits
+				}
+			};
+
+			await dbContext.Animals.AddAsync(animal);
+			await dbContext.SaveChangesAsync();
+		}
+
+		// Doctors services
+		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
 		{
 			var doctors = await dbContext.Doctors
 								.Select(d => new IndexDoctorModel()
@@ -272,5 +329,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				await dbContext.SaveChangesAsync();
 			}
 		}
+
+	
 	}
 }

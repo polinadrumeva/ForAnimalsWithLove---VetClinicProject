@@ -6,6 +6,13 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminOwnerModel
     {
+        public AdminOwnerModel()
+        {
+            this.OwnerId = Guid.NewGuid().ToString();
+        }
+
+        public string OwnerId { get; set; } = null!;
+
         [Required]
         [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
         [Display(Name = "Име")]

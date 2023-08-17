@@ -7,6 +7,8 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
     {
         Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();
 		Task<AdminAnimalModel> GetAnimalById(string animalId);
+		Task<AdminAnimalModel> GetAnimalModelAsync();
+		Task AddAnimalAsync(AdminAnimalModel model);
 
 		//Doctors
 		Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();

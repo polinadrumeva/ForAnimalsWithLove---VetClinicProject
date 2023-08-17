@@ -5,7 +5,9 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminSearchHomeModel
     {
-       
+        
+
+        public int Id { get; set; }
         public string AnimalId { get; set; }
 
         [ForeignKey(nameof(AnimalId))]
