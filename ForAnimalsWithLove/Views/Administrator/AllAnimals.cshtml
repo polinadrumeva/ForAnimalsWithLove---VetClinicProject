@@ -90,8 +90,12 @@
                                         </ul>
                                         <!-- Buttons -->
                                         <div class="text-center">
-                                            <a class="btn btn-primary" asp-controller="Administrator" asp-action="AnimalDetails">Детайли</a>
+                                            <a class="btn btn-primary" asp-controller="Administrator" asp-action="EditAnimal" asp-route-id="@animal.Id">Промени</a>
                                         </div>
+                                        <div class="text-center">
+                                            <a class="btn btn-primary" asp-controller="Administrator" asp-action="AnimalDetails" asp-route-id="@animal.Id">Детайли</a>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <!-- /thumbnail -->

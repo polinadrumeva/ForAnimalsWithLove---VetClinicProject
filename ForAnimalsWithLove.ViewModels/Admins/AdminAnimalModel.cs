@@ -6,6 +6,8 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminAnimalModel
     {
+        public string Id { get; set; } = null!;
+
         [Required]
         [StringLength(NameMaxLength, MinimumLength = NameMinLength)]
         [Display(Name = "Име")]

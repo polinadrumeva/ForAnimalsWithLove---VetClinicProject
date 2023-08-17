@@ -2,7 +2,6 @@
 
 using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.ViewModels.Admins;
-using System.Web.Helpers;
 
 namespace ForAnimalsWithLove.Controllers
 {
@@ -63,7 +62,17 @@ namespace ForAnimalsWithLove.Controllers
                 return View(model);
             }
 
-            await adminService.AddDoctorAsync(model);
+			try
+			{
+                await adminService.AddDoctorAsync(model);
+            }
+			catch (Exception)
+			{
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+                return View(model);
+            }
+
+            
 
             return RedirectToAction(nameof(AllDoctors));
         }
@@ -83,7 +92,16 @@ namespace ForAnimalsWithLove.Controllers
 				return View(model);
 			}
 
-			await adminService.EditDoctorAsync(model);
+			try
+			{
+                await adminService.EditDoctorAsync(model);
+            }
+			catch (Exception)
+			{
+                this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+                return View(model);
+            }
+			
 
 			return RedirectToAction(nameof(AllDoctors));
 		}
@@ -137,7 +155,17 @@ namespace ForAnimalsWithLove.Controllers
 				return View(model);
 			}
 
-			await adminService.AddTrainerAsync(model);
+			try
+			{
+                await adminService.AddTrainerAsync(model);
+            }
+			catch (Exception)
+			{
+
+                this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+                return View(model);
+            }
+			
 
 			return RedirectToAction(nameof(AllTrainers));
 		}
@@ -157,7 +185,17 @@ namespace ForAnimalsWithLove.Controllers
 				return View(model);
 			}
 
-			await adminService.EditTrainerAsync(model);
+			try
+			{
+                await adminService.EditTrainerAsync(model);
+            }
+			catch (Exception)
+			{
+                this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+                return View(model);
+            }
+
+			
 
 			return RedirectToAction(nameof(AllTrainers));
 		}
