@@ -21,6 +21,7 @@ namespace ForAnimalsWithLove.Controllers
             return View();
         }
 
+        //AllAnimals method is taking care of the functionality of the administrator to see all animals
         public async Task<IActionResult> AllAnimals()
         {
             var allAnimals = await adminService.GetAllAnimals();
@@ -39,6 +40,7 @@ namespace ForAnimalsWithLove.Controllers
             return View(new AdminAnimalModel());
         }
 
+        //AllDoctors method is taking care of the functionality of the administrator to see all doctors
         public async Task<IActionResult> AllDoctors()
         {
             var allDoctors = await adminService.GetAllDoctors();
@@ -93,12 +95,6 @@ namespace ForAnimalsWithLove.Controllers
 
             return View(details);
         }
-        public async Task<IActionResult> AllTrainers()
-        {
-			var allTrainers = await adminService.GetAllTrainers();
-
-            return View(allTrainers);
-        }
 
         public async Task<IActionResult> RemoveDoctor(string id)
         {
@@ -115,10 +111,70 @@ namespace ForAnimalsWithLove.Controllers
             return RedirectToAction(nameof(AllDoctors));
         }
 
+
+        //AllTrainers method is taking care of the functionality of the administrator to see all trainers
+        public async Task<IActionResult> AllTrainers()
+        {
+			var allTrainers = await adminService.GetAllTrainers();
+
+            return View(allTrainers);
+        }
+
+        
         [HttpGet]
 		public async Task<IActionResult> AddTrainer()
 		{
-			return View();
+            var model = await adminService.GetTrainerModelAsync();
+            return View();
+		}
+
+
+		[HttpPost]
+		public async Task<IActionResult> AddTrainer(AdminTrainerModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			await adminService.AddTrainerAsync(model);
+
+			return RedirectToAction(nameof(AllTrainers));
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> EditTrainer(string id)
+		{
+			var model = await adminService.GetTrainerByIdAsync(id);
+			return View(model);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> EditTrainer(AdminTrainerModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			await adminService.EditTrainerAsync(model);
+
+			return RedirectToAction(nameof(AllTrainers));
+		}
+
+		public async Task<IActionResult> RemoveTrainer(string id)
+		{
+			var trainer = await adminService.GetTrainerByIdAsync(id);
+
+			if (trainer == null)
+			{
+				return RedirectToAction(nameof(AllTrainers));
+			}
+
+
+			await adminService.RemoveTrainerAsync(trainer, id);
+
+			return RedirectToAction(nameof(AllTrainers));
 		}
 	}
 }

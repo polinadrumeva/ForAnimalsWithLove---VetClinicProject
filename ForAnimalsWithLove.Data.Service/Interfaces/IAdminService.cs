@@ -6,6 +6,9 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
     public interface IAdminService
     {
         Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();
+		Task<AdminAnimalModel> GetAnimalById(string animalId);
+
+		//Doctors
 		Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();
 		Task<AdminDoctorModel> GetDoctorModelAsync();
 		Task AddDoctorAsync(AdminDoctorModel model);
@@ -13,8 +16,14 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task EditDoctorAsync(AdminDoctorModel model);
 		Task<AdminDoctorModel> GetDoctorDetailsAsync(string doctorId);
         Task RemoveDoctorAsync(AdminDoctorModel model, string id);
-        Task<IEnumerable<IndexTrainerModel>> GetAllTrainers();
 
-        Task<AdminAnimalModel> GetAnimalById(string animalId);
-    }
+        //Trainers
+        Task<IEnumerable<IndexTrainerModel>> GetAllTrainers();
+        Task<AdminTrainerModel> GetTrainerModelAsync();
+        Task AddTrainerAsync(AdminTrainerModel model);
+		Task<AdminTrainerModel?> GetTrainerByIdAsync(string id);
+		Task EditTrainerAsync(AdminTrainerModel model);
+		Task RemoveTrainerAsync(AdminTrainerModel model, string id);
+
+	}
 }

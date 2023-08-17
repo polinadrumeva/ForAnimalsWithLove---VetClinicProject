@@ -6,7 +6,14 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
 	public class AdminTrainerModel
 	{
-		[Required]
+		public AdminTrainerModel()
+		{
+			this.Id = Guid.NewGuid().ToString();
+		}
+
+		public string Id { get; set; }
+
+        [Required]
 		[StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
 		[Display(Name = "Име")]
 		public string FirstName { get; set; } = null!;

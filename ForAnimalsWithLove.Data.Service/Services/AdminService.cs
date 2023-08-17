@@ -70,7 +70,13 @@ namespace ForAnimalsWithLove.Data.Service.Services
             return result;
         }
 
-		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
+        public async Task<AdminAnimalModel> GetAnimalById(string animalId)
+        {
+            throw new NotImplementedException();
+        }
+
+        // Doctors services
+        public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
 		{
 			var doctors = await dbContext.Doctors
 								.Select(d => new IndexDoctorModel()
@@ -185,11 +191,13 @@ namespace ForAnimalsWithLove.Data.Service.Services
             }
         }
 
+        // Trainers services
         public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
 		{
 			var trainers = await dbContext.Trainers
 									.Select(t => new IndexTrainerModel()
 									{
+										Id = t.Id.ToString(),
 										FirstName = t.FirstName,
 										LastName = t.LastName,
 										ImageUrl = t.Photo,
@@ -200,11 +208,69 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return trainers;
 		}
 
-        public async Task<AdminAnimalModel> GetAnimalById(string animalId)
+
+
+        public async Task<AdminTrainerModel> GetTrainerModelAsync()
         {
-            throw new NotImplementedException();
+            var model = new AdminTrainerModel();
+
+            return model;
         }
 
-        
-    }
+        public async Task AddTrainerAsync(AdminTrainerModel model)
+        {
+			var trainer = new Trainer
+			{
+				Id = Guid.Parse(model.Id),
+				FirstName = model.FirstName,
+				LastName = model.LastName,
+				PhoneNumber = model.PhoneNumber,
+				Photo = model.Photo
+			};
+
+			await dbContext.AddAsync(trainer);
+			await dbContext.SaveChangesAsync();
+		}
+
+		public async Task<AdminTrainerModel?> GetTrainerByIdAsync(string id)
+		{
+			return await dbContext.Trainers.Where(x => x.Id.ToString() == id)
+				.Select(x => new AdminTrainerModel
+				{
+					Id = x.Id.ToString(),
+					FirstName = x.FirstName,
+					LastName = x.LastName,
+					PhoneNumber = x.PhoneNumber,
+					Photo = x.Photo
+					
+				}).FirstOrDefaultAsync();
+		}
+
+		public async Task EditTrainerAsync(AdminTrainerModel model)
+		{
+			var existTrainer = await dbContext.Trainers.FirstOrDefaultAsync(x => x.Id.ToString() == model.Id);
+
+			if (existTrainer != null)
+			{
+
+				existTrainer.FirstName = model.FirstName;
+				existTrainer.LastName = model.LastName;
+				existTrainer.PhoneNumber = model.PhoneNumber;
+				existTrainer.Photo = model.Photo;
+
+				await dbContext.SaveChangesAsync();
+			}
+		}
+
+		public async Task RemoveTrainerAsync(AdminTrainerModel model, string id)
+		{
+			var trainer = await dbContext.Trainers.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+
+			if (trainer != null)
+			{
+				dbContext.Trainers.Remove(trainer);
+				await dbContext.SaveChangesAsync();
+			}
+		}
+	}
 }
