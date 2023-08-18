@@ -46,10 +46,23 @@ namespace ForAnimalsWithLove.Data.Service.Services
             return result;
         }
 
-        public async Task<AdminAnimalModel> GetAnimalById(string animalId)
+        public async Task<AdminAnimalModel?> GetAnimalByIdAsync(string animalId)
         {
-            throw new NotImplementedException();
-        }
+			return await dbContext.Animals.Where(x => x.Id.ToString() == animalId)
+				.Select(x => new AdminAnimalModel
+				{
+					Name = x.Name,
+					Age = x.Age,
+					Photo = x.Photo,
+					KindOfAnimal = x.KindOfAnimal,
+					Breed = x.Breed,
+					Color = x.Color,
+					Birthdate = x.Birthdate,
+					Sex = x.Sex.ToString(),
+					DoesHasOwner = x.DoesHasOwner
+
+				}).FirstOrDefaultAsync();
+		}
 		public async Task<AdminAnimalModel> GetAnimalModelAsync()
 		{
 			var model = new AdminAnimalModel();

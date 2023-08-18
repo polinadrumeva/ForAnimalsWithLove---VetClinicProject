@@ -6,7 +6,7 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
     public interface IAdminService
     {
         Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();
-		Task<AdminAnimalModel> GetAnimalById(string animalId);
+		Task<AdminAnimalModel> GetAnimalByIdAsync(string animalId);
 		Task<AdminAnimalModel> GetAnimalModelAsync();
 		Task AddAnimalAsync(AdminAnimalModel model);
 
