@@ -64,27 +64,27 @@ namespace ForAnimalsWithLove.Controllers
 			return View(model);
 		}
 
-		//[HttpPost]
-		//public async Task<IActionResult> EditAnimal(AdminAnimalModel model)
-		//{
-		//	if (!ModelState.IsValid)
-		//	{
-		//		return View(model);
-		//	}
+		[HttpPost]
+		public async Task<IActionResult> EditAnimal(AdminAnimalModel model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(model);
+			}
 
-		//	try
-		//	{
-		//		await adminService.EditAnimalAsync(model);
-		//	}
-		//	catch (Exception)
-		//	{
-		//		this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
-		//		return View(model);
-		//	}
+			try
+			{
+				await adminService.EditAnimalAsync(model);
+			}
+			catch (Exception)
+			{
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+				return View(model);
+			}
 
 
-		//	return RedirectToAction(nameof(AllDoctors));
-		//}
+			return RedirectToAction(nameof(AllAnimals));
+		}
 		public IActionResult AnimalDetails(string id)
         {
             return View(new AdminAnimalModel());

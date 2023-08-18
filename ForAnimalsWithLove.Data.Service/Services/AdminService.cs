@@ -22,6 +22,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
             var result = await dbContext.Animals
                                   .Select(a => new AdminAnimalModel()
                                   {
+									  Id = a.Id.ToString(),
                                       Name = a.Name,
                                       Age = a.Age,
                                       Photo = a.Photo,
@@ -68,6 +69,28 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			var model = new AdminAnimalModel();
 
 			return model;
+		}
+
+		public async Task EditAnimalAsync(AdminAnimalModel model)
+		{
+			var existAnimal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == model.Id);
+
+			if (existAnimal != null)
+			{
+
+				existAnimal.Name = model.Name;
+				existAnimal.Age = model.Age;
+				existAnimal.Photo = model.Photo;
+				existAnimal.KindOfAnimal = model.KindOfAnimal;
+				existAnimal.Breed = model.Breed;
+				existAnimal.Color = model.Color;
+				existAnimal.Birthdate = model.Birthdate;
+				existAnimal.Sex = Char.Parse(model.Sex);
+				existAnimal.DoesHasOwner = model.DoesHasOwner;
+
+
+				await dbContext.SaveChangesAsync();
+			}
 		}
 
 		public async Task AddAnimalAsync(AdminAnimalModel model)
@@ -288,6 +311,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			}
 		}
 
-	
+		
 	}
 }

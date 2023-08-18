@@ -24,7 +24,7 @@
 
 <div class="row">
 	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-		<form asp-action="EditDoctor" method="post">
+		<form asp-action="EditAnimal" method="post">
 
 			<div class="form-group">
 				<label asp-for="Name"></label>
@@ -53,15 +53,61 @@
 			</div>
 			<div class="form-group">
 				<label asp-for="Color"></label>
-				<textarea asp-for="Color" class="form-control" rows="4"></textarea>
+				<input asp-for="Color" class="form-control" placeholder="Цвят...." />
 				<span asp-validation-for="Color" class="small textdanger"></span>
 			</div>
+			<div class="form-group">
+				<label asp-for="Sex"></label>
+				<input asp-for="Sex" class="form-control" placeholder="Пол...." />
+				<span asp-validation-for="Sex" class="small textdanger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Birthdate"></label>
+				<input asp-for="Birthdate" class="form-control" placeholder="Рождена дата...." />
+				<span asp-validation-for="Birthdate" class="small textdanger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="DoesHasOwner"></label>
+				<br>
+				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" id="hasOwner" value="true" onclick="checkedOnClick(this)" />
+				<label> Да</label>
+				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" value="false" onclick="checkedOnClick(this)" />
+				<label> Не</label><br>
+				<span asp-validation-for="DoesHasOwner" class="small textdanger"></span>
+				<!-- Script -->
+				<script type="text/javascript">
+					function checkedOnClick(el) {
+
+						// Select all checkboxes by class
+						var checkboxesList = document.getElementsByName("doesHasOwner");
+						for (var i = 0; i < checkboxesList.length; i++) {
+							checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+						}
+
+						el.checked = true; // Checked clicked checkbox
+					}
+
+				</script>
 
 			<div class="text-center">
 				<button class="btn btn-primary mt-3" type="submit" value="EditDoctor">Запази</button>
 			</div>
 
 		</form>
+
+
+		<div class="text-center col-md-10 col-xl-12">
+			<a asp-controller="Administrator" asp-action="AddHealthRecord" class="btn btn-primary"> + Добави здравно досие</a>
+		</div>
+		<div class="text-center col-md-10 col-xl-12">
+			<a asp-controller="Administrator" asp-action="AddGrooming" class="btn btn-primary"> + Добави Grooming услуги</a>
+		</div>
+		<div class="text-center col-md-10 col-xl-12">
+			<a asp-controller="Administrator" asp-action="AddEducation" class="btn btn-primary"> + Добави обучение</a>
+		</div>
+		<div class="text-center col-md-10 col-xl-12">
+			<a asp-controller="Administrator" asp-action="AddBooking" class="btn btn-primary"> + Добави хотелско настаняване</a>
+		</div>
 	</div>
 </div>
 
