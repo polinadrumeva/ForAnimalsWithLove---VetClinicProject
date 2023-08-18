@@ -15,6 +15,8 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 
 		Task<AdminGroomingModel> GetGroomingModelAsync();
 		Task AddGroomingAsync(AdminGroomingModel model, string id);
+		Task<AdminEducationModel> GetEducationModelAsync();
+		Task AddEducationAsync(AdminEducationModel model, string id);
 
 		//Doctors
 		Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();

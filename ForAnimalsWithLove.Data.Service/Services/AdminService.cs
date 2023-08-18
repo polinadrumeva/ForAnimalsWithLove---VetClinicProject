@@ -167,6 +167,39 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			await dbContext.Groomings.AddAsync(grooming);
 			await dbContext.SaveChangesAsync();
 		}
+		public async Task<AdminEducationModel> GetEducationModelAsync()
+		{
+			var trainers = await dbContext.Trainers
+				.Select(x => new AdminTrainerModel
+				{
+					Id = x.Id.ToString(),
+					FirstName = x.FirstName,
+					LastName = x.LastName
+				})
+				.ToListAsync();
+
+			var model = new AdminEducationModel
+			{
+				AdminTrainers = trainers
+			};
+
+			return model;
+		}
+
+		public async Task AddEducationAsync(AdminEducationModel model, string id)
+		{
+			var education = new Education
+			{
+				Id
+
+			};
+
+			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+			animal.HealthRecordId = healthRecord.Id;
+
+			await dbContext.HealthRecords.AddAsync(healthRecord);
+			await dbContext.SaveChangesAsync();
+		}
 
 		// Doctors services
 		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
@@ -366,5 +399,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			}
 		}
 
+		
 	}
 }

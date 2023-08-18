@@ -136,6 +136,31 @@ namespace ForAnimalsWithLove.Controllers
 
 			return RedirectToAction(nameof(AllAnimals));
 		}
+
+		[HttpGet]
+		public async Task<IActionResult> AddEducation()
+		{
+			var model = await adminService.GetEducationModelAsync();
+			return View(model);
+		}
+		[HttpPost]
+		public async Task<IActionResult> AddEducation(AdminEducationModel model, string id)
+		{
+
+			try
+			{
+				await adminService.AddEducationAsync(model, id);
+			}
+			catch (Exception)
+			{
+
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+				return View(model);
+			}
+
+
+			return RedirectToAction(nameof(AllAnimals));
+		}
 		public IActionResult AnimalDetails(string id)
         {
             return View(new AdminAnimalModel());
