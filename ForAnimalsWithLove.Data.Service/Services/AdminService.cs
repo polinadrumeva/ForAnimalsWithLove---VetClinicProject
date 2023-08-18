@@ -77,7 +77,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			if (existAnimal != null)
 			{
-
+				existAnimal.Id = existAnimal.Id;
 				existAnimal.Name = model.Name;
 				existAnimal.Age = model.Age;
 				existAnimal.Photo = model.Photo;
@@ -110,6 +110,38 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			};
 
 			await dbContext.Animals.AddAsync(animal);
+			await dbContext.SaveChangesAsync();
+		}
+
+		public async Task<AdminHealthModel> GetHealthModelAsync()
+		{
+			var model = new AdminHealthModel();
+
+			return model;
+		}
+
+		public async Task AddHealthRecordAsync(AdminHealthModel model, string id)
+		{
+			var healthRecord = new HealthRecord
+			{
+				Id = Guid.NewGuid(),
+				AnimalId = Guid.Parse(id),
+				Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
+				Microchip = model.Microchip,
+				MicrochipNumber = model.MicrochipNumber,
+				FirstVaccine = model.FirstVaccine,
+				SecondVaccine = model.SecondVaccine,
+				ThirdVaccine = model.ThirdVaccine,
+				AnnualVaccine = model.AnnualVaccine,
+				GeneralCondition = model.GeneralCondition,
+				PrescribedTreatment = model.PrescribedTreatment
+				
+			};
+
+			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+			animal.HealthRecordId = healthRecord.Id;
+
+			await dbContext.HealthRecords.AddAsync(healthRecord);
 			await dbContext.SaveChangesAsync();
 		}
 

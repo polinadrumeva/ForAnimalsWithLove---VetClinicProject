@@ -1,5 +1,62 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminHealthModel
+
 @{
+	ViewBag.Title = "Промени информация";
 }
+<head>
+	<!-- Bootstrap core CSS -->
+	<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- style CSS -->
+	<link href="~/css/style.css" rel="stylesheet">
+	<!-- plugins CSS -->
+	<link href="~/css/plugins.css" rel="stylesheet">
+	<!-- Colors CSS -->
+	<link href="~/styles/maincolors.css" rel="stylesheet">
+</head>
+
+<div class="page pb-0">
+	<div class="section-heading" data-aos="zoom-in">
+		<h3>@ViewBag.Title</h3>
+	</div>
+</div>
+
+
+<div class="row">
+	
+		<form method="post">
+
+			<partial name="_AddHealthFormPartial">
+
+				<div class="text-center">
+				<button class="btn btn-primary mt-3" type="submit" value="AddHealthRecord">Запази</button>
+				</div>
+
+		</form>
+
+
+		<div class="text-center col-md-10 col-xl-12">
+			<a asp-controller="Administrator" asp-action="AddHospitalRecord" class="btn btn-primary"> + Добави болнично досие</a>
+		</div>
+		<div class="text-center col-md-10 col-xl-12">
+			<a asp-controller="Administrator" asp-action="AddMedical" class="btn btn-primary"> + Добави преглед</a>
+		</div>
+		
+	
+</div>
+
+
+<!-- Bootstrap core & Jquery -->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Custom Js -->
+<script src="~/js/custom.js"></script>
+<script src="~/js/plugins.js"></script>
+<!-- Prefix free -->
+<script src="~/js/prefixfree.min.js"></script>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+
+

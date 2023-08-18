@@ -24,11 +24,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700&display=swap" rel="stylesheet">
     <link href="~/fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
     <link href="~/fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
-    <!-- Fav icons -->
-    <link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
     <!-- Bootstrap core CSS -->
     <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- style CSS -->
@@ -61,12 +57,12 @@
                         <a asp-controller="Administrator" asp-action="AddAnimal" class="btn btn-primary"> + Добави клиент</a>
                     </div>
                 </div>
-               
-                <div class="row mt-5">
-                    <!-- Pet  -->
+
+                <div class="row mt-4">
+                    <!-- Doctor  -->
                     @foreach (var animal in allAnimals)
                     {
-                        <div class="adopt-card col-md-5 col-xl-4 res-margin">
+                        <div class="adopt-card col-md-2 col-xl-6 res-margin">
                             <div class="card bg-light-custom">
                                 <div class="thumbnail text-center">
                                     <!-- Image -->
@@ -89,20 +85,32 @@
                                             <li><strong>Собственик: </strong> @names</li>
                                         </ul>
                                         <!-- Buttons -->
+                                        <!-- Buttons -->
                                         <div class="text-center">
-                                            <a class="btn btn-primary" asp-controller="Administrator" asp-action="EditAnimal" asp-route-id="@animal.Id">Промени/Добави</a>
+                                            <a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="EditAnimal" asp-route-id="@animal.Id">Промени/Добави</a>
                                         </div>
                                         <div class="text-center">
-                                            <a class="btn btn-primary" asp-controller="Administrator" asp-action="AnimalDetails" asp-route-id="@animal.Id">Детайли</a>
+                                            <a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AnimalDetails" asp-route-id="@animal.Id">Детайли</a>
                                         </div>
-                                        
+                                        <div class="text-center">
+                                            <a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddHealthRecord" asp-route-id="@animal.Id"> + Добави здравно досие</a>
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddGrooming" asp-route-id="@animal.Id"> + Добави Grooming услуги</a>
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddEducation" asp-route-id="@animal.Id"> + Добави обучение</a>
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddBooking" asp-route-id="@animal.Id"> + Добави хотелско настаняване</a>
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- /thumbnail -->
                             </div>
                             <!-- /card -->
                         </div>
-                      
+
                     }
                 </div>
                 <!-- /row -->
@@ -110,17 +118,23 @@
             <!-- /container -->
         </div>
     </div>
-        <!-- /page -->
-        <!-- Bootstrap core & Jquery -->
-        <script src="~/vendor/jquery/jquery.min.js"></script>
-        <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
-        <!-- Custom Js -->
-        <script src="~/js/custom.js"></script>
-        <script src="~/js/plugins.js"></script>
-        <!-- Prefix free -->
-        <script src="~/js/prefixfree.min.js"></script>
+
 </body>
+
+
+<!-- /page -->
+<!-- Bootstrap core & Jquery -->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Custom Js -->
+<script src="~/js/custom.js"></script>
+<script src="~/js/plugins.js"></script>
+<!-- Prefix free -->
+<script src="~/js/prefixfree.min.js"></script>
+
 </html>
+
+
 
 
           
