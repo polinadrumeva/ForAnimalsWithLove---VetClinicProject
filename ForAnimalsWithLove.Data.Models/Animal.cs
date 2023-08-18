@@ -53,11 +53,11 @@ namespace ForAnimalsWithLove.Data.Models
 
         public virtual Grooming? Grooming { get; set; }
 
-        [Required]
-        public Guid HealthRecordId { get; set; }
+      
+        public Guid? HealthRecordId { get; set; }
 
-        [Required]
-        public virtual HealthRecord HealthRecord { get; set; } = null!;
+     
+        public virtual HealthRecord? HealthRecord { get; set; } 
 
         public int? SearchHomeId { get; set; }
         public virtual SearchHome? SearchHome { get; set; }

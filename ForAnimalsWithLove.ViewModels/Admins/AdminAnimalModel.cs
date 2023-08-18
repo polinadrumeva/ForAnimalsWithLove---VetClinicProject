@@ -6,6 +6,11 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminAnimalModel
     {
+        public AdminAnimalModel()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
         public string Id { get; set; } = null!;
 
         [Required]
@@ -34,7 +39,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         [Required]
         [StringLength(SexMaxLength, MinimumLength = SexMinLength)]
         [Display(Name = "Пол")]
-        public char Sex { get; set; }
+        public string Sex { get; set; } = null!;
 
         [Display(Name = "Родено")]
         public DateTime Birthdate { get; set; }
@@ -56,11 +61,9 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
         public virtual AdminGroomingModel? Grooming { get; set; }
 
-        [Required]
-        public string HealthRecordId { get; set; } = null!;
+        public string? HealthRecordId { get; set; } = null!;
 
-        [Required]
-        public virtual AdminHealthModel HealthRecord { get; set; } = null!;
+        public virtual AdminHealthModel? HealthRecord { get; set; }
 
         public int? SearchHomeId { get; set; }
         public virtual AdminSearchHomeModel? SearchHome { get; set; }

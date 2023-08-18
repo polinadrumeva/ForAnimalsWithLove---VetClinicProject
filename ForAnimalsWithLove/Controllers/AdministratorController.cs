@@ -29,13 +29,13 @@ namespace ForAnimalsWithLove.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AddAnimals()
+        public async Task<IActionResult> AddAnimal()
 		{
 			var model = await adminService.GetAnimalModelAsync();
-			return View();
+			return View(model);
 		}
 		[HttpPost]
-		public async Task<IActionResult> AddAnimals(AdminAnimalModel model)
+		public async Task<IActionResult> AddAnimal(AdminAnimalModel model)
 		{
 			if (!ModelState.IsValid)
 			{

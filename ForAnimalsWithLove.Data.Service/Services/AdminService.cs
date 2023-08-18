@@ -29,7 +29,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
                                       Breed = a.Breed,
                                       Color = a.Color,
                                       Birthdate = a.Birthdate,
-                                      Sex = a.Sex,
+                                      Sex = a.Sex.ToString(),
                                       DoesHasOwner = a.DoesHasOwner,
                                       OwnerId = a.OwnerId.ToString(),
                                       Owner = new AdminOwnerModel()
@@ -39,30 +39,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
                                         LastName = a.Owner.LastName,
                                         Address = a.Owner.Address,
                                         PhoneNumber = a.Owner.PhoneNumber
-                                      },
-                                      HealthRecordId = a.HealthRecordId.ToString(),
-                                      HealthRecord = new AdminHealthModel()
-                                      { 
-                                        MicrochipNumber = a.HealthRecord.MicrochipNumber,
-                                        Microchip = a.HealthRecord.Microchip,
-                                        FirstVaccine = a.HealthRecord.FirstVaccine,
-                                        SecondVaccine = a.HealthRecord.SecondVaccine,
-                                        ThirdVaccine = a.HealthRecord.ThirdVaccine,
-                                        AnnualVaccine = a.HealthRecord.AnnualVaccine,
-                                        GeneralCondition = a.HealthRecord.GeneralCondition,
-                                        PrescribedTreatment = a.HealthRecord.PrescribedTreatment,
-                                        HospitalRecordId = a.HealthRecord.HospitalRecordId
-                                      },
-                                      GroomingId = a.GroomingId.ToString(),
-                                      Grooming = new AdminGroomingModel()
-                                      {
-                                        Service = a.Grooming.Service
-                                      },
-                                      SearchHomeId = a.SearchHomeId,
-                                      SearchHome = new AdminSearchHomeModel()
-                                      { 
-                                        Location = a.SearchHome.Location,
-                                        Habits = a.SearchHome.Habits
                                       }
 
                                   }).ToListAsync();
@@ -92,40 +68,9 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				KindOfAnimal = model.KindOfAnimal,
 				Breed = model.Breed,
 				Color = model.Color,
-				Sex = model.Sex,
+				Sex = Char.Parse(model.Sex),
 				Birthdate = model.Birthdate,
-				DoesHasOwner = model.DoesHasOwner,
-				Owner = new Owner
-				{
-					Id = Guid.Parse(model.OwnerId),
-					FirstName = model.Owner.FirstName,
-					MiddleName = model.Owner.MiddleName,
-					LastName = model.Owner.LastName,
-					Address = model.Owner.Address,
-					PhoneNumber = model.Owner.PhoneNumber
-				},
-				HealthRecord = new HealthRecord
-				{
-					Id = Guid.Parse(model.HealthRecordId),
-					MicrochipNumber = model.HealthRecord.MicrochipNumber,
-					Microchip = model.HealthRecord.Microchip,
-					FirstVaccine = model.HealthRecord.FirstVaccine,
-					SecondVaccine = model.HealthRecord.SecondVaccine,
-					ThirdVaccine = model.HealthRecord.ThirdVaccine,
-					AnnualVaccine = model.HealthRecord.AnnualVaccine,
-					GeneralCondition = model.HealthRecord.GeneralCondition,
-					PrescribedTreatment = model.HealthRecord.PrescribedTreatment
-				},
-				Grooming = new Grooming
-				{
-					Id = Guid.Parse(model.GroomingId),
-					Service = model.Grooming.Service
-				},
-				SearchHome = new SearchHome
-				{
-					Location = model.SearchHome.Location,
-					Habits = model.SearchHome.Habits
-				}
+				DoesHasOwner = model.DoesHasOwner
 			};
 
 			await dbContext.Animals.AddAsync(animal);

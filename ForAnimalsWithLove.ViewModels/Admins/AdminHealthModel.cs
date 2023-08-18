@@ -7,7 +7,6 @@ namespace ForAnimalsWithLove.ViewModels.Admins
     {
         public AdminHealthModel()
         {
-            this.Id = Guid.NewGuid().ToString();
             this.Medicals = new HashSet<AdminMedicalModel>();
         }
 

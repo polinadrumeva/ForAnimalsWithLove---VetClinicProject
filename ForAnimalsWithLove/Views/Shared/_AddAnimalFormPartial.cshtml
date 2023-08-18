@@ -50,9 +50,9 @@
 			<div class="form-group">
 				<label asp-for="DoesHasOwner"></label>
 				<br>
-				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" id="hasOwner" value="T" onclick="checkedOnClick(this)"/>
+				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" id="hasOwner" value="true" onclick="checkedOnClick(this)"/>
 				<label> Да</label>
-				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" value="F" onclick="checkedOnClick(this)"/>
+				<input type="checkbox" asp-for="DoesHasOwner" name="doesHasOwner" value="false" onclick="checkedOnClick(this)"/>
 				<label> Не</label><br>
 				<span asp-validation-for="DoesHasOwner" class="small textdanger"></span>
 				<!-- Script -->
