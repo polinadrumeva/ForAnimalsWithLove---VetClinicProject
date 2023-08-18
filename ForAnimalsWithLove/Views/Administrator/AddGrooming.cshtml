@@ -1,8 +1,8 @@
 ﻿@using ForAnimalsWithLove.ViewModels.Admins;
-@model AdminHealthModel
+@model AdminGroomingModel
 
 @{
-	ViewBag.Title = "Добави здравно досие";
+	ViewBag.Title = "Добави услуга";
 }
 <head>
 	<!-- Bootstrap core CSS -->
@@ -23,26 +23,19 @@
 
 
 <div class="row">
-	
-		<form method="post">
 
-			<partial name="_AddHealthFormPartial">
+	<form method="post">
 
-				<div class="text-center">
-				<button class="btn btn-primary mt-3" type="submit" value="AddHealthRecord">Запази</button>
-				</div>
+		<partial name="_AddGroomingFormPartial">
 
-		</form>
+			<div class="text-center">
+				<button class="btn btn-primary mt-3" type="submit" value="AddGrooming">Запази</button>
+			</div>
+
+	</form>
 
 
-		<div class="text-center col-md-10 col-xl-12">
-			<a asp-controller="Administrator" asp-action="AddHospitalRecord" class="btn btn-primary"> + Добави болнично досие</a>
-		</div>
-		<div class="text-center col-md-10 col-xl-12">
-			<a asp-controller="Administrator" asp-action="AddMedical" class="btn btn-primary"> + Добави преглед</a>
-		</div>
-		
-	
+
 </div>
 
 

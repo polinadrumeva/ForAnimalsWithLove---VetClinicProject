@@ -110,6 +110,32 @@ namespace ForAnimalsWithLove.Controllers
 
 			return RedirectToAction(nameof(AllAnimals));
 		}
+
+
+		[HttpGet]
+		public async Task<IActionResult> AddGrooming()
+		{
+			var model = await adminService.GetGroomingModelAsync();
+			return View(model);
+		}
+		[HttpPost]
+		public async Task<IActionResult> AddGrooming(AdminGroomingModel model, string id)
+		{
+
+			try
+			{
+				await adminService.AddGroomingAsync(model, id);
+			}
+			catch (Exception)
+			{
+
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+				return View(model);
+			}
+
+
+			return RedirectToAction(nameof(AllAnimals));
+		}
 		public IActionResult AnimalDetails(string id)
         {
             return View(new AdminAnimalModel());

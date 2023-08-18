@@ -6,49 +6,49 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ForAnimalsWithLove.Data.Service.Services
 {
-    public class AdminService : IAdminService
-    {
+	public class AdminService : IAdminService
+	{
 
-        private readonly ForAnimalsWithLoveDbContext dbContext;
+		private readonly ForAnimalsWithLoveDbContext dbContext;
 
-        public AdminService(ForAnimalsWithLoveDbContext dbContext)
-        {
-            this.dbContext = dbContext;
-        }
+		public AdminService(ForAnimalsWithLoveDbContext dbContext)
+		{
+			this.dbContext = dbContext;
+		}
 
-      
-        public async Task<IEnumerable<AdminAnimalModel>> GetAllAnimals()
-        {
-            var result = await dbContext.Animals
-                                  .Select(a => new AdminAnimalModel()
-                                  {
+
+		public async Task<IEnumerable<AdminAnimalModel>> GetAllAnimals()
+		{
+			var result = await dbContext.Animals
+								  .Select(a => new AdminAnimalModel()
+								  {
 									  Id = a.Id.ToString(),
-                                      Name = a.Name,
-                                      Age = a.Age,
-                                      Photo = a.Photo,
-                                      KindOfAnimal = a.KindOfAnimal,
-                                      Breed = a.Breed,
-                                      Color = a.Color,
-                                      Birthdate = a.Birthdate,
-                                      Sex = a.Sex.ToString(),
-                                      DoesHasOwner = a.DoesHasOwner,
-                                      OwnerId = a.OwnerId.ToString(),
-                                      Owner = new AdminOwnerModel()
-                                      { 
-                                        FirstName = a.Owner.FirstName,
-                                        MiddleName = a.Owner.MiddleName,
-                                        LastName = a.Owner.LastName,
-                                        Address = a.Owner.Address,
-                                        PhoneNumber = a.Owner.PhoneNumber
-                                      }
+									  Name = a.Name,
+									  Age = a.Age,
+									  Photo = a.Photo,
+									  KindOfAnimal = a.KindOfAnimal,
+									  Breed = a.Breed,
+									  Color = a.Color,
+									  Birthdate = a.Birthdate,
+									  Sex = a.Sex.ToString(),
+									  DoesHasOwner = a.DoesHasOwner,
+									  OwnerId = a.OwnerId.ToString(),
+									  Owner = new AdminOwnerModel()
+									  {
+										  FirstName = a.Owner.FirstName,
+										  MiddleName = a.Owner.MiddleName,
+										  LastName = a.Owner.LastName,
+										  Address = a.Owner.Address,
+										  PhoneNumber = a.Owner.PhoneNumber
+									  }
 
-                                  }).ToListAsync();
+								  }).ToListAsync();
 
-            return result;
-        }
+			return result;
+		}
 
-        public async Task<AdminAnimalModel?> GetAnimalByIdAsync(string animalId)
-        {
+		public async Task<AdminAnimalModel?> GetAnimalByIdAsync(string animalId)
+		{
 			return await dbContext.Animals.Where(x => x.Id.ToString() == animalId)
 				.Select(x => new AdminAnimalModel
 				{
@@ -135,13 +135,36 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				AnnualVaccine = model.AnnualVaccine,
 				GeneralCondition = model.GeneralCondition,
 				PrescribedTreatment = model.PrescribedTreatment
-				
+
 			};
 
 			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 			animal.HealthRecordId = healthRecord.Id;
 
 			await dbContext.HealthRecords.AddAsync(healthRecord);
+			await dbContext.SaveChangesAsync();
+		}
+		public async Task<AdminGroomingModel> GetGroomingModelAsync()
+		{
+			var model = new AdminGroomingModel();
+
+			return model;
+		}
+
+		public async Task AddGroomingAsync(AdminGroomingModel model, string id)
+		{
+			var grooming = new Grooming
+			{
+				Id = Guid.NewGuid(),
+				AnimalId = Guid.Parse(id),
+				Service = model.Service
+
+			};
+
+			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+			animal.GroomingId = grooming.Id;
+
+			await dbContext.Groomings.AddAsync(grooming);
 			await dbContext.SaveChangesAsync();
 		}
 
@@ -151,12 +174,12 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			var doctors = await dbContext.Doctors
 								.Select(d => new IndexDoctorModel()
 								{
-                                    Id = d.Id.ToString(),
+									Id = d.Id.ToString(),
 									FirstName = d.FirstName,
 									LastName = d.LastName,
 									ImageUrl = d.Photo,
 									Specialization = d.Specialization,
-                                    PhoneNumber = d.PhoneNumber
+									PhoneNumber = d.PhoneNumber
 								})
 								.ToListAsync();
 
@@ -182,32 +205,32 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		}
 
 		public async Task AddDoctorAsync(AdminDoctorModel model)
-        {
-            var doc = new Doctor
-            {  
-                Id = Guid.Parse(model.Id),
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                Specialization = model.Specialization,
-                Address = model.Address,
-                PhoneNumber = model.PhoneNumber,
-                Photo = model.Photo
-            };
+		{
+			var doc = new Doctor
+			{
+				Id = Guid.Parse(model.Id),
+				FirstName = model.FirstName,
+				LastName = model.LastName,
+				Specialization = model.Specialization,
+				Address = model.Address,
+				PhoneNumber = model.PhoneNumber,
+				Photo = model.Photo
+			};
 
-            await dbContext.AddAsync(doc);
-            await dbContext.SaveChangesAsync();
-        }
+			await dbContext.AddAsync(doc);
+			await dbContext.SaveChangesAsync();
+		}
 		public async Task<AdminDoctorModel?> GetDoctorByIdAsync(string id)
 		{
 			return await dbContext.Doctors.Where(x => x.Id.ToString() == id)
 				.Select(x => new AdminDoctorModel
 				{
 					FirstName = x.FirstName,
-                    LastName = x.LastName,
-                    Specialization = x.Specialization,
-                    Address = x.Address,
-                    PhoneNumber = x.PhoneNumber,
-                    Photo = x.Photo,
+					LastName = x.LastName,
+					Specialization = x.Specialization,
+					Address = x.Address,
+					PhoneNumber = x.PhoneNumber,
+					Photo = x.Photo,
 					Directories = dbContext.Directions.Select(c => new AdminDirectoryModel
 					{
 						Id = c.Id,
@@ -230,19 +253,19 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				existDoctor.Address = model.Address;
 				existDoctor.Photo = model.Photo;
 				existDoctor.Specialization = model.Specialization;
-			
+
 				await dbContext.SaveChangesAsync();
 			}
 		}
 		public async Task<AdminDoctorModel> GetDoctorDetailsAsync(string doctorId)
 		{
 			var doctor = await dbContext.Doctors
-                                    .FirstAsync(d => d.Id.ToString() == doctorId);
+									.FirstAsync(d => d.Id.ToString() == doctorId);
 
-            return new AdminDoctorModel()
-            {
+			return new AdminDoctorModel()
+			{
 				Id = doctor.Id.ToString(),
-                FirstName = doctor.FirstName,
+				FirstName = doctor.FirstName,
 				LastName = doctor.LastName,
 				Specialization = doctor.Specialization,
 				Address = doctor.Address,
@@ -250,19 +273,19 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Photo = doctor.Photo
 			};
 		}
-        public async Task RemoveDoctorAsync(AdminDoctorModel model, string id)
-        {
-            var doctor = await dbContext.Doctors.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+		public async Task RemoveDoctorAsync(AdminDoctorModel model, string id)
+		{
+			var doctor = await dbContext.Doctors.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 
-            if (doctor != null)
-            {
-                dbContext.Doctors.Remove(doctor);
-                await dbContext.SaveChangesAsync();
-            }
-        }
+			if (doctor != null)
+			{
+				dbContext.Doctors.Remove(doctor);
+				await dbContext.SaveChangesAsync();
+			}
+		}
 
-        // Trainers services
-        public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
+		// Trainers services
+		public async Task<IEnumerable<IndexTrainerModel>> GetAllTrainers()
 		{
 			var trainers = await dbContext.Trainers
 									.Select(t => new IndexTrainerModel()
@@ -271,7 +294,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 										FirstName = t.FirstName,
 										LastName = t.LastName,
 										ImageUrl = t.Photo,
-                                        PhoneNumber = t.PhoneNumber
+										PhoneNumber = t.PhoneNumber
 									})
 									.ToListAsync();
 
@@ -280,15 +303,15 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 
 
-        public async Task<AdminTrainerModel> GetTrainerModelAsync()
-        {
-            var model = new AdminTrainerModel();
+		public async Task<AdminTrainerModel> GetTrainerModelAsync()
+		{
+			var model = new AdminTrainerModel();
 
-            return model;
-        }
+			return model;
+		}
 
-        public async Task AddTrainerAsync(AdminTrainerModel model)
-        {
+		public async Task AddTrainerAsync(AdminTrainerModel model)
+		{
 			var trainer = new Trainer
 			{
 				Id = Guid.Parse(model.Id),
@@ -312,7 +335,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 					LastName = x.LastName,
 					PhoneNumber = x.PhoneNumber,
 					Photo = x.Photo
-					
+
 				}).FirstOrDefaultAsync();
 		}
 
@@ -343,6 +366,5 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			}
 		}
 
-		
 	}
 }
