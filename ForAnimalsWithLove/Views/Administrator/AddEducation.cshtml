@@ -1,5 +1,72 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminEducationModel
+
 @{
+	ViewBag.Title = "Добави Обучение";
 }
+<head>
+	<!-- Bootstrap core CSS -->
+	<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- style CSS -->
+	<link href="~/css/style.css" rel="stylesheet">
+	<!-- plugins CSS -->
+	<link href="~/css/plugins.css" rel="stylesheet">
+	<!-- Colors CSS -->
+	<link href="~/styles/maincolors.css" rel="stylesheet">
+</head>
+
+<div class="page pb-0">
+	<div class="section-heading" data-aos="zoom-in">
+		<h3>@ViewBag.Title</h3>
+	</div>
+</div>
+
+
+<div class="row">
+
+	<form method="post">
+
+		<div class="row">
+			<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+				<div class="form-group">
+					<label asp-for="Days"></label>
+					<input asp-for="Days" class="form-control" placeholder="Дни...">
+					<span asp-validation-for="Days" class="small text-danger"></span>
+				</div>
+				<div class="mb-3">
+					<label asp-for="@Model.TrainerId" class="form-label-add-edit">Треньори</label>
+					<select asp-for="@Model.TrainerId" class="form-control" aria-required="true">
+						@foreach (var type in Model.AdminTrainers)
+						{
+							<option value="@type.Id">@type.FirstName @type.LastName</option>
+						}
+					</select>
+					<span asp-validation-for="@Model.TrainerId" class="text-danger"></span>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="text-center">
+			<button class="btn btn-primary mt-3" type="submit" value="AddEducation">Запази</button>
+		</div>
+
+	</form>
+
+</div>
+
+
+<!-- Bootstrap core & Jquery -->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Custom Js -->
+<script src="~/js/custom.js"></script>
+<script src="~/js/plugins.js"></script>
+<!-- Prefix free -->
+<script src="~/js/prefixfree.min.js"></script>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+
+
