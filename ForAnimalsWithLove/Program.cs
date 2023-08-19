@@ -4,6 +4,7 @@ using ForAnimalsWithLove.Data;
 using ForAnimalsWithLove.Infrastructure.Extensions;
 using ForAnimalsWithLove.Data.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +24,11 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 	.AddEntityFrameworkStores<ForAnimalsWithLoveDbContext>();
 
 builder.Services.AddAppServices();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews()
+				.AddMvcOptions(op => 
+				{ 
+					op.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+				});
 
 var app = builder.Build();
 

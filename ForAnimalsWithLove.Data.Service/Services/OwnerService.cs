@@ -14,23 +14,12 @@ namespace ForAnimalsWithLove.Data.Service.Services
             this.dbContext = dbContext;
         }
 
-        public Task Create(string userId, RegistrationOwnerViewModel model)
-        {
-            throw new NotImplementedException();
-        }
 
-        //public Task Create(string userId, RegistrationOwnerViewModel model)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
-        public async Task<bool> OwnerExistById(string userId)
+        public async Task<bool> OwnerExistByUserIdAsync(string userId)
         {
-            var result = await dbContext.Owners.AnyAsync(o => o.Id.ToString() == userId);
+            var result = await dbContext.Owners.AnyAsync(o => o.UserId.ToString() == userId);
             return result;
         }
-
-
-        
     }
 }

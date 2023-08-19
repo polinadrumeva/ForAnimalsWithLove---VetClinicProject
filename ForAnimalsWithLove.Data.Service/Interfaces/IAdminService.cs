@@ -6,6 +6,10 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 {
     public interface IAdminService
     {
+		Task<bool> AdminExistByUserIdAsync(string userId);
+
+
+        //Animals
         Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();
 		Task<AdminAnimalModel> GetAnimalByIdAsync(string animalId);
 		Task<AdminAnimalModel> GetAnimalModelAsync();

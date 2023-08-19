@@ -616,6 +616,11 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			}
 		}
 
-		
-	}
+        public async Task<bool> AdminExistByUserIdAsync(string userId)
+        {
+            var result = await dbContext.Administrators.AnyAsync(x => x.UserId.ToString() == userId);
+
+			return result;
+        }
+    }
 }
