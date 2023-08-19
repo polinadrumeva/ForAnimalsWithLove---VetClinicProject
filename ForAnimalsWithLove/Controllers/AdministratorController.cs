@@ -2,10 +2,12 @@
 
 using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.ViewModels.Admins;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ForAnimalsWithLove.Controllers
 {
-    //Administrator Controller is taking care of the administrator's functionality
+	//Administrator Controller is taking care of the administrator's functionality
+	[Authorize]
     public class AdministratorController : BaseController
     {
         private readonly IAdminService adminService;

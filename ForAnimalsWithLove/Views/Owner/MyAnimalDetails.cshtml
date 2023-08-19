@@ -1,0 +1,89 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model IEnumerable<AdminAnimalModel>
+@{
+	var myAnimals = Model.ToList();
+}
+
+<body id="top">
+
+	<!-- ==== Page Content ==== -->
+	<div class="page">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+
+					@foreach (var animal in myAnimals)
+					{
+						<div class="row bg-light-custom border-irregular1 block-padding">
+							<!-- image -->
+							<div class="col-lg-4 offset-lg-2">
+								<div class="col-md-12">
+									<!-- image -->
+									<img src="@animal.Photo" class="border-irregular1 img-fluid hover-opacity" alt="">
+								</div>
+							</div>
+							<!-- /col-md -->
+							<!-- adoption info  -->
+							<div class="col-lg-6 res-margin mt-5 text-xs-center">
+								<h4><strong>Име:</strong> @animal.Name</h4>
+								<div class="row">
+									<div class="col-sm-6">
+										<ul class="list-unstyled pet-adopt-info">
+											<li class="h7">Възраст: <span>@animal.Age години</span></li>
+											<li class="h7">Вид: <span>@animal.KindOfAnimal</span></li>
+											<li class="h7">Порода: <span>@animal.Breed</span></li>
+										</ul>
+									</div>
+									<div class="col-sm-6">
+										<ul class="list-unstyled pet-adopt-info">
+											<li class="h7">Цвят: <span>@animal.Color</span></li>
+											<li class="h7">Пол: <span>@animal.Sex</span></li>
+											<li class="h7">Дата на раждане: <span>@animal.Birthdate</span></li>
+										</ul>
+									</div>
+									<!-- /div-->
+								</div>
+								<!-- /row-->
+								<!-- button -->
+								<div class="row">
+									<div class="text-center col-sm-6">
+										<ul class="list-unstyled pet-adopt-info">
+											<li class="text-center">
+												<a class="btn btn-primary" asp-controller="Owner" asp-action="HealthRecordDetails" asp-route-id="@animal.Id"> Детайли здравно досие</a>
+											</li>
+											<li class="text-center">
+												<a class="btn btn-primary" asp-controller="Owner" asp-action="HospitalRecordDetails" asp-route-id="@animal.Id"> Детайли болнично досие</a>
+											</li>
+											<li class="text-center">
+												<a class="btn btn-primary" asp-controller="Owner" asp-action="GroomingDetails" asp-route-id="@animal.Id"> Детайли Grooming услуги</a>
+											</li>
+										</ul>
+									</div>
+									<div class="text-center col-sm-6">
+										<ul class="list-unstyled pet-adopt-info">
+											<li class="text-center">
+												<a class="btn btn-primary" asp-controller="Owner" asp-action="BookingDetails" asp-route-id="@animal.Id"> Детайли хотелско настаняване</a>
+											</li>
+											<li class="text-center">
+												<a class="btn btn-primary" asp-controller="Owner" asp-action="EducationDetails" asp-route-id="@animal.Id"> Детайли обучение</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<!-- /col-md -->
+						</div>
+						<hr />
+					}
+
+
+				</div>
+				<!-- /col-lg-->
+			</div>
+			<!-- /row-->
+		</div>
+		<!-- /container-->
+	</div>
+	<!-- /page -->
+
+</body>

@@ -9,12 +9,13 @@
 @inject IOwnerService OwnerService
 @{
 	bool isOwner = await OwnerService.OwnerExistByUserIdAsync(this.User.GetId());
+	var userId = this.User.GetId();
 }
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
 
-	@if (SignInManager.IsSignedIn(User))
+@if (SignInManager.IsSignedIn(User) & this.User.Identity?.IsAuthenticated ?? false)
 {
 		@if (isAdmin)
 		{
@@ -55,14 +56,10 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-2">
 					<!-- menu item -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="services-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Нашият екип
+					<li class="nav-item">
+						<a class="nav-link " id="services" asp-controller="Owner" asp-action="MyAnimalDetails" asp-route-id="@userId">
+							Моите любимци
 						</a>
-						<div class="dropdown-menu" aria-labelledby="services-dropdown">
-							<a class="dropdown-item" asp-controller="Home" asp-action="TeamVet">Ветеринари</a>
-							<a class="dropdown-item" asp-controller="Home" asp-action="TeamTrainer">Треньори</a>
-						</div>
 					</li>
 				</ul>
 				</div>
