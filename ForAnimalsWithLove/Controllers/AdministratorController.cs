@@ -161,6 +161,7 @@ namespace ForAnimalsWithLove.Controllers
 
 			return RedirectToAction(nameof(AllAnimals));
 		}
+
 		public IActionResult AnimalDetails(string id)
         {
             return View(new AdminAnimalModel());

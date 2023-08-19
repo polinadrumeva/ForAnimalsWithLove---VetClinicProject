@@ -190,14 +190,25 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		{
 			var education = new Education
 			{
-				Id
+				Id = Guid.NewGuid(),
+				TrainerId = Guid.Parse(model.TrainerId),
+				Trainer = dbContext.Trainers.FirstOrDefault(x => x.Id.ToString() == model.TrainerId),
+				Days = model.Days
 
 			};
 
-			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
-			animal.HealthRecordId = healthRecord.Id;
+			var animalEducation = new AnimalEducation
+			{ 
+				AnimalId = Guid.Parse(id),
+				EducationId = education.Id,
+				Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
+				Education = education
+				
+			};
+			
 
-			await dbContext.HealthRecords.AddAsync(healthRecord);
+			await dbContext.Educations.AddAsync(education);
+			await dbContext.AnimalsEducations.AddAsync(animalEducation);
 			await dbContext.SaveChangesAsync();
 		}
 
