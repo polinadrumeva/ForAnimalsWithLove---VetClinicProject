@@ -50,7 +50,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Administrators");
+                    b.ToTable("Administrators", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Animal", b =>
@@ -111,7 +111,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Animals");
+                    b.ToTable("Animals", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalBooking", b =>
@@ -126,7 +126,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("BookingId");
 
-                    b.ToTable("AnimalsBookings");
+                    b.ToTable("AnimalsBookings", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalEducation", b =>
@@ -141,7 +141,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("EducationId");
 
-                    b.ToTable("AnimalsEducations");
+                    b.ToTable("AnimalsEducations", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.ApplicationUser", b =>
@@ -232,7 +232,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("Bookings");
+                    b.ToTable("Bookings", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Direction", b =>
@@ -250,7 +250,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Directions");
+                    b.ToTable("Directions", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.DirectionDoctor", b =>
@@ -265,7 +265,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("DirectionsDoctors");
+                    b.ToTable("DirectionsDoctors", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
@@ -308,7 +308,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Doctors", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
@@ -327,7 +327,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Educations");
+                    b.ToTable("Educations", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Grooming", b =>
@@ -349,7 +349,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("Groomings");
+                    b.ToTable("Groomings", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
@@ -402,7 +402,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("HealthRecords");
+                    b.ToTable("HealthRecords", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
@@ -444,7 +444,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("HealthRecordId")
                         .IsUnique();
 
-                    b.ToTable("HospitalRecords");
+                    b.ToTable("HospitalRecords", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Hotel", b =>
@@ -467,7 +467,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hotels");
+                    b.ToTable("Hotels", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Medical", b =>
@@ -501,7 +501,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("HealthRecordId");
 
-                    b.ToTable("Medicals");
+                    b.ToTable("Medicals", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>
@@ -532,7 +532,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("HospitalRecordId");
 
-                    b.ToTable("Operations");
+                    b.ToTable("Operations", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Owner", b =>
@@ -571,7 +571,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Owners");
+                    b.ToTable("Owners", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.SearchHome", b =>
@@ -596,7 +596,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("SearchHomes");
+                    b.ToTable("SearchHomes", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Test", b =>
@@ -623,7 +623,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("OperationId");
 
-                    b.ToTable("Tests");
+                    b.ToTable("Tests", (string)null);
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Trainer", b =>
@@ -658,7 +658,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Trainers");
+                    b.ToTable("Trainers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>

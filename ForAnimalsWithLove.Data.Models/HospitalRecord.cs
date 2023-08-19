@@ -32,7 +32,7 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(TreatmentMaxLength, MinimumLength = TreatmentMinLength)]
         public string? PrescribedTreatment { get; set; }
 
-        public Guid HealthRecordId { get; set; }
+		public Guid HealthRecordId { get; set; }
 
         public HealthRecord HealthRecord { get; set; } = null!;
 
