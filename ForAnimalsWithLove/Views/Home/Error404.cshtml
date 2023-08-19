@@ -1,0 +1,24 @@
+﻿@using ForAnimalsWithLove.ViewModels;
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+
+    <!-- ==== Page Content ==== -->
+    <div class="page paws-house-bg1">
+        <div class="container">
+            <div class="row block-padding">
+                <div class="col-md-4 offset-md-1">
+                    <img src="~/images/404error.jpg" alt="error" class="center-block img-fluid float-right">
+                </div>
+                <div class="col-md-5 h-50 border-irregular1  bg-light-custom text-center">
+                    <h1 class="mt-4">404</h1>
+                    <h4>Not found</h4>
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-primary mb-5"> Go back to homepage</a>
+                </div>
+            </div>
+            <!-- /container -->
+        </div>
+    </div>
+  
