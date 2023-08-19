@@ -380,7 +380,42 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 		}
 
+		public async Task<AdminMedicalModel> GetMedicalModelAsync()
+		{
+			var doctors = await dbContext.Doctors
+				.Select(x => new AdminDoctorModel
+				{
+					Id = x.Id.ToString(),
+					FirstName = x.FirstName,
+					LastName = x.LastName
+				})
+				.ToListAsync();
 
+			var model = new AdminMedicalModel
+			{
+				Doctors = doctors
+			};
+			
+			return model;
+		}
+
+		public async Task AddMedicalAsync(AdminMedicalModel model, string id)
+		{
+			var medical = new Medical
+			{
+				Id = Guid.NewGuid(),
+				HealthRecordId = Guid.Parse(id),
+				HealthRecord = dbContext.HealthRecords.FirstOrDefault(x => x.Id.ToString() == id),
+				DoctorId = Guid.Parse(model.DoctorId),
+				Doctor = dbContext.Doctors.FirstOrDefault(x => x.Id.ToString() == model.DoctorId),
+				Date = model.Date,
+				Reason = model.Reason,
+				Constatation = model.Constatation
+			};
+
+			await dbContext.Medicals.AddAsync(medical);
+			await dbContext.SaveChangesAsync();
+		}
 
 
 		// Doctors services
@@ -432,7 +467,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Photo = model.Photo
 			};
 
-			await dbContext.AddAsync(doc);
+			await dbContext.Doctors.AddAsync(doc);
 			await dbContext.SaveChangesAsync();
 		}
 		public async Task<AdminDoctorModel?> GetDoctorByIdAsync(string id)

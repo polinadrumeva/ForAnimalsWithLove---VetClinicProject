@@ -5,7 +5,14 @@ using static ForAnimalsWithLove.Common.Validations.EntityValidations.HospitalRec
 namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminMedicalModel
-    { 
+    {
+        public AdminMedicalModel()
+        {
+            this.Doctors = new HashSet<AdminDoctorModel>();
+        }
+
+        public string DoctorId { get; set; } = null!;
+
         [Required]
         public AdminDoctorModel Doctor { get; set; } = null!;
 
@@ -20,10 +27,14 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
         [Required]
         [StringLength(DiagnosisMaxLength, MinimumLength = DiagnosisMinLength)]
+        [Display(Name = "Причина")]
         public string Reason { get; set; } = null!;
 
         [Required]
         [StringLength(DiagnosisMaxLength, MinimumLength = DiagnosisMinLength)]
+        [Display(Name = "Констатация")]
         public string Constatation { get; set; } = null!;
+
+        public virtual ICollection<AdminDoctorModel> Doctors { get; set; }
     }
 }
