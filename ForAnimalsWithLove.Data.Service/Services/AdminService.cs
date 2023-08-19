@@ -19,6 +19,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 		public async Task<IEnumerable<AdminAnimalModel>> GetAllAnimals()
 		{
+
 			var result = await dbContext.Animals
 								  .Select(a => new AdminAnimalModel()
 								  {

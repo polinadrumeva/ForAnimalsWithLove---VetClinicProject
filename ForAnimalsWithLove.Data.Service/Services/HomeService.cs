@@ -97,7 +97,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
                                             FirstName = o.FirstName
                                         }).FirstOrDefaultAsync();
                                         
-			return result;
+			return result!;
 		}
 	}
 }

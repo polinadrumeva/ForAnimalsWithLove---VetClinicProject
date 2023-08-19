@@ -21,6 +21,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 		options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
 		options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
 	})
+	.AddRoles<IdentityRole<Guid>>()
 	.AddEntityFrameworkStores<ForAnimalsWithLoveDbContext>();
 
 builder.Services.AddAppServices();
@@ -52,6 +53,13 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+if (app.Environment.IsDevelopment())
+{
+	app.SeedAdmin("admin@foranimalswithove.bg");
+}
+
+
 
 app.MapControllerRoute(
 	name: "default",

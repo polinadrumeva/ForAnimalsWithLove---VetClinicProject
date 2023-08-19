@@ -1,14 +1,15 @@
 ﻿@using ForAnimalsWithLove.Data.Service.Interfaces;
+@using ForAnimalsWithLove.Data.Service.Services;
 @using ForAnimalsWithLove.Infrastructure.Extensions;
 @using Microsoft.AspNetCore.Identity
 @using ForAnimalsWithLove.Data.Models
 @inject IAdminService AdminService
 @{
-	bool isAdmin = await AdminService.AdminExistByUserIdAsync(this.User.GetId());
+	bool isAdmin = await AdminService.AdminExistByUserIdAsync(this.User.GetId()!);
 }
 @inject IOwnerService OwnerService
 @{
-	bool isOwner = await OwnerService.OwnerExistByUserIdAsync(this.User.GetId());
+	bool isOwner = await OwnerService.OwnerExistByUserIdAsync(this.User.GetId()!);
 	var userId = this.User.GetId();
 }
 @inject SignInManager<ApplicationUser> SignInManager
@@ -41,11 +42,11 @@
 			</ul>
 		</div>
 		}
-		@if (isOwner)
-		{
-			<div class="container">
+	@if (isOwner)
+	{
+		<div class="container">
 			<!-- logo -->
-				<img src="~/images/logo.png" style="block-size: 80px" alt="ForAnimalsWithLove">
+			<img src="~/images/logo.png" style="block-size: 80px" alt="ForAnimalsWithLove">
 			<!-- Navbartoggler -->
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggle-icon">
@@ -62,13 +63,11 @@
 						</a>
 					</li>
 				</ul>
-				</div>
-		    </div>
-	
-		}
+			</div>
+		</div>
 
+	} 
 	
-
 		<ul class="navbar-nav">
 			<li class="nav-item">
 				<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
@@ -79,6 +78,7 @@
 				</form>
 			</li>
 		</ul>
+		
 	}
 	else
 	{
@@ -148,5 +148,5 @@
 			</ul>
 		</div>
 		
-	
 	}
+}

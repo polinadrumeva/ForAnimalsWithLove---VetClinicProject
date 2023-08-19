@@ -1,5 +1,19 @@
 ﻿@using ForAnimalsWithLove.ViewModels.Admins;
 @model AdminBookingModel
+@{
+	var hotelName = "";
+	var hotelLocation = "";
+	if (Model.HotelId == 1)
+	{
+		hotelName = "Forest Hotel";
+		hotelLocation = "гр. Банско";
+	}
+	else if (Model.HotelId == 2)
+	{
+		hotelName = "City Hotel";
+		hotelLocation = "гр. София";
+	}
+}
 
 
 <body id="top">
@@ -20,8 +34,9 @@
 										<li class="h7">Начална дата: <span>@Model.StartDate</span></li>
 										<li class="h7">Крайна дата: <span>@Model.EndDate</span></li>
 										<li class="h7">Дни: <span>@Model.Days</span></li>
-										<li class="h7">Хотел: <span>@Model.Hotel.Name </span></li>
-										<li class="h7">Локация: <span>@Model.Hotel.Location </span></li>
+										<li class="h7">Хотел: <span>@hotelName</span></li>
+										<li class="h7">Локация: <span>@hotelLocation </span></li>
+											
 									</ul>
 								</div>
 								<!-- /div-->
