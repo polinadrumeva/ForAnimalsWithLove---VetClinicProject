@@ -238,7 +238,8 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				HotelId = model.HotelId,
 				Hotel = dbContext.Hotels.FirstOrDefault(x => x.Id == model.HotelId),
 				StartDate = model.StartDate,
-				EndDate = model.EndDate
+				EndDate = model.EndDate,
+				Days = model.Days
 
 
 			};
@@ -257,7 +258,49 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			await dbContext.SaveChangesAsync();
 		}
 
+		public async Task<AdminSearchHomeModel> GetSearchHomeModelAsync()
+		{
+			var model = new AdminSearchHomeModel();
 
+			return model;
+		}
+
+		public async Task AddSearchHomeAsync(AdminSearchHomeModel model, string id)
+		{
+			var searchHome = new SearchHome
+			{
+				AnimalId = Guid.Parse(id),
+				Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
+				Location = model.Location,
+				Habits = model.Habits
+
+			};
+
+			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+			animal.SearchHomeId = searchHome.Id;
+
+			await dbContext.SearchHomes.AddAsync(searchHome);
+			await dbContext.SaveChangesAsync();
+		}
+
+		public async Task<AdminAnimalModel> GetAnimalDetailsAsync(string id)
+		{
+			var animal = await dbContext.Animals.FirstAsync(x => x.Id.ToString() == id);
+
+			return new AdminAnimalModel()
+			{ 
+				Id = animal.Id.ToString(),
+				Name = animal.Name,
+				Age = animal.Age,
+				Photo = animal.Photo,
+				KindOfAnimal = animal.KindOfAnimal,
+				Breed = animal.Breed,
+				Color = animal.Color,
+				Sex = animal.Sex.ToString(),
+				Birthdate = animal.Birthdate
+			};
+
+		}
 
 		// Doctors services
 		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()

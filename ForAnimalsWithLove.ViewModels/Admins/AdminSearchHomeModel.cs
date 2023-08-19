@@ -8,7 +8,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         
 
         public int Id { get; set; }
-        public string AnimalId { get; set; }
+        public string AnimalId { get; set; } = null!;
 
         [ForeignKey(nameof(AnimalId))]
         public AdminAnimalModel Animal { get; set; } = null!;
