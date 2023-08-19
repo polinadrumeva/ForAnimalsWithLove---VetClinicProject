@@ -212,6 +212,53 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			await dbContext.SaveChangesAsync();
 		}
 
+		public async Task<AdminBookingModel> GetBookingModelAsync()
+		{
+			var hotels = await dbContext.Hotels
+				.Select(x => new AdminHotelModel
+				{
+					Id = x.Id,
+					Name = x.Name
+				})
+				.ToListAsync();
+
+			var model = new AdminBookingModel
+			{
+				Hotels = hotels
+			};
+
+			return model;
+		}
+
+		public async Task AddBookingAsync(AdminBookingModel model, string id)
+		{
+			var booking = new Booking
+			{
+				Id = Guid.NewGuid(),
+				HotelId = model.HotelId,
+				Hotel = dbContext.Hotels.FirstOrDefault(x => x.Id == model.HotelId),
+				StartDate = model.StartDate,
+				EndDate = model.EndDate
+
+
+			};
+
+			var animalBooking = new AnimalBooking
+			{
+				AnimalId = Guid.Parse(id),
+				BookingId = booking.Id,
+				Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
+				Booking = booking
+
+			};
+			
+			await dbContext.Bookings.AddAsync(booking);
+			await dbContext.AnimalsBookings.AddAsync(animalBooking);
+			await dbContext.SaveChangesAsync();
+		}
+
+
+
 		// Doctors services
 		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
 		{
