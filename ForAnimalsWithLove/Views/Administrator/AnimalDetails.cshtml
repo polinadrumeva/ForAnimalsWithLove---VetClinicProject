@@ -46,6 +46,10 @@
 				<p><b>Дата на раждане:</b> @Model.Birthdate </p>
 			</div>
 			<div class="text-center col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+			 <div class="text-center">
+				<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="HealthRecordDetails" asp-route-id="@Model.Id"> Детайли здравно досие</a>
+			</div>
+			<div class="text-center">
 				<a class="btn btn-primary" asp-controller="Administrator" asp-action="AddOwner" asp-route-id="@Model.Id">+ Добави собственик</a>
 			</div>
 			<div class="text-center">

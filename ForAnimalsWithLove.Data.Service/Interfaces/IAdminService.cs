@@ -23,6 +23,11 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task<AdminSearchHomeModel> GetSearchHomeModelAsync();
 		Task AddSearchHomeAsync(AdminSearchHomeModel model, string id);
 		Task<AdminAnimalModel> GetAnimalDetailsAsync(string id);
+		Task<AdminOwnerModel> GetOwnerModelAsync();
+		Task AddOwnerAsync(AdminOwnerModel model, string id);
+		Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id);
+		Task<AdminHospitalModel> GetHospitalModelAsync();
+		Task AddHospitalRecordAsync(AdminHospitalModel model, string id);
 
 		//Doctors
 		Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();

@@ -9,6 +9,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         public AdminOwnerModel()
         {
             this.OwnerId = Guid.NewGuid().ToString();
+            this.MyAnimals = new HashSet<AdminAnimalModel>();
         }
 
         public string OwnerId { get; set; } = null!;
@@ -35,5 +36,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         [StringLength(AddressMaxLength, MinimumLength = AddressMinLength)]
 		[Display(Name = "Адрес")]
 		public string Address { get; set; } = null!;
+
+        public virtual ICollection<AdminAnimalModel> MyAnimals { get; set; }
     }
 }

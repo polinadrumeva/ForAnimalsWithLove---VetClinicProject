@@ -1,0 +1,65 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminHealthModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- page title -->
+	<!-- Font files -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700&display=swap" rel="stylesheet">
+	<link href="fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
+	<link href="fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- style CSS -->
+	<link href="css/style.css" rel="stylesheet">
+	<!-- plugins CSS -->
+	<link href="css/plugins.css" rel="stylesheet">
+	<!-- Colors CSS -->
+	<link href="styles/maincolors.css" rel="stylesheet">
+
+</head>
+<!-- ==== body starts ==== -->
+<body id="top">
+	<!-- /Preloader ends -->
+
+	<div class="container" style="display:inline">
+		<div class="row">
+			
+			<div class="card col-8 border-0">
+				
+				<p><b>Микрочип:</b> @Model.Microchip </p>
+				<p><b>Микрочип номер:</b> @Model.MicrochipNumber</p>
+				<p><b>Първа ваксина:</b> @Model.FirstVaccine </p>
+				<p><b>Втора ваксина:</b> @Model.SecondVaccine </p>
+				<p><b>Трета ваксина:</b> @Model.ThirdVaccine </p>
+				<p><b>Годишна ваксина:</b> @Model.AnnualVaccine </p>
+				<p><b>Общо състояние:</b> @Model.GeneralCondition </p>
+				<p><b>Предписано лечение:</b> @Model.PrescribedTreatment </p>
+			</div>
+			<div class="text-center col-md-10 col-xl-12">
+				<a asp-controller="Administrator" asp-action="AddHospitalRecord" asp-route-id="@Model.Id" class="btn btn-primary"> + Добави болнично досие</a>
+			</div>
+			<div class="text-center col-md-10 col-xl-12">
+				<a asp-controller="Administrator" asp-action="AddMedical" asp-route-id="@Model.Id" class="btn btn-primary"> + Добави преглед</a>
+			</div>
+	</div>
+	</div>
+	<!-- /page -->
+	<!-- Bootstrap core & Jquery -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Custom Js -->
+	<script src="js/custom.js"></script>
+	<script src="js/plugins.js"></script>
+	<!-- Prefix free -->
+	<script src="js/prefixfree.min.js"></script>
+</body>
+</html>

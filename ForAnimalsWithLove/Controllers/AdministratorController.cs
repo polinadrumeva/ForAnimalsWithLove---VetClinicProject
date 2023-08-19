@@ -214,6 +214,65 @@ namespace ForAnimalsWithLove.Controllers
 		}
 
 		[HttpGet]
+		public async Task<IActionResult> AddOwner()
+		{
+			var model = await adminService.GetOwnerModelAsync();
+			return View(model);
+		}
+		[HttpPost]
+		public async Task<IActionResult> AddOwner(AdminOwnerModel model, string id)
+		{
+
+
+			try
+			{
+				await adminService.AddOwnerAsync(model, id);
+			}
+			catch (Exception)
+			{
+
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+				return View(model);
+			}
+
+
+			return RedirectToAction(nameof(AllAnimals));
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> HealthRecordDetails(string id)
+		{
+			var model = await adminService.GetHealthRecordDetailsAsync(id);
+			return View(model);
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> AddHospitalRecord()
+		{
+			var model = await adminService.GetHospitalModelAsync();
+			return View(model);
+		}
+		[HttpPost]
+		public async Task<IActionResult> AddHospitalRecord(AdminHospitalModel model, string id)
+		{
+
+			try
+			{
+				await adminService.AddHospitalRecordAsync(model, id);
+			}
+			catch (Exception)
+			{
+
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+				return View(model);
+			}
+
+
+			return RedirectToAction(nameof(AllAnimals));
+		}
+
+
+		[HttpGet]
 		public async Task<IActionResult> AnimalDetails(string id)
         {
            var model = await adminService.GetAnimalDetailsAsync(id);

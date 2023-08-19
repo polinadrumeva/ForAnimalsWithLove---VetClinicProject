@@ -188,7 +188,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 		public async Task AddEducationAsync(AdminEducationModel model, string id)
 		{
-			var education = new Education
+			var education = new Models.Education
 			{
 				Id = Guid.NewGuid(),
 				TrainerId = Guid.Parse(model.TrainerId),
@@ -301,6 +301,87 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			};
 
 		}
+
+		public async Task<AdminOwnerModel> GetOwnerModelAsync()
+		{
+			var model = new AdminOwnerModel();
+
+			return model;
+		}
+
+		public async Task AddOwnerAsync(AdminOwnerModel model, string id)
+		{
+			var owner = new Owner
+			{
+				Id = Guid.NewGuid(),
+				FirstName = model.FirstName,
+				MiddleName = model.MiddleName,
+				LastName = model.LastName,
+				PhoneNumber = model.PhoneNumber,
+				Address = model.Address
+		
+			};
+
+			owner.MyAnimals.Add(dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id));
+
+			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+			animal.OwnerId = owner.Id;
+			animal.Owner = owner;
+			animal.SearchHomeId = null;
+
+			await dbContext.Owners.AddAsync(owner);
+			await dbContext.SaveChangesAsync();
+		}
+		public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
+		{
+			var healthRecord = await dbContext.HealthRecords.FirstAsync(x => x.AnimalId.ToString() == id);
+
+			return new AdminHealthModel()
+			{
+				Id = healthRecord.Id.ToString(),
+				AnimalId = healthRecord.AnimalId.ToString(),
+				Microchip = healthRecord.Microchip,
+				MicrochipNumber = healthRecord.MicrochipNumber,
+				FirstVaccine = healthRecord.FirstVaccine,
+				SecondVaccine = healthRecord.SecondVaccine,
+				ThirdVaccine = healthRecord.ThirdVaccine,
+				AnnualVaccine = healthRecord.AnnualVaccine,
+				GeneralCondition = healthRecord.GeneralCondition,
+				PrescribedTreatment = healthRecord.PrescribedTreatment
+			};
+		}
+		public async Task<AdminHospitalModel> GetHospitalModelAsync()
+		{
+			var hospitalRecord = new AdminHospitalModel();
+			return hospitalRecord;
+		}
+
+		public async Task AddHospitalRecordAsync(AdminHospitalModel model, string id)
+		{
+			var hospitalRecord = new HospitalRecord
+			{
+				Id = Guid.NewGuid(),
+				HealthRecordId = Guid.Parse(id),
+				HealthRecord = dbContext.HealthRecords.FirstOrDefault(x => x.Id.ToString() == id),
+				Diagnosis = model.Diagnosis,
+				DateOfAcceptance = model.DateOfAcceptance,
+				DateOfDischarge = model.DateOfDischarge,
+				Treatment = model.Treatment,
+				PrescribedTreatment = model.PrescribedTreatment
+			};
+
+			
+			var healthRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+			healthRecord.HospitalRecordId = hospitalRecord.Id;
+			healthRecord.HospitalRecord = hospitalRecord;
+
+			await dbContext.HospitalRecords.AddAsync(hospitalRecord);
+			await dbContext.SaveChangesAsync();
+
+		}
+
+
+
 
 		// Doctors services
 		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()

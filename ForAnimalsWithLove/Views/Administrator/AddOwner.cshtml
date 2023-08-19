@@ -1,8 +1,5 @@
-﻿@using ForAnimalsWithLove.ViewModels.Admins;
-@model AdminHealthModel
-
-@{
-	ViewBag.Title = "Добави здравно досие";
+﻿@{
+	ViewBag.Title = "Добави собственик";
 }
 <head>
 	<!-- Bootstrap core CSS -->
@@ -20,22 +17,15 @@
 		<h3>@ViewBag.Title</h3>
 	</div>
 </div>
+<form method="post">
+	<partial name="_AddOwnerFormPartial" />
 
 
-<div class="row">
-	
-		<form method="post">
+	<div class="text-center">
+		<input class="btn btn-primary mt-3" type="submit" asp-controller="Administrator" asp-action="AddOwner" value="Запази" />
+	</div>
+</form>
 
-			<partial name="_AddHealthFormPartial">
-
-				<div class="text-center">
-				<button class="btn btn-primary mt-3" type="submit" value="AddHealthRecord">Запази</button>
-				</div>
-
-		</form>
-
-	
-</div>
 
 
 <!-- Bootstrap core & Jquery -->

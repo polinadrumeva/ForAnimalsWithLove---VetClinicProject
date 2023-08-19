@@ -6,6 +6,14 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminHospitalModel
     {
+        public AdminHospitalModel()
+        {
+            this.Id = Guid.NewGuid().ToString();
+            this.Operations = new HashSet<AdminOperationModel>();
+        }
+
+        public string Id { get; set; }
+
         [Required]
         public DateTime DateOfAcceptance { get; set; }
 
