@@ -20,79 +20,50 @@ namespace ForAnimalsWithLove.Controllers
 			this.homeService = homeService;
 		}
 
+		// Generate Index View page
 		public async Task<IActionResult> Index()
 		{
 			var counts = await homeService.GetAllCount();
 			return View(counts);
 		}
 
+		// Generate About View page
 		public IActionResult About()
 		{
 			return View();
 		}
 
-
-		[HttpGet]
-		public async Task<IActionResult> TeamVet()
-		{
-			var doctors = await homeService.GetAllDoctors();
-			return View(doctors);
-		}
-
-		[HttpGet]
-		public async Task<IActionResult> TeamTrainer()
-		{
-			var trainers = await homeService.GetAllTrainers();
-			return View(trainers);
-		}
-
+		// Generate Halls View page
 		public IActionResult Halls()
 		{
 			return View();
 		}
 
+		// Generate Education View page
 		public IActionResult Education()
 		{
 			return View();
 		}
 
+		// Generate Hotels View page
 		public IActionResult Hotels()
 		{
 			return View();
 		}
 
+		// Generate Grooming View page
 		public IActionResult Grooming()
 		{
 			return View();
 		}
 
-		public async Task<IActionResult> Aboption()
-		{
-			var animalsForAdoption = await homeService.GetAllForAdoption();
-			return View(animalsForAdoption);
-		}
-
+		// Generate Contact View page
 		public IActionResult Contact()
 		{
 			return View();
 		}
 
-		public async Task<IActionResult> Register(string phoneNumber)
-		{
-			var result = await homeService.OwnerExistByPhone(phoneNumber);
-
-			if (result != null)
-			{
-				return RedirectToPage("/Account/Login");
-			}
-			else
-			{
-				return RedirectToAction("Index", "Home");
-			}
-
-
-		}
-
+		// Generate Error View page
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error(int statusCode)
 		{
