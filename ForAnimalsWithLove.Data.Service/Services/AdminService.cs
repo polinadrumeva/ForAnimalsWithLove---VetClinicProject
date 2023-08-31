@@ -623,5 +623,21 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			return result;
         }
+
+        public async Task<AdminIndexModel> GetAdminExistByUserIdAsync(string id)
+        {
+            var admin = await dbContext.Administrators.FirstOrDefaultAsync(o => o.UserId.ToString() == id);
+
+            if (admin != null)
+            {
+                return new AdminIndexModel
+                {
+                    Id = admin.Id.ToString(),
+					FirstName = admin.FirstName
+                };
+            }
+
+            return null;
+        }
     }
 }

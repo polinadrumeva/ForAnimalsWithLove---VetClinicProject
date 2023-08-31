@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ForAnimalsWithLove.Data.Migrations
 {
     [DbContext(typeof(ForAnimalsWithLoveDbContext))]
-    [Migration("20230818185139_SetNullableHealth")]
-    partial class SetNullableHealth
+    [Migration("20230831142136_Initual")]
+    partial class Initual
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -322,6 +322,9 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<int>("Days")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("PricePerDay")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid>("TrainerId")
                         .HasColumnType("uniqueidentifier");
 
@@ -467,6 +470,9 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<decimal>("PricePerDay")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Hotels");
@@ -492,6 +498,9 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<Guid>("HealthRecordId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Reason")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -515,7 +524,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<DateTime>("Date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 18, 18, 51, 39, 129, DateTimeKind.Utc).AddTicks(9430));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 14, 21, 36, 833, DateTimeKind.Utc).AddTicks(2084));
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
@@ -527,6 +536,9 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -607,6 +619,9 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("HospitalRecordId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ImagingDiagnosis")
                         .HasColumnType("nvarchar(max)");
 
@@ -622,6 +637,8 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HospitalRecordId");
 
                     b.HasIndex("OperationId");
 
@@ -1007,6 +1024,10 @@ namespace ForAnimalsWithLove.Data.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Test", b =>
                 {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.HospitalRecord", null)
+                        .WithMany("Tests")
+                        .HasForeignKey("HospitalRecordId");
+
                     b.HasOne("ForAnimalsWithLove.Data.Models.Operation", null)
                         .WithMany("Tests")
                         .HasForeignKey("OperationId");
@@ -1110,6 +1131,8 @@ namespace ForAnimalsWithLove.Data.Migrations
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
                 {
                     b.Navigation("Operations");
+
+                    b.Navigation("Tests");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>

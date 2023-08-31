@@ -6,11 +6,24 @@
 @inject IAdminService AdminService
 @{
 	bool isAdmin = await AdminService.AdminExistByUserIdAsync(this.User.GetId()!);
+	var admin = await AdminService.GetAdminExistByUserIdAsync(this.User.GetId()!);
+
 }
 @inject IOwnerService OwnerService
 @{
-	bool isOwner = await OwnerService.OwnerExistByUserIdAsync(this.User.GetId()!);
+	var isOwner = await OwnerService.OwnerExistByUserIdAsync(this.User.GetId()!);
 	var userId = this.User.GetId();
+	var owner = await OwnerService.GetOwnerExistByUserIdAsync(userId!);
+}
+@{
+	var name = "";
+	if(isAdmin)
+	{
+		name = admin.FirstName;
+	} else if (isOwner)
+	{
+		name = owner.FirstName;
+	}
 }
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -67,10 +80,11 @@
 		</div>
 
 	} 
+
 	
-		<ul class="navbar-nav">
-			<li class="nav-item">
-				<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+	<ul class="navbar-nav">
+		<li class="nav-item">
+				<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @name!</a>
 			</li>
 			<li class="nav-item">
 				<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">

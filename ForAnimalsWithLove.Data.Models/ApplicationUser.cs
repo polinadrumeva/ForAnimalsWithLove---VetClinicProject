@@ -11,6 +11,5 @@ namespace ForAnimalsWithLove.Data.Models
             this.Id = Guid.NewGuid();
         }
 
-
     }
 }

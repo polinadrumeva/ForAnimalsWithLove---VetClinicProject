@@ -8,6 +8,8 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
     {
 		Task<bool> AdminExistByUserIdAsync(string userId);
 
+		Task<AdminIndexModel> GetAdminExistByUserIdAsync(string userId);
+
 
         //Animals
         Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();

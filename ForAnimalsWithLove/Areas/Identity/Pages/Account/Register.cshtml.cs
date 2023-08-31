@@ -1,8 +1,4 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-#nullable disable
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,7 +14,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using Microsoft.Extensions.Logging;
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.User;
+
 
 namespace ForAnimalsWithLove.Areas.Identity.Pages.Account
 {
@@ -77,7 +74,7 @@ namespace ForAnimalsWithLove.Areas.Identity.Pages.Account
             /// </summary>
             [Required]
             [EmailAddress]
-            [Display(Name = "Email")]
+            [Display(Name = "Е-майл")]
             public string Email { get; set; }
 
             /// <summary>
@@ -87,7 +84,7 @@ namespace ForAnimalsWithLove.Areas.Identity.Pages.Account
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Парола")]
             public string Password { get; set; }
 
             /// <summary>
@@ -95,9 +92,20 @@ namespace ForAnimalsWithLove.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
+            [Display(Name = "Потвърди парола")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+
+            [Required]
+            [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
+            [Display(Name = "Първо име")]
+            public string FirstName { get; set; } = null!;
+
+            [Required]
+            [StringLength(LastNameMaxLength, MinimumLength = LastNameMinLength)]
+            [Display(Name = "Фамилия")]
+            public string LastName { get; set; } = null!;
         }
 
 

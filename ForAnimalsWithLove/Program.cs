@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 using ForAnimalsWithLove.Data;
 using ForAnimalsWithLove.Infrastructure.Extensions;
 using ForAnimalsWithLove.Data.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);

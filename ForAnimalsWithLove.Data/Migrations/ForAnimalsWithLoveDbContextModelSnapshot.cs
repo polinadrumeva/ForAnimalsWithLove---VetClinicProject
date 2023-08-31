@@ -50,7 +50,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Administrators", (string)null);
+                    b.ToTable("Administrators");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Animal", b =>
@@ -111,7 +111,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Animals", (string)null);
+                    b.ToTable("Animals");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalBooking", b =>
@@ -126,7 +126,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("BookingId");
 
-                    b.ToTable("AnimalsBookings", (string)null);
+                    b.ToTable("AnimalsBookings");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.AnimalEducation", b =>
@@ -141,7 +141,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("EducationId");
 
-                    b.ToTable("AnimalsEducations", (string)null);
+                    b.ToTable("AnimalsEducations");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.ApplicationUser", b =>
@@ -232,7 +232,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("HotelId");
 
-                    b.ToTable("Bookings", (string)null);
+                    b.ToTable("Bookings");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Direction", b =>
@@ -250,7 +250,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Directions", (string)null);
+                    b.ToTable("Directions");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.DirectionDoctor", b =>
@@ -265,7 +265,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("DoctorId");
 
-                    b.ToTable("DirectionsDoctors", (string)null);
+                    b.ToTable("DirectionsDoctors");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Doctor", b =>
@@ -308,7 +308,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Doctors", (string)null);
+                    b.ToTable("Doctors");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Education", b =>
@@ -320,6 +320,9 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<int>("Days")
                         .HasColumnType("int");
 
+                    b.Property<decimal>("PricePerDay")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<Guid>("TrainerId")
                         .HasColumnType("uniqueidentifier");
 
@@ -327,7 +330,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("TrainerId");
 
-                    b.ToTable("Educations", (string)null);
+                    b.ToTable("Educations");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Grooming", b =>
@@ -349,7 +352,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("Groomings", (string)null);
+                    b.ToTable("Groomings");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HealthRecord", b =>
@@ -402,7 +405,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("HealthRecords", (string)null);
+                    b.ToTable("HealthRecords");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
@@ -444,7 +447,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("HealthRecordId")
                         .IsUnique();
 
-                    b.ToTable("HospitalRecords", (string)null);
+                    b.ToTable("HospitalRecords");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Hotel", b =>
@@ -465,9 +468,12 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<decimal>("PricePerDay")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Hotels", (string)null);
+                    b.ToTable("Hotels");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Medical", b =>
@@ -490,6 +496,9 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<Guid>("HealthRecordId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("Reason")
                         .IsRequired()
                         .HasMaxLength(500)
@@ -501,7 +510,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("HealthRecordId");
 
-                    b.ToTable("Medicals", (string)null);
+                    b.ToTable("Medicals");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>
@@ -513,7 +522,7 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.Property<DateTime>("Date")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2023, 8, 19, 18, 43, 6, 14, DateTimeKind.Utc).AddTicks(2630));
+                        .HasDefaultValue(new DateTime(2023, 8, 31, 14, 21, 36, 833, DateTimeKind.Utc).AddTicks(2084));
 
                     b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
@@ -526,13 +535,16 @@ namespace ForAnimalsWithLove.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("DoctorId");
 
                     b.HasIndex("HospitalRecordId");
 
-                    b.ToTable("Operations", (string)null);
+                    b.ToTable("Operations");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Owner", b =>
@@ -571,7 +583,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Owners", (string)null);
+                    b.ToTable("Owners");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.SearchHome", b =>
@@ -596,13 +608,16 @@ namespace ForAnimalsWithLove.Data.Migrations
                     b.HasIndex("AnimalId")
                         .IsUnique();
 
-                    b.ToTable("SearchHomes", (string)null);
+                    b.ToTable("SearchHomes");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Test", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("HospitalRecordId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ImagingDiagnosis")
@@ -621,9 +636,11 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("HospitalRecordId");
+
                     b.HasIndex("OperationId");
 
-                    b.ToTable("Tests", (string)null);
+                    b.ToTable("Tests");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Trainer", b =>
@@ -658,7 +675,7 @@ namespace ForAnimalsWithLove.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Trainers", (string)null);
+                    b.ToTable("Trainers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -1005,6 +1022,10 @@ namespace ForAnimalsWithLove.Data.Migrations
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Test", b =>
                 {
+                    b.HasOne("ForAnimalsWithLove.Data.Models.HospitalRecord", null)
+                        .WithMany("Tests")
+                        .HasForeignKey("HospitalRecordId");
+
                     b.HasOne("ForAnimalsWithLove.Data.Models.Operation", null)
                         .WithMany("Tests")
                         .HasForeignKey("OperationId");
@@ -1108,6 +1129,8 @@ namespace ForAnimalsWithLove.Data.Migrations
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.HospitalRecord", b =>
                 {
                     b.Navigation("Operations");
+
+                    b.Navigation("Tests");
                 });
 
             modelBuilder.Entity("ForAnimalsWithLove.Data.Models.Operation", b =>
