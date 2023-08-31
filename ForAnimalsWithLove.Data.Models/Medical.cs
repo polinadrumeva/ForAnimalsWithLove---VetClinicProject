@@ -36,5 +36,9 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         [StringLength(DiagnosisMaxLength, MinimumLength = DiagnosisMinLength)]
         public string Constatation { get; set; } = null!;
+
+        [Required]
+        [Range(typeof(decimal), AmountMinValue, MaxPriceMedical)]
+        public decimal Price { get; set; }
     }
 }

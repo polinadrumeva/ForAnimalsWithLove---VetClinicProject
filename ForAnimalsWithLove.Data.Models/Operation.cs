@@ -29,6 +29,9 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         public DateTime Date { get; set; }
 
+        [Required]
+        [Range(typeof(decimal),AmountMinValue, MaxPriceOperation)]
+        public decimal Price { get; set; }
 
         [Required]
         public Guid DoctorId { get; set; }

@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.Education;
+
 namespace ForAnimalsWithLove.Data.Models
 {
     public class Education
@@ -19,6 +21,13 @@ namespace ForAnimalsWithLove.Data.Models
 
         [Required]
         public int Days { get; set; }
+
+        [Required]
+        [Range(typeof(decimal), AmountPerDayMinValue, AmountPerDayMaxValue)]
+        public decimal PricePerDay { get; set; }
+
+        [Required]
+        public decimal Amount { get { return this.Days * this.PricePerDay; } }
 
         
     }

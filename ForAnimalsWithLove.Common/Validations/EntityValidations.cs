@@ -34,13 +34,16 @@
         }
         public static class Booking
         {
-            public const decimal AmountMinValue = 0;
+            public const string AmountMinValue = "0";
+            public const string AmountMaxValue = "5000";
+            public const int ValidMinDays = 1;
+            public const int ValidMaxDays = 60;
         }
 
         public static class Education
         {
-            public const decimal AmountMinValue = 0;
-            public const decimal AmountPerDayMinValue = 0;
+            public const string AmountPerDayMinValue = "0";
+            public const string AmountPerDayMaxValue = "50";
         }
         public static class Owner
         {
@@ -58,7 +61,8 @@
         {
             public const int NameMinLength = 5;
             public const int NameMaxLength = 50;
-            public const decimal AmountMinValue = 0;
+            public const string AmountMinValue = "0";
+            public const string MaxPriceOperation = "5000";
         }
 
         public static class HealthRecord
@@ -77,7 +81,8 @@
             public const int DiagnosisMaxLength = 500;
             public const int TreatmentMinLength = 5;
             public const int TreatmentMaxLength = 500;
-            public const decimal AmountMinValue = 0;
+            public const string AmountMinValue = "0";
+            public const string MaxPriceMedical = "500";
 
         }
 
@@ -87,7 +92,8 @@
             public const int NameMaxLength = 20;
             public const int LocationMinLength = 10;
             public const int LocationMaxLength = 50;
-            public const decimal AmountPerDayMinValue = 0;
+            public const string AmountPerDayMinValue = "0";
+            public const string AmountPerDayMaxValue = "100";
         }
 
         public static class Grooming
@@ -98,6 +104,7 @@
 
         }
 
+       
         public static class User
         {
             public const int FirstNameMinLength = 3;

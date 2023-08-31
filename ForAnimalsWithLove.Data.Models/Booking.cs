@@ -1,6 +1,7 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.Booking;
 
 namespace ForAnimalsWithLove.Data.Models
 {
@@ -27,7 +28,12 @@ namespace ForAnimalsWithLove.Data.Models
         public DateTime EndDate { get; set; }
 
         [Required]
+        [Range(ValidMinDays, ValidMaxDays)]
         public int Days { get; set; }
+
+        [Required]
+        [Range(typeof(decimal), AmountMinValue, AmountMaxValue)]
+        public decimal Amount { get { return this.Days * this.Hotel.PricePerDay; } }
 
         
     }
