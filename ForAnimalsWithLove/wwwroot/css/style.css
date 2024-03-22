@@ -1187,7 +1187,7 @@ select.form-control {
 }
 /* form label */
  label {
-     margin-top: 10px;
+     margin-bottom: 5px;
 }
 /* border */
  .border-irregular1{

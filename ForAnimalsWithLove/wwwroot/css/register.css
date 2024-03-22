@@ -6,9 +6,11 @@ html, body {
     font-family: 'Numans', sans-serif;
 }
 
-.container {
-    height: 100%;
-    align-content: center;
+
+.col-lg-4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card {

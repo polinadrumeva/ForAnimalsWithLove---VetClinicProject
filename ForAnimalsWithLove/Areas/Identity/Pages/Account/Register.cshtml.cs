@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Threading;
-using System.Threading.Tasks;
 using ForAnimalsWithLove.Data.Models;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -74,7 +69,7 @@ namespace ForAnimalsWithLove.Areas.Identity.Pages.Account
             /// </summary>
             [Required]
             [EmailAddress]
-            [Display(Name = "Е-майл")]
+            [Display(Name = "Е-мeйл")]
             public string Email { get; set; }
 
             /// <summary>
@@ -82,7 +77,7 @@ namespace ForAnimalsWithLove.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(20, ErrorMessage = "Паролата трябва да съдържа поне {2} и не повече {1} символа.", MinimumLength = 6)]
             [DataType(DataType.Password)]
             [Display(Name = "Парола")]
             public string Password { get; set; }
@@ -93,13 +88,13 @@ namespace ForAnimalsWithLove.Areas.Identity.Pages.Account
             /// </summary>
             [DataType(DataType.Password)]
             [Display(Name = "Потвърди парола")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Compare("Password", ErrorMessage = "Паролата и потвърждението на паролата не съвпадат!")]
             public string ConfirmPassword { get; set; }
 
 
             [Required]
             [StringLength(FirstNameMaxLength, MinimumLength = FirstNameMinLength)]
-            [Display(Name = "Първо име")]
+            [Display(Name = "Име")]
             public string FirstName { get; set; } = null!;
 
             [Required]
