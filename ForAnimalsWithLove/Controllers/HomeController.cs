@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-
-using ForAnimalsWithLove.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using ForAnimalsWithLove.Data.Service.Interfaces;
-using ForAnimalsWithLove.Data.Service.Services;
 
 namespace ForAnimalsWithLove.Controllers
 {
