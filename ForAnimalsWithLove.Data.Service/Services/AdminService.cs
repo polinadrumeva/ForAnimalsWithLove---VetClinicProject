@@ -121,30 +121,30 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return model;
 		}
 
-		public async Task AddHealthRecordAsync(AdminHealthModel model, string id)
-		{
-			var healthRecord = new HealthRecord
-			{
-				Id = Guid.NewGuid(),
-				AnimalId = Guid.Parse(id),
-				Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
-				Microchip = model.Microchip,
-				MicrochipNumber = model.MicrochipNumber,
-				FirstVaccine = model.FirstVaccine,
-				SecondVaccine = model.SecondVaccine,
-				ThirdVaccine = model.ThirdVaccine,
-				AnnualVaccine = model.AnnualVaccine,
-				GeneralCondition = model.GeneralCondition,
-				PrescribedTreatment = model.PrescribedTreatment
+		//public async Task AddHealthRecordAsync(AdminHealthModel model, string id)
+		//{
+		//	var healthRecord = new HealthRecord
+		//	{
+		//		Id = Guid.NewGuid(),
+		//		AnimalId = Guid.Parse(id),
+		//		Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
+		//		Microchip = model.Microchip,
+		//		MicrochipNumber = model.MicrochipNumber,
+		//		FirstVaccine = model.FirstVaccine,
+		//		SecondVaccine = model.SecondVaccine,
+		//		ThirdVaccine = model.ThirdVaccine,
+		//		AnnualVaccine = model.AnnualVaccine,
+		//		GeneralCondition = model.GeneralCondition,
+		//		PrescribedTreatment = model.PrescribedTreatment
 
-			};
+		//	};
 
-			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
-			animal.HealthRecordId = healthRecord.Id;
+		//	var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+		//	animal.HealthRecordId = healthRecord.Id;
 
-			await dbContext.HealthRecords.AddAsync(healthRecord);
-			await dbContext.SaveChangesAsync();
-		}
+		//	await dbContext.HealthRecords.AddAsync(healthRecord);
+		//	await dbContext.SaveChangesAsync();
+		//}
 		public async Task<AdminGroomingModel> GetGroomingModelAsync()
 		{
 			var model = new AdminGroomingModel();
@@ -187,31 +187,31 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return model;
 		}
 
-		public async Task AddEducationAsync(AdminEducationModel model, string id)
-		{
-			var education = new Models.Education
-			{
-				Id = Guid.NewGuid(),
-				TrainerId = Guid.Parse(model.TrainerId),
-				Trainer = dbContext.Trainers.FirstOrDefault(x => x.Id.ToString() == model.TrainerId),
-				Days = model.Days
+		//public async Task AddEducationAsync(AdminEducationModel model, string id)
+		//{
+		//	var education = new Models.Education
+		//	{
+		//		Id = Guid.NewGuid(),
+		//		TrainerId = Guid.Parse(model.TrainerId),
+		//		Trainer = dbContext.Trainers.FirstOrDefault(x => x.Id.ToString() == model.TrainerId),
+		//		Days = model.Days
 
-			};
+		//	};
 
-			var animalEducation = new AnimalEducation
-			{ 
-				AnimalId = Guid.Parse(id),
-				EducationId = education.Id,
-				Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
-				Education = education
+		//	var animalEducation = new AnimalEducation
+		//	{ 
+		//		AnimalId = Guid.Parse(id),
+		//		EducationId = education.Id,
+		//		Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
+		//		Education = education
 				
-			};
+		//	};
 			
 
-			await dbContext.Educations.AddAsync(education);
-			await dbContext.AnimalsEducations.AddAsync(animalEducation);
-			await dbContext.SaveChangesAsync();
-		}
+		//	await dbContext.Educations.AddAsync(education);
+		//	await dbContext.AnimalsEducations.AddAsync(animalEducation);
+		//	await dbContext.SaveChangesAsync();
+		//}
 
 		public async Task<AdminBookingModel> GetBookingModelAsync()
 		{
@@ -357,29 +357,29 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return hospitalRecord;
 		}
 
-		public async Task AddHospitalRecordAsync(AdminHospitalModel model, string id)
-		{
-			var hospitalRecord = new HospitalRecord
-			{
-				Id = Guid.NewGuid(),
-				HealthRecordId = Guid.Parse(id),
-				HealthRecord = dbContext.HealthRecords.FirstOrDefault(x => x.Id.ToString() == id),
-				Diagnosis = model.Diagnosis,
-				DateOfAcceptance = model.DateOfAcceptance,
-				DateOfDischarge = model.DateOfDischarge,
-				Treatment = model.Treatment,
-				PrescribedTreatment = model.PrescribedTreatment
-			};
+		//public async Task AddHospitalRecordAsync(AdminHospitalModel model, string id)
+		//{
+		//	var hospitalRecord = new HospitalRecord
+		//	{
+		//		Id = Guid.NewGuid(),
+		//		HealthRecordId = Guid.Parse(id),
+		//		HealthRecord = dbContext.HealthRecords.FirstOrDefault(x => x.Id.ToString() == id),
+		//		Diagnosis = model.Diagnosis,
+		//		DateOfAcceptance = model.DateOfAcceptance,
+		//		DateOfDischarge = model.DateOfDischarge,
+		//		Treatment = model.Treatment,
+		//		PrescribedTreatment = model.PrescribedTreatment
+		//	};
 
 			
-			var healthRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(x => x.Id.ToString() == id);
-			healthRecord.HospitalRecordId = hospitalRecord.Id;
-			healthRecord.HospitalRecord = hospitalRecord;
+		//	var healthRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(x => x.Id.ToString() == id);
+		//	healthRecord.HospitalRecordId = hospitalRecord.Id;
+		//	healthRecord.HospitalRecord = hospitalRecord;
 
-			await dbContext.HospitalRecords.AddAsync(hospitalRecord);
-			await dbContext.SaveChangesAsync();
+		//	await dbContext.HospitalRecords.AddAsync(hospitalRecord);
+		//	await dbContext.SaveChangesAsync();
 
-		}
+		//}
 
 		public async Task<AdminMedicalModel> GetMedicalModelAsync()
 		{
@@ -400,23 +400,23 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return model;
 		}
 
-		public async Task AddMedicalAsync(AdminMedicalModel model, string id)
-		{
-			var medical = new Medical
-			{
-				Id = Guid.NewGuid(),
-				HealthRecordId = Guid.Parse(id),
-				HealthRecord = dbContext.HealthRecords.FirstOrDefault(x => x.Id.ToString() == id),
-				DoctorId = Guid.Parse(model.DoctorId),
-				Doctor = dbContext.Doctors.FirstOrDefault(x => x.Id.ToString() == model.DoctorId),
-				Date = model.Date,
-				Reason = model.Reason,
-				Constatation = model.Constatation
-			};
+		//public async Task AddMedicalAsync(AdminMedicalModel model, string id)
+		//{
+		//	var medical = new Medical
+		//	{
+		//		Id = Guid.NewGuid(),
+		//		HealthRecordId = Guid.Parse(id),
+		//		HealthRecord = dbContext.HealthRecords.FirstOrDefault(x => x.Id.ToString() == id),
+		//		DoctorId = Guid.Parse(model.DoctorId),
+		//		Doctor = dbContext.Doctors.FirstOrDefault(x => x.Id.ToString() == model.DoctorId),
+		//		Date = model.Date,
+		//		Reason = model.Reason,
+		//		Constatation = model.Constatation
+		//	};
 
-			await dbContext.Medicals.AddAsync(medical);
-			await dbContext.SaveChangesAsync();
-		}
+		//	await dbContext.Medicals.AddAsync(medical);
+		//	await dbContext.SaveChangesAsync();
+		//}
 
 
 		// Doctors services
