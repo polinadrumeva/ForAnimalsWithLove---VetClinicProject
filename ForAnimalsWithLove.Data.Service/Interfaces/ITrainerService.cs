@@ -10,9 +10,9 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 {
     public interface ITrainerService
     {
-        Task<bool> AdminExistByUserIdAsync(string userId);
+        Task<bool> TrainerExistByUserIdAsync(string userId);
 
-        Task<AdminIndexModel> GetAdminExistByUserIdAsync(string userId);
+        Task<IndexTrainerModel> GetTrainerExistByUserIdAsync(string userId);
 
 
         //Animals

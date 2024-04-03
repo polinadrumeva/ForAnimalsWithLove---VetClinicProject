@@ -21,23 +21,23 @@ namespace ForAnimalsWithLove.Data.Service.Services
         }
 
 
-        public async Task<bool> AdminExistByUserIdAsync(string userId)
+        public async Task<bool> TrainerExistByUserIdAsync(string userId)
         {
-            var result = await dbContext.Administrators.AnyAsync(x => x.UserId.ToString() == userId);
+            var result = await dbContext.Trainers.AnyAsync(x => x.UserId.ToString() == userId);
 
             return result;
         }
 
-        public async Task<AdminIndexModel> GetAdminExistByUserIdAsync(string id)
+        public async Task<IndexTrainerModel> GetTrainerExistByUserIdAsync(string id)
         {
-            var admin = await dbContext.Administrators.FirstOrDefaultAsync(o => o.UserId.ToString() == id);
+            var trainer = await dbContext.Trainers.FirstOrDefaultAsync(o => o.UserId.ToString() == id);
 
-            if (admin != null)
+            if (trainer != null)
             {
-                return new AdminIndexModel
+                return new IndexTrainerModel
                 {
-                    Id = admin.Id.ToString(),
-                    FirstName = admin.FirstName
+                    Id = trainer.Id.ToString(),
+                    FirstName = trainer.FirstName
                 };
             }
 

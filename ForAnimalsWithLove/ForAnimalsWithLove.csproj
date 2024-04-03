@@ -29,4 +29,8 @@
     <ProjectReference Include="..\ForAnimalsWithLove.ViewModels\ForAnimalsWithLove.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Trainer\" />
+  </ItemGroup>
+
 </Project>
