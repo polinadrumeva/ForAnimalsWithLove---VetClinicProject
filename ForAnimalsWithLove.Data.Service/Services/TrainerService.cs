@@ -3,11 +3,6 @@ using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.ViewModels.Admins;
 using ForAnimalsWithLove.ViewModels.IndexModels;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForAnimalsWithLove.Data.Service.Services
 {
@@ -171,6 +166,25 @@ namespace ForAnimalsWithLove.Data.Service.Services
                 Birthdate = animal.Birthdate
             };
 
+        }
+
+        public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
+        {
+            var healthRecord = await dbContext.HealthRecords.FirstAsync(x => x.AnimalId.ToString() == id);
+
+            return new AdminHealthModel()
+            {
+                Id = healthRecord.Id.ToString(),
+                AnimalId = healthRecord.AnimalId.ToString(),
+                Microchip = healthRecord.Microchip,
+                MicrochipNumber = healthRecord.MicrochipNumber,
+                FirstVaccine = healthRecord.FirstVaccine,
+                SecondVaccine = healthRecord.SecondVaccine,
+                ThirdVaccine = healthRecord.ThirdVaccine,
+                AnnualVaccine = healthRecord.AnnualVaccine,
+                GeneralCondition = healthRecord.GeneralCondition,
+                PrescribedTreatment = healthRecord.PrescribedTreatment
+            };
         }
     }
 }

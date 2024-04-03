@@ -15,14 +15,24 @@
 	var userId = this.User.GetId();
 	var owner = await OwnerService.GetOwnerExistByUserIdAsync(userId!);
 }
+@inject ITrainerService TrainerService
+@{
+	var isTrainer = await TrainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
+	var trainer = await TrainerService.GetTrainerExistByUserIdAsync(this.User.GetId()!);
+}
 @{
 	var name = "";
 	if(isAdmin)
 	{
 		name = admin.FirstName;
-	} else if (isOwner)
+	}
+	else if (isOwner)
 	{
 		name = owner.FirstName;
+	}
+else if (isTrainer)
+	{
+		name = trainer.FirstName;
 	}
 }
 @inject SignInManager<ApplicationUser> SignInManager
@@ -78,8 +88,20 @@
 				</ul>
 			</div>
 		</div>
-
 	} 
+	@if (isTrainer)
+	{
+		<div class="container col-md-5">
+			<ul class="navbar-nav">
+				<!-- menu item -->
+				<li class="nav-item">
+					<a class="nav-link" asp-controller="Trainer" asp-action="AllAnimals">
+						Всички клиенти
+					</a>
+				</li>
+			</ul>
+		</div>
+	}
 
 	
 	<ul class="navbar-nav">

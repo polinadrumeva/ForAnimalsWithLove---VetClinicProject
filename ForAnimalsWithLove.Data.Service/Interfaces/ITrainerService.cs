@@ -1,10 +1,5 @@
 ﻿using ForAnimalsWithLove.ViewModels.Admins;
 using ForAnimalsWithLove.ViewModels.IndexModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ForAnimalsWithLove.Data.Service.Interfaces
 {
@@ -24,6 +19,7 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
         Task<AdminEducationModel> GetEducationModelAsync();
         Task AddEducationAsync(AdminEducationModel model, string id);
         Task<AdminAnimalModel> GetAnimalDetailsAsync(string id);
+        Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id);
 
     }
 }

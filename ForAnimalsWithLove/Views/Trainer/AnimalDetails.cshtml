@@ -1,0 +1,76 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminAnimalModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<!--[if IE]>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<!-- page title -->
+	<!-- Font files -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700&display=swap" rel="stylesheet">
+	<link href="fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
+	<link href="fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- style CSS -->
+	<link href="css/style.css" rel="stylesheet">
+	<!-- plugins CSS -->
+	<link href="css/plugins.css" rel="stylesheet">
+	<!-- Colors CSS -->
+	<link href="styles/maincolors.css" rel="stylesheet">
+
+</head>
+<!-- ==== body starts ==== -->
+<body id="top">
+	<!-- /Preloader ends -->
+
+	<div class="container" style="display:inline">
+		<div class="row">
+			<div class="col-4">
+				<img class="card-img-top" style="width: 20rem;"
+					 src="@Model.Photo" alt="Pet Image">
+			</div>
+			<div class="card col-8 border-0">
+				<p style="font-size:25px;"><u>@Model.Name </u></p>
+				<p><b>Възраст:</b> @Model.Age</p>
+				<p><b>Вид:</b> @Model.KindOfAnimal </p>
+				<p><b>Порода:</b> @Model.Breed </p>
+				<p><b>Цвят:</b> @Model.Color </p>
+				<p><b>Пол:</b> @Model.Sex </p>
+				<p><b>Дата на раждане:</b> @Model.Birthdate </p>
+			</div>
+			<div class="text-center col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+			 <div class="text-center">
+				<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="HealthRecordDetails" asp-route-id="@Model.Id"> Детайли здравно досие</a>
+			</div>
+			<div class="text-center">
+				<a class="btn btn-primary" asp-controller="Administrator" asp-action="AddOwner" asp-route-id="@Model.Id">+ Добави собственик</a>
+			</div>
+			<div class="text-center">
+				<a class="btn btn-primary" asp-controller="Administrator" asp-action="AddSearchHome" asp-route-id="@Model.Id">+ Търси дом</a>
+			</div>
+			<div class="text-center">
+				<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddGrooming" asp-route-id="@Model.Id"> + Добави Grooming услуги</a>
+			</div>		
+			<div class="text-center">
+				<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddBooking" asp-route-id="@Model.Id"> + Добави хотелско настаняване</a>
+			</div>
+		</div>
+	</div>
+	<!-- /page -->
+	<!-- Bootstrap core & Jquery -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Custom Js -->
+	<script src="js/custom.js"></script>
+	<script src="js/plugins.js"></script>
+	<!-- Prefix free -->
+	<script src="js/prefixfree.min.js"></script>
+</body>
+</html>
