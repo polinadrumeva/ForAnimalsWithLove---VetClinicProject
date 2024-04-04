@@ -17,12 +17,10 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task EditAnimalAsync(AdminAnimalModel model);
 		Task AddAnimalAsync(AdminAnimalModel model);
 		Task<AdminHealthModel> GetHealthModelAsync();
-		//Task AddHealthRecordAsync(AdminHealthModel model, string id);
 
 		Task<AdminGroomingModel> GetGroomingModelAsync();
 		Task AddGroomingAsync(AdminGroomingModel model, string id);
 		Task<AdminEducationModel> GetEducationModelAsync();
-		//Task AddEducationAsync(AdminEducationModel model, string id);
 		Task<AdminBookingModel> GetBookingModelAsync();
 		Task AddBookingAsync(AdminBookingModel model, string id);
 		Task<AdminSearchHomeModel> GetSearchHomeModelAsync();
@@ -32,9 +30,7 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task AddOwnerAsync(AdminOwnerModel model, string id);
 		Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id);
 		Task<AdminHospitalModel> GetHospitalModelAsync();
-		//Task AddHospitalRecordAsync(AdminHospitalModel model, string id);
 		Task<AdminMedicalModel> GetMedicalModelAsync();
-		//Task AddMedicalAsync(AdminMedicalModel model, string id);
 
 		//Doctors
 		Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();
