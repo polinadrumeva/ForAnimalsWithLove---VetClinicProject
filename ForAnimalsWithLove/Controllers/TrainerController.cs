@@ -25,7 +25,7 @@ namespace ForAnimalsWithLove.Controllers
         public async Task<IActionResult> AllAnimals()
         {
             var isUserTrainer = await trainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
-            if (!isUserTrainer)
+            if (!isUserTrainer && !this.User.IsTrainer())
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -40,7 +40,7 @@ namespace ForAnimalsWithLove.Controllers
         public async Task<IActionResult> EditAnimal(string id)
         {
             var isUserTrainer = await trainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
-            if (!isUserTrainer)
+            if (!isUserTrainer && !this.User.IsTrainer())
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -54,7 +54,7 @@ namespace ForAnimalsWithLove.Controllers
         public async Task<IActionResult> AddEducation()
         {
             var isUserTrainer = await trainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
-            if (!isUserTrainer)
+            if (!isUserTrainer && !this.User.IsTrainer())
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -66,7 +66,7 @@ namespace ForAnimalsWithLove.Controllers
         public async Task<IActionResult> AddEducation(AdminEducationModel model, string id)
         {
             var isUserTrainer = await trainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
-            if (!isUserTrainer)
+            if (!isUserTrainer && !this.User.IsTrainer())
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -90,7 +90,7 @@ namespace ForAnimalsWithLove.Controllers
         public async Task<IActionResult> HealthRecordDetails(string id)
         {
             var isUserTrainer = await trainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
-            if (!isUserTrainer)
+            if (!isUserTrainer && !this.User.IsTrainer())
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -103,7 +103,7 @@ namespace ForAnimalsWithLove.Controllers
         public async Task<IActionResult> AnimalDetails(string id)
         {
             var isUserTrainer = await trainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
-            if (!isUserTrainer)
+            if (!isUserTrainer && !this.User.IsTrainer())
             {
                 return RedirectToAction("Index", "Home");
             }

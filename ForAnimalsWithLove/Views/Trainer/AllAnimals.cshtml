@@ -52,11 +52,7 @@
                 <div class="section-heading" data-aos="zoom-in">
                     <h3>Всички клиенти</h3>
                 </div>
-                <div>
-                    <div class="text-center col-md-10 col-xl-12">
-                        <a asp-controller="Administrator" asp-action="AddAnimal" class="btn btn-primary"> + Добави клиент</a>
-                    </div>
-                </div>
+               
 
                 <div class="row mt-4">
                     <!-- Doctor  -->
@@ -85,12 +81,8 @@
                                             <li><strong>Собственик: </strong> @names</li>
                                         </ul>
                                         <!-- Buttons -->
-                                        <!-- Buttons -->
                                         <div class="text-center">
-                                            <a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="EditAnimal" asp-route-id="@animal.Id">Промени</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AnimalDetails" asp-route-id="@animal.Id">Детайли/Добави</a>
+                                            <a class="btn btn-primary" asp-area="" asp-controller="Trainer" asp-action="AnimalDetails" asp-route-id="@animal.Id">Детайли/Добави</a>
                                         </div>
                                        
                                     </div>
