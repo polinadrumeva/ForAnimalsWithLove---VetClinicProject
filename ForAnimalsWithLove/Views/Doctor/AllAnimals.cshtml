@@ -1,0 +1,120 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model IEnumerable<AdminAnimalModel>
+@{
+    var allAnimals = Model.ToList();
+    var names = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- page title -->
+    <title>Woof!</title>
+    <!--[if lt IE 9]>
+    <script src="~/js/respond.js"></script>
+    <![endif]-->
+    <!-- Font files -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700%7CQuicksand:400,500,700&display=swap" rel="stylesheet">
+    <link href="~/fonts/flaticon/flaticon.css" rel="stylesheet" type="text/css">
+    <link href="~/fonts/fontawesome/fontawesome-all.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- style CSS -->
+    <link href="~/css/style.css" rel="stylesheet">
+    <!-- plugins CSS -->
+    <link href="~/css/plugins.css" rel="stylesheet">
+    <!-- Colors CSS -->
+    <link href="~/styles/maincolors.css" rel="stylesheet">
+    <!-- LayerSlider CSS -->
+    <link rel="stylesheet" href="~/vendor/layerslider/css/layerslider.css">
+</head>
+<!-- ==== body starts ==== -->
+<body id="top">
+    <!-- Preloader-->
+    <div id="preloader">
+        <div class="spinner">
+            <div class="bounce1"></div>
+        </div>
+    </div>
+
+    <!-- ==== Page Content ==== -->
+    <div class="page">
+        <div class="container block-padding pt-0 pb-0">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-heading" data-aos="zoom-in">
+                    <h3>Всички клиенти</h3>
+                </div>
+
+                <div class="row mt-4">
+                    <!-- Doctor  -->
+                    @foreach (var animal in allAnimals)
+                    {
+                        <div class="adopt-card col-md-2 col-xl-6 res-margin">
+                            <div class="card bg-light-custom">
+                                <div class="thumbnail text-center">
+                                    <!-- Image -->
+                                    <img src="@animal.Photo" class="border-irregular1 img-fluid" alt="photo">
+                                    <!-- Name -->
+                                    <div class="caption-adoption">
+                                        <h6 class="adoption-header">@animal.Name</h6>
+                                        <!-- List -->
+                                        <ul class="list-unstyled">
+                                            <li><strong>Възраст:</strong> @animal.Age</li>
+                                            <li><strong>Вид/Порода:</strong> @animal.KindOfAnimal / @animal.Breed</li>
+                                            @if (animal.Owner.FirstName == null)
+                                            {
+                                                names = "Няма";
+                                            }
+                                            else
+                                            {
+                                                names = animal.Owner.FirstName + " " + animal.Owner.LastName;
+                                            }
+                                            <li><strong>Собственик: </strong> @names</li>
+                                        </ul>
+                                        <!-- Buttons -->
+                                        <div class="text-center">
+                                            <a class="btn btn-primary" asp-area="" asp-controller="Doctor" asp-action="AnimalDetails" asp-route-id="@animal.Id">Детайли/Добави</a>
+                                        </div>
+                                       
+                                    </div>
+                                </div>
+                                <!-- /thumbnail -->
+                            </div>
+                            <!-- /card -->
+                        </div>
+
+                    }
+                </div>
+                <!-- /row -->
+            </div>
+            <!-- /container -->
+        </div>
+    </div>
+
+</body>
+
+
+<!-- /page -->
+<!-- Bootstrap core & Jquery -->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Custom Js -->
+<script src="~/js/custom.js"></script>
+<script src="~/js/plugins.js"></script>
+<!-- Prefix free -->
+<script src="~/js/prefixfree.min.js"></script>
+
+</html>
+
+
+
+
+          

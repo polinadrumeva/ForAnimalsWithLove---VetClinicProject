@@ -1,5 +1,4 @@
 ﻿using ForAnimalsWithLove.Data.Service.Interfaces;
-using ForAnimalsWithLove.Data.Service.Services;
 using ForAnimalsWithLove.Infrastructure.Extensions;
 using ForAnimalsWithLove.ViewModels.Admins;
 using Microsoft.AspNetCore.Authorization;
@@ -34,19 +33,6 @@ namespace ForAnimalsWithLove.Controllers
             var allAnimals = await trainerService.GetAllAnimals();
 
             return View(allAnimals);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> EditAnimal(string id)
-        {
-            var isUserTrainer = await trainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
-            if (!isUserTrainer && !this.User.IsTrainer())
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            var model = await trainerService.GetAnimalByIdAsync(id);
-            return View(model);
         }
 
 

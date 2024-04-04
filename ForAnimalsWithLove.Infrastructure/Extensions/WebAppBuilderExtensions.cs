@@ -15,6 +15,7 @@ namespace ForAnimalsWithLove.Infrastructure.Extensions
             services.AddScoped<IHomeService, HomeService>();
             services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IAdminService, AdminService>();
+            services.AddScoped<IDoctorService, DoctorService>();
             services.AddScoped<ITrainerService, TrainerService>();
 
         }

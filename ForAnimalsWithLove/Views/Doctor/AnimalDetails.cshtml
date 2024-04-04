@@ -1,5 +1,5 @@
 ﻿@using ForAnimalsWithLove.ViewModels.Admins;
-@model AdminHealthModel
+@model AdminAnimalModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,20 +32,24 @@
 
 	<div class="container" style="display:inline">
 		<div class="row">
-			
-			<div class="card col-8 border-0">
-				
-				<p><b>Микрочип:</b> @Model.Microchip </p>
-				<p><b>Микрочип номер:</b> @Model.MicrochipNumber</p>
-				<p><b>Първа ваксина:</b> @Model.FirstVaccine </p>
-				<p><b>Втора ваксина:</b> @Model.SecondVaccine </p>
-				<p><b>Трета ваксина:</b> @Model.ThirdVaccine </p>
-				<p><b>Годишна ваксина:</b> @Model.AnnualVaccine </p>
-				<p><b>Общо състояние:</b> @Model.GeneralCondition </p>
-				<p><b>Предписано лечение:</b> @Model.PrescribedTreatment </p>
+			<div class="col-4">
+				<img class="card-img-top" style="width: 20rem;"
+					 src="@Model.Photo" alt="Pet Image">
 			</div>
-			
-	</div>
+			<div class="card col-8 border-0">
+				<p style="font-size:25px;"><u>@Model.Name </u></p>
+				<p><b>Възраст:</b> @Model.Age</p>
+				<p><b>Вид:</b> @Model.KindOfAnimal </p>
+				<p><b>Порода:</b> @Model.Breed </p>
+				<p><b>Цвят:</b> @Model.Color </p>
+				<p><b>Пол:</b> @Model.Sex </p>
+				<p><b>Дата на раждане:</b> @Model.Birthdate </p>
+			</div>
+			<div class="text-center col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+			 <div class="text-center">
+				<a class="btn btn-primary" asp-area="" asp-controller="Doctor" asp-action="HealthRecordDetails" asp-route-id="@Model.Id"> Детайли здравно досие</a>
+			</div>
+		</div>
 	</div>
 	<!-- /page -->
 	<!-- Bootstrap core & Jquery -->

@@ -18,5 +18,10 @@ namespace ForAnimalsWithLove.Infrastructure.Extensions
 		{
 			return user.IsInRole("Trainer");
 		}
+
+		public static bool IsDoctor(this ClaimsPrincipal user)
+		{
+			return user.IsInRole("Doctor");
+		}
 	}
 }

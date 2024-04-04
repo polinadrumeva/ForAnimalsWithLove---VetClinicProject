@@ -14,6 +14,11 @@
 	var isTrainer = await TrainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
 	var trainer = await TrainerService.GetTrainerExistByUserIdAsync(this.User.GetId()!);
 }
+@inject IDoctorService DoctorService
+@{
+	var isDoctor = await DoctorService.DoctorExistByUserIdAsync(this.User.GetId()!);
+	var doctor = await DoctorService.GetDoctorExistByUserIdAsync(this.User.GetId()!);
+}
 @inject IOwnerService OwnerService
 @{
 	var isOwner = await OwnerService.OwnerExistByUserIdAsync(this.User.GetId()!);
@@ -35,6 +40,11 @@
 	{
 		name = trainer.FirstName;
 	}
+	else if (isDoctor)
+	{
+		name = doctor.FirstName;
+	}
+	
 }
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -103,6 +113,20 @@
 			</ul>
 		</div>
 	}
+	@if (isDoctor)
+	{
+		<div class="container col-md-5">
+			<ul class="navbar-nav">
+				<!-- menu item -->
+				<li class="nav-item">
+					<a class="nav-link" asp-controller="Doctor" asp-action="AllAnimals">
+						Всички клиенти
+					</a>
+				</li>
+			</ul>
+		</div>
+	}
+
 
 	
 	<ul class="navbar-nav">

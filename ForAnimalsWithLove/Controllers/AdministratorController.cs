@@ -132,31 +132,7 @@ namespace ForAnimalsWithLove.Controllers
 			var model = await adminService.GetHealthModelAsync();
 			return View(model);
 		}
-		//[HttpPost]
-		//public async Task<IActionResult> AddHealthRecord(AdminHealthModel model, string id)
-		//{
-		//	var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
-		//	if (!isUserAdmin && !this.User.IsAdmin())
-		//	{
-		//		return RedirectToAction("Index", "Home");
-		//	}
-
-
-		//	try
-		//	{
-		//		await adminService.AddHealthRecordAsync(model, id);
-		//	}
-		//	catch (Exception)
-		//	{
-
-		//		this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
-		//		return View(model);
-		//	}
-
-
-		//	return RedirectToAction(nameof(AllAnimals));
-		//}
-
+		
 
 		[HttpGet]
 		public async Task<IActionResult> AddGrooming()
@@ -206,29 +182,7 @@ namespace ForAnimalsWithLove.Controllers
 			var model = await adminService.GetEducationModelAsync();
 			return View(model);
 		}
-		//[HttpPost]
-		//public async Task<IActionResult> AddEducation(AdminEducationModel model, string id)
-		//{
-		//	var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
-		//	if (!isUserAdmin && !this.User.IsAdmin())
-		//	{
-		//		return RedirectToAction("Index", "Home");
-		//	}
-
-		//	try
-		//	{
-		//		await adminService.AddEducationAsync(model, id);
-		//	}
-		//	catch (Exception)
-		//	{
-
-		//		this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
-		//		return View(model);
-		//	}
-
-
-		//	return RedirectToAction(nameof(AllAnimals));
-		//}
+	
 
 		[HttpGet]
 		public async Task<IActionResult> AddBooking()
@@ -366,30 +320,7 @@ namespace ForAnimalsWithLove.Controllers
 			var model = await adminService.GetHospitalModelAsync();
 			return View(model);
 		}
-		//[HttpPost]
-		//public async Task<IActionResult> AddHospitalRecord(AdminHospitalModel model, string id)
-		//{
-		//	var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
-		//	if (!isUserAdmin && !this.User.IsAdmin())
-		//	{
-		//		return RedirectToAction("Index", "Home");
-		//	}
-
-		//	try
-		//	{
-		//		await adminService.AddHospitalRecordAsync(model, id);
-		//	}
-		//	catch (Exception)
-		//	{
-
-		//		this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
-		//		return View(model);
-		//	}
-
-
-		//	return RedirectToAction(nameof(AllAnimals));
-		//}
-
+		
 		[HttpGet]
 		public async Task<IActionResult> AddMedical()
 		{
@@ -402,30 +333,7 @@ namespace ForAnimalsWithLove.Controllers
 			var model = await adminService.GetMedicalModelAsync();
 			return View(model);
 		}
-		//[HttpPost]
-		//public async Task<IActionResult> AddMedical(AdminMedicalModel model, string id)
-		//{
-		//	var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
-		//	if (!isUserAdmin && !this.User.IsAdmin())
-		//	{
-		//		return RedirectToAction("Index", "Home");
-		//	}
-
-		//	try
-		//	{
-		//		await adminService.AddMedicalAsync(model, id);
-		//	}
-		//	catch (Exception)
-		//	{
-
-		//		this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
-		//		return View(model);
-		//	}
-
-
-		//	return RedirectToAction(nameof(AllAnimals));
-		//}
-
+		
 		[HttpGet]
 		public async Task<IActionResult> AnimalDetails(string id)
         {
