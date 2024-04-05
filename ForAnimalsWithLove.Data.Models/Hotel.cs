@@ -17,9 +17,9 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(LocationMaxLength, MinimumLength = LocationMinLength)]
         public string Location { get; set; } = null!;
 
-        [Required]
-        [Range(typeof(decimal), AmountPerDayMinValue, AmountPerDayMaxValue)]
-        public decimal PricePerDay { get; set; }
+        //[Required]
+        //[Range(typeof(decimal), AmountPerDayMinValue, AmountPerDayMaxValue)]
+        //public decimal PricePerDay { get; set; }
         
     }
 

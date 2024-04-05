@@ -190,16 +190,9 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			healthRecord.HospitalRecordId = hospitalRecord.Id;
 			healthRecord.HospitalRecord = hospitalRecord;
 
-			try
-			{
-				await dbContext.HospitalRecords.AddAsync(hospitalRecord);
-				await dbContext.SaveChangesAsync();
-			}
-			catch (Exception)
-			{
-
-				throw;
-			}
+			await dbContext.HospitalRecords.AddAsync(hospitalRecord);
+			await dbContext.SaveChangesAsync();
+			
 			
 
 		}

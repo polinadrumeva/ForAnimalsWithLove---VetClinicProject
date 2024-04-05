@@ -31,9 +31,9 @@ namespace ForAnimalsWithLove.Data.Models
         [Range(ValidMinDays, ValidMaxDays)]
         public int Days { get; set; }
 
-        [Required]
-        [Range(typeof(decimal), AmountMinValue, AmountMaxValue)]
-        public decimal Amount { get { return this.Days * this.Hotel.PricePerDay; } }
+        //[Required]
+        //[Range(typeof(decimal), AmountMinValue, AmountMaxValue)]
+        //public decimal Amount { get { return this.Days * this.Hotel.PricePerDay; } }
 
         
     }
