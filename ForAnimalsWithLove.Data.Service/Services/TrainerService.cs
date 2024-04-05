@@ -143,10 +143,12 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
             };
 
-
-            await dbContext.Educations.AddAsync(education);
-            await dbContext.AnimalsEducations.AddAsync(animalEducation);
-            await dbContext.SaveChangesAsync();
+            
+				await dbContext.Educations.AddAsync(education);
+				await dbContext.AnimalsEducations.AddAsync(animalEducation);
+				await dbContext.SaveChangesAsync();
+			
+         
         }
 
         public async Task<AdminAnimalModel> GetAnimalDetailsAsync(string id)

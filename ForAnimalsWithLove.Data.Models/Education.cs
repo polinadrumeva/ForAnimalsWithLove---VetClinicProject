@@ -22,12 +22,12 @@ namespace ForAnimalsWithLove.Data.Models
         [Required]
         public int Days { get; set; }
 
-        [Required]
-        [Range(typeof(decimal), AmountPerDayMinValue, AmountPerDayMaxValue)]
-        public decimal PricePerDay { get; set; }
+        //[Required]
+        //[Range(typeof(decimal), AmountPerDayMinValue, AmountPerDayMaxValue)]
+        //public decimal PricePerDay { get; set; }
 
-        [Required]
-        public decimal Amount { get { return this.Days * this.PricePerDay; } }
+        //[Required]
+        //public decimal Amount { get { return this.Days * this.PricePerDay; } }
 
         
     }
