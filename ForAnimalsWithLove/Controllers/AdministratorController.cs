@@ -4,6 +4,7 @@ using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.ViewModels.Admins;
 using Microsoft.AspNetCore.Authorization;
 using ForAnimalsWithLove.Infrastructure.Extensions;
+using ForAnimalsWithLove.ViewModels.Animals;
 
 namespace ForAnimalsWithLove.Controllers
 {
@@ -37,6 +38,18 @@ namespace ForAnimalsWithLove.Controllers
 
             return View(allAnimals);
         }
+
+		[HttpGet]
+		public async Task<IActionResult> AllAnimalsFiltred(AllAnimalsQueryModel queryModel)
+		{
+			var serviceModel = await adminService.AllAnimalsAsync(queryModel);
+
+			queryModel.Animals = serviceModel.Animals;
+			queryModel.TotalAnimals = serviceModel.TotalAnimalsCount;
+
+			return View(queryModel);
+
+		}
 
         [HttpGet]
         public async Task<IActionResult> AddAnimal()

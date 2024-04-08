@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ForAnimalsWithLove.Common\ForAnimalsWithLove.Common.csproj" />
     <ProjectReference Include="..\ForAnimalsWithLove.Data.Models\ForAnimalsWithLove.Data.Models.csproj" />
+    <ProjectReference Include="..\ForAnimalsWithLove.Data.Service.Model\ForAnimalsWithLove.Data.Service.Model.csproj" />
     <ProjectReference Include="..\ForAnimalsWithLove.Data.Service\ForAnimalsWithLove.Data.Service.csproj" />
     <ProjectReference Include="..\ForAnimalsWithLove.Data\ForAnimalsWithLove.Data.csproj" />
     <ProjectReference Include="..\ForAnimalsWithLove.Infrastructure\ForAnimalsWithLove.Infrastructure.csproj" />

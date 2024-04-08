@@ -1,4 +1,6 @@
-﻿using ForAnimalsWithLove.ViewModels.Admins;
+﻿using ForAnimalsWithLove.Data.Service.Model;
+using ForAnimalsWithLove.ViewModels.Admins;
+using ForAnimalsWithLove.ViewModels.Animals;
 using ForAnimalsWithLove.ViewModels.IndexModels;
 
 namespace ForAnimalsWithLove.Data.Service.Interfaces
@@ -12,6 +14,7 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 
         //Animals
         Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();
+		Task<AllAnimalsFiltredServiceModel> AllAnimalsAsync(AllAnimalsQueryModel queryModel);
 		Task<AdminAnimalModel> GetAnimalByIdAsync(string animalId);
 		Task<AdminAnimalModel> GetAnimalModelAsync();
 		Task EditAnimalAsync(AdminAnimalModel model);
