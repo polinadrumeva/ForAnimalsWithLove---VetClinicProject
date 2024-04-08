@@ -1,0 +1,39 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminDoctorModel
+
+
+<div class="adopt-card col-md-2 col-xl-6 res-margin">
+    <div class="card bg-light-custom">
+        <div class="thumbnail text-center">
+            <!-- Image -->
+            <img src="@Model.Photo" class="border-irregular1 img-fluid" alt="photo">
+            <!-- Name -->
+            <div class="caption-adoption">
+                <h6 class="adoption-header">@Model.FirstName @Model.LastName</h6>
+
+                <ul class="list-unstyled">
+                    <li><strong>Специализации:</strong> @Model.Specialization</li>
+                </ul>
+                <!-- Buttons -->
+                <div class="text-center">
+                    <a asp-controller="Administrator" asp-action="RemoveDoctor" asp-route-id="@Model.Id" class="btn btn-primary">Премахни</a>
+                </div>
+                <div class="text-center">
+                    <a asp-controller="Administrator" asp-action="EditDoctor" asp-route-id="@Model.Id" class="btn btn-primary">Промени</a>
+                </div>
+                <div class="text-center">
+                    <a asp-controller="Administrator" asp-action="DoctorDetails" asp-route-id="@Model.Id" class="btn btn-primary">Детайли</a>
+                </div>
+            </div>
+        </div>
+        <!-- /thumbnail -->
+    </div>
+    <!-- /card -->
+</div>
+
+
+
+
+
+
+

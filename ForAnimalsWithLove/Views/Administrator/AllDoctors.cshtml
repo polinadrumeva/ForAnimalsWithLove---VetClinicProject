@@ -1,8 +1,5 @@
-﻿@using ForAnimalsWithLove.ViewModels.IndexModels;
-@model IEnumerable<IndexDoctorModel>
-@{
-    var allDoctors = Model.ToList();
-}
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AllDoctorsQueryModel;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,6 +52,68 @@
                 <div class="section-heading" data-aos="zoom-in">
                     <h3>Всички ветеринари</h3>
                 </div>
+                <form method="get">
+                    <div class="row">
+                        <div class="form-group col-md-3 d-flex justify-content-between">
+                            <div class="form-group">
+                                <label asp-for="Direction"></label>
+                                <select asp-for="Direction" class="form-control">
+                                    <option value="">Всички</option>
+                                    @foreach (var direction in Model.Directions)
+                                    {
+                                        <option value="@direction">@direction</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label asp-for="SearchString"></label>
+                            <input asp-for="SearchString" class="form-control" placeholder="...">
+                        </div>
+                        <input type="submit" value="Търси" class="btn btn-primary col-md-3" style="padding-top: 10px" />
+                    </div>
+                </form>
+
+                @{
+                    var previousPage = Model.CurrentPage - 1;
+                    if (previousPage < 1)
+                    {
+                        previousPage = 1;
+                    }
+                    var maxPage = Math.Ceiling((double)Model.TotalDoctors /
+                    Model.DoctorsPerPage);
+                }
+
+                <div class="row mb-5">
+                    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-start">
+                        <a class="btn btn-primary @(Model.CurrentPage == 1 ? "disabled" : string.Empty)"
+                           asp-controller="Administrator"
+                           asp-action="AllDoctors"
+                           asp-route-currentPage="@previousPage"
+                           asp-route-direction="@Model.Direction"
+                           asp-route-searchTerm="@Model.SearchString"><<</a>
+                    </div>
+
+                    @{
+                        var shouldButtonBeDisabled = Model.CurrentPage == maxPage ||
+                        !Model.Doctors.Any();
+                    }
+
+                    <div class="col-md-6 d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a class="btn btn-primary
+                           @(shouldButtonBeDisabled ? "disabled" : string.Empty)"
+                           asp-controller="Administrator"
+                           asp-action="AllDoctors"
+                           asp-route-currentPage="@(Model.CurrentPage + 1)"
+                           asp-route-direction="@Model.Direction"
+                           asp-route-searchTerm="@Model.SearchString">>></a>
+                    </div>
+                </div>
+
+                @if (!Model.Doctors.Any())
+                {
+                    <h2 class="text-center">Няма намерени ветеринари по търсените от вас критерии!</h2>
+                }
                 <div>
                     <div class="text-center col-md-10 col-xl-12">
                         <a asp-controller="Administrator" asp-action="AddDoctor" class="btn btn-primary"> + Добави ветеринар</a>
@@ -63,36 +122,10 @@
 
                 <div class="row mt-4">
                     <!-- Doctor  -->
-                    @foreach (var doctor in allDoctors)
+                    @foreach (var doctor in Model.Doctors)
                     {
-                        <div class="adopt-card col-md-2 col-xl-6 res-margin">
-                            <div class="card bg-light-custom">
-                                <div class="thumbnail text-center">
-                                    <!-- Image -->
-                                    <img src="@doctor.ImageUrl" class="border-irregular1 img-fluid" alt="photo">
-                                    <!-- Name -->
-                                    <div class="caption-adoption">
-                                        <h6 class="adoption-header">@doctor.FirstName @doctor.LastName</h6>
-                                   
-                                        <ul class="list-unstyled">
-                                            <li><strong>Телефонен номер:</strong> @doctor.PhoneNumber</li>
-                                        </ul>
-                                        <!-- Buttons -->
-                                        <div class="text-center">
-                                            <a asp-controller="Administrator" asp-action="RemoveDoctor" asp-route-id="@doctor.Id" class="btn btn-primary">Премахни</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <a asp-controller="Administrator" asp-action="EditDoctor" asp-route-id="@doctor.Id" class="btn btn-primary">Промени</a>
-                                        </div>
-                                        <div class="text-center">
-                                            <a asp-controller="Administrator" asp-action="DoctorDetails" asp-route-id="@doctor.Id" class="btn btn-primary">Детайли</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /thumbnail -->
-                            </div>
-                            <!-- /card -->
-                        </div>
+
+                        <partial name="_DoctorPartial" model="@doctor" />
 
                     }
                 </div>

@@ -37,6 +37,9 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 
 		//Doctors
 		Task<IEnumerable<IndexDoctorModel>> GetAllDoctors();
+		Task<AllDoctorsFiltredServiceModel> GetAllDoctorsFiltredServiceModelAsync(AllDoctorsQueryModel queryModel);
+
+		Task<IEnumerable<string>> AllDirectionsNamesAsync();
 		Task<AdminDoctorModel> GetDoctorModelAsync();
 		Task AddDoctorAsync(AdminDoctorModel model);
 		Task<AdminDoctorModel?> GetDoctorByIdAsync(string id);

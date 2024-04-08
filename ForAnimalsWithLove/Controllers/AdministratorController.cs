@@ -360,8 +360,9 @@ namespace ForAnimalsWithLove.Controllers
 			return View(model);
         }
 
-        //AllDoctors method is taking care of the functionality of the administrator to see all doctors
-        public async Task<IActionResult> AllDoctors()
+		//AllDoctors method is taking care of the functionality of the administrator to see all doctors
+		[HttpGet]
+		public async Task<IActionResult> AllDoctors([FromQuery]AllDoctorsQueryModel queryModel)
         {
 			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
 			if (!isUserAdmin && !this.User.IsAdmin())
@@ -369,9 +370,12 @@ namespace ForAnimalsWithLove.Controllers
 				return RedirectToAction("Index", "Home");
 			}
 
-			var allDoctors = await adminService.GetAllDoctors();
+			var serviceModel = await adminService.GetAllDoctorsFiltredServiceModelAsync(queryModel);
+			queryModel.Doctors = serviceModel.Doctors;
+			queryModel.TotalDoctors = serviceModel.TotalDoctorsCount;
+			queryModel.Directions = await adminService.AllDirectionsNamesAsync();
 
-			return View(allDoctors);
+			return View(queryModel);
 		}
 
 		[HttpGet]

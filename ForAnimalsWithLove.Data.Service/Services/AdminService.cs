@@ -394,6 +394,53 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return doctors;
 		}
 
+		public async Task<AllDoctorsFiltredServiceModel> GetAllDoctorsFiltredServiceModelAsync(AllDoctorsQueryModel queryModel)
+		{
+			var doctorsQuery = dbContext.Doctors.AsQueryable();
+
+			if (!string.IsNullOrWhiteSpace(queryModel.Direction))
+			{
+                doctorsQuery = doctorsQuery.Where(d => d.DirectionsDoctors.Any(dd => dd.Direction.Name == queryModel.Direction));
+            }
+
+			var wildCard = $"%{queryModel.SearchString?.ToLower()}%";
+
+			if (!string.IsNullOrWhiteSpace(queryModel.SearchString))
+			{
+				doctorsQuery = doctorsQuery.Where(d => EF.Functions.Like(d.FirstName, wildCard) ||
+													   EF.Functions.Like(d.LastName, wildCard));
+			}
+
+			
+			var allDoctors = await doctorsQuery.Skip((queryModel.CurrentPage - 1) * queryModel.DoctorsPerPage)
+				.Take(queryModel.DoctorsPerPage)
+				.Select(d => new AdminDoctorModel()
+				{
+					Id = d.Id.ToString(),
+					FirstName = d.FirstName,
+					LastName = d.LastName,
+					Photo = d.Photo,
+					PhoneNumber = d.PhoneNumber,
+					Specialization = d.Specialization
+					
+				}).ToArrayAsync();
+
+			var totalDoctors = doctorsQuery.Count();
+
+			return new AllDoctorsFiltredServiceModel
+			{
+				TotalDoctorsCount = totalDoctors,
+				Doctors = allDoctors
+			};
+		}
+
+		public async Task<IEnumerable<string>> AllDirectionsNamesAsync()
+		{
+			var allNames = await dbContext.Directions.Select(d => d.Name).ToArrayAsync();
+
+			return  allNames;
+		}
+
 		public async Task<AdminDoctorModel> GetDoctorModelAsync()
 		{
 			var directories = await dbContext.Directions
