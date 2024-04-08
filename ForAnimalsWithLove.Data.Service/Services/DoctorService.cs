@@ -1,6 +1,9 @@
 ﻿using ForAnimalsWithLove.Data.Models;
 using ForAnimalsWithLove.Data.Service.Interfaces;
+using ForAnimalsWithLove.Data.Service.Model;
 using ForAnimalsWithLove.ViewModels.Admins;
+using ForAnimalsWithLove.ViewModels.Animals;
+using ForAnimalsWithLove.ViewModels.Enums;
 using ForAnimalsWithLove.ViewModels.IndexModels;
 using Microsoft.EntityFrameworkCore;
 
@@ -72,6 +75,47 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return result;
 		}
 
+		public async Task<AllAnimalsFiltredServiceModel> AllAnimalsAsync(AllAnimalsQueryModel queryModel)
+		{
+			var animalsQuery = dbContext.Animals.AsQueryable();
+			var wildCard = $"%{queryModel.SearchString?.ToLower()}%";
+
+			if (!string.IsNullOrWhiteSpace(queryModel.SearchString))
+			{
+				animalsQuery = animalsQuery.Where(a => EF.Functions.Like(a.Name, wildCard) ||
+													   EF.Functions.Like(a.Owner.FirstName, wildCard) ||
+													   EF.Functions.Like(a.Owner.LastName, wildCard));
+			}
+
+			animalsQuery = queryModel.AnimalSorting switch
+			{
+				AnimalSorting.Name => animalsQuery.OrderBy(a => a.Name),
+				AnimalSorting.Age => animalsQuery.OrderBy(a => a.Age),
+				AnimalSorting.KindOfAnimal => animalsQuery.OrderBy(a => a.KindOfAnimal),
+				_ => animalsQuery.OrderBy(a => a.Name)
+			};
+
+			var allAnimals = await animalsQuery.Skip((queryModel.CurrentPage - 1) * queryModel.AnimalsPerPage)
+				.Take(queryModel.AnimalsPerPage)
+				.Select(a => new AdminAnimalModel()
+				{
+					Id = a.Id.ToString(),
+					Name = a.Name,
+					Age = a.Age,
+					Photo = a.Photo,
+					KindOfAnimal = a.KindOfAnimal,
+					Breed = a.Breed,
+					OwnerName = a.Owner.FirstName + " " + a.Owner.LastName
+				}).ToArrayAsync();
+
+			var totalAnimals = animalsQuery.Count();
+
+			return new AllAnimalsFiltredServiceModel
+			{
+				TotalAnimalsCount = totalAnimals,
+				Animals = allAnimals
+			};
+		}
 		public async Task<AdminAnimalModel?> GetAnimalByIdAsync(string animalId)
 		{
 			return await dbContext.Animals.Where(x => x.Id.ToString() == animalId)

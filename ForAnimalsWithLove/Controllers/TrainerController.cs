@@ -1,6 +1,8 @@
 ﻿using ForAnimalsWithLove.Data.Service.Interfaces;
+using ForAnimalsWithLove.Data.Service.Services;
 using ForAnimalsWithLove.Infrastructure.Extensions;
 using ForAnimalsWithLove.ViewModels.Admins;
+using ForAnimalsWithLove.ViewModels.Animals;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,8 +37,19 @@ namespace ForAnimalsWithLove.Controllers
             return View(allAnimals);
         }
 
+		[HttpGet]
+		public async Task<IActionResult> AllAnimalsFiltred(AllAnimalsQueryModel queryModel)
+		{
+			var serviceModel = await trainerService.AllAnimalsAsync(queryModel);
 
-        [HttpGet]
+			queryModel.Animals = serviceModel.Animals;
+			queryModel.TotalAnimals = serviceModel.TotalAnimalsCount;
+
+			return View(queryModel);
+
+		}
+
+		[HttpGet]
         public async Task<IActionResult> AddEducation()
         {
             var isUserTrainer = await trainerService.TrainerExistByUserIdAsync(this.User.GetId()!);
@@ -69,7 +82,7 @@ namespace ForAnimalsWithLove.Controllers
             }
 
 
-            return RedirectToAction(nameof(AllAnimals));
+            return RedirectToAction(nameof(AllAnimalsFiltred));
         }
 
         [HttpGet]

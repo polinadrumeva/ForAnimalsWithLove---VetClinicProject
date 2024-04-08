@@ -89,7 +89,7 @@ namespace ForAnimalsWithLove.Controllers
 			}
 
 
-			return RedirectToAction(nameof(AllAnimals));
+			return RedirectToAction(nameof(AllAnimalsFiltred));
 		}
 
 		[HttpGet]
@@ -130,7 +130,7 @@ namespace ForAnimalsWithLove.Controllers
 			}
 
 
-			return RedirectToAction(nameof(AllAnimals));
+			return RedirectToAction(nameof(AllAnimalsFiltred));
 		}
 
 		[HttpGet]
@@ -180,7 +180,7 @@ namespace ForAnimalsWithLove.Controllers
 			}
 
 
-			return RedirectToAction(nameof(AllAnimals));
+			return RedirectToAction(nameof(AllAnimalsFiltred));
 		}
 
 		[HttpGet]
@@ -231,7 +231,7 @@ namespace ForAnimalsWithLove.Controllers
 			}
 
 
-			return RedirectToAction(nameof(AllAnimals));
+			return RedirectToAction(nameof(AllAnimalsFiltred));
 		}
 
 		[HttpGet]
@@ -268,7 +268,7 @@ namespace ForAnimalsWithLove.Controllers
 			}
 
 
-			return RedirectToAction(nameof(AllAnimals));
+			return RedirectToAction(nameof(AllAnimalsFiltred));
 		}
 
 		[HttpGet]
@@ -305,7 +305,7 @@ namespace ForAnimalsWithLove.Controllers
 			}
 
 
-			return RedirectToAction(nameof(AllAnimals));
+			return RedirectToAction(nameof(AllAnimalsFiltred));
 		}
 
 		[HttpGet]
