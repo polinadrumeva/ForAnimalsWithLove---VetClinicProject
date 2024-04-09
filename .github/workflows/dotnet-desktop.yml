@@ -20,7 +20,7 @@ jobs:
 
     env:
       Solution_Name: ForAnimalsWithLove                       # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: ForAnimalsWithLove.Tests                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Test_Project_Path: ForAnimalWithLove.UITests.csproj                # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
       Wap_Project_Directory: ForAnimalsWithLove.Web    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
       Wap_Project_Path: ForAnimalsWithLove.Web                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
 
@@ -41,7 +41,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     # Execute all unit tests in the solution
-    - name: Execute unit tests
+    - name: Execute UI tests
       run: dotnet test
 
     # Restore the application to populate the obj folder with RuntimeIdentifiers
