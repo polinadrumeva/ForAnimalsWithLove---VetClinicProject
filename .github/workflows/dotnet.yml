@@ -20,9 +20,11 @@ jobs:
 
     - name: Restore dependencies
       run: dotnet restore
+      shell: cmd
 
     - name: Build
       run: dotnet build --configuration Release --no-restore
+      shell: cmd
 
   test:
     needs: build
@@ -39,3 +41,4 @@ jobs:
 
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+      shell: cmd
