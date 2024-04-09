@@ -1,4 +1,5 @@
-name: ForAnimalsWithLove
+
+name: .ForAnimalsWithLovePipeline
 
 on:
   push:
@@ -8,34 +9,38 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
 
-    # Install the .NET Core workload
-    - name: Install .NET Core
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
-      
-    # Decode the base 64 encoded pfx and save the Signing_Certificate
-    - name: Build the application
-      run: dotnet build -c Release --no-restore
-  
-  runs-ui-tests:
-    needs: build
+  run-ui-tests:
     runs-on: windows-latest
+    needs: build
     steps:
-     - name: Checkout
-       uses: actions/checkout@v4
-     - name: Run UI tests
-       run: dotnet test -c Release --no-build
-    
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Run UI tests
+      run: dotnet test --filter FullyQualifiedName~UITests --no-build --verbosity normal  
 
    
 
