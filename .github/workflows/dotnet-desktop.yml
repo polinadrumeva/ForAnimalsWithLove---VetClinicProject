@@ -22,11 +22,7 @@ jobs:
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
-
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: dotnet restore
-
+      
     # Decode the base 64 encoded pfx and save the Signing_Certificate
     - name: Build the application
       run: dotnet build -c Release --no-restore
