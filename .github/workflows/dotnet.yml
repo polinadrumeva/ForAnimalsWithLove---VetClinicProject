@@ -34,14 +34,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Test
-      run: dotnet test --configuration Release --logger "trx;LogFileName=testresults.trx" # Adjust for your test runner and output format
-      continue-on-error: true # Continue running other steps even if tests fail
+      run: dotnet test ForAnimalsWithLove.UITests/ForAnimalsWithLove.UITests.csproj --configuration Release --logger "trx;LogFileName=testresults.trx" 
+      continue-on-error: true 
 
     - name: Publish Test Results
       if: always()
       uses: actions/upload-artifact@v2
       with:
         name: Test Results
-        path: '**/testresults.trx' # Adjust to match your test results file
-
-  # Add more jobs as needed for deployment, additional testing, etc.
+        path: '**/testresults.trx' 
