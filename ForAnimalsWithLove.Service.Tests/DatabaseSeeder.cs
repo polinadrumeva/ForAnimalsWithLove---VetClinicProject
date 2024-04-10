@@ -1,6 +1,5 @@
 ﻿using ForAnimalsWithLove.Data;
 using ForAnimalsWithLove.Data.Models;
-using NUnit.Framework.Internal.Execution;
 
 namespace ForAnimalsWithLove.Service.Tests
 {
