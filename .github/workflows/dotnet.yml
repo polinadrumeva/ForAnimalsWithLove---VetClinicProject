@@ -24,7 +24,7 @@ jobs:
         
     - name: Build
       run: dotnet build ForAnimalsWithLove.csproj --configuration Release 
-      working-directory: ForAnimalsWithLove/ForAnimalsWithLove.csproj
+      working-directory: ForAnimalsWithLove
 
   test: 
     name: Test
