@@ -1,4 +1,5 @@
-name: Build and Test 
+name: Build and Test ASP.NET Core MVC
+
 on:
   push:
     branches:
@@ -21,9 +22,20 @@ jobs:
       with:
         dotnet-version: '6.0.x' 
 
+    - name: Restore dependencies
+      run: dotnet restore
+
     - name: Build
-      run: dotnet build --configuration Release
-  
+      run: dotnet build ForAnimalsWithLove.csproj --configuration Release 
+      
+
+  test: 
+    name: Test
+    needs: build
+    runs-on: windows-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
     - name: Test
       run: dotnet test --configuration Release --logger "trx;LogFileName=testresults.trx" # Adjust for your test runner and output format
       continue-on-error: true # Continue running other steps even if tests fail
