@@ -1,5 +1,6 @@
 ﻿using ForAnimalsWithLove.Data;
 using ForAnimalsWithLove.Data.Models;
+using System;
 
 namespace ForAnimalsWithLove.Service.Tests
 {
@@ -13,36 +14,40 @@ namespace ForAnimalsWithLove.Service.Tests
 		{
 			AdminUser = new ApplicationUser()
 			{
-				UserName = "doneva@foranimalswithlove.bg",
-				NormalizedUserName = "DONEVA@FORANIMALSWITHLOVE.BG",
-				Email = "doneva@foranimalswithlove.bg",
-				NormalizedEmail = "DONEVA@FORANIMALSWITHLOVE.BG",
+				UserName = "daneva@foranimalswithlove.bg",
+				NormalizedUserName = "DANEVA@FORANIMALSWITHLOVE.BG",
+				Email = "daneva@foranimalswithlove.bg",
+				NormalizedEmail = "DANEVA@FORANIMALSWITHLOVE.BG",
 				EmailConfirmed = false,
-				PasswordHash = "AQAAAAEAACcQAAAAEMH3yUfPhQ8RB1qX+DJwXQKPRCxLLwpbUIOT1g+/zZK3OOMMwqX7VsN0RFRB6Ed+dg==",
-				ConcurrencyStamp = "c7ea46c7-1007-4c36-8e54-e45e00cd5dce",
-				SecurityStamp = "25IO6SPZRST5MQARVFJTDDZWOKRMG7FG",
+				PasswordHash = "AQAAAAEAACcQAAAAELofJgVBIs6Xe2iOGTkF51ucVkQZAbNLRSADKmmrQ4A2GrktlKRuqJAcIkcEHFMqww==",
+				ConcurrencyStamp = "2f549437-4f4d-4283-8cde-f6e8afc54e4f",
+				SecurityStamp = "TAKWH2VBFZ6LCPGGNS5SJYH7LAEZIQTU",
 				TwoFactorEnabled = false
-			};
-			OwnerUser = new ApplicationUser()
-			{
-				UserName = "creator@softuni.bg",
-				NormalizedUserName = "CREATOR@SOFTUNI.BG",
-				Email = "creator@softuni.bg",
-				NormalizedEmail = "CREATOR@SOFTUNI.BG",
-				EmailConfirmed = false,
-				PasswordHash = "AQAAAAEAACcQAAAAEAQaPg7NZbeXCRB+T8sZ9vvV5EG6gyOsdRJhryLKf4aVt7saTmsEdl/ZrchXTgDDeg==",
-				ConcurrencyStamp = "6fd79cd5-1103-4a35-b86a-4f4885c722a2",
-				SecurityStamp = "XWMRYEHMONJLBYXMYQHZBEFJEVFQ6Y67",
-				TwoFactorEnabled = false
-			};
-			Administrator = new Administrator()
-			{
-				PhoneNumber = "0887328173",
-				User = AdminUser
 			};
 
+			Administrator = new Administrator()
+			{
+                FirstName = "Маргарита",
+                LastName = "Данева",
+				PhoneNumber = "0887554289",
+                UserId = Guid.Parse("EE9AC98E-AE74-4D80-BF45-D559501BE6F2")
+            };
+			//OwnerUser = new ApplicationUser()
+			//{
+			//	UserName = "creator@softuni.bg",
+			//	NormalizedUserName = "CREATOR@SOFTUNI.BG",
+			//	Email = "creator@softuni.bg",
+			//	NormalizedEmail = "CREATOR@SOFTUNI.BG",
+			//	EmailConfirmed = false,
+			//	PasswordHash = "AQAAAAEAACcQAAAAEAQaPg7NZbeXCRB+T8sZ9vvV5EG6gyOsdRJhryLKf4aVt7saTmsEdl/ZrchXTgDDeg==",
+			//	ConcurrencyStamp = "6fd79cd5-1103-4a35-b86a-4f4885c722a2",
+			//	SecurityStamp = "XWMRYEHMONJLBYXMYQHZBEFJEVFQ6Y67",
+			//	TwoFactorEnabled = false
+			//};
+			
+
 			dbContext.Users.Add(AdminUser);
-			dbContext.Users.Add(OwnerUser);
+			//dbContext.Users.Add(OwnerUser);
 			dbContext.Administrators.Add(Administrator);
 
 			dbContext.SaveChanges();

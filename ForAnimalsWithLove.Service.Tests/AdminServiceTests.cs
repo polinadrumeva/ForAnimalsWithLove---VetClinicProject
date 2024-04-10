@@ -2,7 +2,6 @@ using ForAnimalsWithLove.Data;
 using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.Data.Service.Services;
 using Microsoft.EntityFrameworkCore;
-using Moq;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;
@@ -35,10 +34,6 @@ namespace ForAnimalsWithLove.Service.Tests
 		{
 		}
 
-		[Test]
-		public async Task AdminExistByUserIdAsyncShouldReturnTrueWhenExists()
-		{
-			
-		}
-	}
+     
+    }
 }
