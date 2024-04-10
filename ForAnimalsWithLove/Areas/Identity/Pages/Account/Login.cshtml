@@ -9,6 +9,20 @@
         }
 
     </style>
+    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+        function recaptchaCallback() {
+            var response = grecaptcha.getResponse();
+            if (response.length === 0) {
+                // reCAPTCHA checkbox is not checked
+                document.getElementById("login-submit").disabled = true;
+            } else {
+                // reCAPTCHA checkbox is checked
+                document.getElementById("login-submit").disabled = false;
+            }
+        }
+    </script>
+
 </head>
 
 <div class="row justify-content-center">
@@ -30,8 +44,10 @@
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <br>
+                <div class="g-recaptcha form-floating" id="recaptcha" data-sitekey="6Lfb3LYpAAAAAJ_PcSDPZC_eNy_2kfsr3xcc3g9Q" data-callback="recaptchaCallback">
+                </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Вход</button>
+                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary" disabled>Вход</button>
                 </div>
             </form>
         </section>
@@ -42,3 +58,4 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+

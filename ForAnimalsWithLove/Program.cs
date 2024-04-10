@@ -25,6 +25,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 	.AddEntityFrameworkStores<ForAnimalsWithLoveDbContext>();
 
 builder.Services.AddAppServices();
+
+builder.Services.AddRecaptchaService();
 builder.Services.AddControllersWithViews()
 				.AddMvcOptions(op => 
 				{ 
@@ -56,9 +58,8 @@ app.UseAuthorization();
 
 if (app.Environment.IsDevelopment())
 {
-	app.SeedAdmin("admin@foranimalswithove.bg");
+	app.SeedAdmin("daneva@foranimalswithlove.bg");
 }
-
 
 
 app.MapControllerRoute(
