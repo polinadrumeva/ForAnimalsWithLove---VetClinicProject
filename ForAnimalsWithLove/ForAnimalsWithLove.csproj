@@ -35,4 +35,8 @@
     <ProjectReference Include="..\ForAnimalsWithLove.ViewModels\ForAnimalsWithLove.ViewModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Areas\Admin\ViewModels\" />
+  </ItemGroup>
+
 </Project>

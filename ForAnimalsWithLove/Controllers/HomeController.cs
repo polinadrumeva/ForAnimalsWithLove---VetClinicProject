@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using ForAnimalsWithLove.Data.Service.Interfaces;
+using static ForAnimalsWithLove.Common.AreaConstants;
 
 namespace ForAnimalsWithLove.Controllers
 {
@@ -19,6 +20,11 @@ namespace ForAnimalsWithLove.Controllers
 		// Generate Index View page
 		public async Task<IActionResult> Index()
 		{
+			if (this.User.IsInRole(AdminRoleName))
+			{
+				return this.RedirectToAction("Index", "Home", new { Area = AdminArea });
+			}
+
 			var counts = await homeService.GetAllCount();
 			return View(counts);
 		}

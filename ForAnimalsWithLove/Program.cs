@@ -61,10 +61,20 @@ if (app.Environment.IsDevelopment())
 	app.SeedAdmin("daneva@foranimalswithlove.bg");
 }
 
+app.UseEndpoints(config =>
+{
+    config.MapControllerRoute(
+            name: "areas",
+            pattern: "/{area:exists}/{controller=Home}/{action=Index}/{id?}"
+          );
 
-app.MapControllerRoute(
+    config.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapRazorPages();
+	
+	config.MapDefaultControllerRoute();
+	config.MapRazorPages();
+});
+
 
 app.Run();
