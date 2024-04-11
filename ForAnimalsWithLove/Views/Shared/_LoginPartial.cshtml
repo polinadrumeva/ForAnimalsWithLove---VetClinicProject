@@ -52,30 +52,14 @@
 
 @if (SignInManager.IsSignedIn(User) & this.User.Identity?.IsAuthenticated ?? false)
 {
-		@if (isAdmin)
-		{
-		<div class="container col-md-5">
-			<ul class="navbar-nav">
-				<!-- menu item -->
-				<li class="nav-item">
-					<a class="nav-link" asp-controller="Administrator" asp-action="AllAnimalsFiltred">
-						Всички клиенти
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" asp-controller="Administrator" asp-action="AllDoctors" aria-haspopup="true" aria-expanded="false">
-						Лекари
-					</a>
-				</li>
-				<!-- menu item -->
-				<li class="nav-item">
-					<a class="nav-link" asp-controller="Administrator" asp-action="AllTrainers" aria-haspopup="true" aria-expanded="false">
-						Треньори
-					</a>
-				</li>
-			</ul>
+	@if (isAdmin)
+	{
+		<div class="container">
+			<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+				<img src="~/images/logo.png" style="block-size: 80px" alt="ForAnimalsWithLove">
+			</a>
 		</div>
-		}
+	}
 	@if (isOwner)
 	{
 		<div class="container">
