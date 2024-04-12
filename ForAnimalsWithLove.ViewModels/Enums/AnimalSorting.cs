@@ -1,5 +1,4 @@
-﻿
-namespace ForAnimalsWithLove.ViewModels.Enums
+﻿namespace ForAnimalsWithLove.ViewModels.Enums
 {
 	public enum AnimalSorting
 	{
