@@ -16,7 +16,7 @@
 @{
 	ViewData["Title"] = "Home Page";
 }
-<div class="mt-4 p-5 bg-light text-center">
+<div class="mt-4 p-5 text-center">
 	<h2 class="display-4">Здравей, @name!</h2>
 	<p class="lead mb-1 mt-3">
 		Това е вашата администраторска част от тук може <b>четете</b>, <b>създавате</b>,
@@ -33,10 +33,10 @@
 	<a asp-area="" asp-controller="Administrator" asp-action="AllTrainers"
 	class="btn btn-primary btn-lg">Всички треньори</a>
 	<br/>
-	<a asp-area="Admin" asp-controller="Administrator" asp-action="AddAnimal"
+	<a asp-area="" asp-controller="Administrator" asp-action="AddAnimal"
 	class="btn btn-primary btn-lg">Добави животно</a>
-	<a asp-area="Admin" asp-controller="Administrator" asp-action="AddDoctor"
+	<a asp-area="" asp-controller="Administrator" asp-action="AddDoctor"
 	class="btn btn-primary btn-lg">Добави лекар</a>
-	<a asp-area="Admin" asp-controller="Administrator" asp-action="AddTrainer"
+	<a asp-area="" asp-controller="Administrator" asp-action="AddTrainer"
 	class="btn btn-primary btn-lg">Добави треньор</a>
 </div>

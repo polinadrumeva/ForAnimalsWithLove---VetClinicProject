@@ -86,15 +86,10 @@
 	} 
 	@if (isTrainer)
 	{
-		<div class="container col-md-5">
-			<ul class="navbar-nav">
-				<!-- menu item -->
-				<li class="nav-item">
-					<a class="nav-link" asp-controller="Trainer" asp-action="AllAnimalsFiltred">
-						Всички клиенти
-					</a>
-				</li>
-			</ul>
+		<div class="container">
+			<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+				<img src="~/images/logo.png" style="block-size: 80px" alt="ForAnimalsWithLove">
+			</a>
 		</div>
 	}
 	@if (isDoctor)

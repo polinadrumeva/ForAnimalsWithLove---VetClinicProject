@@ -45,5 +45,31 @@ namespace ForAnimalsWithLove.Infrastructure.Extensions
 
             return app;
         }
-    }
+
+		public static IApplicationBuilder SeedTrainer(this IApplicationBuilder app, string email)
+		{
+			using var serviceScope = app.ApplicationServices.CreateScope();
+			var servicePrvider = serviceScope.ServiceProvider;
+
+			var userManager = servicePrvider.GetRequiredService<UserManager<ApplicationUser>>();
+			var roleManager = servicePrvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+
+			Task.Run(async () =>
+			{
+				if (await roleManager.RoleExistsAsync("Trainer"))
+				{
+					return;
+				}
+
+				var role = new IdentityRole<Guid>("Trainer");
+				await roleManager.CreateAsync(role);
+
+				var trainerUser = await userManager.FindByEmailAsync(email);
+				await userManager.AddToRoleAsync(trainerUser, "Trainer");
+			}).GetAwaiter()
+			  .GetResult();
+
+			return app;
+		}
+	}
 }

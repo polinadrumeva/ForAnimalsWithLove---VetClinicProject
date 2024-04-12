@@ -24,6 +24,10 @@ namespace ForAnimalsWithLove.Controllers
 			{
 				return this.RedirectToAction("Index", "Home", new { Area = AdminArea });
 			}
+			else if (this.User.IsInRole(TrainerRoleName))
+			{
+				return this.RedirectToAction("Index", "Home", new { Area = TrainerArea });
+			}
 
 			var counts = await homeService.GetAllCount();
 			return View(counts);
