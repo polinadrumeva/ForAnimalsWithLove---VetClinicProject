@@ -60,6 +60,7 @@ if (app.Environment.IsDevelopment())
 {
 	app.SeedAdmin("daneva@foranimalswithlove.bg");
 	app.SeedTrainer("kolev@foranimalswithlove.bg");
+	app.SeedDoctor("maneva@foranimalswithlove.bg");
 }
 
 app.UseEndpoints(config =>

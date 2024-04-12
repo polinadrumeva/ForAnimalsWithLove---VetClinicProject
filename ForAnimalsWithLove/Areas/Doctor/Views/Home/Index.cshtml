@@ -1,0 +1,31 @@
+﻿@using ForAnimalsWithLove.Data.Service.Interfaces;
+@using ForAnimalsWithLove.Infrastructure.Extensions;
+@inject IDoctorService DoctorService
+@{
+	var isDoctor = await DoctorService.DoctorExistByUserIdAsync(this.User.GetId()!);
+	var doctor = await DoctorService.GetDoctorExistByUserIdAsync(this.User.GetId()!);
+
+}
+@{
+	var name = "";
+	if (isDoctor)
+	{
+		name = doctor.FirstName;
+	}
+}
+@{
+	ViewData["Title"] = "Home Page";
+}
+<div class="mt-4 p-5 text-center">
+	<h2 class="display-4">Здравей, @name!</h2>
+	<p class="lead mb-1 mt-3">
+		Това е вашата администраторска част от тук може <b>четете</b>, <b>добавяте</b>,
+		 и <b>преглеждате</b> информация за всички клиенти и техните досиета.
+	</p>
+	<p class="lead mt-1">
+		Също така може да видите <b>всички клиенти</b> в системата.
+	</p>
+	<hr class="my-3">
+	<a asp-area="" asp-controller="Doctor" asp-action="AllAnimalsFiltred"
+	class="btn btn-primary btn-lg">Всички животни</a>
+</div>

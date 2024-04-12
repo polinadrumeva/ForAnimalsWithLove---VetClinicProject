@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using static ForAnimalsWithLove.Common.AreaConstants;
 
-namespace ForAnimalsWithLove.Areas.Trainer.Controllers
+namespace ForAnimalsWithLove.Areas.Doctor.Controllers
 {
-	[Area(TrainerArea)]
-	[Authorize(Roles = TrainerRoleName)]
+	[Area(DoctorArea)]
+	[Authorize(Roles = DoctorRoleName)]
 	public class BaseDoctorController : Controller
 	{
 		

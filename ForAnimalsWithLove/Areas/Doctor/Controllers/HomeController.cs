@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace ForAnimalsWithLove.Areas.Trainer.Controllers
+namespace ForAnimalsWithLove.Areas.Doctor.Controllers
 {
 	public class HomeController : BaseDoctorController
 	{

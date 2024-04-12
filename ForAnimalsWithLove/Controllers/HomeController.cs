@@ -24,6 +24,10 @@ namespace ForAnimalsWithLove.Controllers
 			{
 				return this.RedirectToAction("Index", "Home", new { Area = AdminArea });
 			}
+			else if (this.User.IsInRole(DoctorRoleName))
+			{
+				return this.RedirectToAction("Index", "Home", new { Area = DoctorArea });
+			}
 			else if (this.User.IsInRole(TrainerRoleName))
 			{
 				return this.RedirectToAction("Index", "Home", new { Area = TrainerArea });

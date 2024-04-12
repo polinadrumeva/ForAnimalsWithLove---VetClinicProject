@@ -71,5 +71,31 @@ namespace ForAnimalsWithLove.Infrastructure.Extensions
 
 			return app;
 		}
+
+		public static IApplicationBuilder SeedDoctor(this IApplicationBuilder app, string email)
+		{
+			using var serviceScope = app.ApplicationServices.CreateScope();
+			var servicePrvider = serviceScope.ServiceProvider;
+
+			var userManager = servicePrvider.GetRequiredService<UserManager<ApplicationUser>>();
+			var roleManager = servicePrvider.GetRequiredService<RoleManager<IdentityRole<Guid>>>();
+
+			Task.Run(async () =>
+			{
+				if (await roleManager.RoleExistsAsync("Doctor"))
+				{
+					return;
+				}
+
+				var role = new IdentityRole<Guid>("Doctor");
+				await roleManager.CreateAsync(role);
+
+				var doctorUser = await userManager.FindByEmailAsync(email);
+				await userManager.AddToRoleAsync(doctorUser, "Doctor");
+			}).GetAwaiter()
+			  .GetResult();
+
+			return app;
+		}
 	}
 }
