@@ -65,7 +65,7 @@
             public const string MaxPriceOperation = "5000";
         }
 
-        public static class HealthRecord
+        public static class HealthRecordValidations
         {
             public const int ChipMinLength = 9;
             public const int ChipMaxLength = 15;
@@ -75,7 +75,7 @@
             public const int PrescriptionMaxLength = 500;
         }
 
-        public static class HospitalRecord
+        public static class HospitalRecordValidtions
         {
             public const int DiagnosisMinLength = 6;
             public const int DiagnosisMaxLength = 500;

@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using static ForAnimalsWithLove.Common.Validations.EntityValidations.HospitalRecord;
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.HospitalRecordValidtions;
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.HealthRecordValidations;
+
 
 namespace ForAnimalsWithLove.Data.Models
 {
@@ -37,8 +39,11 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(DiagnosisMaxLength, MinimumLength = DiagnosisMinLength)]
         public string Constatation { get; set; } = null!;
 
-        //[Required]
-        //[Range(typeof(decimal), AmountMinValue, MaxPriceMedical)]
-        //public decimal Price { get; set; }
-    }
+		[StringLength(PrescriptionMaxLength, MinimumLength = PrescriptionMinLength)]
+		public string? PrescribedTreatment { get; set; }
+
+		//[Required]
+		//[Range(typeof(decimal), AmountMinValue, MaxPriceMedical)]
+		//public decimal Price { get; set; }
+	}
 }

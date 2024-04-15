@@ -80,7 +80,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 					Age = a.Age,
 					Photo = a.Photo,
 					KindOfAnimal = a.KindOfAnimal,
-					Breed = a.Breed, 
+					Breed = a.Breed,
 					OwnerName = a.Owner.FirstName + " " + a.Owner.LastName
 				}).ToArrayAsync();
 
@@ -166,7 +166,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return model;
 		}
 
-		
+
 		public async Task<AdminGroomingModel> GetGroomingModelAsync()
 		{
 			var model = new AdminGroomingModel();
@@ -209,7 +209,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return model;
 		}
 
-		
+
 		public async Task<AdminBookingModel> GetBookingModelAsync()
 		{
 			var hotels = await dbContext.Hotels
@@ -250,7 +250,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Booking = booking
 
 			};
-			
+
 			await dbContext.Bookings.AddAsync(booking);
 			await dbContext.AnimalsBookings.AddAsync(animalBooking);
 			await dbContext.SaveChangesAsync();
@@ -286,7 +286,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			var animal = await dbContext.Animals.FirstAsync(x => x.Id.ToString() == id);
 
 			return new AdminAnimalModel()
-			{ 
+			{
 				Id = animal.Id.ToString(),
 				Name = animal.Name,
 				Age = animal.Age,
@@ -317,7 +317,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				LastName = model.LastName,
 				PhoneNumber = model.PhoneNumber,
 				Address = model.Address
-		
+
 			};
 
 			owner.MyAnimals.Add(dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id));
@@ -333,6 +333,18 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
 		{
 			var healthRecord = await dbContext.HealthRecords.FirstAsync(x => x.AnimalId.ToString() == id);
+			var medicals = await dbContext.Medicals
+					.Where(x => x.HealthRecordId == healthRecord.Id)
+					.Select(x => new AnimalMedicalModel
+					{
+							Date = x.Date,
+							DoctorFirstName = x.Doctor.FirstName,
+							DoctorLastName = x.Doctor.LastName,
+							Reason = x.Reason,
+							Constatation = x.Constatation,
+							PrescribedTreatment = x.PrescribedTreatment
+					})
+					.ToArrayAsync();
 
 			return new AdminHealthModel()
 			{
@@ -345,7 +357,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				ThirdVaccine = healthRecord.ThirdVaccine,
 				AnnualVaccine = healthRecord.AnnualVaccine,
 				GeneralCondition = healthRecord.GeneralCondition,
-				PrescribedTreatment = healthRecord.PrescribedTreatment
+				Medicals = medicals
 			};
 		}
 		public async Task<AdminHospitalModel> GetHospitalModelAsync()
@@ -370,11 +382,11 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			{
 				Doctors = doctors
 			};
-			
+
 			return model;
 		}
 
-		
+
 
 		// Doctors services
 		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
@@ -400,8 +412,8 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			if (!string.IsNullOrWhiteSpace(queryModel.Direction))
 			{
-                doctorsQuery = doctorsQuery.Where(d => d.DirectionsDoctors.Any(dd => dd.Direction.Name == queryModel.Direction));
-            }
+				doctorsQuery = doctorsQuery.Where(d => d.DirectionsDoctors.Any(dd => dd.Direction.Name == queryModel.Direction));
+			}
 
 			var wildCard = $"%{queryModel.SearchString?.ToLower()}%";
 
@@ -411,7 +423,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 													   EF.Functions.Like(d.LastName, wildCard));
 			}
 
-			
+
 			var allDoctors = await doctorsQuery.Skip((queryModel.CurrentPage - 1) * queryModel.DoctorsPerPage)
 				.Take(queryModel.DoctorsPerPage)
 				.Select(d => new AdminDoctorModel()
@@ -422,7 +434,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 					Photo = d.Photo,
 					PhoneNumber = d.PhoneNumber,
 					Specialization = d.Specialization
-					
+
 				}).ToArrayAsync();
 
 			var totalDoctors = doctorsQuery.Count();
@@ -438,7 +450,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		{
 			var allNames = await dbContext.Directions.Select(d => d.Name).ToArrayAsync();
 
-			return  allNames;
+			return allNames;
 		}
 
 		public async Task<AdminDoctorModel> GetDoctorModelAsync()
@@ -621,29 +633,29 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			}
 		}
 
-        public async Task<bool> AdminExistByUserIdAsync(string userId)
-        {
-            var result = await dbContext.Administrators.AnyAsync(x => x.UserId.ToString() == userId);
+		public async Task<bool> AdminExistByUserIdAsync(string userId)
+		{
+			var result = await dbContext.Administrators.AnyAsync(x => x.UserId.ToString() == userId);
 
 			return result;
-        }
+		}
 
-        public async Task<AdminIndexModel> GetAdminExistByUserIdAsync(string id)
-        {
-            var admin = await dbContext.Administrators.FirstOrDefaultAsync(o => o.UserId.ToString() == id);
+		public async Task<AdminIndexModel> GetAdminExistByUserIdAsync(string id)
+		{
+			var admin = await dbContext.Administrators.FirstOrDefaultAsync(o => o.UserId.ToString() == id);
 
-            if (admin != null)
-            {
-                return new AdminIndexModel
-                {
-                    Id = admin.Id.ToString(),
+			if (admin != null)
+			{
+				return new AdminIndexModel
+				{
+					Id = admin.Id.ToString(),
 					FirstName = admin.FirstName
-                };
-            }
+				};
+			}
 
-            return null;
-        }
+			return null;
+		}
 
-		
+
 	}
 }

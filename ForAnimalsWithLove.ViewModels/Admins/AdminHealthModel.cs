@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ForAnimalsWithLove.ViewModels.Animals;
+using System.ComponentModel.DataAnnotations;
 
-using static ForAnimalsWithLove.Common.Validations.EntityValidations.HealthRecord;
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.HealthRecordValidations;
 namespace ForAnimalsWithLove.ViewModels.Admins
 {
     public class AdminHealthModel
@@ -8,7 +9,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         public AdminHealthModel()
         {
            
-            this.Medicals = new HashSet<AdminMedicalModel>();
+            this.Medicals = new HashSet<AnimalMedicalModel>();
         }
 
         public string Id { get; set; }
@@ -51,6 +52,6 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
         public AdminHospitalModel? HospitalRecord { get; set; }
 
-        public virtual ICollection<AdminMedicalModel> Medicals { get; set; }
+        public virtual ICollection<AnimalMedicalModel> Medicals { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 
 using ForAnimalsWithLove.Data.Service.Interfaces;
 using ForAnimalsWithLove.ViewModels.Admins;
+using ForAnimalsWithLove.ViewModels.Animals;
 
 namespace ForAnimalsWithLove.Data.Service.Services
 {
@@ -74,24 +75,33 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 		public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
 		{
-			var healthRecord = await dbContext.HealthRecords.FirstAsync(a => a.AnimalId.ToString() == id);
-			if (healthRecord != null)
-			{
-				return new AdminHealthModel
-				{
-					Microchip = healthRecord.Microchip,
-					MicrochipNumber = healthRecord.MicrochipNumber,
-					FirstVaccine = healthRecord.FirstVaccine,
-					SecondVaccine = healthRecord.SecondVaccine,
-					ThirdVaccine = healthRecord.ThirdVaccine,
-					AnnualVaccine = healthRecord.AnnualVaccine,
-					GeneralCondition = healthRecord.GeneralCondition,
-					PrescribedTreatment = healthRecord.PrescribedTreatment
-				};
-			}
+			var healthRecord = await dbContext.HealthRecords.FirstAsync(x => x.AnimalId.ToString() == id);
+			var medicals = await dbContext.Medicals
+					.Where(x => x.HealthRecordId == healthRecord.Id)
+					.Select(x => new AnimalMedicalModel
+					{
+						Date = x.Date,
+						DoctorFirstName = x.Doctor.FirstName,
+						DoctorLastName = x.Doctor.LastName,
+						Reason = x.Reason,
+						Constatation = x.Constatation,
+						PrescribedTreatment = x.PrescribedTreatment
+					})
+					.ToArrayAsync();
 
-			return null;
-													
+			return new AdminHealthModel()
+			{
+				Id = healthRecord.Id.ToString(),
+				AnimalId = healthRecord.AnimalId.ToString(),
+				Microchip = healthRecord.Microchip,
+				MicrochipNumber = healthRecord.MicrochipNumber,
+				FirstVaccine = healthRecord.FirstVaccine,
+				SecondVaccine = healthRecord.SecondVaccine,
+				ThirdVaccine = healthRecord.ThirdVaccine,
+				AnnualVaccine = healthRecord.AnnualVaccine,
+				GeneralCondition = healthRecord.GeneralCondition,
+				Medicals = medicals
+			};
 		}
 
 		public async Task<AdminHospitalModel> GetHospitalRecordDetailsAsync(string id)

@@ -6,6 +6,7 @@ using ForAnimalsWithLove.ViewModels.Animals;
 using ForAnimalsWithLove.ViewModels.Enums;
 using ForAnimalsWithLove.ViewModels.IndexModels;
 using Microsoft.EntityFrameworkCore;
+using static ForAnimalsWithLove.Common.Validations.EntityValidations;
 
 
 namespace ForAnimalsWithLove.Data.Service.Services
@@ -160,8 +161,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				SecondVaccine = model.SecondVaccine,
 				ThirdVaccine = model.ThirdVaccine,
 				AnnualVaccine = model.AnnualVaccine,
-				GeneralCondition = model.GeneralCondition,
-				PrescribedTreatment = model.PrescribedTreatment
+				GeneralCondition = model.GeneralCondition
 
 			};
 
@@ -194,6 +194,18 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
 		{
 			var healthRecord = await dbContext.HealthRecords.FirstAsync(x => x.AnimalId.ToString() == id);
+			var medicals = await dbContext.Medicals
+					.Where(x => x.HealthRecordId == healthRecord.Id)
+					.Select(x => new AnimalMedicalModel
+					{
+						Date = x.Date,
+						DoctorFirstName = x.Doctor.FirstName,
+						DoctorLastName = x.Doctor.LastName,
+						Reason = x.Reason,
+						Constatation = x.Constatation,
+						PrescribedTreatment = x.PrescribedTreatment
+					})
+					.ToArrayAsync();
 
 			return new AdminHealthModel()
 			{
@@ -206,7 +218,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				ThirdVaccine = healthRecord.ThirdVaccine,
 				AnnualVaccine = healthRecord.AnnualVaccine,
 				GeneralCondition = healthRecord.GeneralCondition,
-				PrescribedTreatment = healthRecord.PrescribedTreatment
+				Medicals = medicals
 			};
 		}
 		public async Task<AdminHospitalModel> GetHospitalModelAsync()
@@ -218,7 +230,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		public async Task AddHospitalRecordAsync(AdminHospitalModel model, string id)
 		{
 			var hospitalRecord = new HospitalRecord
-			{
+            {
 				Id = Guid.NewGuid(),
 				HealthRecordId = Guid.Parse(id),
 				HealthRecord = dbContext.HealthRecords.FirstOrDefault(x => x.Id.ToString() == id),
@@ -262,6 +274,8 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 		public async Task AddMedicalAsync(AdminMedicalModel model, string id)
 		{
+			var animal = await dbContext.Animals.Include(a => a.HealthRecord).FirstOrDefaultAsync(a => a.HealthRecordId.ToString() == id);
+
 			var medical = new Medical
 			{
 				Id = Guid.NewGuid(),
@@ -274,6 +288,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Constatation = model.Constatation
 			};
 
+			animal.HealthRecord.Medicals.Add(medical);
 			await dbContext.Medicals.AddAsync(medical);
 			await dbContext.SaveChangesAsync();
 		}

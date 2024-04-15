@@ -42,9 +42,17 @@
 				<p><b>Трета ваксина:</b> @Model.ThirdVaccine </p>
 				<p><b>Годишна ваксина:</b> @Model.AnnualVaccine </p>
 				<p><b>Общо състояние:</b> @Model.GeneralCondition </p>
-				<p><b>Предписано лечение:</b> @Model.PrescribedTreatment </p>
 			</div>
 			
+			<div class="col-lg-5 res-margin">
+				<div id="accordion" class="accordion-cards">
+					@foreach (var medical in Model.Medicals)
+					{
+						<partial name="_MedicalPartial" model="@medical" />
+					}
+				</div>
+			</div>
+
 	</div>
 	</div>
 	<!-- /page -->

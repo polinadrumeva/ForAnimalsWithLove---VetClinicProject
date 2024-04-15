@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using static ForAnimalsWithLove.Common.Validations.EntityValidations.HospitalRecord;
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.HospitalRecordValidtions;
 
 namespace ForAnimalsWithLove.ViewModels.Admins
 {

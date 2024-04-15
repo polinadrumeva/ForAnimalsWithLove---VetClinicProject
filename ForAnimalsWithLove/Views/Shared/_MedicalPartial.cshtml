@@ -1,0 +1,33 @@
+﻿@using ForAnimalsWithLove.ViewModels.Animals;
+@model AnimalMedicalModel
+
+@{
+	var collapseId = $"collapse-{Guid.NewGuid()}";
+	var controlId = $"collapse-{Guid.NewGuid()}";
+}
+
+<div class="card">
+    <div class="card-header" id="@controlId" role="tab">
+        <h6 class="mb-0 accordion-header">
+            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false" aria-controls="@collapseId">
+                Дата на преглед: @Model.Date.ToShortDateString()
+            </button>
+        </h6>
+    </div>
+    <div id="@collapseId" class="collapse" aria-labelledby="@controlId" data-bs-parent="#accordion">
+        <div class="card-body">
+            <p>
+                <b>Прегледът е извършен от:</b> @Model.DoctorFirstName @Model.DoctorLastName
+            </p>
+            <p>
+                <b>Причина:</b> @Model.Reason
+            </p>
+            <p>
+                <b>Диагноза:</b> @Model.Constatation
+            </p>
+            <p>
+                <b>Предписано лечение:</b> @Model.PrescribedTreatment
+            </p>
+        </div>
+    </div>
+</div>

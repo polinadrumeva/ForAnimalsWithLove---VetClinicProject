@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-using static ForAnimalsWithLove.Common.Validations.EntityValidations.HealthRecord;
+using static ForAnimalsWithLove.Common.Validations.EntityValidations.HealthRecordValidations;
 
 namespace ForAnimalsWithLove.Data.Models
 {
@@ -39,9 +39,6 @@ namespace ForAnimalsWithLove.Data.Models
         [StringLength(GeneralConditionMaxLength, MinimumLength = GeneralConditionMinLength)]
         public string GeneralCondition { get; set; } = null!;
 
-
-        [StringLength(PrescriptionMaxLength, MinimumLength = PrescriptionMinLength)]
-        public string? PrescribedTreatment { get; set; }
 
         public Guid? HospitalRecordId { get; set; }
 
