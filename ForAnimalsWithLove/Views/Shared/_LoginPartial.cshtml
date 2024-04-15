@@ -28,7 +28,7 @@
 
 @{
 	var name = "";
-	if(isAdmin)
+	if (isAdmin)
 	{
 		name = admin.FirstName;
 	}
@@ -36,7 +36,7 @@
 	{
 		name = owner.FirstName;
 	}
-    else if (isTrainer)
+	else if (isTrainer)
 	{
 		name = trainer.FirstName;
 	}
@@ -44,7 +44,7 @@
 	{
 		name = doctor.FirstName;
 	}
-	
+
 }
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
@@ -63,15 +63,7 @@
 	@if (isOwner)
 	{
 		<div class="container">
-			<!-- logo -->
-			<img src="~/images/logo.png" style="block-size: 80px" alt="ForAnimalsWithLove">
-			<!-- Navbartoggler -->
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggle-icon">
-					<i class="fas fa-bars"></i>
-				</span>
-			</button>
-			<!-- /Navbar toggler -->
+
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-2">
 					<!-- menu item -->
@@ -83,7 +75,7 @@
 				</ul>
 			</div>
 		</div>
-	} 
+	}
 	@if (isTrainer)
 	{
 		<div class="container">
@@ -102,85 +94,85 @@
 	}
 
 
-	
+
 	<ul class="navbar-nav">
 		<li class="nav-item">
-				<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Здравей, @name!</a>
+			<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Здравей, @name!</a>
 		</li>
-			<li class="nav-item">
-				<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-					<button type="submit" class="nav-link btn btn-link text-dark">Изход</button>
-				</form>
-			</li>
+		<li class="nav-item">
+			<form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+				<button type="submit" class="nav-link btn btn-link text-dark">Изход</button>
+			</form>
+		</li>
 	</ul>
-		
-	}
-	else
-	{
-		<div class="container">
-			<!-- logo -->
-			<a class="navbar-brand" asp-controller="Home" asp-action="Index">
-				<img src="~/images/logo.png" style="block-size: 80px" alt="ForAnimalsWithLove">
-			</a>
-			<!-- Navbartoggler -->
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggle-icon">
-					<i class="fas fa-bars"></i>
-				</span>
-			</button>
-			<!-- /Navbar toggler -->
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ms-2">
-					<!-- menu item -->
-					<li class="nav-item">
-						<a class="nav-link" asp-controller="Home" asp-action="About">
-							За нас
-						</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="services-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Нашият екип
-						</a>
-						<div class="dropdown-menu" aria-labelledby="services-dropdown">
-							<a class="dropdown-item" asp-controller="GenerateHome" asp-action="TeamVet">Ветеринари</a>
-						<a class="dropdown-item" asp-controller="GenerateHome" asp-action="TeamTrainer">Треньори</a>
-						</div>
-					</li>
-					<!-- menu item -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="services-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Нашите услуги
-						</a>
-						<div class="dropdown-menu" aria-labelledby="services-dropdown">
-							<a class="dropdown-item" asp-controller="Home" asp-action="Halls">Отделения</a>
-							<a class="dropdown-item" asp-controller="Home" asp-action="Education">Обучение</a>
-							<a class="dropdown-item" asp-controller="Home" asp-action="Hotels">Хотелско настаняване</a>
-							<a class="dropdown-item" asp-controller="Home" asp-action="Grooming">Grooming</a>
-						</div>
-					</li>
-					<!-- menu item -->
-					<li class="nav-item">
-					<a class="nav-link" id="about-dropdown" asp-controller="GenerateHome" asp-action="Aboption" aria-haspopup="true" aria-expanded="false">
-							Осинови
-						</a>
-					</li>
-					<!-- menu item -->
-					<li class="nav-item">
-						<a class="nav-link" id="contact-dropdown" asp-controller="Home" asp-action="Contact" aria-haspopup="true" aria-expanded="false">
-							Контакти
-						</a>
-					</li>
-				</ul>
 
-			</div>
+}
+else
+{
+	<div class="container">
+		<!-- logo -->
+		<a class="navbar-brand" asp-controller="Home" asp-action="Index">
+			<img src="~/images/logo.png" style="block-size: 80px" alt="ForAnimalsWithLove">
+		</a>
+		<!-- Navbartoggler -->
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggle-icon">
+				<i class="fas fa-bars"></i>
+			</span>
+		</button>
+		<!-- /Navbar toggler -->
+		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ms-2">
+				<!-- menu item -->
+				<li class="nav-item">
+					<a class="nav-link" asp-controller="Home" asp-action="About">
+						За нас
+					</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="services-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Нашият екип
+					</a>
+					<div class="dropdown-menu" aria-labelledby="services-dropdown">
+						<a class="dropdown-item" asp-controller="GenerateHome" asp-action="TeamVet">Ветеринари</a>
+						<a class="dropdown-item" asp-controller="GenerateHome" asp-action="TeamTrainer">Треньори</a>
+					</div>
+				</li>
+				<!-- menu item -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" id="services-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Нашите услуги
+					</a>
+					<div class="dropdown-menu" aria-labelledby="services-dropdown">
+						<a class="dropdown-item" asp-controller="Home" asp-action="Halls">Отделения</a>
+						<a class="dropdown-item" asp-controller="Home" asp-action="Education">Обучение</a>
+						<a class="dropdown-item" asp-controller="Home" asp-action="Hotels">Хотелско настаняване</a>
+						<a class="dropdown-item" asp-controller="Home" asp-action="Grooming">Grooming</a>
+					</div>
+				</li>
+				<!-- menu item -->
+				<li class="nav-item">
+					<a class="nav-link" id="about-dropdown" asp-controller="GenerateHome" asp-action="Aboption" aria-haspopup="true" aria-expanded="false">
+						Осинови
+					</a>
+				</li>
+				<!-- menu item -->
+				<li class="nav-item">
+					<a class="nav-link" id="contact-dropdown" asp-controller="Home" asp-action="Contact" aria-haspopup="true" aria-expanded="false">
+						Контакти
+					</a>
+				</li>
+			</ul>
+
+		</div>
+		<ul class="navbar-nav ms-2">
 			<li class="nav-item">
 				<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Регистрация</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Вход</a>
 			</li>
-			</ul>
-		</div>
-		
-	}
+		</ul>
+	</div>
+
+}
