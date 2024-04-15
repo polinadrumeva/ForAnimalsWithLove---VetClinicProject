@@ -35,4 +35,11 @@ The logo was made by me personally for the purposes of the project.
 
 ### Login Trainer/Doctor
 ![12](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/4db0eb33-7712-4cfb-8b68-c9df77fad797)
+![15](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/8a8d48c2-803c-4597-9b5e-d98530d3abae)
+
+### Login Owner
+![16](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/0b9c00e7-2aaf-425d-a6c4-1003edb760c4)
+![17](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/02fcdb19-b6dc-4473-b3e8-f6f1bfcdd83e)
+![18](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/ba270cf9-b8a3-4e22-af4b-b438250fc5dd)
+
 
