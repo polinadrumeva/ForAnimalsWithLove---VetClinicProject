@@ -59,6 +59,8 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
         public string? OwnerName { get; set; }
 
+        public string? OwnerPhoneNumber { get; set; }
+
         public string? GroomingId { get; set; }
 
         public virtual AdminGroomingModel? Grooming { get; set; }

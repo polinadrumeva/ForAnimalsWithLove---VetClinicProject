@@ -284,6 +284,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		public async Task<AdminAnimalModel> GetAnimalDetailsAsync(string id)
 		{
 			var animal = await dbContext.Animals.FirstAsync(x => x.Id.ToString() == id);
+			var owner = await dbContext.Owners.FirstOrDefaultAsync(x => x.Id == animal.OwnerId);
 
 			return new AdminAnimalModel()
 			{
@@ -295,7 +296,15 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Breed = animal.Breed,
 				Color = animal.Color,
 				Sex = animal.Sex.ToString(),
-				Birthdate = animal.Birthdate
+				Birthdate = animal.Birthdate,
+				DoesHasOwner = animal.DoesHasOwner,
+				OwnerId = animal.OwnerId.ToString(),
+				Owner = new AdminOwnerModel { 
+					FirstName = owner.FirstName,
+					LastName = owner.LastName,
+					PhoneNumber = owner.PhoneNumber,
+					Address = owner.Address
+				}
 			};
 
 		}

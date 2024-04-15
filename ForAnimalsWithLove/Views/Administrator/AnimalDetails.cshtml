@@ -39,27 +39,39 @@
 			<div class="card col-8 border-0">
 				<p style="font-size:25px;"><u>@Model.Name </u></p>
 				<p><b>Възраст:</b> @Model.Age</p>
+				<p><b>Собственик:</b> @Model.Owner.FirstName @Model.Owner.LastName </p>
+				<p><b>Телефон:</b> @Model.Owner.PhoneNumber </p>
+				<p><b>Адрес:</b> @Model.Owner.Address </p>
 				<p><b>Вид:</b> @Model.KindOfAnimal </p>
 				<p><b>Порода:</b> @Model.Breed </p>
 				<p><b>Цвят:</b> @Model.Color </p>
 				<p><b>Пол:</b> @Model.Sex </p>
 				<p><b>Дата на раждане:</b> @Model.Birthdate </p>
+
 			</div>
 			<div class="text-center col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
-			 <div class="text-center">
-				<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="HealthRecordDetails" asp-route-id="@Model.Id"> Детайли здравно досие</a>
-			</div>
-			<div class="text-center">
-				<a class="btn btn-primary" asp-controller="Administrator" asp-action="AddOwner" asp-route-id="@Model.Id">+ Добави собственик</a>
-			</div>
-			<div class="text-center">
-				<a class="btn btn-primary" asp-controller="Administrator" asp-action="AddSearchHome" asp-route-id="@Model.Id">+ Търси дом</a>
-			</div>
-			<div class="text-center">
-				<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddGrooming" asp-route-id="@Model.Id"> + Добави Grooming услуги</a>
-			</div>		
-			<div class="text-center">
-				<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddBooking" asp-route-id="@Model.Id"> + Добави хотелско настаняване</a>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="text-center">
+							<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="HealthRecordDetails" asp-route-id="@Model.Id"> Детайли здравно досие</a>
+						</div>
+
+					</div>
+					<div class="col-md-6">
+						<div class="text-center">
+							<a class="btn btn-primary" asp-controller="Administrator" asp-action="AddOwner" asp-route-id="@Model.Id">+ Добави собственик</a>
+						</div>
+						<div class="text-center">
+							<a class="btn btn-primary" asp-controller="Administrator" asp-action="AddSearchHome" asp-route-id="@Model.Id">+ Търси дом</a>
+						</div>
+						<div class="text-center">
+							<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddGrooming" asp-route-id="@Model.Id"> + Добави Grooming услуги</a>
+						</div>
+						<div class="text-center">
+							<a class="btn btn-primary" asp-area="" asp-controller="Administrator" asp-action="AddBooking" asp-route-id="@Model.Id"> + Добави хотелско настаняване</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
