@@ -14,7 +14,9 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
         public string TrainerId { get; set; }
 
-        [Required]
+		public AdminTrainerModel Trainer { get; set; } 
+
+		[Required]
 		public int Days { get; set; }
 
         [Required]

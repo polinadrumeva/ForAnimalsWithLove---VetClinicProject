@@ -16,13 +16,13 @@
                 </ul>
                 <!-- Buttons -->
                 <div class="text-center">
-                    <a asp-controller="Administrator" asp-action="RemoveDoctor" asp-route-id="@Model.Id" class="btn btn-primary">Премахни</a>
+                    <a asp-area="" asp-controller="Administrator" asp-action="RemoveDoctor" asp-route-id="@Model.Id" class="btn btn-primary">Премахни</a>
                 </div>
                 <div class="text-center">
-                    <a asp-controller="Administrator" asp-action="EditDoctor" asp-route-id="@Model.Id" class="btn btn-primary">Промени</a>
+                    <a asp-area="" asp-controller="Administrator" asp-action="EditDoctor" asp-route-id="@Model.Id" class="btn btn-primary">Промени</a>
                 </div>
                 <div class="text-center">
-                    <a asp-controller="Administrator" asp-action="DoctorDetails" asp-route-id="@Model.Id" class="btn btn-primary">Детайли</a>
+                    <a asp-area="" asp-controller="Administrator" asp-action="DoctorDetails" asp-route-id="@Model.Id" class="btn btn-primary">Детайли</a>
                 </div>
             </div>
         </div>

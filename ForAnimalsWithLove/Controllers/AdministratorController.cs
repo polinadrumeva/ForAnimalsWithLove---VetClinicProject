@@ -24,20 +24,20 @@ namespace ForAnimalsWithLove.Controllers
             return View();
         }
 
-        //AllAnimals method is taking care of the functionality of the administrator to see all animals
-        public async Task<IActionResult> AllAnimals()
-        {
-			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
-			if (!isUserAdmin && !this.User.IsAdmin())
-			{ 
-				return RedirectToAction("Index", "Home");
-			}
+		//AllAnimals method is taking care of the functionality of the administrator to see all animals
+		//      public async Task<IActionResult> AllAnimals()
+		//      {
+		//	var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
+		//	if (!isUserAdmin && !this.User.IsAdmin())
+		//	{ 
+		//		return RedirectToAction("Index", "Home");
+		//	}
 
 
-            var allAnimals = await adminService.GetAllAnimals();
+		//          var allAnimals = await adminService.GetAllAnimals();
 
-            return View(allAnimals);
-        }
+		//          return View(allAnimals);
+		//      }
 
 		[HttpGet]
 		public async Task<IActionResult> AllAnimalsFiltred(AllAnimalsQueryModel queryModel)
@@ -51,7 +51,7 @@ namespace ForAnimalsWithLove.Controllers
 
 		}
 
-        [HttpGet]
+		[HttpGet]
         public async Task<IActionResult> AddAnimal()
 		{
 			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
@@ -362,8 +362,8 @@ namespace ForAnimalsWithLove.Controllers
 
 		//AllDoctors method is taking care of the functionality of the administrator to see all doctors
 		[HttpGet]
-		public async Task<IActionResult> AllDoctors([FromQuery]AllDoctorsQueryModel queryModel)
-        {
+		public async Task<IActionResult> AllDoctors([FromQuery] AllDoctorsQueryModel queryModel)
+		{
 			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
 			if (!isUserAdmin && !this.User.IsAdmin())
 			{

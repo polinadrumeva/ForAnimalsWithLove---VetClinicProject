@@ -47,12 +47,18 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				return null;
 			}
 			var education = await dbContext.Educations.FirstOrDefaultAsync(a => a.Id == educ.EducationId);
+			var trainer = await dbContext.Trainers.FirstOrDefaultAsync(a => a.Id == education.TrainerId);
 			if (education != null)
 			{
 				return new AdminEducationModel
 				{
 					Days = education.Days,
-					TrainerId = education.TrainerId.ToString()
+					TrainerId = education.TrainerId.ToString(),
+					Trainer = new AdminTrainerModel
+					{
+						FirstName = trainer.FirstName,
+						LastName = trainer.LastName
+					}
 				};
 			}
 

@@ -57,7 +57,7 @@
                 </div>
                 <div>
                     <div class="text-center col-md-10 col-xl-12">
-                        <a asp-controller="Administrator" asp-action="AddTrainer" class="btn btn-primary"> + Добави треньор</a>
+                        <a asp-area=""  asp-controller="Administrator" asp-action="AddTrainer" class="btn btn-primary"> + Добави треньор</a>
                     </div>
                 </div>
 
@@ -80,10 +80,10 @@
                                         </ul>
                                         <!-- Buttons -->
                                         <div class="text-center">
-                                            <a asp-controller="Administrator" asp-action="RemoveTrainer" asp-route-id="@trainer.Id" class="btn btn-primary">Премахни</a>
+                                            <a asp-area=""  asp-controller="Administrator" asp-action="RemoveTrainer" asp-route-id="@trainer.Id" class="btn btn-primary">Премахни</a>
                                         </div>
                                         <div class="text-center">
-                                            <a asp-controller="Administrator" asp-action="EditTrainer" asp-route-id="@trainer.Id" class="btn btn-primary">Промени</a>
+                                            <a asp-area="" asp-controller="Administrator" asp-action="EditTrainer" asp-route-id="@trainer.Id" class="btn btn-primary">Промени</a>
                                         </div>
                                     </div>
                                 </div>

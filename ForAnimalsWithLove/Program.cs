@@ -27,6 +27,8 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 builder.Services.AddAppServices();
 
 builder.Services.AddRecaptchaService();
+builder.Services.AddMemoryCache();
+
 builder.Services.AddControllersWithViews()
 				.AddMvcOptions(op => 
 				{ 
