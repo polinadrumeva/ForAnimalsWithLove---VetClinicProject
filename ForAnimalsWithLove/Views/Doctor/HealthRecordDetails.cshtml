@@ -44,7 +44,7 @@
 				<p><b>Общо състояние:</b> @Model.GeneralCondition </p>
 			</div>
 
-			<div class="col-lg-5 res-margin">
+			<div class="text-center">
 				<div id="accordion" class="accordion-cards">
 					@foreach (var medical in Model.Medicals)
 					{
@@ -52,14 +52,15 @@
 					}
 				</div>
 			</div>
-
+			<p></p>
 			<div class="text-center col-md-10 col-xl-12">
 				<a asp-controller="Doctor" asp-action="AddHospitalRecord" asp-route-id="@Model.Id" class="btn btn-primary"> + Добави болнично досие</a>
 			</div>
 			<div class="text-center col-md-10 col-xl-12">
 				<a asp-controller="Doctor" asp-action="AddMedical" asp-route-id="@Model.Id" class="btn btn-primary"> + Добави преглед</a>
 			</div>
-	</div>
+			
+		</div>
 	</div>
 	<!-- /page -->
 	<!-- Bootstrap core & Jquery -->

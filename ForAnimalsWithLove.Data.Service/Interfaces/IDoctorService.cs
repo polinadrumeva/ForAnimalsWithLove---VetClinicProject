@@ -22,7 +22,7 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id);
 		Task<AdminHospitalModel> GetHospitalModelAsync();
 		Task AddHospitalRecordAsync(AdminHospitalModel model, string id);
-		Task<AdminMedicalModel> GetMedicalModelAsync();
-		Task AddMedicalAsync(AdminMedicalModel model, string id);
+		Task<AnimalMedicalModel> GetMedicalModelAsync();
+		Task AddMedicalAsync(AnimalMedicalModel model, string id);
 	}
 }

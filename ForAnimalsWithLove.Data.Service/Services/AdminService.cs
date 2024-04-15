@@ -344,6 +344,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 							Constatation = x.Constatation,
 							PrescribedTreatment = x.PrescribedTreatment
 					})
+					.OrderByDescending(x => x.Date)
 					.ToArrayAsync();
 
 			return new AdminHealthModel()

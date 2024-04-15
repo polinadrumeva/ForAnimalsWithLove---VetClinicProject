@@ -6,8 +6,15 @@ namespace ForAnimalsWithLove.ViewModels.Animals
 {
 	public class AnimalMedicalModel
 	{
+        public AnimalMedicalModel()
+        {
+            this.Doctors = new HashSet<AdminDoctorModel>();
+		}
 
-		public string DoctorId { get; set; } = null!;
+        public string DoctorId { get; set; } = null!;
+
+		[Required]
+		public AdminDoctorModel Doctor { get; set; } = null!;
 
 		[Required]
 		public string DoctorFirstName { get; set; } = null!;
@@ -33,7 +40,9 @@ namespace ForAnimalsWithLove.ViewModels.Animals
 		public string Constatation { get; set; } = null!;
 
 		[StringLength(DiagnosisMaxLength, MinimumLength = DiagnosisMinLength)]
+		[Display(Name = "Предписано лечение")]
 		public string? PrescribedTreatment { get; set; }
 
+		public virtual ICollection<AdminDoctorModel> Doctors { get; set; }
 	}
 }

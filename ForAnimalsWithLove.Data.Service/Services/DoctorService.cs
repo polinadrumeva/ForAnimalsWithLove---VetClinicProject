@@ -205,6 +205,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 						Constatation = x.Constatation,
 						PrescribedTreatment = x.PrescribedTreatment
 					})
+					.OrderByDescending(x => x.Date)
 					.ToArrayAsync();
 
 			return new AdminHealthModel()
@@ -253,7 +254,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 		}
 
-		public async Task<AdminMedicalModel> GetMedicalModelAsync()
+		public async Task<AnimalMedicalModel> GetMedicalModelAsync()
 		{
 			var doctors = await dbContext.Doctors
 				.Select(x => new AdminDoctorModel
@@ -264,7 +265,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				})
 				.ToListAsync();
 
-			var model = new AdminMedicalModel
+			var model = new AnimalMedicalModel
 			{
 				Doctors = doctors
 			};
@@ -272,7 +273,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return model;
 		}
 
-		public async Task AddMedicalAsync(AdminMedicalModel model, string id)
+		public async Task AddMedicalAsync(AnimalMedicalModel model, string id)
 		{
 			var animal = await dbContext.Animals.Include(a => a.HealthRecord).FirstOrDefaultAsync(a => a.HealthRecordId.ToString() == id);
 
@@ -285,10 +286,10 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Doctor = dbContext.Doctors.FirstOrDefault(x => x.Id.ToString() == model.DoctorId),
 				Date = model.Date,
 				Reason = model.Reason,
-				Constatation = model.Constatation
+				Constatation = model.Constatation,
+				PrescribedTreatment = model.PrescribedTreatment
 			};
 
-			animal.HealthRecord.Medicals.Add(medical);
 			await dbContext.Medicals.AddAsync(medical);
 			await dbContext.SaveChangesAsync();
 		}

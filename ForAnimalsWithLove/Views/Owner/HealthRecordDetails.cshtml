@@ -27,18 +27,19 @@
 									</ul>
 								</div>
 
-								<div class="col-lg-5 res-margin">
-									<div id="accordion" class="accordion-cards">
-										@foreach (var medical in Model.Medicals)
-										{
-											<partial name="_MedicalPartial" model="@medical" />
-										}
-									</div>
-								</div>
 								<!-- /div-->
 							</div>
 							<!-- /row-->
 
+							<div class="text-center">
+								<div id="accordion-1" class="accordion-cards">
+									@foreach (var medical in Model.Medicals)
+									{
+										<partial name="_MedicalPartial" model="@medical" />
+									}
+								</div>
+
+							</div>
 						</div>
 						<!-- /col-md -->
 					</div>

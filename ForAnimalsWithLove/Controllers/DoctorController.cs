@@ -148,7 +148,7 @@ namespace ForAnimalsWithLove.Controllers
 			return View(model);
 		}
 		[HttpPost]
-		public async Task<IActionResult> AddMedical(AdminMedicalModel model, string id)
+		public async Task<IActionResult> AddMedical(AnimalMedicalModel model, string id)
 		{
 			var isUserDoctor = await doctorService.DoctorExistByUserIdAsync(this.User.GetId()!);
 			if (!isUserDoctor && !this.User.IsDoctor())
