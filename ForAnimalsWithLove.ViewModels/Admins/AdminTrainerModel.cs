@@ -9,6 +9,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 		public AdminTrainerModel()
 		{
 			this.Id = Guid.NewGuid().ToString();
+			this.Educations = new HashSet<AdminEducationModel>();
 		}
 
 		public string Id { get; set; }
@@ -31,5 +32,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 		[StringLength(PhoneNumberLength)]
 		[Display(Name = "Телефонен номер")]
 		public string PhoneNumber { get; set; } = null!;
-	}
+
+        public IEnumerable<AdminEducationModel> Educations { get; set; }
+    }
 }
