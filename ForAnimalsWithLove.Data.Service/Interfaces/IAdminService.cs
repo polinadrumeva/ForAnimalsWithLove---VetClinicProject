@@ -20,7 +20,8 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task EditAnimalAsync(AdminAnimalModel model);
 		Task AddAnimalAsync(AdminAnimalModel model);
 		Task<AdminHealthModel> GetHealthModelAsync();
-
+		Task EditGroomingAsync(AdminGroomingModel model);
+		Task<AdminGroomingModel> GetGroomingDetailsAsync(string id);
 		Task<AdminGroomingModel> GetGroomingModelAsync();
 		Task AddGroomingAsync(AdminGroomingModel model, string id);
 		Task<AdminEducationModel> GetEducationModelAsync();

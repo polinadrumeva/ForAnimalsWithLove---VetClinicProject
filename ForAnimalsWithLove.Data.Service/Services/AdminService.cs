@@ -176,19 +176,34 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 		public async Task AddGroomingAsync(AdminGroomingModel model, string id)
 		{
+			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 			var grooming = new Grooming
 			{
 				Id = Guid.NewGuid(),
-				AnimalId = Guid.Parse(id),
-				Service = model.Service
+				Animal = dbContext.Animals.FirstOrDefault(x => x.Id.ToString() == id),
+				Service = model.Service,
+				Date = model.Date,
 
 			};
 
-			var animal = await dbContext.Animals.FirstOrDefaultAsync(x => x.Id.ToString() == id);
 			animal.GroomingId = grooming.Id;
 
 			await dbContext.Groomings.AddAsync(grooming);
 			await dbContext.SaveChangesAsync();
+		}
+
+		public async Task EditGroomingAsync(AdminGroomingModel model)
+		{
+			var existGrooming = await dbContext.Groomings.FirstOrDefaultAsync(x => x.Id.ToString() == model.Id);
+
+			if (existGrooming != null)
+			{
+				existGrooming.Service = model.Service;
+				existGrooming.Date = model.Date;
+
+
+				await dbContext.SaveChangesAsync();
+			}
 		}
 		public async Task<AdminEducationModel> GetEducationModelAsync()
 		{
@@ -338,6 +353,17 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			await dbContext.Owners.AddAsync(owner);
 			await dbContext.SaveChangesAsync();
+		}
+		public async Task<AdminGroomingModel> GetGroomingDetailsAsync(string id)
+		{
+			var grooming = await dbContext.Groomings.FirstAsync(x => x.AnimalId.ToString() == id);
+			return new AdminGroomingModel()
+			{
+				Id = grooming.Id.ToString(),
+				AnimalId = grooming.AnimalId.ToString(),
+				Service = grooming.Service, 
+				Date = grooming.Date
+			};
 		}
 		public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
 		{
@@ -666,6 +692,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return null;
 		}
 
-
+	
 	}
 }

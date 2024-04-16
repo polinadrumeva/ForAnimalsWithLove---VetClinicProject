@@ -20,5 +20,8 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         [StringLength(ServiceMaxLength, MinimumLength = ServiceMinLength)]
         [Display(Name = "Услуга")]
         public string Service { get; set; } = null!;
-    }
+
+		[Required]
+		public DateTime Date { get; set; }
+	}
 }

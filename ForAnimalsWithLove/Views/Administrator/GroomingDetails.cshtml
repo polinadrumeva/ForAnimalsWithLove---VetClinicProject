@@ -1,0 +1,39 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminGroomingModel
+
+
+<body id="top">
+
+	<!-- ==== Page Content ==== -->
+	<div class="page">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10">
+
+					<div class="row bg-light-custom border-irregular1 block-padding text-center">
+
+							<div class="row">
+								<div class="text-center">
+									<ul class="list-unstyled pet-adopt-info">
+										<h6>Последна услуга: <span>@Model.Service</span></h6>
+										<li class="h7">Дата: <span>@Model.Date.ToShortDateString()</span></li>
+									</ul>
+								</div>
+								<!-- /div-->
+							</div>
+					</div>
+
+					<div class="text-center">
+						<a class="btn btn-primary" asp-controller="Administrator" asp-action="EditGrooming" asp-route-id="@Model.Id">Промени последно посещение</a>
+					</div>
+
+				</div>
+				<!-- /col-lg-->
+			</div>
+			<!-- /row-->
+		</div>
+		<!-- /container-->
+	</div>
+	<!-- /page -->
+
+</body>

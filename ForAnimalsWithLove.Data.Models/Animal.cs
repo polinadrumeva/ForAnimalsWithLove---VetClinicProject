@@ -53,7 +53,7 @@ namespace ForAnimalsWithLove.Data.Models
 
         public virtual Grooming? Grooming { get; set; }
 
-      
+
         public Guid? HealthRecordId { get; set; }
 
      

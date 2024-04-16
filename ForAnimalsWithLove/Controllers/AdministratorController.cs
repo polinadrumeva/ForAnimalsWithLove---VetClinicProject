@@ -145,7 +145,57 @@ namespace ForAnimalsWithLove.Controllers
 			var model = await adminService.GetHealthModelAsync();
 			return View(model);
 		}
-		
+
+
+		[HttpGet]
+		public async Task<IActionResult> GroomingDetails(string id)
+		{
+			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
+			if (!isUserAdmin && !this.User.IsAdmin())
+			{
+				return RedirectToAction("Index", "Home");
+			}
+
+			var model = await adminService.GetGroomingDetailsAsync(id);
+			return View(model);
+		}
+
+		[HttpGet]
+		public async Task<IActionResult> EditGrooming(string id)
+		{
+			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
+			if (!isUserAdmin && !this.User.IsAdmin())
+			{
+				return RedirectToAction("Index", "Home");
+			}
+
+			var model = await adminService.GetAnimalByIdAsync(id);
+			return View(model);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> EditGrooming(AdminGroomingModel model)
+		{
+			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
+			if (!isUserAdmin && !this.User.IsAdmin())
+			{
+				return RedirectToAction("Index", "Home");
+			}
+
+			try
+			{
+				await adminService.EditGroomingAsync(model);
+			}
+			catch (Exception)
+			{
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+				return View(model);
+			}
+
+
+			return RedirectToAction(nameof(AllAnimalsFiltred));
+		}
+
 
 		[HttpGet]
 		public async Task<IActionResult> AddGrooming()

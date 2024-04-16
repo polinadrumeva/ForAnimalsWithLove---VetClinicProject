@@ -1,0 +1,64 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminGroomingModel
+
+@{
+	var animal = Model;
+	ViewBag.Title = "Промени информация";
+}
+<head>
+	<!-- Bootstrap core CSS -->
+	<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- style CSS -->
+	<link href="~/css/style.css" rel="stylesheet">
+	<!-- plugins CSS -->
+	<link href="~/css/plugins.css" rel="stylesheet">
+	<!-- Colors CSS -->
+	<link href="~/styles/maincolors.css" rel="stylesheet">
+</head>
+
+<div class="page pb-0">
+	<div class="section-heading" data-aos="zoom-in">
+		<h3>@ViewBag.Title</h3>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+		<form asp-action="EditGrooming" method="post">
+
+			<div class="form-group">
+				<label asp-for="Service"></label>
+				<input asp-for="Service" class="form-control" placeholder="Услуга..." />
+				<span asp-validation-for="Service" class="small text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Date"></label>
+				<input asp-for="Date" class="form-control" placeholder="Дата...." />
+				<span asp-validation-for="Date" class="small textdanger"></span>
+			</div>
+		
+				<div class="text-center">
+					<button class="btn btn-primary mt-3" type="submit" value="EditGrooming">Запази</button>
+				</div>
+
+		</form>
+
+	</div>
+</div>
+
+
+<!-- Bootstrap core & Jquery -->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Custom Js -->
+<script src="~/js/custom.js"></script>
+<script src="~/js/plugins.js"></script>
+<!-- Prefix free -->
+<script src="~/js/prefixfree.min.js"></script>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+
+

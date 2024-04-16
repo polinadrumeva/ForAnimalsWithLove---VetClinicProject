@@ -21,7 +21,9 @@ namespace ForAnimalsWithLove.Data.Models
         [ForeignKey(nameof(AnimalId))]
         public Animal Animal { get; set; } = null!;
 
-        [Required]
+		public DateTime Date { get; set; } 
+
+		[Required]
         [StringLength(ServiceMaxLength, MinimumLength = ServiceMinLength)]
         public string Service { get; set; } = null!;
 
