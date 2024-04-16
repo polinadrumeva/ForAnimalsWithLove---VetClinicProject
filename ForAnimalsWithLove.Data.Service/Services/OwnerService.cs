@@ -72,7 +72,8 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			{
 				return new AdminGroomingModel
 				{
-					Service = grooming.Service
+					Service = grooming.Service,
+					Date = grooming.Date
 				};
 			}
 
@@ -110,6 +111,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Medicals = medicals
 			};
 		}
+
 
 		public async Task<AdminHospitalModel> GetHospitalRecordDetailsAsync(string id)
 		{
