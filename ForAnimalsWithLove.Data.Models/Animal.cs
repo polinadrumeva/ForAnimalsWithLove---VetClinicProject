@@ -62,6 +62,7 @@ namespace ForAnimalsWithLove.Data.Models
         public int? SearchHomeId { get; set; }
         public virtual SearchHome? SearchHome { get; set; }
 
+
     }
 
 }

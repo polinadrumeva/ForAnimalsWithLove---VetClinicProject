@@ -25,20 +25,7 @@ namespace ForAnimalsWithLove.Controllers
         }
 
 		//AllAnimals method is taking care of the functionality of the administrator to see all animals
-		//      public async Task<IActionResult> AllAnimals()
-		//      {
-		//	var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
-		//	if (!isUserAdmin && !this.User.IsAdmin())
-		//	{ 
-		//		return RedirectToAction("Index", "Home");
-		//	}
-
-
-		//          var allAnimals = await adminService.GetAllAnimals();
-
-		//          return View(allAnimals);
-		//      }
-
+		
 		[HttpGet]
 		public async Task<IActionResult> AllAnimalsFiltred(AllAnimalsQueryModel queryModel)
 		{
@@ -157,6 +144,10 @@ namespace ForAnimalsWithLove.Controllers
 			}
 
 			var model = await adminService.GetGroomingDetailsAsync(id);
+			if (model == null)
+			{
+				return RedirectToAction(nameof(AllAnimalsFiltred));
+			}
 			return View(model);
 		}
 
@@ -368,6 +359,25 @@ namespace ForAnimalsWithLove.Controllers
 			}
 
 			var model = await adminService.GetHealthRecordDetailsAsync(id);
+			return View(model);
+		}
+
+
+		[HttpGet]
+		public async Task<IActionResult> BookingDetails(string id)
+		{
+			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
+			if (!isUserAdmin && !this.User.IsAdmin())
+			{
+				return RedirectToAction("Index", "Home");
+			}
+
+			var model = await adminService.GetBookingDetailsAsync(id);
+			if (model == null)
+			{
+				return RedirectToAction(nameof(AllAnimalsFiltred));
+			}
+
 			return View(model);
 		}
 

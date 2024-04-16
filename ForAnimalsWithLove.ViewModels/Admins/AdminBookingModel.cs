@@ -17,7 +17,9 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
 		public AdminHotelModel Hotel { get; set; } = null!;
 
-		[Required]
+        public string HotelName { get; set; }
+
+        [Required]
 		[Display(Name = "Начална дата")]
 		public DateTime StartDate { get; set; }
 
@@ -30,5 +32,6 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 		public int Days { get; set; }
 
 		public virtual ICollection<AdminHotelModel> Hotels { get; set; }
+
     }
 }

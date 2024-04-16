@@ -1,0 +1,27 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminBookingModel
+
+@{
+    var collapseId = $"collapse-{Guid.NewGuid()}";
+    var controlId = $"collapse-{Guid.NewGuid()}";
+}
+
+<div class="card">
+    <div class="card-header" id="@controlId" role="tab">
+        <h6 class="mb-0 accordion-header">
+            <button class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false" aria-controls="@collapseId">
+                Дата на настаняване: @Model.StartDate.ToShortDateString() - Дата на напускане: @Model.EndDate.ToShortDateString()
+            </button>
+        </h6>
+    </div>
+    <div id="@collapseId" class="collapse" aria-labelledby="@controlId" data-bs-parent="#accordion">
+        <div class="card-body">
+            <p>
+                <b>Престой:</b> @Model.Days
+            </p>
+            <p>
+                <b>Хотел:</b> @Model.HotelName
+            </p>
+        </div>
+    </div>
+</div>

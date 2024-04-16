@@ -24,9 +24,12 @@ Last change:27 June 2023
 	#Media Queries
 
 /*=========================== General and Typography ============================ */
- body {
+ 
+
+body {
      font-family: 'Open Sans', sans-serif;
      color:#808080;
+
 }
 
  p{
@@ -884,10 +887,14 @@ Last change:27 June 2023
      border-bottom:0px;
 }
 /*=========================== Footer ============================ */
- footer{
-     color:#fff;
-     padding: 25px 0px;
-     border-top: 5px double #ffffff;
+footer {
+    color: #fff;
+    padding: 25px 0px;
+    border-top: 5px double #ffffff;
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    overflow: hidden;
 }
  footer .navbar-brand span{
      color:#fff!important;

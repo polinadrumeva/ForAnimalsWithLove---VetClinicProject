@@ -1,6 +1,7 @@
 ﻿@using ForAnimalsWithLove.ViewModels.Admins;
 @model AdminAnimalModel
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,6 +58,9 @@
 						</div>
 						<div class="text-center">
 							<a class="btn btn-primary" asp-controller="Administrator" asp-action="GroomingDetails" asp-route-id="@Model.Id"> Детайли Grooming услуги</a>
+						</div>
+						<div class="text-center">
+							<a class="btn btn-primary" asp-controller="Administrator" asp-action="BookingDetails" asp-route-id="@Model.Id"> Детайли хотелско настаняване</a>
 						</div>
 
 					</div>

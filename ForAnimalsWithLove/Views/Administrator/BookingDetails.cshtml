@@ -1,0 +1,21 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminAnimalModel
+
+
+	<!-- /Preloader ends -->
+
+	<div class="container" style="display:inline">
+		<div class="row">
+
+			<div class="text-center">
+				<div id="accordion" class="accordion-cards">
+					@foreach (var booking in Model.Bookings)
+					{
+						<partial name="_BookingPartial" model="@booking" />
+					}
+				</div>
+			</div>
+
+		</div>
+	</div>
+

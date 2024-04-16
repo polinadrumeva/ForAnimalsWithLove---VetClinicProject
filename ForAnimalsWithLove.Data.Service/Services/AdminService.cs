@@ -266,6 +266,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			};
 
+			
 			await dbContext.Bookings.AddAsync(booking);
 			await dbContext.AnimalsBookings.AddAsync(animalBooking);
 			await dbContext.SaveChangesAsync();
@@ -356,14 +357,18 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		}
 		public async Task<AdminGroomingModel> GetGroomingDetailsAsync(string id)
 		{
-			var grooming = await dbContext.Groomings.FirstAsync(x => x.AnimalId.ToString() == id);
-			return new AdminGroomingModel()
+			var grooming = await dbContext.Groomings.FirstOrDefaultAsync(x => x.AnimalId.ToString() == id);
+			if (grooming != null)
 			{
-				Id = grooming.Id.ToString(),
-				AnimalId = grooming.AnimalId.ToString(),
-				Service = grooming.Service, 
-				Date = grooming.Date
-			};
+				return new AdminGroomingModel()
+				{
+					Id = grooming.Id.ToString(),
+					AnimalId = grooming.AnimalId.ToString(),
+					Service = grooming.Service,
+					Date = grooming.Date
+				};
+			}
+			 return null!;
 		}
 		public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
 		{
@@ -396,6 +401,35 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Medicals = medicals
 			};
 		}
+
+		public async Task<AdminAnimalModel> GetBookingDetailsAsync(string id)
+		{
+			var animal = await dbContext.Animals.FirstAsync(x => x.Id.ToString() == id);
+			var bookings = await dbContext.AnimalsBookings
+					.Include(x => x.Booking)
+					.Where(x => x.AnimalId == animal.Id)
+					.Select(x => new AdminBookingModel
+					{
+						StartDate = x.Booking.StartDate,
+						EndDate = x.Booking.EndDate,
+						Days = x.Booking.Days,
+						HotelName = x.Booking.Hotel.Name
+					})
+					.OrderByDescending(x => x.EndDate)
+					.ToArrayAsync();
+
+			if (bookings.Length != 0)
+			{
+				return new AdminAnimalModel()
+				{
+					Id = animal.Id.ToString(),
+					Bookings = bookings
+				};
+			}
+
+			return null!;
+		}
+
 		public async Task<AdminHospitalModel> GetHospitalModelAsync()
 		{
 			var hospitalRecord = new AdminHospitalModel();
@@ -422,7 +456,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return model;
 		}
 
-
+		
 
 		// Doctors services
 		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()

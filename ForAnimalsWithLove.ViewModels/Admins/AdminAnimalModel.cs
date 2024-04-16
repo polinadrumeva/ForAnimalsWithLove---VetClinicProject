@@ -9,6 +9,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         public AdminAnimalModel()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Bookings = new HashSet<AdminBookingModel>();
         }
 
         public string Id { get; set; } = null!;
@@ -71,5 +72,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
         public int? SearchHomeId { get; set; }
         public virtual AdminSearchHomeModel? SearchHome { get; set; }
+
+        public virtual IEnumerable<AdminBookingModel> Bookings { get; set; }
     }
 }
