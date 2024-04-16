@@ -16,35 +16,39 @@ namespace ForAnimalsWithLove.Data.Service.Services
             this.dbContext = dbContext;
         }
 
-		public async Task<AdminBookingModel> GetBookingDetailsAsync(string id)
+		public async Task<AdminAnimalModel> GetBookingDetailsAsync(string id)
 		{
-			var book = await dbContext.AnimalsBookings.FirstOrDefaultAsync(a => a.AnimalId.ToString() == id);
-			if (book == null)
+			var animal = await dbContext.Animals.FirstAsync(x => x.Id.ToString() == id);
+			var bookings = await dbContext.AnimalsBookings
+					.Include(x => x.Booking)
+					.Where(x => x.AnimalId == animal.Id)
+					.Select(x => new AdminBookingModel
+					{
+						StartDate = x.Booking.StartDate,
+						EndDate = x.Booking.EndDate,
+						Days = x.Booking.Days,
+						HotelName = x.Booking.Hotel.Name
+					})
+					.OrderByDescending(x => x.EndDate)
+					.ToArrayAsync();
+
+			if (bookings.Length != 0)
 			{
-				return null;
-			}
-			var booking = await dbContext.Bookings.FirstOrDefaultAsync(a => a.Id == book.BookingId);
-			
-			if (booking != null)
-			{
-				return new AdminBookingModel
+				return new AdminAnimalModel()
 				{
-					StartDate = booking.StartDate,
-					EndDate = booking.EndDate,
-					Days = booking.Days,
-					HotelId = booking.HotelId
+					Id = animal.Id.ToString(),
+					Bookings = bookings
 				};
 			}
 
-			return null;
+			return null!;
 		}
-
 		public async Task<AdminEducationModel> GetEducationDetailsAsync(string id)
 		{
 			var educ = await dbContext.AnimalsEducations.FirstOrDefaultAsync(a => a.AnimalId.ToString() == id);
 			if (educ == null)
 			{
-				return null;
+				return null!;
 			}
 			var education = await dbContext.Educations.FirstOrDefaultAsync(a => a.Id == educ.EducationId);
 			var trainer = await dbContext.Trainers.FirstOrDefaultAsync(a => a.Id == education.TrainerId);
@@ -62,7 +66,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				};
 			}
 
-			return null;
+			return null!;
 		}
 
 		public async Task<AdminGroomingModel> GetGroomingAsync(string id)
@@ -77,7 +81,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				};
 			}
 
-			return null;
+			return null!;
 		}
 
 		public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
@@ -118,7 +122,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			var healthRecord =await dbContext.HealthRecords.FirstOrDefaultAsync(a => a.AnimalId.ToString() == id);
 			if (healthRecord == null)
 			{
-				return null;
+				return null!;	
 			}
 			var hospitalRecord =await dbContext.HospitalRecords.FirstOrDefaultAsync(a => a.HealthRecordId.ToString() == healthRecord.Id.ToString());
 			if (hospitalRecord != null)
@@ -135,7 +139,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				};
 			}
 
-			return null;
+			return null!;
 		}
 
 		//My Animals
@@ -177,7 +181,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				};
 			}
 
-			return null;
+			return null!;
 		}
 
 		public async Task<bool> OwnerExistByUserIdAsync(string userId)

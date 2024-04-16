@@ -13,7 +13,7 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id);
 		Task<AdminHospitalModel> GetHospitalRecordDetailsAsync(string id);
 		Task<AdminGroomingModel> GetGroomingAsync(string id);
-		Task<AdminBookingModel> GetBookingDetailsAsync(string id);
+		Task<AdminAnimalModel> GetBookingDetailsAsync(string id);
 		Task<AdminEducationModel> GetEducationDetailsAsync(string id);
 	}
 }

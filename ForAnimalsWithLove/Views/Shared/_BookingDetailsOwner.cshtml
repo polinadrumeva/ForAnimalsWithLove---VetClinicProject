@@ -1,0 +1,24 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminBookingModel
+
+<div class="row bg-light-custom border-irregular1 block-padding text-center">
+
+	<div>
+		<h4>Хотелско настаняване</h4>
+		<div class="row">
+			<div class="text-center">
+				<ul class="list-unstyled pet-adopt-info">
+					<li class="h7">Начална дата: <span>@Model.StartDate.ToShortDateString()</span></li>
+					<li class="h7">Крайна дата: <span>@Model.EndDate.ToShortDateString()</span></li>
+					<li class="h7">Дни: <span>@Model.Days</span></li>
+					<li class="h7">Хотел: <span>@Model.HotelName</span></li>
+
+				</ul>
+			</div>
+			<!-- /div-->
+		</div>
+		<!-- /row-->
+
+	</div>
+	<!-- /col-md -->
+</div>

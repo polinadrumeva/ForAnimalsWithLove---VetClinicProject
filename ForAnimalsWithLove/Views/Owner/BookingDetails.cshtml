@@ -1,19 +1,5 @@
 ﻿@using ForAnimalsWithLove.ViewModels.Admins;
-@model AdminBookingModel
-@{
-	var hotelName = "";
-	var hotelLocation = "";
-	if (Model.HotelId == 1)
-	{
-		hotelName = "Forest Hotel";
-		hotelLocation = "гр. Банско";
-	}
-	else if (Model.HotelId == 2)
-	{
-		hotelName = "City Hotel";
-		hotelLocation = "гр. София";
-	}
-}
+@model AdminAnimalModel
 
 
 <body id="top">
@@ -24,29 +10,11 @@
 			<div class="row">
 				<div class="col-lg-10">
 
-					<div class="row bg-light-custom border-irregular1 block-padding text-center">
-
-						<div>
-							<h4>Хотелско настаняване</h4>
-							<div class="row">
-								<div class="text-center">
-									<ul class="list-unstyled pet-adopt-info">
-										<li class="h7">Начална дата: <span>@Model.StartDate</span></li>
-										<li class="h7">Крайна дата: <span>@Model.EndDate</span></li>
-										<li class="h7">Дни: <span>@Model.Days</span></li>
-										<li class="h7">Хотел: <span>@hotelName</span></li>
-										<li class="h7">Локация: <span>@hotelLocation </span></li>
-											
-									</ul>
-								</div>
-								<!-- /div-->
-							</div>
-							<!-- /row-->
-
-						</div>
-						<!-- /col-md -->
-					</div>
-					<hr />
+					@foreach (var booking in Model.Bookings)
+					{
+						<partial name="_BookingDetailsOwner" model="@booking" />
+						<hr />
+					}
 
 
 				</div>
