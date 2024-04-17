@@ -5,15 +5,15 @@ using ForAnimalsWithLove.ViewModels.IndexModels;
 
 namespace ForAnimalsWithLove.Data.Service.Interfaces
 {
-    public interface IAdminService
-    {
+	public interface IAdminService
+	{
 		Task<bool> AdminExistByUserIdAsync(string userId);
 
 		Task<AdminIndexModel> GetAdminExistByUserIdAsync(string userId);
 
 
-        //Animals
-        Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();
+		//Animals
+		Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();
 		Task<AllAnimalsFiltredServiceModel> AllAnimalsAsync(AllAnimalsQueryModel queryModel);
 		Task<AdminAnimalModel> GetAnimalByIdAsync(string animalId);
 		Task<AdminAnimalModel> GetAnimalModelAsync();
@@ -47,12 +47,12 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task<AdminDoctorModel?> GetDoctorByIdAsync(string id);
 		Task EditDoctorAsync(AdminDoctorModel model);
 		Task<AdminDoctorModel> GetDoctorDetailsAsync(string doctorId);
-        Task RemoveDoctorAsync(AdminDoctorModel model, string id);
+		Task RemoveDoctorAsync(AdminDoctorModel model, string id);
 
-        //Trainers
-        Task<IEnumerable<IndexTrainerModel>> GetAllTrainers();
-        Task<AdminTrainerModel> GetTrainerModelAsync();
-        Task AddTrainerAsync(AdminTrainerModel model);
+		//Trainers
+		Task<IEnumerable<IndexTrainerModel>> GetAllTrainers();
+		Task<AdminTrainerModel> GetTrainerModelAsync();
+		Task AddTrainerAsync(AdminTrainerModel model);
 		Task<AdminTrainerModel?> GetTrainerByIdAsync(string id);
 		Task EditTrainerAsync(AdminTrainerModel model);
 		Task RemoveTrainerAsync(AdminTrainerModel model, string id);

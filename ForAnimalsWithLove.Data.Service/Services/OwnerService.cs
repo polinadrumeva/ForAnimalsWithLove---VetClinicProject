@@ -6,15 +6,15 @@ using ForAnimalsWithLove.ViewModels.Animals;
 
 namespace ForAnimalsWithLove.Data.Service.Services
 {
-    public class OwnerService : IOwnerService
+	public class OwnerService : IOwnerService
 
-    {
-        private readonly ForAnimalsWithLoveDbContext dbContext;
+	{
+		private readonly ForAnimalsWithLoveDbContext dbContext;
 
-        public OwnerService(ForAnimalsWithLoveDbContext dbContext)
-        {
-            this.dbContext = dbContext;
-        }
+		public OwnerService(ForAnimalsWithLoveDbContext dbContext)
+		{
+			this.dbContext = dbContext;
+		}
 
 		public async Task<AdminAnimalModel> GetBookingDetailsAsync(string id)
 		{
@@ -119,12 +119,12 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 		public async Task<AdminHospitalModel> GetHospitalRecordDetailsAsync(string id)
 		{
-			var healthRecord =await dbContext.HealthRecords.FirstOrDefaultAsync(a => a.AnimalId.ToString() == id);
+			var healthRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(a => a.AnimalId.ToString() == id);
 			if (healthRecord == null)
 			{
-				return null!;	
+				return null!;
 			}
-			var hospitalRecord =await dbContext.HospitalRecords.FirstOrDefaultAsync(a => a.HealthRecordId.ToString() == healthRecord.Id.ToString());
+			var hospitalRecord = await dbContext.HospitalRecords.FirstOrDefaultAsync(a => a.HealthRecordId.ToString() == healthRecord.Id.ToString());
 			if (hospitalRecord != null)
 			{
 				return new AdminHospitalModel
@@ -132,7 +132,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 					Diagnosis = hospitalRecord.Diagnosis,
 					DateOfAcceptance = hospitalRecord.DateOfAcceptance,
 					DateOfDischarge = hospitalRecord.DateOfDischarge,
-					Treatment = hospitalRecord.Treatment,	
+					Treatment = hospitalRecord.Treatment,
 					PrescribedTreatment = hospitalRecord.PrescribedTreatment,
 					HealthRecordId = hospitalRecord.HealthRecordId
 
@@ -147,7 +147,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		{
 			var animals = await dbContext.Animals.Where(a => a.OwnerId.ToString() == id)
 												.Select(a => new AdminAnimalModel
-												{ 
+												{
 													Id = a.Id.ToString(),
 													Name = a.Name,
 													Age = a.Age,
@@ -167,11 +167,11 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		public async Task<AdminOwnerModel> GetOwnerExistByUserIdAsync(string id)
 		{
 			var owner = await dbContext.Owners.FirstOrDefaultAsync(o => o.UserId.ToString() == id);
-           
-            if (owner != null)
-            {
+
+			if (owner != null)
+			{
 				return new AdminOwnerModel
-                {
+				{
 					OwnerId = owner.Id.ToString(),
 					FirstName = owner.FirstName,
 					MiddleName = owner.MiddleName,
@@ -185,9 +185,9 @@ namespace ForAnimalsWithLove.Data.Service.Services
 		}
 
 		public async Task<bool> OwnerExistByUserIdAsync(string userId)
-        {
-            var result = await dbContext.Owners.AnyAsync(o => o.UserId.ToString() == userId);
-            return result;
-        }
-    }
+		{
+			var result = await dbContext.Owners.AnyAsync(o => o.UserId.ToString() == userId);
+			return result;
+		}
+	}
 }

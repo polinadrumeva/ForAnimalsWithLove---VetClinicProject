@@ -266,7 +266,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 			};
 
-			
+
 			await dbContext.Bookings.AddAsync(booking);
 			await dbContext.AnimalsBookings.AddAsync(animalBooking);
 			await dbContext.SaveChangesAsync();
@@ -315,7 +315,8 @@ namespace ForAnimalsWithLove.Data.Service.Services
 				Birthdate = animal.Birthdate,
 				DoesHasOwner = animal.DoesHasOwner,
 				OwnerId = animal.OwnerId.ToString(),
-				Owner = new AdminOwnerModel { 
+				Owner = new AdminOwnerModel
+				{
 					FirstName = owner.FirstName,
 					LastName = owner.LastName,
 					PhoneNumber = owner.PhoneNumber,
@@ -368,7 +369,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 					Date = grooming.Date
 				};
 			}
-			 return null!;
+			return null!;
 		}
 		public async Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id)
 		{
@@ -377,12 +378,12 @@ namespace ForAnimalsWithLove.Data.Service.Services
 					.Where(x => x.HealthRecordId == healthRecord.Id)
 					.Select(x => new AnimalMedicalModel
 					{
-							Date = x.Date,
-							DoctorFirstName = x.Doctor.FirstName,
-							DoctorLastName = x.Doctor.LastName,
-							Reason = x.Reason,
-							Constatation = x.Constatation,
-							PrescribedTreatment = x.PrescribedTreatment
+						Date = x.Date,
+						DoctorFirstName = x.Doctor.FirstName,
+						DoctorLastName = x.Doctor.LastName,
+						Reason = x.Reason,
+						Constatation = x.Constatation,
+						PrescribedTreatment = x.PrescribedTreatment
 					})
 					.OrderByDescending(x => x.Date)
 					.ToArrayAsync();
@@ -456,7 +457,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return model;
 		}
 
-		
+
 
 		// Doctors services
 		public async Task<IEnumerable<IndexDoctorModel>> GetAllDoctors()
@@ -726,6 +727,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			return null;
 		}
 
-	
+
 	}
 }
