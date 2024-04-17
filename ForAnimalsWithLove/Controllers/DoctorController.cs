@@ -136,6 +136,43 @@ namespace ForAnimalsWithLove.Controllers
 		}
 
 		[HttpGet]
+		public async Task<IActionResult> EditHealthRecord(string id)
+		{
+			var isUserDoctor = await doctorService.DoctorExistByUserIdAsync(this.User.GetId()!);
+			if (!isUserDoctor && !this.User.IsDoctor())
+			{
+				return RedirectToAction("Index", "Home");
+			}
+
+			var model = await doctorService.GetAnimalByIdAsync(id);
+			return View(model);
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> EditHealthRecord(AdminHealthModel model)
+		{
+			var isUserDoctor = await doctorService.DoctorExistByUserIdAsync(this.User.GetId()!);
+			if (!isUserDoctor && !this.User.IsDoctor())
+			{
+				return RedirectToAction("Index", "Home");
+			}
+
+
+			try
+			{
+				await doctorService.EditHealthRecordAsync(model);
+			}
+			catch (Exception)
+			{
+				this.ModelState.AddModelError(string.Empty, "Неочаквана грешка! Моля опитайте по-късно или се свържете с администратор!");
+				return View(model);
+			}
+
+
+			return RedirectToAction(nameof(AllAnimalsFiltred));
+		}
+
+		[HttpGet]
 		public async Task<IActionResult> AddMedical()
 		{
 			var isUserDoctor = await doctorService.DoctorExistByUserIdAsync(this.User.GetId()!);

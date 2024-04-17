@@ -15,8 +15,10 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task<IEnumerable<AdminAnimalModel>> GetAllAnimals();
 		Task<AllAnimalsFiltredServiceModel> AllAnimalsAsync(AllAnimalsQueryModel queryModel);
 		Task<AdminAnimalModel> GetAnimalByIdAsync(string animalId);
+		Task<AdminHealthModel> GetHealthRecordByIdAsync(string healthId);
 		Task<AdminAnimalModel> GetAnimalModelAsync();
 		Task<AdminHealthModel> GetHealthModelAsync();
+		Task EditHealthRecordAsync(AdminHealthModel model);
 		Task AddHealthRecordAsync(AdminHealthModel model, string id);
 		Task<AdminAnimalModel> GetAnimalDetailsAsync(string id);
 		Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id);

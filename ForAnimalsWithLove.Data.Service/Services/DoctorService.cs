@@ -6,8 +6,6 @@ using ForAnimalsWithLove.ViewModels.Animals;
 using ForAnimalsWithLove.ViewModels.Enums;
 using ForAnimalsWithLove.ViewModels.IndexModels;
 using Microsoft.EntityFrameworkCore;
-using static ForAnimalsWithLove.Common.Validations.EntityValidations;
-
 
 namespace ForAnimalsWithLove.Data.Service.Services
 {
@@ -146,6 +144,41 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			var model = new AdminHealthModel();
 
 			return model;
+		}
+
+		public async Task<AdminHealthModel> GetHealthRecordByIdAsync(string healthId)
+		{
+			return await dbContext.HealthRecords.Where(x => x.Id.ToString() == healthId)
+				.Select(x => new AdminHealthModel
+				{
+					Microchip = x.Microchip,
+					MicrochipNumber = x.MicrochipNumber,
+					FirstVaccine = x.FirstVaccine,
+					SecondVaccine = x.SecondVaccine,
+					ThirdVaccine = x.ThirdVaccine,
+					AnnualVaccine = x.AnnualVaccine,
+					GeneralCondition = x.GeneralCondition
+
+				}).FirstOrDefaultAsync();
+		}
+
+		public async Task EditHealthRecordAsync(AdminHealthModel model)
+		{
+			var existRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(x => x.Id.ToString() == model.Id);
+
+			if (existRecord != null)
+			{
+				existRecord.Microchip = model.Microchip;
+				existRecord.MicrochipNumber = model.MicrochipNumber;
+				existRecord.FirstVaccine = model.FirstVaccine;
+				existRecord.SecondVaccine = model.SecondVaccine;
+				existRecord.ThirdVaccine = model.ThirdVaccine;
+				existRecord.AnnualVaccine = model.AnnualVaccine;
+				existRecord.GeneralCondition = model.GeneralCondition;
+				
+
+				await dbContext.SaveChangesAsync();
+			}
 		}
 
 		public async Task AddHealthRecordAsync(AdminHealthModel model, string id)
@@ -304,7 +337,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			await dbContext.SaveChangesAsync();
 		}
 
-
+		
 	}
 
 }

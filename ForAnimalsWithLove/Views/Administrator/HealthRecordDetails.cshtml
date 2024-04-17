@@ -34,13 +34,12 @@
 		<div class="row">
 			
 			<div class="card col-8 border-0">
-				
-				<p><b>Микрочип:</b> @Model.Microchip </p>
+				<p><b>Микрочип:</b> @(Model.Microchip ? "Да" : "Не") </p>
 				<p><b>Микрочип номер:</b> @Model.MicrochipNumber</p>
-				<p><b>Първа ваксина:</b> @Model.FirstVaccine </p>
-				<p><b>Втора ваксина:</b> @Model.SecondVaccine </p>
-				<p><b>Трета ваксина:</b> @Model.ThirdVaccine </p>
-				<p><b>Годишна ваксина:</b> @Model.AnnualVaccine </p>
+				<p><b>Първа ваксина:</b> @(Model.FirstVaccine ? "Да" : "Не")</p>
+				<p><b>Втора ваксина:</b> @(Model.SecondVaccine ? "Да" : "Не")</p>
+				<p><b>Трета ваксина:</b> @(Model.ThirdVaccine ? "Да" : "Не")</p>
+				<p><b>Годишна ваксина:</b> @(Model.AnnualVaccine ? "Да" : "Не")</p>
 				<p><b>Общо състояние:</b> @Model.GeneralCondition </p>
 			</div>
 			

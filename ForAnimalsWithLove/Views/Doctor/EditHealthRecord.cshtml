@@ -1,0 +1,179 @@
+﻿@using ForAnimalsWithLove.ViewModels.Admins;
+@model AdminHealthModel
+
+@{
+	var healthModel = Model;
+	ViewBag.Title = "Промени информация";
+}
+<head>
+	<!-- Bootstrap core CSS -->
+	<link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- style CSS -->
+	<link href="~/css/style.css" rel="stylesheet">
+	<!-- plugins CSS -->
+	<link href="~/css/plugins.css" rel="stylesheet">
+	<!-- Colors CSS -->
+	<link href="~/styles/maincolors.css" rel="stylesheet">
+</head>
+
+<div class="page pb-0">
+	<div class="section-heading" data-aos="zoom-in">
+		<h3>@ViewBag.Title</h3>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="col-sm-12 offset-lg-2 col-lg-8 offset-xl-3 col-xl-6">
+		<form asp-action="EditHealthRecord" method="post">
+
+			<div>
+				<label asp-for="Microchip"></label>
+				<br>
+				<input type="checkbox" asp-for="Microchip" name="microchip" value="true" onclick="checkedOnClick(this)" />
+				<label> Да</label>
+				<input type="checkbox" asp-for="Microchip" name="microchip" value="false" onclick="checkedOnClick(this)" />
+				<label> Не</label><br>
+				<span asp-validation-for="Microchip" class="small textdanger"></span>
+				<!-- Script -->
+				<script type="text/javascript">
+					function checkedOnClick(el) {
+
+						// Select all checkboxes by class
+						var checkboxesList = document.getElementsByName("microchip");
+						for (var i = 0; i < checkboxesList.length; i++) {
+							checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+						}
+
+						el.checked = true; // Checked clicked checkbox
+					}
+				</script>
+			</div>
+			<div>
+				<label asp-for="MicrochipNumber"></label>
+				<input asp-for="MicrochipNumber" class="form-control"
+		placeholder="Номер на микрочип...">
+				<span asp-validation-for="MicrochipNumber" class="small text-danger"></span>
+			</div>
+			<div>
+				<label asp-for="FirstVaccine"></label>
+				<br>
+				<input type="checkbox" asp-for="FirstVaccine" name="FirstVaccine" value="true" onclick="checkedOnClick(this)" />
+				<label> Да</label>
+				<input type="checkbox" asp-for="FirstVaccine" name="FirstVaccine" value="false" onclick="checkedOnClick(this)" />
+				<label> Не</label><br>
+				<span asp-validation-for="FirstVaccine" class="small textdanger"></span>
+				<!-- Script -->
+				<script type="text/javascript">
+					function checkedOnClick(el) {
+
+						// Select all checkboxes by class
+						var checkboxesList = document.getElementsByName("FirstVaccine");
+						for (var i = 0; i < checkboxesList.length; i++) {
+							checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+						}
+
+						el.checked = true; // Checked clicked checkbox
+					}
+
+				</script>
+			</div>
+			<div>
+				<label asp-for="SecondVaccine"></label>
+				<br>
+				<input type="checkbox" asp-for="SecondVaccine" name="SecondVaccine" value="true" onclick="checkedOnClick(this)" />
+				<label> Да</label>
+				<input type="checkbox" asp-for="SecondVaccine" name="SecondVaccine" value="false" onclick="checkedOnClick(this)" />
+				<label> Не</label><br>
+				<span asp-validation-for="SecondVaccine" class="small textdanger"></span>
+				<!-- Script -->
+				<script type="text/javascript">
+					function checkedOnClick(el) {
+
+						// Select all checkboxes by class
+						var checkboxesList = document.getElementsByName("SecondVaccine");
+						for (var i = 0; i < checkboxesList.length; i++) {
+							checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+						}
+
+						el.checked = true; // Checked clicked checkbox
+					}
+
+				</script>
+			</div>
+			<div>
+				<label asp-for="ThirdVaccine"></label>
+				<br>
+				<input type="checkbox" asp-for="ThirdVaccine" name="ThirdVaccine" value="true" onclick="checkedOnClick(this)" />
+				<label> Да</label>
+				<input type="checkbox" asp-for="ThirdVaccine" name="ThirdVaccine" value="false" onclick="checkedOnClick(this)" />
+				<label> Не</label><br>
+				<span asp-validation-for="ThirdVaccine" class="small textdanger"></span>
+				<!-- Script -->
+				<script type="text/javascript">
+					function checkedOnClick(el) {
+
+						// Select all checkboxes by class
+						var checkboxesList = document.getElementsByName("ThirdVaccine");
+						for (var i = 0; i < checkboxesList.length; i++) {
+							checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+						}
+
+						el.checked = true; // Checked clicked checkbox
+					}
+
+				</script>
+			</div>
+			<div>
+				<label asp-for="AnnualVaccine"></label>
+				<br>
+				<input type="checkbox" asp-for="AnnualVaccine" name="AnnualVaccine" value="true" onclick="checkedOnClick(this)" />
+				<label> Да</label>
+				<input type="checkbox" asp-for="AnnualVaccine" name="AnnualVaccine" value="false" onclick="checkedOnClick(this)" />
+				<label> Не</label><br>
+				<span asp-validation-for="AnnualVaccine" class="small textdanger"></span>
+				<!-- Script -->
+				<script type="text/javascript">
+					function checkedOnClick(el) {
+
+						// Select all checkboxes by class
+						var checkboxesList = document.getElementsByName("AnnualVaccine");
+						for (var i = 0; i < checkboxesList.length; i++) {
+							checkboxesList.item(i).checked = false; // Uncheck all checkboxes
+						}
+
+						el.checked = true; // Checked clicked checkbox
+					}
+
+				</script>
+			</div>
+			<div>
+				<label asp-for="GeneralCondition"></label>
+				<input asp-for="GeneralCondition" class="form-control" placeholder="Състояние...">
+				<span asp-validation-for="GeneralCondition" class="small textdanger"></span>
+			</div>
+			
+				<div class="text-center">
+				<button class="btn btn-primary mt-3" type="submit" value="EditHealthRecord">Запази</button>
+				</div>
+
+		</form>
+
+	</div>
+</div>
+
+
+<!-- Bootstrap core & Jquery -->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- Custom Js -->
+<script src="~/js/custom.js"></script>
+<script src="~/js/plugins.js"></script>
+<!-- Prefix free -->
+<script src="~/js/prefixfree.min.js"></script>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}
+
+
