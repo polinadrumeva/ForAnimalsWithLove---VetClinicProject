@@ -137,7 +137,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			{
 				return null!;
 			}
-
 			return new AdminHealthModel()
 			{
 				Id = healthRecord.Id.ToString(),

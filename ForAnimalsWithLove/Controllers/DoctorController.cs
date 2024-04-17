@@ -99,7 +99,24 @@ namespace ForAnimalsWithLove.Controllers
 			return View(model);
 		}
 
-		[HttpGet]
+        [HttpGet]
+        public async Task<IActionResult> HospitalRecordDetails(string id)
+        {
+            var isUserDoctor = await doctorService.DoctorExistByUserIdAsync(this.User.GetId()!);
+            if (!isUserDoctor && !this.User.IsDoctor())
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var model = await doctorService.GetHospitalRecordDetailsAsync(id);
+            if (model == null)
+            {
+                return RedirectToAction(nameof(AllAnimalsFiltred));
+            }
+            return View(model);
+        }
+
+        [HttpGet]
 		public async Task<IActionResult> AddHospitalRecord()
 		{
 			var isUserDoctor = await doctorService.DoctorExistByUserIdAsync(this.User.GetId()!);

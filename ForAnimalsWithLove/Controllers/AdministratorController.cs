@@ -5,6 +5,7 @@ using ForAnimalsWithLove.ViewModels.Admins;
 using Microsoft.AspNetCore.Authorization;
 using ForAnimalsWithLove.Infrastructure.Extensions;
 using ForAnimalsWithLove.ViewModels.Animals;
+using ForAnimalsWithLove.Data.Service.Services;
 
 namespace ForAnimalsWithLove.Controllers
 {
@@ -133,6 +134,22 @@ namespace ForAnimalsWithLove.Controllers
 			return View(model);
 		}
 
+		[HttpGet]
+		public async Task<IActionResult> HospitalRecordDetails(string id)
+		{
+			var isUserAdmin = await adminService.AdminExistByUserIdAsync(this.User.GetId()!);
+			if (!isUserAdmin && !this.User.IsAdmin())
+			{
+				return RedirectToAction("Index", "Home");
+			}
+
+			var model = await adminService.GetHospitalRecordDetailsAsync(id);
+			if (model == null)
+			{
+				return RedirectToAction(nameof(AllAnimalsFiltred));
+			}
+			return View(model);
+		}
 
 		[HttpGet]
 		public async Task<IActionResult> GroomingDetails(string id)

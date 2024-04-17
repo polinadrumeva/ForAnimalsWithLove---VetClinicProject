@@ -297,6 +297,37 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			await dbContext.SaveChangesAsync();
 		}
 
+		public async Task<AdminHealthModel> GetHospitalRecordDetailsAsync(string id)
+		{
+			var healthRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(x => x.AnimalId.ToString() == id);
+
+			var records = await dbContext.HospitalRecords
+					.Where(x => x.HealthRecordId == healthRecord.Id)
+					.Select(x => new AdminHospitalModel
+					{
+						DateOfAcceptance = x.DateOfAcceptance,
+						DateOfDischarge = x.DateOfDischarge,
+						Diagnosis = x.Diagnosis,
+						Treatment = x.Treatment,
+						PrescribedTreatment = x.PrescribedTreatment
+					})
+					.OrderByDescending(x => x.DateOfDischarge)
+					.ToArrayAsync();
+
+			if (records.Length == 0)
+			{
+				return null!;
+			}
+
+			return new AdminHealthModel()
+			{
+				Id = healthRecord.Id.ToString(),
+				AnimalId = healthRecord.AnimalId.ToString(),
+				HospitalRecords = records
+			};
+
+		}
+
 		public async Task<AdminAnimalModel> GetAnimalDetailsAsync(string id)
 		{
 			var animal = await dbContext.Animals.FirstAsync(x => x.Id.ToString() == id);

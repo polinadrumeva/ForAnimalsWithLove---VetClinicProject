@@ -56,8 +56,8 @@
 			<div class="text-center col-md-10 col-xl-12">
 				<a asp-controller="Doctor" asp-action="EditHealthRecord" asp-route-id="@Model.Id" class="btn btn-primary"> Промени данни в здравно досие</a>
 			</div>
-			<div class="text-center col-md-10 col-xl-12">
-				<a asp-controller="Doctor" asp-action="AddHospitalRecord" asp-route-id="@Model.Id" class="btn btn-primary"> + Добави болнично досие</a>
+			<div class="text-center">
+				<a class="btn btn-primary" asp-controller="Doctor" asp-action="HospitalRecordDetails" asp-route-id="@Model.Id"> Детайли болнично настаняване</a>
 			</div>
 			<div class="text-center col-md-10 col-xl-12">
 				<a asp-controller="Doctor" asp-action="AddMedical" asp-route-id="@Model.Id" class="btn btn-primary"> + Добави преглед</a>
