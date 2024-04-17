@@ -287,8 +287,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 
 
 			var healthRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(x => x.Id.ToString() == id);
-			healthRecord.HospitalRecordId = hospitalRecord.Id;
-			healthRecord.HospitalRecord = hospitalRecord;
+			healthRecord.HospitalsRecords.Add(hospitalRecord);
 
 			await dbContext.HospitalRecords.AddAsync(hospitalRecord);
 			await dbContext.SaveChangesAsync();

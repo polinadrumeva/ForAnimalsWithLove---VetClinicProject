@@ -37,7 +37,7 @@ namespace ForAnimalsWithLove.Controllers
 			var model = await ownerService.GetHealthRecordDetailsAsync(id);
 			if (model == null)
 			{
-				return View();
+				return RedirectToAction("Index", "Home");
 			}
 			return View(model);
 		}

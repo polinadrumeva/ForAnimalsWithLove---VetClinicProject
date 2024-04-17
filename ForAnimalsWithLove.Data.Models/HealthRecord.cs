@@ -10,6 +10,7 @@ namespace ForAnimalsWithLove.Data.Models
         {
             this.Id = Guid.NewGuid();
             this.Medicals = new HashSet<Medical>();
+            this.HospitalsRecords = new HashSet<HospitalRecord>();
         }
 
         [Key]
@@ -40,9 +41,7 @@ namespace ForAnimalsWithLove.Data.Models
         public string GeneralCondition { get; set; } = null!;
 
 
-        public Guid? HospitalRecordId { get; set; }
-
-        public HospitalRecord? HospitalRecord { get; set; }
+        public virtual ICollection<HospitalRecord> HospitalsRecords { get; set; }
 
         public virtual ICollection<Medical> Medicals { get; set; }
 

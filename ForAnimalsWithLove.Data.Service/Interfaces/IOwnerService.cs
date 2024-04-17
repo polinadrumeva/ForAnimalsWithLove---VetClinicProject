@@ -11,7 +11,7 @@ namespace ForAnimalsWithLove.Data.Service.Interfaces
 		Task<AdminOwnerModel> GetOwnerExistByUserIdAsync(string id);
 		Task<ICollection<AdminAnimalModel>> GetMyAnimalDetailsAsync(string id);
 		Task<AdminHealthModel> GetHealthRecordDetailsAsync(string id);
-		Task<AdminHospitalModel> GetHospitalRecordDetailsAsync(string id);
+		Task<AdminHealthModel> GetHospitalRecordDetailsAsync(string id);
 		Task<AdminGroomingModel> GetGroomingAsync(string id);
 		Task<AdminAnimalModel> GetBookingDetailsAsync(string id);
 		Task<AdminEducationModel> GetEducationDetailsAsync(string id);

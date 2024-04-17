@@ -10,6 +10,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         {
             this.Id = Guid.NewGuid().ToString();
             this.Operations = new HashSet<AdminOperationModel>();
+            this.Tests = new HashSet<AdminTestModel>();
         }
 
         public string Id { get; set; }
@@ -35,6 +36,8 @@ namespace ForAnimalsWithLove.ViewModels.Admins
 
         public AdminHealthModel HealthRecord { get; set; } = null!;
 
-        public ICollection<AdminOperationModel> Operations { get; set; }
-    }
+        public virtual ICollection<AdminOperationModel> Operations { get; set; }
+
+		public virtual ICollection<AdminTestModel> Tests { get; set; }
+	}
 }

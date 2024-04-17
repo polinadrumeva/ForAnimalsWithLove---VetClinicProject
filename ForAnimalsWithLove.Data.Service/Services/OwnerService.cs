@@ -116,30 +116,35 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			};
 		}
 
-
-		public async Task<AdminHospitalModel> GetHospitalRecordDetailsAsync(string id)
+		public async Task<AdminHealthModel> GetHospitalRecordDetailsAsync(string id)
 		{
-			var healthRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(a => a.AnimalId.ToString() == id);
-			if (healthRecord == null)
+			var healthRecord = await dbContext.HealthRecords.FirstOrDefaultAsync(x => x.AnimalId.ToString() == id);
+			
+			var records = await dbContext.HospitalRecords
+					.Where(x => x.HealthRecordId == healthRecord.Id)
+					.Select(x => new AdminHospitalModel
+					{
+						DateOfAcceptance = x.DateOfAcceptance,
+						DateOfDischarge = x.DateOfDischarge,
+						Diagnosis = x.Diagnosis,
+						Treatment = x.Treatment,
+						PrescribedTreatment = x.PrescribedTreatment
+					})
+					.OrderByDescending(x => x.DateOfDischarge)
+					.ToArrayAsync();
+
+			if (records.Length == 0)
 			{
 				return null!;
 			}
-			var hospitalRecord = await dbContext.HospitalRecords.FirstOrDefaultAsync(a => a.HealthRecordId.ToString() == healthRecord.Id.ToString());
-			if (hospitalRecord != null)
+
+			return new AdminHealthModel()
 			{
-				return new AdminHospitalModel
-				{
-					Diagnosis = hospitalRecord.Diagnosis,
-					DateOfAcceptance = hospitalRecord.DateOfAcceptance,
-					DateOfDischarge = hospitalRecord.DateOfDischarge,
-					Treatment = hospitalRecord.Treatment,
-					PrescribedTreatment = hospitalRecord.PrescribedTreatment,
-					HealthRecordId = hospitalRecord.HealthRecordId
+				Id = healthRecord.Id.ToString(),
+				AnimalId = healthRecord.AnimalId.ToString(),
+				HospitalRecords = records
+			};
 
-				};
-			}
-
-			return null!;
 		}
 
 		//My Animals

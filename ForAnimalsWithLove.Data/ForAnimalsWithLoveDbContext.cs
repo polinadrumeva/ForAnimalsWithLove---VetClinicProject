@@ -101,16 +101,10 @@ namespace ForAnimalsWithLove.Data
 				.HasForeignKey<HealthRecord>(hr => hr.AnimalId)
 				.IsRequired();
 
-			modelBuilder.Entity<HealthRecord>()
-				.HasOne(hr => hr.HospitalRecord)
-				.WithOne(a => a.HealthRecord)
-				.HasForeignKey<HealthRecord>(hr => hr.HospitalRecordId)
-				.IsRequired(false);
 
 			modelBuilder.Entity<HospitalRecord>()
 				.HasOne(hr => hr.HealthRecord)
-				.WithOne(a => a.HospitalRecord)
-				.HasForeignKey<HospitalRecord>(hr => hr.HealthRecordId)
+				.WithMany(a => a.HospitalsRecords)
 				.IsRequired();
 
 			modelBuilder.Entity<Operation>()

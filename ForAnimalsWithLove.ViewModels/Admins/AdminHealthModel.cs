@@ -8,7 +8,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
     {
         public AdminHealthModel()
         {
-           
+            this.HospitalRecords = new HashSet<AdminHospitalModel>();
             this.Medicals = new HashSet<AnimalMedicalModel>();
         }
 
@@ -48,9 +48,7 @@ namespace ForAnimalsWithLove.ViewModels.Admins
         [Display(Name = "Предписано лечение")]
         public string? PrescribedTreatment { get; set; }
 
-        public Guid? HospitalRecordId { get; set; }
-
-        public AdminHospitalModel? HospitalRecord { get; set; }
+        public virtual ICollection<AdminHospitalModel> HospitalRecords { get; set; }
 
         public virtual ICollection<AnimalMedicalModel> Medicals { get; set; }
     }
