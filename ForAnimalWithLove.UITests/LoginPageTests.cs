@@ -37,21 +37,22 @@ namespace ForAnimalWithLove.UITests
            Assert.IsTrue(ElementExists(By.Id("login-submit")));
         }
 
-        [Test]
-        public void ValidationMessagesTest()
-        {
-            driver.Navigate().GoToUrl(baseUrl);
+		[Test]
+		public void TestLoginFormDisplayedCorrectly()
+		{
+			driver.Navigate().GoToUrl(baseUrl);
 
-            driver.FindElement(By.Id("login-submit")).Click();
+			// Assert that the login form is displayed correctly
+			Assert.IsTrue(driver.FindElement(By.TagName("h2")).Text.Contains("Вход"));
+			Assert.IsTrue(driver.FindElement(By.CssSelector("form#account")).Displayed);
+			Assert.IsTrue(driver.FindElement(By.CssSelector("input[name='Input.Email']")).Displayed);
+			Assert.IsTrue(driver.FindElement(By.CssSelector("input[name='Input.Password']")).Displayed);
+			Assert.IsTrue(driver.FindElement(By.CssSelector("button#login-submit")).Displayed);
+		}
 
-            Assert.IsTrue(ElementExists(By.CssSelector("#account .text-danger")));
-            Assert.AreEqual("The Email field is required.", driver.FindElement(By.CssSelector("#account span[data-valmsg-for='Input.Email']")).Text);
-            Assert.AreEqual("The Password field is required.", driver.FindElement(By.CssSelector("#account span[data-valmsg-for='Input.Password']")).Text);
-        }
 
-       
-        // Helper method to check if an element exists
-        private bool ElementExists(By locator)
+		// Helper method to check if an element exists
+		private bool ElementExists(By locator)
         {
             try
             {

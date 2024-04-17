@@ -12,7 +12,7 @@ namespace ForAnimalsWithLove.Data
 		public ForAnimalsWithLoveDbContext(DbContextOptions<ForAnimalsWithLoveDbContext> options)
 			: base(options)
 		{
-
+			
 		}
 		public DbSet<Animal> Animals { get; set; } = null!;
 

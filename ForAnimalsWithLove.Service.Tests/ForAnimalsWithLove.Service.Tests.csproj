@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="6.0.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
     <PackageReference Include="Moq" Version="4.20.69" />
@@ -18,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ForAnimalsWithLove.Data.Models\ForAnimalsWithLove.Data.Models.csproj" />
+    <ProjectReference Include="..\ForAnimalsWithLove.Data.Service.Model\ForAnimalsWithLove.Data.Service.Model.csproj" />
     <ProjectReference Include="..\ForAnimalsWithLove.Data.Service\ForAnimalsWithLove.Data.Service.csproj" />
     <ProjectReference Include="..\ForAnimalsWithLove.Data\ForAnimalsWithLove.Data.csproj" />
     <ProjectReference Include="..\ForAnimalsWithLove.ViewModels\ForAnimalsWithLove.ViewModels.csproj" />
