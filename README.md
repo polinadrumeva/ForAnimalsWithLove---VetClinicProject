@@ -7,15 +7,25 @@ The logo was made by me personally for the purposes of the project.
 
 ## Functionality
 1. User registration;
-2. Owner access - each owner's access to their pet's file;
-3. Admin access - Admins have access to three categories - Clients, Doctors and Trainers. In the section "Clients" they can add new clients, change data of existing ones, their owners, grooming services, hotel accommodation, can see the clients' health files. In the "Doctors" section, they can add new doctors, change information about existing ones and remove them. In the "Coaches" section, they can add new coaches, change information about existing ones and remove them.;
-4. Doctor access - Doctors have access to the "Clients" section, can add new examinations, run tests, create a hospital file, operations, see the clients' health record and details about them. Only doctors have access to these functionalities.;
-5. Trainer access - Trainers have access to the "Clients" section, can add new trainings, see the clients' health record and details about them. Only doctors have access to these functionalities.;
+2. Owner access - each owner's access to their pet's file - health file details, hospital accommodation, hotel accommodation, last used grooming services and training.;
+3. Admin access - Administrators have access to three categories - Customers, Doctors and Trainers. In the section "Clients" they can add new clients, change data of existing ones, their owners, hairdressing services, hotel accommodation, they can see the health and hospital files of the clients. In the Doctors section, they can add new doctors, change information about existing ones and remove them. In the "Coaches" section, they can add new coaches, change information about existing ones and remove them.;
+4. Doctor access - Doctors have access to the Clients section, can edit patients' health records, add hospital admissions, perform tests, surgeries, view clients' health records and their details, including hospital admissions. Only doctors have access to these features.;
+5. Trainer access - Trainers have access to the "Clients" section, can add new trainings, see the clients' health record and details about them. Only trainers have access to these functionalities.;
 
 ## Database Diagram
 ![Database](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/5eeabeab-fb56-4ab2-8676-68d8f13cda12)
 
 ## Project Architecture
+1. ForAnimalsWithLove - ASP .NET Core Web App MVC.
+2. ForAnimalsWithLove.Infrastructure - holding Extensions.   
+3. ForAnimalsWithLove.Data.Models - holding DB-Models.
+4. ForAnimalsWithLove.Data.Service.Model - holding Service Models.
+5. ForAnimalsWithLove.Data.Service  - holding Services.
+6. ForAnimalsWithLove.Data - holding DBContext and Migrations.
+7. ForAnimalsWithLove.ViewModels - holding ViewModels.
+8. ForAnimalWithLove.UITests - Test Project, holding UI Tests.
+9. ForAnimalsWithLove.Service.Tests - NUnit Test Project, holding Service Tests.
+10. ForAnimalsWithLove.Common
 
 ## Tests
 1. Unit tests - NUnit, Moq;
@@ -32,10 +42,12 @@ The logo was made by me personally for the purposes of the project.
 ### Login Administrator
 ![11](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/0cf96712-05ae-4acf-b206-dc6fff9288e4)
 ![14](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/1afcc375-d076-41a9-8d02-e000dc900a3f)
+![20](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/aa30f53d-5993-45e6-bebb-6e448f165e7b)
+
 
 ### Login Trainer/Doctor
 ![12](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/4db0eb33-7712-4cfb-8b68-c9df77fad797)
-![15](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/8a8d48c2-803c-4597-9b5e-d98530d3abae)
+![19](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/1369b408-9244-4fdb-a813-6a1929332d09)
 
 ### Login Owner
 ![16](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/0b9c00e7-2aaf-425d-a6c4-1003edb760c4)
