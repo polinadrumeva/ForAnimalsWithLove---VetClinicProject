@@ -7,6 +7,7 @@ using ForAnimalsWithLove.ViewModels.Enums;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using static ForAnimalsWithLove.Service.Tests.DatabaseSeeder;
 
@@ -265,35 +266,484 @@ namespace ForAnimalsWithLove.Service.Tests
 			Assert.IsNotNull(addedAnimal);
 		}
 
-		[Test]
-		public async Task AddAnimalAsync_DoesNotAddAnimal_WhenModelIsNull()
-		{
-			await this.adminService.AddAnimalAsync(null);
 
-			var allAnimalsCount = await this.dbContext.Animals.CountAsync();
-			Assert.AreEqual(0, allAnimalsCount);
+		[Test]
+		public async Task GetHealthModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetHealthModelAsync();
+
+			Assert.IsNotNull(result);
 		}
 
 		[Test]
-		public async Task AddAnimalAsync_DoesNotAddAnimal_WhenModelIdExists()
+		public async Task GetHealthModelAsync_ReturnsInstanceOfAdminHealthModel()
 		{
-			var existingAnimalId = Animal.Id.ToString(); 
+			var result = await adminService.GetHealthModelAsync();
 
-			await this.adminService.AddAnimalAsync(new AdminAnimalModel
+			Assert.IsInstanceOf<AdminHealthModel>(result);
+		}
+
+		[Test]
+		public async Task GetHealthModelAsync_ReturnsEmptyAdminHealthModel()
+		{
+			var result = await adminService.GetHealthModelAsync();
+
+			Assert.IsFalse(result.FirstVaccine);
+			Assert.IsFalse(result.Microchip);
+		}
+
+		[Test]
+		public async Task GetGroomingModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetGroomingModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetGroomingModelAsync_ReturnsInstanceOfAdminGroomingModel()
+		{
+			var result = await adminService.GetGroomingModelAsync();
+
+			Assert.IsInstanceOf<AdminGroomingModel>(result);
+		}
+
+		[Test]
+		public async Task GetGroomingModelAsync_ReturnsEmptyAdminGroomingModel()
+		{
+			var result = await adminService.GetGroomingModelAsync();
+
+			Assert.IsNull(result.Service);
+		}
+
+
+		[Test]
+		public async Task AddGroomingAsync_ThrowsException_WhenAnimalIdNotFound()
+		{
+			var model = new AdminGroomingModel
 			{
-				Id = existingAnimalId,
-				Name = "NewAnimal",
-				Age = 5,
-				KindOfAnimal = "Котка",
-				Breed = "Порода",
-				Color = "Цвят",
-				Sex = 'M'.ToString(),
-				Birthdate = DateTime.UtcNow,
-				DoesHasOwner = false
-			});
+				Service = "Grooming Service",
+				Date = DateTime.Now
+			};
+			var nonExistentAnimalId = "3FA15101-2A77-453B-9891-97301E778C37"; 
 
-			var allAnimalsCount = await this.dbContext.Animals.CountAsync();
-			Assert.AreEqual(1, allAnimalsCount);
+			Assert.ThrowsAsync<NullReferenceException>(() => adminService.AddGroomingAsync(model, nonExistentAnimalId));
 		}
+
+		[Test]
+		public async Task EditGroomingAsync_DoesNotUpdateNonExistentGroomingRecord()
+		{
+			
+			var nonExistentGroomingId = "3FA15101-2A77-453B-9891-97301E778C39"; // Provide a non-existent grooming ID
+			var updatedModel = new AdminGroomingModel
+			{
+				Id = nonExistentGroomingId,
+				Service = "Updated Grooming Service",
+				Date = DateTime.Now.AddDays(1)
+			};
+
+			await adminService.EditGroomingAsync(updatedModel);
+
+			var updatedGrooming = await dbContext.Groomings.FirstOrDefaultAsync(g => g.Id.ToString() == nonExistentGroomingId);
+			Assert.IsNull(updatedGrooming);
+		}
+
+		[Test]
+		public async Task GetEducationModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetEducationModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetEducationModelAsync_ReturnsInstanceOfAdminEducationModel()
+		{
+			var result = await adminService.GetEducationModelAsync();
+
+			Assert.IsInstanceOf<AdminEducationModel>(result);
+		}
+
+		[Test]
+		public async Task GetEducationModelAsync_ReturnsAdminEducationModelWithTrainers()
+		{
+			var result = await adminService.GetEducationModelAsync();
+
+			Assert.IsNotNull(result.AdminTrainers);
+			Assert.IsFalse(result.AdminTrainers.Any());
+		}
+
+
+		[Test]
+		public async Task GetBookingModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetBookingModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetBookingModelAsync_ReturnsInstanceOfAdminBookingModel()
+		{
+			var result = await adminService.GetBookingModelAsync();
+
+			Assert.IsInstanceOf<AdminBookingModel>(result);
+		}
+
+		[Test]
+		public async Task GetBookingModelAsync_ReturnsAdminBookingModelWithHotels()
+		{
+			var result = await adminService.GetBookingModelAsync();
+
+			Assert.IsNotNull(result.Hotels);
+			Assert.IsTrue(result.Hotels.Any());
+		}
+
+		[Test]
+		public async Task AddBookingAsync_AddsNewBooking()
+		{
+			var model = new AdminBookingModel
+			{
+				HotelId = 1, 
+				StartDate = DateTime.Today,
+				EndDate = DateTime.Today.AddDays(1),
+				Days = 2
+			};
+			var animalId = "3FA15101-2A77-453B-9891-97301E778C39"; 
+
+			await adminService.AddBookingAsync(model, animalId);
+
+			var bookingRecord = await dbContext.Bookings.FirstOrDefaultAsync(b => b.HotelId == model.HotelId && b.StartDate == model.StartDate && b.EndDate == model.EndDate && b.Days == model.Days);
+			Assert.IsNotNull(bookingRecord);
+		}
+
+
+		[Test]
+		public async Task AddBookingAsync_DoesNotAddBooking_WhenModelIsNull()
+		{
+			Assert.ThrowsAsync<NullReferenceException>(() => adminService.AddBookingAsync(null, "3FA15101-2A77-453B-9891-97301E778C39"));
+		}
+
+		[Test]
+		public async Task GetSearchHomeModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetSearchHomeModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetSearchHomeModelAsync_ReturnsInstanceOfAdminSearchHomeModel()
+		{
+			var result = await adminService.GetSearchHomeModelAsync();
+
+			Assert.IsInstanceOf<AdminSearchHomeModel>(result);
+		}
+
+		[Test]
+		public async Task GetSearchHomeModelAsync_ReturnsEmptyModel()
+		{
+			var result = await adminService.GetSearchHomeModelAsync();
+
+			Assert.IsNull(result.Habits);
+			Assert.IsNull(result.Location);
+		}
+
+
+		[Test]
+		public async Task AddSearchHomeAsync_DoesNotAddSearchHome_WhenModelIsNull()
+		{
+			
+			Assert.ThrowsAsync<NullReferenceException>(() => adminService.AddSearchHomeAsync(null, "3FA15101-2A77-453B-9891-97301E778C39"));
+		}
+
+		[Test]
+		public async Task GetOwnerModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetOwnerModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetOwnerModelAsync_ReturnsInstanceOfAdminOwnerModel()
+		{
+			var result = await adminService.GetOwnerModelAsync();
+
+			Assert.IsInstanceOf<AdminOwnerModel>(result);
+		}
+
+		[Test]
+		public async Task GetOwnerModelAsync_ReturnsEmptyModel()
+		{
+			var result = await adminService.GetOwnerModelAsync();
+
+			Assert.IsNull(result.FirstName);
+			Assert.IsNull(result.LastName);
+		}
+
+		[Test]
+		public async Task AddOwnerAsync_AddsNewOwner()
+		{
+			var model = new AdminOwnerModel
+			{
+				FirstName = "John",
+				LastName = "Doe",
+				PhoneNumber = "1234567890",
+				Address = "123 Main St"
+			};
+			var animalId = "7a090717-e16a-45e7-9d46-bd804ec499b5"; 
+
+			await adminService.AddOwnerAsync(model, animalId);
+
+			var addedOwner = await dbContext.Owners.FirstOrDefaultAsync(o => o.FirstName == model.FirstName && o.LastName == model.LastName);
+			Assert.IsNotNull(addedOwner);
+		}
+
+		[Test]
+		public async Task AddOwnerAsync_AssignsOwnerToAnimal()
+		{
+			var model = new AdminOwnerModel
+			{
+				FirstName = "John",
+				LastName = "Doe",
+				PhoneNumber = "1234567890",
+				Address = "123 Main St"
+			};
+			var animalId = "7a090717-e16a-45e7-9d46-bd804ec499b5"; 
+
+			await adminService.AddOwnerAsync(model, animalId);
+
+			var animal = await dbContext.Animals.FirstOrDefaultAsync(a => a.Id.ToString() == animalId);
+			Assert.IsNotNull(animal);
+			Assert.AreEqual(model.FirstName, animal.Owner.FirstName);
+			Assert.AreEqual(model.LastName, animal.Owner.LastName);
+		}
+
+		[Test]
+		public async Task AddOwnerAsync_DoesNotAddOwner_WhenModelIsNull()
+		{
+			Assert.ThrowsAsync<NullReferenceException>(() => adminService.AddOwnerAsync(null, "7a090717-e16a-45e7-9d46-bd804ec499b5"));
+
+		}
+
+		[Test]
+		public async Task GetGroomingDetailsAsync_ReturnsNotNull_WhenGroomingExists()
+		{
+			var existingAnimalId = "3fa15101-2a77-453b-9891-97301e778c39"; 
+			var result = await adminService.GetGroomingDetailsAsync(existingAnimalId);
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetGroomingDetailsAsync_ReturnsNull_WhenNoGroomingExists()
+		{
+			var nonExistingAnimalId = "3fa15101-2a77-453b-9891-97301e778c38"; 
+			var result = await adminService.GetGroomingDetailsAsync(nonExistingAnimalId);
+
+			Assert.IsNull(result);
+		}
+
+		[Test]
+		public async Task GetGroomingDetailsAsync_ReturnsCorrectGroomingModel_WhenGroomingExists()
+		{
+			
+			var existingAnimalId = "3fa15101-2a77-453b-9891-97301e778c39"; 
+			var result = await adminService.GetGroomingDetailsAsync(existingAnimalId);
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetHealthRecordDetailsAsync_ReturnsNotNull_WhenHealthRecordExists()
+		{
+			var existingAnimalId = "3fa15101-2a77-453b-9891-97301e778c39"; 
+			var result = await adminService.GetHealthRecordDetailsAsync(existingAnimalId);
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetHealthRecordDetailsAsync_ReturnsCorrectModel_WhenHealthRecordExists()
+		{
+			var existingAnimalId = "3fa15101-2a77-453b-9891-97301e778c39"; 
+			var result = await adminService.GetHealthRecordDetailsAsync(existingAnimalId);
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetHospitalModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetHospitalModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetHospitalModelAsync_ReturnsInstanceOfAdminHospitalModel()
+		{
+			var result = await adminService.GetHospitalModelAsync();
+
+			Assert.IsInstanceOf<AdminHospitalModel>(result);
+		}
+
+		[Test]
+		public async Task GetHospitalModelAsync_ReturnsEmptyAdminHospitalModel()
+		{
+			var result = await adminService.GetHospitalModelAsync();
+
+			Assert.AreEqual(default(string), result.Diagnosis);
+		}
+
+		[Test]
+		public async Task GetMedicalModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetMedicalModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetMedicalModelAsync_ReturnsInstanceOfAdminMedicalModel()
+		{
+			var result = await adminService.GetMedicalModelAsync();
+
+			Assert.IsInstanceOf<AdminMedicalModel>(result);
+		}
+
+		[Test]
+		public async Task GetMedicalModelAsync_ReturnsCorrectDoctorModels()
+		{
+			var result = await adminService.GetMedicalModelAsync();
+
+			Assert.IsNotNull(result.Doctors);
+		}
+
+
+		//Tests for Doctors part
+		[Test]
+		public async Task GetAllDoctors_ReturnsNotEmptyCollection()
+		{
+			var result = await adminService.GetAllDoctors();
+
+			Assert.IsNotNull(result);
+			Assert.IsNotEmpty(result);
+		}
+
+		[Test]
+		public async Task GetAllDoctors_ReturnsCorrectIndexDoctorModels()
+		{
+			var result = await adminService.GetAllDoctors();
+
+			Assert.IsNotNull(result);
+			foreach (var doctor in result)
+			{
+				Assert.IsNotNull(doctor.Id);
+				Assert.IsNotNull(doctor.FirstName);
+				Assert.IsNotNull(doctor.LastName);
+				Assert.IsNotNull(doctor.ImageUrl);
+				Assert.IsNotNull(doctor.PhoneNumber);
+			}
+		}
+
+		[Test]
+		public async Task GetAllDoctors_ReturnsCorrectNumberOfDoctors()
+		{
+			var expectedCount = 1; 
+
+			var result = await adminService.GetAllDoctors();
+
+			Assert.IsNotNull(result);
+			Assert.AreEqual(expectedCount, result.Count());
+		}
+
+		[Test]
+		public async Task GetAllDoctorsFiltredServiceModelAsync_ReturnsNotNull()
+		{
+			var queryModel = new AllDoctorsQueryModel
+			{
+				Direction = "SomeDirection",
+				SearchString = "SomeSearchString",
+				CurrentPage = 1,
+				DoctorsPerPage = 10
+			};
+
+			var result = await adminService.GetAllDoctorsFiltredServiceModelAsync(queryModel);
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetAllDoctorsFiltredServiceModelAsync_ReturnsCorrectTotalDoctorsCount()
+		{
+			var queryModel = new AllDoctorsQueryModel
+			{
+				Direction = "SomeDirection",
+				SearchString = "SomeSearchString",
+				CurrentPage = 1,
+				DoctorsPerPage = 10
+			};
+			var expectedTotalCount = 0; 
+
+			var result = await adminService.GetAllDoctorsFiltredServiceModelAsync(queryModel);
+
+			Assert.AreEqual(expectedTotalCount, result.TotalDoctorsCount);
+		}
+
+
+		[Test]
+		public async Task AllDirectionsNamesAsync_ReturnsNotNull()
+		{
+			var result = await adminService.AllDirectionsNamesAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task AllDirectionsNamesAsync_ReturnsNotEmptyCollection()
+		{
+			var result = await adminService.AllDirectionsNamesAsync();
+
+			Assert.IsNotNull(result);
+			Assert.IsNotEmpty(result);
+		}
+
+		[Test]
+		public async Task AllDirectionsNamesAsync_ReturnsCorrectNames()
+		{
+			var expectedNames = new string[] { "Хирургия" }; 
+			var result = await adminService.AllDirectionsNamesAsync();
+
+			CollectionAssert.AreEquivalent(expectedNames, result);
+		}
+
+		[Test]
+		public async Task GetDoctorModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetDoctorModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetDoctorModelAsync_ReturnsValidDirectories()
+		{
+			var result = await adminService.GetDoctorModelAsync();
+
+			Assert.IsNotNull(result.Directories);
+			Assert.IsNotEmpty(result.Directories);
+		}
+
+		[Test]
+		public async Task GetDoctorModelAsync_ReturnsCorrectNumberOfDirectories()
+		{
+			var expectedCount = 1; 
+			var result = await adminService.GetDoctorModelAsync();
+
+			Assert.AreEqual(expectedCount, result.Directories.Count);
+		}
+
 	}
 }
