@@ -53,7 +53,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Test
-      run: dotnet test ForAnimalsWithLove.UITests.csproj --configuration Release --logger "trx;LogFileName=testresults.trx" 
+      run: dotnet test ForAnimalWithLove.UITests.csproj --configuration Release --logger "trx;LogFileName=testresults.trx" 
       working-directory: ForAnimalWithLove.UITests
       continue-on-error: true 
 
