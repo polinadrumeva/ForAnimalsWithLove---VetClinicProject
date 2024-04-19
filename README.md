@@ -1,5 +1,7 @@
+[![Build and Test](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/actions/workflows/dotnet.yml/badge.svg)](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/actions/workflows/dotnet.yml)
+
 # ForAnimalsWithLove---VetClinicProject
-The project was created at C#. The following technologies were used: ASP. NET Core, ASP.NET Core areas, Entity Framework Core, MS SQL, jQuery, JS, Bootstrap 4, Moq, NUnit, Selenium, Selenium Chrome. Including automated build and test with github actions. 
+The project was created at C#. The following technologies were used: ASP. NET Core, ASP.NET Core areas, Entity Framework Core, MS SQL, jQuery, JS, Bootstrap 4, NUnit, Selenium. Including automated build and test with github actions. 
 ![1](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/20dc9a9d-99cc-4ba4-897f-ed617d9e9090)
 
 The logo was made by me personally for the purposes of the project.
@@ -27,9 +29,9 @@ The logo was made by me personally for the purposes of the project.
 9. ForAnimalsWithLove.Service.Tests - NUnit Test Project, holding Service Tests.
 10. ForAnimalsWithLove.Common
 
-## Tests
-1. Unit tests - NUnit, Moq;
-2. UI tests - Selenium, Selenium Chrome;
+## Tests - over 150 tests
+1. Unit tests - NUnit; over 100 tests;
+2. UI tests - Selenium, Selenium Chrome; 50 tests;
 ## App Images
 ![2](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/e1032b5d-f376-431f-bd38-f5c2a56c094d)
 ![3](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/cf75b610-dd61-4d51-b59a-0a3653dd1ee6)
