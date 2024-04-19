@@ -35,7 +35,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Test
       run: dotnet test ForAnimalsWithLove.Service.Tests.csproj --configuration Release --logger "trx;LogFileName=testresults.trx" 
-      working-directory: ForAnimalsWithLove.Tests
+      working-directory: ForAnimalsWithLove.Service.Tests
       continue-on-error: true 
 
     - name: Publish Unit Test Results
