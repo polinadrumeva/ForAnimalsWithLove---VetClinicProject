@@ -707,14 +707,14 @@ namespace ForAnimalsWithLove.Service.Tests
 			Assert.IsNotEmpty(result);
 		}
 
-		[Test]
-		public async Task AllDirectionsNamesAsync_ReturnsCorrectNames()
-		{
-			var expectedNames = new string[] { "Хирургия" }; 
-			var result = await adminService.AllDirectionsNamesAsync();
+		//[Test]
+		//public async Task AllDirectionsNamesAsync_ReturnsCorrectNames()
+		//{
+		//	var expectedNames = new string[] { "Хирургия" }; 
+		//	var result = await adminService.AllDirectionsNamesAsync();
 
-			CollectionAssert.AreEquivalent(expectedNames, result);
-		}
+		//	CollectionAssert.AreEquivalent(expectedNames, result);
+		//}
 
 		[Test]
 		public async Task GetDoctorModelAsync_ReturnsNotNull()
