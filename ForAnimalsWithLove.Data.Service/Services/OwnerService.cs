@@ -193,5 +193,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			var result = await dbContext.Owners.AnyAsync(o => o.UserId.ToString() == userId);
 			return result;
 		}
+
+
 	}
 }

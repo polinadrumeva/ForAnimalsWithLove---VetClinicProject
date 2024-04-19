@@ -20,6 +20,7 @@ namespace ForAnimalsWithLove.Service.Tests
 		public static Direction Direction;
 		public static Trainer trainer1;
 		public static Trainer trainer2;
+		public static Education education;
 
 
 		public static void SeedDatabase(ForAnimalsWithLoveDbContext dbContext)
@@ -48,7 +49,7 @@ namespace ForAnimalsWithLove.Service.Tests
 
 			OwnerUser = new ApplicationUser()
 			{
-				Id = Guid.Parse("5727D951-24BA-4450-8CB5-6E851A9B1D4B"),
+				Id = Guid.Parse("5727d951-24ba-4450-8cb5-6e851a9b1d4b"),
 				UserName = "polina_drumeva@abv.bg",
 				NormalizedUserName = "POLINA_DRUMEVA@ABV.BG",
 				Email = "polina_drumeva@abv.bg",
@@ -62,11 +63,12 @@ namespace ForAnimalsWithLove.Service.Tests
 
 			Owner = new Owner()
 			{
+				Id = Guid.Parse("F88EF877-1938-41AD-992D-A08F59B45EAF"),
 				FirstName = "Полина",
 				LastName = "Друмева",
 				PhoneNumber = "0887554289",
 				Address = "Велико Търново",
-				UserId = Guid.Parse("5727D951-24BA-4450-8CB5-6E851A9B1D4B")
+				UserId = Guid.Parse("5727d951-24ba-4450-8cb5-6e851a9b1d4b")
 			};
 
 			Animal = new Animal()
@@ -80,7 +82,7 @@ namespace ForAnimalsWithLove.Service.Tests
 				Birthdate = new DateTime(2016, 10, 11),
 				Color = "Бял с кафеви петна",
 				DoesHasOwner = true,
-				OwnerId = Guid.Parse("F88EF877-1938-41AD-992D-A08F59B45EAF"),
+				OwnerId = Guid.Parse("f88ef877-1938-41ad-992d-a08f59b45eaf"),
 				Owner = Owner,
 				GroomingId = Guid.Parse("C69A75E6-A5AE-4974-81C7-206CB069342B"),
 				HealthRecordId = Guid.Parse("6F66D5E0-4B8F-45C3-931A-D5833C63DBD2"),
@@ -173,6 +175,14 @@ namespace ForAnimalsWithLove.Service.Tests
 				Photo = "photo2.jpg"
 			};
 
+			var education = new Education
+			{
+				Id = Guid.Parse("38AF2361-8ABF-4A6E-91E6-03369453828E"),
+				Days = 10,
+				TrainerId = trainer1.Id,
+			};
+           
+
 			dbContext.Users.Add(AdminUser);
 			dbContext.Administrators.Add(Administrator);
 			dbContext.Users.Add(OwnerUser);
@@ -186,6 +196,7 @@ namespace ForAnimalsWithLove.Service.Tests
 			dbContext.Doctors.Add(Doctor);
 			dbContext.Directions.Add(Direction);
 			dbContext.Trainers.AddRange(trainer1, trainer2);
+			dbContext.Educations.Add(education);
 
 			dbContext.SaveChanges();
 		}
