@@ -26,21 +26,21 @@ jobs:
       run: dotnet build ForAnimalsWithLove.csproj --configuration Release 
       working-directory: ForAnimalsWithLove
 
-  test: 
-    name: Test
+  unit-test:
+    name: Unit Test
     needs: build
     runs-on: windows-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Test
-      run: dotnet test ForAnimalsWithLove.UITests.csproj --configuration Release --logger "trx;LogFileName=testresults.trx" 
-      working-directory: ForAnimalsWithLove.UITests
+      run: dotnet test ForAnimalsWithLove.Tests.csproj --configuration Release --logger "trx;LogFileName=testresults.trx" 
+      working-directory: ForAnimalsWithLove.Tests
       continue-on-error: true 
 
-    - name: Publish Test Results
+    - name: Publish Unit Test Results
       if: always()
       uses: actions/upload-artifact@v2
       with:
-        name: Test Results
-        path: '**/testresults.trx' 
+        name: Unit Test Results
+        path: '**/testresults.trx'
