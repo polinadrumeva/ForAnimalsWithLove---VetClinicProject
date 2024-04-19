@@ -8,6 +8,8 @@ namespace ForAnimalsWithLove.Service.Tests
 	{
 		public static ApplicationUser AdminUser;
 		public static ApplicationUser OwnerUser;
+		public static ApplicationUser TrainerUser;
+		public static ApplicationUser DoctorUser;
 		public static Administrator Administrator;
 		public static Owner Owner;
 		public static Animal Animal;
@@ -166,13 +168,28 @@ namespace ForAnimalsWithLove.Service.Tests
 				Photo = "photo1.jpg"
 			};
 
+			TrainerUser = new ApplicationUser()
+			{
+				Id = Guid.Parse("E4EB79D7-BCF1-4BCE-BE35-259351EE6F88"),
+				UserName = "kolev@foranimalswithlove.bg",
+				NormalizedUserName = "KOLEV@FORANIMALSWITHLOVE.BG",
+				Email = "kolev@foranimalswithlove.bg",
+				NormalizedEmail = "KOLEV@FORANIMALSWITHLOVE.BG",
+				EmailConfirmed = false,
+				PasswordHash = "AQAAAAEAACcQAAAAEBrx5WvoUqx4eqFEtIbutAMxNxWmx5rpCEW4RHOq8NWu1RVAghA25W769Op6W+zoUA==",
+				ConcurrencyStamp = "b8a900d3-892f-4fac-9697-ad96a1c4d21e",
+				SecurityStamp = "ZYMX45Q5GYCIVELBAI5I6PNGN3PQ5WML",
+				TwoFactorEnabled = false
+			};
+
 			var trainer2 = new Trainer
 			{
 				Id = Guid.NewGuid(),
 				FirstName = "Jane",
 				LastName = "Smith",
 				PhoneNumber = "555-5678",
-				Photo = "photo2.jpg"
+				Photo = "photo2.jpg",
+				UserId = TrainerUser.Id
 			};
 
 			var education = new Education
@@ -196,6 +213,7 @@ namespace ForAnimalsWithLove.Service.Tests
 			dbContext.Doctors.Add(Doctor);
 			dbContext.Directions.Add(Direction);
 			dbContext.Trainers.AddRange(trainer1, trainer2);
+			dbContext.Users.Add(TrainerUser);
 			dbContext.Educations.Add(education);
 
 			dbContext.SaveChanges();

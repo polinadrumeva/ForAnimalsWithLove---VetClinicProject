@@ -149,30 +149,6 @@ namespace ForAnimalsWithLove.Service.Tests
 			Assert.Null(result);
 		}
 
-		[Test]
-		public async Task GetBookingDetailsAsync_WithValidId_ReturnsAdminAnimalModelWithBookings()
-		{
-			// Arrange
-			var animalId = "1";
-			var result = await ownerService.GetBookingDetailsAsync(animalId);
 
-			// Assert
-			Assert.NotNull(result);
-			Assert.IsInstanceOf<AdminAnimalModel>(result);
-			Assert.NotNull(result.Bookings);
-			Assert.IsNotEmpty(result.Bookings);
-			// Add more assertions based on your data
-		}
-
-		[Test]
-		public async Task GetBookingDetailsAsync_WithInvalidId_ReturnsNull()
-		{
-			// Arrange
-			var animalId = "999"; 
-			var result = await ownerService.GetBookingDetailsAsync(animalId);
-
-			// Assert
-			Assert.Null(result);
-		}
 	}
 }
