@@ -18,6 +18,9 @@ namespace ForAnimalsWithLove.Service.Tests
 		public static Grooming Grooming;
 		public static Doctor Doctor;
 		public static Direction Direction;
+		public static Trainer trainer1;
+		public static Trainer trainer2;
+
 
 		public static void SeedDatabase(ForAnimalsWithLoveDbContext dbContext)
 		{
@@ -152,6 +155,24 @@ namespace ForAnimalsWithLove.Service.Tests
 				Name = "Хирургия",
 			};
 
+			var trainer1 = new Trainer
+			{
+				Id = Guid.NewGuid(),
+				FirstName = "John",
+				LastName = "Doe",
+				PhoneNumber = "555-1234",
+				Photo = "photo1.jpg"
+			};
+
+			var trainer2 = new Trainer
+			{
+				Id = Guid.NewGuid(),
+				FirstName = "Jane",
+				LastName = "Smith",
+				PhoneNumber = "555-5678",
+				Photo = "photo2.jpg"
+			};
+
 			dbContext.Users.Add(AdminUser);
 			dbContext.Administrators.Add(Administrator);
 			dbContext.Users.Add(OwnerUser);
@@ -164,6 +185,7 @@ namespace ForAnimalsWithLove.Service.Tests
 			dbContext.HospitalRecords.Add(HospitalRecord);
 			dbContext.Doctors.Add(Doctor);
 			dbContext.Directions.Add(Direction);
+			dbContext.Trainers.AddRange(trainer1, trainer2);
 
 			dbContext.SaveChanges();
 		}

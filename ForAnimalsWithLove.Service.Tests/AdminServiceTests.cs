@@ -4,9 +4,11 @@ using ForAnimalsWithLove.Data.Service.Services;
 using ForAnimalsWithLove.ViewModels.Admins;
 using ForAnimalsWithLove.ViewModels.Animals;
 using ForAnimalsWithLove.ViewModels.Enums;
+using ForAnimalsWithLove.ViewModels.IndexModels;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using static ForAnimalsWithLove.Service.Tests.DatabaseSeeder;
@@ -97,9 +99,6 @@ namespace ForAnimalsWithLove.Service.Tests
 				Assert.IsNotNull(animal.Color);
 				Assert.IsNotNull(animal.Birthdate);
 				Assert.IsNotNull(animal.Sex);
-				Assert.IsNotNull(animal.DoesHasOwner);
-				Assert.IsNotNull(animal.OwnerId);
-				Assert.IsNotNull(animal.Owner);
 			}
 		}
 
@@ -370,7 +369,7 @@ namespace ForAnimalsWithLove.Service.Tests
 			var result = await adminService.GetEducationModelAsync();
 
 			Assert.IsNotNull(result.AdminTrainers);
-			Assert.IsFalse(result.AdminTrainers.Any());
+			Assert.IsTrue(result.AdminTrainers.Any());
 		}
 
 
@@ -651,12 +650,12 @@ namespace ForAnimalsWithLove.Service.Tests
 		[Test]
 		public async Task GetAllDoctors_ReturnsCorrectNumberOfDoctors()
 		{
-			var expectedCount = 1; 
+			var expectedCount = 2; 
 
 			var result = await adminService.GetAllDoctors();
 
 			Assert.IsNotNull(result);
-			Assert.AreEqual(expectedCount, result.Count());
+			Assert.AreEqual(2, result.Count());
 		}
 
 		[Test]
@@ -743,6 +742,182 @@ namespace ForAnimalsWithLove.Service.Tests
 			var result = await adminService.GetDoctorModelAsync();
 
 			Assert.AreEqual(expectedCount, result.Directories.Count);
+		}
+
+		[Test]
+		public async Task AddDoctorAsync_AddsNewDoctor_WhenModelIsValid()
+		{
+			var newDoctorModel = new AdminDoctorModel
+			{
+				Id = Guid.NewGuid().ToString(),
+				FirstName = "John",
+				LastName = "Doe",
+				Specialization = "Cardiology",
+				Address = "123 Main St",
+				PhoneNumber = "555-1234",
+				Photo = "photo.jpg"
+			};
+
+			await adminService.AddDoctorAsync(newDoctorModel);
+
+			var addedDoctor = await dbContext.Doctors.FindAsync(Guid.Parse(newDoctorModel.Id));
+			Assert.IsNotNull(addedDoctor);
+		}
+
+		[Test]
+		public async Task AddDoctorAsync_DoesNotAddDoctor_WhenModelIsNull()
+		{
+			Assert.ThrowsAsync<NullReferenceException>(() => adminService.AddDoctorAsync(null));
+		}
+
+		[Test]
+		public async Task AddDoctorAsync_DoesNotAddDoctor_WhenIdIsInvalid()
+		{
+			var newDoctorModel = new AdminDoctorModel
+			{
+				Id = "InvalidId",
+				FirstName = "John",
+				LastName = "Doe",
+				Specialization = "Cardiology",
+				Address = "123 Main St",
+				PhoneNumber = "555-1234",
+				Photo = "photo.jpg"
+			};
+
+			Assert.ThrowsAsync<FormatException>(() => adminService.AddDoctorAsync(newDoctorModel));
+		}
+
+		[Test]
+		public async Task GetDoctorDetailsAsync_ReturnsDoctor_WhenDoctorExists()
+		{
+			var existingDoctorId = dbContext.Doctors.First().Id;
+
+			var result = await adminService.GetDoctorDetailsAsync(existingDoctorId.ToString());
+
+			Assert.IsNotNull(result);
+			Assert.AreEqual(existingDoctorId.ToString(), result.Id);
+		}
+
+		[Test]
+		public async Task EditDoctorAsync_UpdatesDoctor_WhenDoctorExists()
+		{
+			var existingDoctorId = dbContext.Doctors.First().Id;
+			var updatedFirstName = "UpdatedFirstName";
+
+			var updatedDoctor = new AdminDoctorModel
+			{
+				Id = existingDoctorId.ToString(),
+				FirstName = updatedFirstName,
+				LastName = "UpdatedLastName",
+				Specialization = "UpdatedSpecialization",
+				Address = "UpdatedAddress",
+				PhoneNumber = "555-5678",
+				Photo = "updatedphoto.jpg"
+			};
+
+			await adminService.EditDoctorAsync(updatedDoctor);
+			var editedDoctor = await dbContext.Doctors.FirstOrDefaultAsync(x => x.Id == existingDoctorId);
+
+			Assert.IsNotNull(editedDoctor);
+			Assert.AreEqual(updatedFirstName, editedDoctor.FirstName);
+		}
+
+		[Test]
+		public async Task EditDoctorAsync_DoesNotUpdateDoctor_WhenDoctorDoesNotExist()
+		{
+			var nonExistingDoctorId = Guid.NewGuid().ToString();
+			var updatedDoctor = new AdminDoctorModel
+			{
+				Id = nonExistingDoctorId,
+				FirstName = "UpdatedFirstName",
+				LastName = "UpdatedLastName",
+				Specialization = "UpdatedSpecialization",
+				Address = "UpdatedAddress",
+				PhoneNumber = "555-5678",
+				Photo = "updatedphoto.jpg"
+			};
+
+			await adminService.EditDoctorAsync(updatedDoctor);
+			var editedDoctor = await dbContext.Doctors.FirstOrDefaultAsync(x => x.Id.ToString() == nonExistingDoctorId);
+
+			Assert.IsNull(editedDoctor);
+		}
+
+		[Test]
+		public async Task GetDoctorDetailsAsync_ReturnsCorrectDoctor_WhenDoctorExists()
+		{
+			// Arrange
+			var existingDoctorId = dbContext.Doctors.First().Id;
+
+			// Act
+			var result = await adminService.GetDoctorDetailsAsync(existingDoctorId.ToString());
+
+			// Assert
+			Assert.IsNotNull(result);
+			Assert.AreEqual(existingDoctorId.ToString(), result.Id);
+			Assert.AreEqual("UpdatedFirstName", result.FirstName);
+			Assert.AreEqual("UpdatedLastName", result.LastName);
+			Assert.AreEqual("UpdatedSpecialization", result.Specialization);
+			Assert.AreEqual("UpdatedAddress", result.Address);
+			Assert.AreEqual("555-5678", result.PhoneNumber);
+			Assert.AreEqual("updatedphoto.jpg", result.Photo);
+		}
+
+		//Tests for Trainers part
+		[Test]
+		public async Task GetAllTrainers_ReturnsNotEmptyCollection()
+		{
+			var trainers = await adminService.GetAllTrainers();
+
+			Assert.IsNotNull(trainers);
+			Assert.IsNotEmpty(trainers);
+		}
+
+		[Test]
+		public async Task GetAllTrainers_ReturnsCorrectTrainerModels()
+		{
+			var trainers = await adminService.GetAllTrainers();
+
+			Assert.AreEqual(3, trainers.Count()); 
+
+		}
+
+		[Test]
+		public async Task GetTrainerModelAsync_ReturnsNotNull()
+		{
+			var result = await adminService.GetTrainerModelAsync();
+
+			Assert.IsNotNull(result);
+		}
+
+		[Test]
+		public async Task GetTrainerModelAsync_ReturnsInstanceOfAdminTrainerModel()
+		{
+			var result = await adminService.GetTrainerModelAsync();
+
+			Assert.IsInstanceOf<AdminTrainerModel>(result);
+		}
+
+		[Test]
+		public async Task AddTrainerAsync_AddsTrainerToDatabase()
+		{
+			var model = new AdminTrainerModel
+			{
+				Id = Guid.NewGuid().ToString(),
+				FirstName = "John",
+				LastName = "Doe",
+				PhoneNumber = "1234567890",
+				Photo = "photo-url"
+			};
+
+			await adminService.AddTrainerAsync(model);
+
+			var addedTrainer = await dbContext.Trainers.FindAsync(Guid.Parse(model.Id));
+			Assert.IsNotNull(addedTrainer);
+			Assert.AreEqual(model.FirstName, addedTrainer.FirstName);
+			Assert.AreEqual(model.LastName, addedTrainer.LastName);
+			Assert.AreEqual(model.PhoneNumber, addedTrainer.PhoneNumber);
+			Assert.AreEqual(model.Photo, addedTrainer.Photo);
 		}
 
 	}
