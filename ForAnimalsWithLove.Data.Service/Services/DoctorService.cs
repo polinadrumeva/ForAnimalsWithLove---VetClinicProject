@@ -323,8 +323,6 @@ namespace ForAnimalsWithLove.Data.Service.Services
 			await dbContext.HospitalRecords.AddAsync(hospitalRecord);
 			await dbContext.SaveChangesAsync();
 			
-			
-
 		}
 
 		public async Task<AnimalMedicalModel> GetMedicalModelAsync()

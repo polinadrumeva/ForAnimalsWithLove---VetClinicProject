@@ -144,6 +144,20 @@ namespace ForAnimalsWithLove.Service.Tests
 				PrescribedTreatment = "Антибиотици"
 			};
 
+			DoctorUser = new ApplicationUser()
+			{
+				Id = Guid.Parse("f5218d46-e826-44f3-b63e-f5ddabc63806"),
+				UserName = "manova@foranimalswithlove.bg",
+				NormalizedUserName = "MANOVA@FORANIMALSWITHLOVE.BG",
+				Email = "manova@foranimalswithlove.bg",
+				NormalizedEmail = "MANOVA@FORANIMALSWITHLOVE.BG",
+				EmailConfirmed = false,
+				PasswordHash = "AQAAAAEAACcQAAAAEHSQyrmn7HFSA9rVQY9rh0+wxsF5SaeFcuatSsnllXduY+0VxAMGPjd7KY1TQzovBg==",
+				ConcurrencyStamp = "79f9f535-9dab-47be-810e-0268b0b9b1be",
+				SecurityStamp = "REDB2F36GWFUQA3A55Z5YSEFD4RZSPJT",
+				TwoFactorEnabled = false
+			};
+
 			Doctor = new Doctor()
 			{
 				FirstName = "Димитър",
@@ -151,7 +165,7 @@ namespace ForAnimalsWithLove.Service.Tests
 				PhoneNumber = "0887554289",
 				Address = "Велико Търново",
 				Photo = "https://res.cloudinary.com/dimitrov/image/upload/v1634496824/Doctor/doctor1.jpg",
-				UserId = Guid.Parse("5727D951-24BA-4450-8CB5-6E851A9B1D4B")
+				UserId = Guid.Parse("f5218d46-e826-44f3-b63e-f5ddabc63806")
 			};
 
 			Direction = new Direction()
@@ -210,6 +224,7 @@ namespace ForAnimalsWithLove.Service.Tests
 			dbContext.Hotels.Add(Hotel);
 			dbContext.HealthRecords.Add(HealthRecord);
 			dbContext.HospitalRecords.Add(HospitalRecord);
+			dbContext.Users.Add(DoctorUser);
 			dbContext.Doctors.Add(Doctor);
 			dbContext.Directions.Add(Direction);
 			dbContext.Trainers.AddRange(trainer1, trainer2);
