@@ -36,7 +36,7 @@ The logo was made by me personally for the purposes of the project.
 ![2](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/e1032b5d-f376-431f-bd38-f5c2a56c094d)
 ![3](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/cf75b610-dd61-4d51-b59a-0a3653dd1ee6)
 ![4](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/044ae2c9-8db7-4403-8dac-82e12aa69f4d)
-![5](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/ffd4ba9a-381f-4939-9972-b19a1ba14a10)
+![4](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/7c13c9eb-bff7-4e3e-954b-24190e6302da)
 ![6](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/c81590e3-3676-4d12-96f4-2c5f2ba484f2)
 ![13](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/88d44f98-19f1-4ba7-a41a-cb456c6a5aa3)
 
@@ -44,7 +44,7 @@ The logo was made by me personally for the purposes of the project.
 ### Login Administrator
 ![11](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/0cf96712-05ae-4acf-b206-dc6fff9288e4)
 ![14](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/1afcc375-d076-41a9-8d02-e000dc900a3f)
-![20](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/aa30f53d-5993-45e6-bebb-6e448f165e7b)
+![20](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/f268ac24-db23-4560-aca3-e7bda4c35d19)
 
 
 ### Login Trainer/Doctor
@@ -52,7 +52,7 @@ The logo was made by me personally for the purposes of the project.
 ![19](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/1369b408-9244-4fdb-a813-6a1929332d09)
 
 ### Login Owner
-![16](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/0b9c00e7-2aaf-425d-a6c4-1003edb760c4)
+![16](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/1c487255-ed6b-494e-87ce-5380d5f549d4)
 ![17](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/02fcdb19-b6dc-4473-b3e8-f6f1bfcdd83e)
 ![18](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/ba270cf9-b8a3-4e22-af4b-b438250fc5dd)
 
