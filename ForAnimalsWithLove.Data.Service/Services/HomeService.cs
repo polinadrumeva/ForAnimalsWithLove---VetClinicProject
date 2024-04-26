@@ -77,6 +77,7 @@ namespace ForAnimalsWithLove.Data.Service.Services
                                           {
                                               Name = a.Name,
                                               Age = a.Age,
+                                              Birthdate = a.Birthdate,
                                               Photo = a.Photo,
                                               Habits = a.SearchHome.Habits
                                           })

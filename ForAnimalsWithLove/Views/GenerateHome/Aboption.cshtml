@@ -68,6 +68,20 @@
                 <!-- Pet  -->
                 @foreach (var animal in animalForAdoption)
                 {
+                        var years = DateTime.Now.Year - animal.Birthdate.Year;
+                        var months = DateTime.Now.Month - animal.Birthdate.Month;
+
+                        if (DateTime.Now.Day < animal.Birthdate.Day)
+                        {
+                            months--;
+                        }
+
+                        if (months < 0)
+                        {
+                            years--;
+                            months += 12;
+                        }
+
                     <div class="adopt-card col-md-6 col-xl-5 res-margin">
                         <div class="card bg-light-custom">
                             <div class="thumbnail text-center">
@@ -78,7 +92,7 @@
                                     <h6 class="adoption-header">@animal.Name</h6>
                                     <!-- List -->
                                     <ul class="list-unstyled">
-                                        <li><strong>Възраст:</strong> @animal.Age</li>
+                                            <li><strong>Възраст:</strong> @years години и @months месеца</li>
                                         <li><strong>Навици: </strong> @animal.Habits</li>
                                     </ul>
                                 </div>
