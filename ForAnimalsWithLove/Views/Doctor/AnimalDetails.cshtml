@@ -1,5 +1,22 @@
 ﻿@using ForAnimalsWithLove.ViewModels.Admins;
 @model AdminAnimalModel
+@{
+	// Calculate age
+	var years = DateTime.Now.Year - Model.Birthdate.Year;
+	var months = DateTime.Now.Month - Model.Birthdate.Month;
+
+	if (DateTime.Now.Day < Model.Birthdate.Day)
+	{
+		months--;
+	}
+
+	if (months < 0)
+	{
+		years--;
+		months += 12;
+	}
+}
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -38,7 +55,7 @@
 			</div>
 			<div class="card col-8 border-0">
 				<p style="font-size:25px;"><u>@Model.Name </u></p>
-				<p><b>Възраст:</b> @Model.Age</p>
+				<p><b>Възраст:</b> @years години и @months месеца</p>
 				<p><b>Собственик:</b> @Model.Owner.FirstName @Model.Owner.LastName </p>
 				<p><b>Вид:</b> @Model.KindOfAnimal </p>
 				<p><b>Порода:</b> @Model.Breed </p>
