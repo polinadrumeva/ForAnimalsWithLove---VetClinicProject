@@ -54,6 +54,5 @@ The logo was made by me personally for the purposes of the project.
 ### Login Owner
 ![16](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/1c487255-ed6b-494e-87ce-5380d5f549d4)
 ![17](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/02fcdb19-b6dc-4473-b3e8-f6f1bfcdd83e)
-![18](https://github.com/polinadrumeva/ForAnimalsWithLove---VetClinicProject/assets/97524018/ba270cf9-b8a3-4e22-af4b-b438250fc5dd)
 
 
